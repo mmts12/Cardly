@@ -21,8 +21,8 @@ export class _Board extends Component {
     return (
       <div>
         <StatusBar />
-        <StackList board={selectedBoard} />
         <h2>Board</h2>
+        <StackList board={selectedBoard} />
       </div>
     );
   }
