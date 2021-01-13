@@ -1,3 +1,127 @@
-.header-wrapper{
+.header-wrapper {
+    background-color: #0079bf;
     display: flex;
+    min-height: 40px;
+    max-height: 40px;
+    max-height: 40px;
+    overflow: hidden;
+    padding: 4px;
+    box-sizing: border-box;
+    // align-content: center;
+    .header-left {
+        display: flex;
+        flex-grow: 1;
+        flex-basis: 100%;
+    }
+    
+    .logo-wrapper{
+        color: white;
+        height: 32px;
+        line-height: 32px;
+        text-decoration: none;
+        align-items: center;
+        background-color: hsla(0, 0%, 100%, 0.3);
+        box-shadow: none;
+        border: 0;
+        display: flex;
+        font-weight: 700;
+        border-radius: 3px;
+        margin: 0 4px 0 0;
+        padding: 0;
+        white-space: nowrap;
+    }
+    .logo {
+        text-decoration: none;
+        font-family: Pacifico, cursive;
+        font-style: italic;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        height: 30px;
+        width: 80px;
+        line-height: 20px;
+        font-weight: 400;
+    }
+    .header-btn {
+        color: white;
+        height: 32px;
+        line-height: 32px;
+        text-decoration: none;
+        align-items: center;
+        background-color: hsla(0, 0%, 100%, 0.3);
+        box-shadow: none;
+        border: 0;
+        display: flex;
+        font-weight: 700;
+        border-radius: 3px;
+        margin: 0 4px 0 0;
+        padding: 0;
+        white-space: nowrap;
+    }
+    
+    .header-home {
+        display: inline-block;
+        fill: inherit;
+        flex-shrink: 0;
+        line-height: 1;
+        margin: 4px;
+    }
+    
+    .header-icon {
+        display: flex;
+        width: 32px;
+        justify-content: center;
+        align-items: center;
+        margin: 4px;
+    }
+    
+    .header-icon-word {
+        overflow: hidden;
+        padding: 0 8px 0 2px;
+        max-width: 150px;
+        font-size: 14px;
+    }
+    
+    .header-input {
+        background-color: hsla(0, 0%, 100%, 0.3);
+        border-radius: 3px;
+        border: none;
+        box-shadow: none;
+        box-sizing: border-box;
+        color: hsla(0, 0%, 100%, 0.5);
+        float: left;
+        font-size: 13px;
+        height: 32px;
+        line-height: 19px;
+        margin: 0;
+        outline: none;
+        padding-left: 8px;
+        padding-right: 30px;
+        transition: width 0.15s;
+        width: 184px;
+    }
+    
+    .header-left-space {
+        flex: 1;
+    }
+    
+    .header-right {
+        justify-content: flex-end;
+    }
+    
+    .header-username{
+        display: flex;
+        width: 32px;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        border: 0;
+        background-color: purple;
+        color: white;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 50%;
+    
+    }
 }
+
