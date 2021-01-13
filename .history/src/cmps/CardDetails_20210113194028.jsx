@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { CardSideBar } from './CardSideBar.jsx';
-import { CardDescription } from './CardDescription.jsx';
 
 export class CardDetails extends Component {
   render() {
-    const { card } = this.props
     return (
       <div>
+        <CardSideBar />
         <main>
-          <h2>card.title</h2>
-          <CardDescription />
-          <CardSideBar />
+          <h2>Card CardDetails</h2>
         </main>
       </div>
     );
