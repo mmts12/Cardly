@@ -1,0 +1,84 @@
+[
+    {
+        "_id": "u101",
+        "fullname": "Adi Sieradzki",
+        "username": "adisiera@gmail.com",
+        "password": "adi1234",
+        "isGuest": false,
+        "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+    }
+    {
+        "_id": "u102",
+        "fullname": "Mosh Malka",
+        "username": "mmts12@gmail.com",
+        "password": "mosh1234",
+        "isGuest": false,
+        "cards": [
+            {card
+            },
+            {card
+            },
+            {card
+            }
+        ],
+        "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+    }
+    {
+        "_id": "u103",
+        "fullname": "Adi Magori",
+        "username": "adimagori@gmail.com",
+        "password": "adi1234",
+        "isGuest": false,
+        "cards": [
+            {},
+        ],
+        "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+    }
+    {
+        "_id": "u104",
+        "fullname": "Rumpus",
+        "username": "rumpus@gmail.com",
+        "password": "rumpus1234",
+        "isGuest": true,
+        "cards": [
+            {
+                "id": "c101",
+                "title": "Remove the images from the website",
+                "desc": "Description is here...",
+                "comments": [
+                    {comment
+                    },
+                    {comment
+                    }
+                ],
+                "members": [
+                    {minimal-user
+                    },
+                    {minimal-user
+                    }
+                ],
+                "labels": [
+                    {label
+                    },
+                    {label
+                    }
+                ],
+                "checklists": [
+                    {checklist
+                    },
+                    {checklist
+                    }
+                ],
+                "dueDate": "TIME_STAMP",
+                "createdAt": "TIME_STAMP",
+                "byMember": {minimal-user
+                },
+            },
+            {card
+            },
+            {card
+            }
+        ],
+        "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463893/WhatsApp_Image_2021-01-12_at_17.04.06_idr6gn.jpg"
+    }
+]
