@@ -3,12 +3,18 @@ const fs = require('fs')
 const gBoards = require('../data/board.json')
 
 export const boardService = {
-    query
+    query, getBoardById
 }
 query()
 function query() {
     storageService.saveToStorage('boards', gBoards)
-    return gBoards
+    return Promise.resolve(gBoards)
+}
+
+function getBoardById(boardId) {
+    return gBoards.find(function (board) {
+        return board._id === boardId;
+    })
 }
 
 function _saveBoardsToFile() {

@@ -1,14 +1,12 @@
 import React from 'react';
 import { StackPreview } from './StackPreview';
-
-export function StackList() {
+import { Link } from 'react-router-dom';
+export function StackList(props) {
   return (
     //map Stack Preview
     <div>
       <h2>StackList</h2>
-      <StackPreview />
-      <StackPreview />
-      <StackPreview />
+      {console.log(props.board)}
     </div>
   );
 }
