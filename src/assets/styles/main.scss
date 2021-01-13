@@ -1,3 +1,14 @@
+//Setup
+
+//Basics
+@import "./basics/base.scss";
+@import "./basics/helpers.scss";
+
+//Components
+
+//Views
+@import "./views/CardlyApp.scss";
+@import "./views/Home.scss";
 @import "./cmps/BoardPreview.scss";
 
 body{
