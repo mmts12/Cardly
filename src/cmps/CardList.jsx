@@ -3,12 +3,14 @@ import { CardPreview } from './CardPreview';
 
 export class CardList extends Component {
   render() {
+    const { cards } = this.props;
     return (
       <div>
-        <h2>CardList</h2>
-        <CardPreview />
-        <CardPreview />
-        <CardPreview />
+        <div>
+          {cards.map((card) => {
+            return <CardPreview key={card.id} card={card} />;
+          })}
+        </div>
       </div>
     );
   }

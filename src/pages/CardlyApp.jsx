@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { loadBoards } from './../store/actions/boardActions.js';
 import { connect } from 'react-redux';
-import { StackList } from '../cmps/StackList.jsx';
 import { BoardPreview } from './../cmps/BoardPreview';
 export class _CardlyApp extends Component {
   componentDidMount() {

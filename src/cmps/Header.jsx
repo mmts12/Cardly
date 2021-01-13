@@ -11,6 +11,6 @@ export class Header extends Component {
         <Link className="logo">Cardly</Link>
         <Link>Username</Link>
       </div>
-    )
+    );
   }
 }
