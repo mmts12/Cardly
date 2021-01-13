@@ -1,3 +1,11 @@
-body{
-    background-color:#0079bf;
-}
+//Setup
+
+//Basics
+@import "./basics/base.scss";
+@import "./basics/helpers.scss";
+
+//Components
+
+//Views
+@import "./views/CardlyApp.scss";
+@import "./views/Home.scss";
