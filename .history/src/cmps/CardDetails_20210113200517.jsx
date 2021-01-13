@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { CardSideBar } from './CardSideBar.jsx';
-import { CardDescription } from './CardDescription.jsx';
 
 export class CardDetails extends Component {
   render() {
@@ -9,7 +8,6 @@ export class CardDetails extends Component {
       <div>
         <main>
           <h2>card.title</h2>
-          <CardDescription />
           <CardSideBar />
         </main>
       </div>
