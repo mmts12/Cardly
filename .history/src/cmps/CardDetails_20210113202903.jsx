@@ -8,7 +8,7 @@ export class CardDetails extends Component {
     return (
       <div>
         <main>
-          <h2>card.title</h2>
+          <h2>{card.title}</h2>
           <CardDescription />
           <CardSideBar />
         </main>
