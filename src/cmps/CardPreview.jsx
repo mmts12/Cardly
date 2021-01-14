@@ -14,7 +14,7 @@ export class CardPreview extends Component {
     const { card } = this.props;
     const { isCardDetailsSelected } = this.state;
     return (
-      <div>
+      <div className="card-preview">
         <div onClick={this.onShowCardDetails}>{card.title}</div>
         {isCardDetailsSelected && <CardDetails />}
       </div>
