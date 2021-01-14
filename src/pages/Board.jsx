@@ -4,8 +4,12 @@ import { StackList } from './../cmps/StackList';
 import { boardService } from '../services/boardService';
 import { setSelectedBoard } from '../store/actions/boardActions';
 import { connect } from 'react-redux';
+import { AddStack } from '../cmps/AddStack';
 
 export class _Board extends Component {
+  state = {
+    isAddStack: false,
+  };
   componentDidMount() {
     this.loadBoard();
   }
@@ -15,6 +19,9 @@ export class _Board extends Component {
     const board = boardService.getBoardById(boardId);
     this.props.setSelectedBoard(board);
   };
+
+  onAddSection = () => {};
+
   render() {
     const { selectedBoard } = this.props;
     console.log(selectedBoard);
@@ -23,6 +30,10 @@ export class _Board extends Component {
         <StatusBar />
         <h2>Board</h2>
         <StackList board={selectedBoard} />
+        <div className="add-new-stack">
+          <button onClick={this.onAddSection}>+ Add New Stack</button>
+          {this.state.isAddStack && <AddStack />}
+        </div>
       </div>
     );
   }

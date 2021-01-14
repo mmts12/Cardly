@@ -6,11 +6,9 @@ export class CardList extends Component {
     const { cards } = this.props;
     return (
       <div>
-        <div>
-          {cards.map((card) => {
-            return <CardPreview key={card.id} card={card} />;
-          })}
-        </div>
+        {cards.map((card) => {
+          return <CardPreview key={card.id} card={card} />;
+        })}
       </div>
     );
   }
