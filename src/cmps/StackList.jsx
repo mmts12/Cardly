@@ -7,7 +7,6 @@ export function StackList(props) {
   return (
     //map Stack Preview
     <div>
-      <h2>StackList</h2>
       <div className=" flex ">
         {props.board.stacks.map((stack) => {
           return <StackPreview key={stack.id} stack={stack} />;

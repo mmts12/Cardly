@@ -1,8 +1,11 @@
 //Setup
+@import "./setup/typography.scss";
+@import "./setup/variables.scss";
 
 //Basics
 @import "./basics/base.scss";
 @import "./basics/helpers.scss";
+@import "./basics/buttons.scss";
 
 //Components
 @import "./components/Header.scss";
@@ -25,6 +28,3 @@
 @import "./views/Home.scss";
 @import "./components/BoardPreview.scss";
 
-// body {
-//     background-color: #0079bf;
-// }

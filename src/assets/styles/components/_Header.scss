@@ -1,13 +1,12 @@
 .header-wrapper {
-    background-color: #0079bf;
+    background-color: $clr1;
     display: flex;
     min-height: 40px;
     max-height: 40px;
     max-height: 40px;
     overflow: hidden;
     padding: 4px;
-    box-sizing: border-box;
-    // align-content: center;
+    align-content: center;
     .header-left {
         display: flex;
         flex-grow: 1;
@@ -36,7 +35,7 @@
     .logo {
         text-decoration: none;
         font-family: Pacifico, cursive;
-        font-style: italic;
+       font-size: 1rem;
         color: white;
         cursor: pointer;
         display: inline-block;
@@ -46,6 +45,7 @@
         font-weight: 400;
     }
     .header-btn {
+        
         color: white;
         height: 32px;
         line-height: 32px;
@@ -60,6 +60,8 @@
         margin: 0 4px 0 0;
         padding: 0;
         white-space: nowrap;
+        cursor: pointer;
+        
     }
     
     .header-home {
@@ -68,6 +70,7 @@
         flex-shrink: 0;
         line-height: 1;
         margin: 4px;
+
     }
     
     .header-icon {
@@ -75,7 +78,7 @@
         width: 32px;
         justify-content: center;
         align-items: center;
-        margin: 4px;
+        margin: 0px;
     }
     
     .header-icon-word {
@@ -101,15 +104,24 @@
         padding-left: 8px;
         padding-right: 30px;
         transition: width 0.15s;
-        width: 184px;
+        width: 214px;
+        align-items: center;
+        & input{
+            background-color: rgba(255, 255, 255, 0);
+            border: 0;
+        }
     }
     
+
     .header-left-space {
         flex: 1;
     }
     
     .header-right {
         justify-content: flex-end;
+        display: flex;
+        flex-grow: 1;
+        flex-basis: 100%;
     }
     
     .header-username{

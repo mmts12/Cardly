@@ -1,0 +1,46 @@
+.btn1{
+    color: white;
+    height: 32px;
+    line-height: 32px;
+    text-decoration: none;
+    align-items: center;
+    background-color: hsla(0, 0%, 100%, 0.3);
+    box-shadow: none;
+    border: 0;
+    display: flex;
+    font-weight: 700;
+    border-radius: 3px;
+    margin: 0 4px 0 0;
+    padding: 0;
+    white-space: nowrap;
+    cursor: pointer;
+ 
+}
+
+.btn1-span{
+    display: inline-block;
+    fill: inherit;
+    flex-shrink: 0;
+    line-height: 1;
+    margin: 4px;
+    
+}
+
+.btn2{
+    color: $clr1;
+    height: 32px;
+    line-height: 32px;
+    text-decoration: none;
+    align-items: center;
+    background-color: hsla(0, 0%, 100%, 0.3);
+    box-shadow: none;
+    border: 1px solid $clr1;
+    display: flex;
+    font-weight: 700;
+    border-radius: 3px;
+    margin: 0.5rem;
+    padding: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 0.5rem;
+}

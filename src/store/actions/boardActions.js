@@ -14,7 +14,6 @@ export function loadBoards() { // Action Creator
 }
 export function setSelectedBoard(board) { // Action Creator
     return (dispatch) => {
-        console.log(board)
         const action = {
             type: 'SET_BOARD',
             board
