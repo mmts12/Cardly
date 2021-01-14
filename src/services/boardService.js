@@ -1,22 +1,56 @@
-import { storageService } from '../services/misc/storageService.js'
-const fs = require('fs')
-const gBoards = require('../data/board.json')
+
+// import { httpService } from './misc/httpService.js'
+import Axios from 'axios'
+import { utilService } from './misc/utilService';
+
+var gBoards;
+var axios = Axios.create({
+    withCredentials: true
+})
+
+var baseUrl = 'http://localhost:3030/board'
+
 
 export const boardService = {
-    query, getBoardById
+    query, getBoardById, saveNewStack
 }
-query()
+
+
 function query() {
-    storageService.saveToStorage('boards', gBoards)
-    return Promise.resolve(gBoards)
+    return axios.get(baseUrl)
+        .then(res => {
+            return res.data
+
+        })
+        .catch(() => console.log('no data from server'))
 }
 
 function getBoardById(boardId) {
-    return gBoards.find(function (board) {
-        return board._id === boardId;
-    })
+
+    return axios.get(`${baseUrl}/${boardId}`)
+        .then(res => res.data)
+
 }
 
-function _saveBoardsToFile() {
-    fs.writeFileSync('data/board.json', JSON.stringify(gBoards, null, 2))
+
+// async function _getBoardByIdx(boardId, gBoards) {
+//     return gBoards.findIndex((board) => board._id === boardId)
+// }
+
+
+
+
+async function saveNewStack(stack, boardId) {
+    stack.id = utilService.makeId()
+    const board = await getBoardById(boardId)
+    board.stacks.unshift(stack)
+    // console.log('isBoard', board)
+    // const boardIdx = await _getBoardByIdx(boardId, gBoards)
+    // gBoards[boardIdx] = board
+    // console.log(gBoards)
+    return Promise.resolve(board)
+    // axios.put(`${baseUrl}/${boardId}`, board)
+    //     .then(res => res.data)
+
 }
+

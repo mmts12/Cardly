@@ -6,6 +6,8 @@
 .pnp.js
 .eslintcache
 
+/.eslintcatch
+
 # testing
 /coverage
 /.history

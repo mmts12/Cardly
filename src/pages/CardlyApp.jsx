@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { loadBoards } from './../store/actions/boardActions.js';
 import { connect } from 'react-redux';
 import { BoardPreview } from './../cmps/BoardPreview';
