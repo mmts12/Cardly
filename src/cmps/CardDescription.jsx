@@ -3,15 +3,13 @@ import React from 'react'
 
 export function CardDescription() {
     return (
-        <div className="">
+        <div >
             <div className="flex">
-                {/* <Icon>Subject</Icon> */}
-
-                <h3>Description</h3>
+                <h3>= Description</h3>
             </div>
-            <textarea placeholder='Add a more detailed description...' rows="4" cols="50"></textarea>
+            <textarea className="card-details-btn-desc" placeholder='Add a more detailed description...' rows="4" cols="50"></textarea>
             <div className="flex">
-                <button>Save</button>
+                <button className="card-desc-save-btn">Save</button>X
             </div>
         </div>
     )

@@ -8,11 +8,12 @@
 @import "./cmps/BoardPreview.scss";
 @import "./cmps/StackList.scss";
 @import "./cmps/StackPreview.scss";
+@import "./cmps/CardDetails.scss";
 
 //Views
 @import "./views/CardlyApp.scss";
 @import "./views/Home.scss";
 
-body{
-    background-color:#0079bf;
+body {
+    background-color: #0079bf;
 }
