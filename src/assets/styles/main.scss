@@ -6,6 +6,9 @@
 
 //Components
 @import "./components/Header.scss";
+@import "./cmps/BoardPreview.scss";
+@import "./cmps/StackList.scss";
+@import "./cmps/StackPreview.scss";
 
 //Views
 @import "./views/CardlyApp.scss";

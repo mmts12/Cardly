@@ -2,7 +2,7 @@ import React from 'react';
 
 export function CardSideBar() {
   return (
-    <div>
+    <div className="flex column">
       <h4>ADD TO CARD</h4>
       <button>Members</button>
       <button>Labels</button>
