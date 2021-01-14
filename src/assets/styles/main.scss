@@ -12,6 +12,13 @@
 @import "./components/CardDetails.scss";
 @import "./components/CardList.scss";
 @import "./components/CardPreview.scss";
+@import "./components/cardDetailsSideBar/_CardDetailsSideBar.scss";
+@import "./components/cardDetailsPopups/_MembersPopup.scss";
+@import "./components/cardDetailsPopups/_LabelsPopup.scss";
+@import "./components/cardDetailsPopups/_DueDatePopup.scss";
+@import "./components/cardDetailsPopups/_CoverPopup.scss";
+@import "./components/cardDetailsPopups/_CheckListPopup.scss";
+@import "./components/cardDetailsPopups/_AttachmentPopup.scss";
 
 //Views
 @import "./views/CardlyApp.scss";

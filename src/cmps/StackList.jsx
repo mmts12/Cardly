@@ -3,7 +3,6 @@ import { StackPreview } from './StackPreview.jsx';
 
 export function StackList(props) {
   const { stacks } = props.board;
-  console.log(stacks);
   if (!stacks) return <h1>Loading ...</h1>;
   return (
     //map Stack Preview

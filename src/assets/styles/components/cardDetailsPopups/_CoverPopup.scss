@@ -1,0 +1,63 @@
+.pop-up-due-date {
+    background-color: #fff;
+    color: gray;
+    padding: 10px;
+    position: fixed;
+    border-radius: 3px;
+    width: 230px;
+    top: 69%;
+    transform: translate(-50%, 0);
+}
+
+.pop-up-due-date-save-btn {
+    border: 0;
+    font-size: 0.7em;
+    border-radius: 3px;
+    background-color: #6ea952;
+    color: white;
+    margin: 10px;
+    padding: 7px;
+    width: 10rem;
+}
+
+.cover-color-contianer {
+    display: wrap;
+    flex-wrap: wrap;
+}
+.cover-color:empty {
+    border: 0;
+    height: 1.6em;
+    margin: 1.6px;
+    width: 2.3em;
+    border-radius: 3px;
+}
+.cover-green-label {
+    background-color: #8bc274;
+}
+.cover-yellow-label {
+    background-color: #f1dd54;
+}
+.cover-orange-label {
+    background-color: #f3b156;
+}
+.cover-red-label {
+    background-color: #df7c6a;
+}
+.cover-purple-label {
+    background-color: #c491e0;
+}
+.cover-blue-label {
+    background-color: #699cc4;
+}
+.cover-light-blue-label {
+    background-color: #63c9e2;
+}
+.cover-light-green-label {
+    background-color: #8fe8ae;
+}
+.cover-pink-label {
+    background-color: #f095d1;
+}
+.cover-black-label {
+    background-color: #1c2a4b;
+}
