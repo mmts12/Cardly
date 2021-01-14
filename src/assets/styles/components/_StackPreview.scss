@@ -5,4 +5,16 @@
     cursor: pointer;
     padding: 10px;
     overflow-wrap: break-word;
+    &:hover {
+        .stack-preview-edit-icon{
+            opacity: 1;
+        }
+        
+    }
+
 }
+.stack-preview-edit-icon{
+    opacity: 0;
+    color: gray;
+}
+

@@ -1,344 +1,346 @@
-[
-    {
-        "_id": "b101",
-        "title": "Cardly sprint v1",
-        "createdAt": 1589983468418,
-        "createdBy": {
-            "_id": "u101",
-            "fullname": "Adi Sieradzki",
-            "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-        },
-        "style": {
-            "bgc": "",
-            "mode": "dark"
-        },
-        "members": [
-            {
+{
+    "board": [
+        {
+            "_id": "b101",
+            "title": "Cardly sprint v1",
+            "createdAt": 1589983468418,
+            "createdBy": {
                 "_id": "u101",
                 "fullname": "Adi Sieradzki",
                 "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
             },
-            {
-                "_id": "u102",
-                "fullname": "Mosh Malka",
-                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+            "style": {
+                "bgc": "",
+                "mode": "dark"
             },
-            {
-                "_id": "u103",
-                "fullName": "Adi Magori",
-                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-            }
-        ],
-        "stacks": [
-            {
-                "id": "g101",
-                "title": "To Do",
-                "cards": [
-                    {
-                        "id": "c111",
-                        "title": "built data model",
-                        "desc": "Description is here...",
-                        "comments": [
-                            {
-                                "id": "cm101",
-                                "txt": "@yaron need to be reviewed",
-                                "createdAt": 1589983468418,
-                                "byMember": {
-                                    "_id": "u101",
-                                    "fullName": "Adi Sieradzki",
-                                    "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                                }
-                            },
-                            {
-                                "id": "cm102",
-                                "txt": "made some changes please look at the new version",
-                                "createdAt": 1589983468418,
-                                "byMember": {
-                                    "_id": "u101",
-                                    "fullName": "Adi Sieradzki",
-                                    "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                                }
-                            }
-                        ],
-                        "members": [
-                            {
-                                "_id": "u101",
-                                "fullName": "Adi Sieradzki",
-                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                            },
-                            {
-                                "_id": "u102",
-                                "fullname": "Mosh Malka",
-                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                            },
-                            {
-                                "_id": "u103",
-                                "fullName": "Adi Magori",
-                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                            }
-                        ],
-                        "labels": [
-                            {
-                                "title": "A Comment",
-                                "color": "#fefefe"
-                            },
-                            {
-                                "title": "High priority",
-                                "color": "#B91111"
-                            }
-                        ],
-                        "checklists": [
-                            {
-                                "id": "ch101",
-                                "title": "Home page",
-                                "todos": [
-                                    {
-                                        "id": "td101",
-                                        "txt": "Add header",
-                                        "isDone": false,
-                                        "createdAt": 15899834685618
-                                    },
-                                    {
-                                        "id": "td102",
-                                        "txt": "Add a nav-bar",
-                                        "isDone": false,
-                                        "createdAt": 1589985468456
-                                    }
-                                ],
-                                "createdAt": 15899854683156
-                            },
-                            {
-                                "id": "ch102",
-                                "title": "Card features",
-                                "todos": [
-                                    {
-                                        "id": "td103",
-                                        "txt": "decide on colors for labels",
-                                        "isDone": false,
-                                        "createdAt": 1589985468454
-                                    },
-                                    {
-                                        "id": "td104",
-                                        "txt": "add edit icon on hover",
-                                        "isDone": false,
-                                        "createdAt": 1589985468436
-                                    }
-                                ],
-                                "createdAt": 1589985738456
-                            }
-                        ],
-                        "dueDate": 1589985468424,
-                        "createdAt": 1589985468456,
-                        "byMember": {
-                            "_id": "u103",
-                            "fullName": "Adi Magori",
-                            "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                        }
-                    },
-                    {
-                        "id": "c112",
-                        "title": "render initial board",
-                        "desc": "hard code website for first demo",
-                        "comments": [],
-                        "members": [],
-                        "labels": [],
-                        "checklists": [],
-                        "dueDate": 1589985468456,
-                        "createdAt": 1589985468456,
-                        "byMember": {
-                            "_id": "u103",
-                            "fullName": "Adi Magori",
-                            "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                        }
-                    }
-                ],
-                "style": {}
-            },
-            {
-                "id": "g102",
-                "title": "In progress",
-                "cards": [
-                    {
-                        "id": "c121",
-                        "title": "work on UI design",
-                        "desc": "pick colors and fonts ",
-                        "comments": [],
-                        "members": [],
-                        "labels": [],
-                        "checklists": [],
-                        "dueDate": 1589985468424,
-                        "createdAt": 1589985468456,
-                        "byMember": {
-                            "_id": "u103",
-                            "fullName": "Adi Magori",
-                            "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                        }
-                    },
-                    {
-                        "id": "c122",
-                        "title": "Add Demo Data",
-                        "desc": "add relevant data",
-                        "comments": [],
-                        "members": [],
-                        "labels": [],
-                        "checklists": [],
-                        "dueDate": 1589985468424,
-                        "createdAt": 1589985468456,
-                        "byMember": {
-                            "_id": "u103",
-                            "fullName": "Adi Magori",
-                            "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                        }
-                    }
-                ],
-                "style": {}
-            },
-            {
-                "id": "g103",
-                "title": "Waiting for approval",
-                "cards": [
-                    {
-                        "id": "c131",
-                        "title": "Yaron approval for data model",
-                        "desc": "need to be reviewed by Yaron B.",
-                        "comments": [],
-                        "members": [],
-                        "labels": [],
-                        "checklists": [],
-                        "dueDate": 1589985468456,
-                        "createdAt": 1589985468456,
-                        "byMember": {
-                            "_id": "u102",
-                            "fullname": "Mosh Malka",
-                            "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                        }
-                    },
-                    {
-                        "id": "c132",
-                        "title": "Assaf M. UI approval",
-                        "desc": "need to be approved by assaf before starting frontend development",
-                        "comments": [],
-                        "members": [],
-                        "labels": [],
-                        "checklists": [],
-                        "dueDate": 1589985438456,
-                        "createdAt": 1589985468576,
-                        "byMember": {
-                            "_id": "u102",
-                            "fullname": "Mosh Malka",
-                            "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                        }
-                    }
-                ],
-                "style": {}
-            },
-            {
-                "id": "g104",
-                "title": "Done",
-                "cards": [
-                    {
-                        "id": "c143",
-                        "title": "first meeting with team leader",
-                        "desc": "zoom meeting with Shahar P.",
-                        "comments": [],
-                        "members": [
-                            {
-                                "_id": "u101",
-                                "fullname": "Adi Sieradzki",
-                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                            }
-                        ],
-                        "labels": [
-                            {
-                                "title": "Feature",
-                                "color": "#06F072"
-                            },
-                            {
-                                "title": "Low priority",
-                                "color": "#B91111"
-                            }
-                        ],
-                        "checklists": [],
-                        "dueDate": 1589985418424,
-                        "createdAt": 1589934468424,
-                        "byMember": {
-                            "_id": "u101",
-                            "fullname": "Adi Sieradzki",
-                            "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                        }
-                    },
-                    {
-                        "id": "c144",
-                        "title": "building data model",
-                        "description": "fill in all demo data",
-                        "comments": [
-                            {
-                                "id": "cm141",
-                                "txt": "may god help us all!",
-                                "createdAt": 1589934468424,
-                                "byMember": {
-                                    "_id": "u102",
-                                    "fullname": "Mosh Malka",
-                                    "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                                }
-                            }
-                        ],
-                        "checklists": [
-                            {
-                                "id": "ch104",
-                                "title": "Checklist",
-                                "todos": [
-                                    {
-                                        "id": "td141",
-                                        "txt": "come up with cards",
-                                        "isDone": true,
-                                        "createdAt": 15899834645618
-                                    },
-                                    {
-                                        "id": "td142",
-                                        "txt": "validate json data",
-                                        "isDone": true,
-                                        "createdAt": 15899834685618
-                                    }
-                                ]
-                            }
-                        ],
-                        "members": [
-                            {
-                                "_id": "u101",
-                                "fullname": "Adi Sieradzki",
-                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                            }
-                        ],
-                        "labels": [],
-                        "createdAt": 1590999730348,
-                        "dueDate": 16156215211,
-                        "byMember": {
-                            "_id": "u103",
-                            "fullName": "Adi Magori",
-                            "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-                        },
-                        "style": {}
-                    }
-                ],
-                "style": {}
-            }
-        ],
-        "activities": [
-            {
-                "id": "a101",
-                "txt": "Changed Color",
-                "createdAt": 154514,
-                "byMember": {
+            "members": [
+                {
                     "_id": "u101",
                     "fullname": "Adi Sieradzki",
                     "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
                 },
-                "card": {
-                    "id": "c101",
-                    "title": "Look for cool app name"
+                {
+                    "_id": "u102",
+                    "fullname": "Mosh Malka",
+                    "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                },
+                {
+                    "_id": "u103",
+                    "fullName": "Adi Magori",
+                    "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
                 }
-            }
-        ]
-    }
-]
+            ],
+            "stacks": [
+                {
+                    "id": "g101",
+                    "title": "To Do",
+                    "cards": [
+                        {
+                            "id": "c111",
+                            "title": "built data model",
+                            "desc": "Description is here...",
+                            "comments": [
+                                {
+                                    "id": "cm101",
+                                    "txt": "@yaron need to be reviewed",
+                                    "createdAt": 1589983468418,
+                                    "byMember": {
+                                        "_id": "u101",
+                                        "fullName": "Adi Sieradzki",
+                                        "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                                    }
+                                },
+                                {
+                                    "id": "cm102",
+                                    "txt": "made some changes please look at the new version",
+                                    "createdAt": 1589983468418,
+                                    "byMember": {
+                                        "_id": "u101",
+                                        "fullName": "Adi Sieradzki",
+                                        "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                                    }
+                                }
+                            ],
+                            "members": [
+                                {
+                                    "_id": "u101",
+                                    "fullName": "Adi Sieradzki",
+                                    "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                                },
+                                {
+                                    "_id": "u102",
+                                    "fullname": "Mosh Malka",
+                                    "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                                },
+                                {
+                                    "_id": "u103",
+                                    "fullName": "Adi Magori",
+                                    "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                                }
+                            ],
+                            "labels": [
+                                {
+                                    "title": "A Comment",
+                                    "color": "#fefefe"
+                                },
+                                {
+                                    "title": "High priority",
+                                    "color": "#B91111"
+                                }
+                            ],
+                            "checklists": [
+                                {
+                                    "id": "ch101",
+                                    "title": "Home page",
+                                    "todos": [
+                                        {
+                                            "id": "td101",
+                                            "txt": "Add header",
+                                            "isDone": false,
+                                            "createdAt": 15899834685618
+                                        },
+                                        {
+                                            "id": "td102",
+                                            "txt": "Add a nav-bar",
+                                            "isDone": false,
+                                            "createdAt": 1589985468456
+                                        }
+                                    ],
+                                    "createdAt": 15899854683156
+                                },
+                                {
+                                    "id": "ch102",
+                                    "title": "Card features",
+                                    "todos": [
+                                        {
+                                            "id": "td103",
+                                            "txt": "decide on colors for labels",
+                                            "isDone": false,
+                                            "createdAt": 1589985468454
+                                        },
+                                        {
+                                            "id": "td104",
+                                            "txt": "add edit icon on hover",
+                                            "isDone": false,
+                                            "createdAt": 1589985468436
+                                        }
+                                    ],
+                                    "createdAt": 1589985738456
+                                }
+                            ],
+                            "dueDate": 1589985468424,
+                            "createdAt": 1589985468456,
+                            "byMember": {
+                                "_id": "u103",
+                                "fullName": "Adi Magori",
+                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                            }
+                        },
+                        {
+                            "id": "c112",
+                            "title": "render initial board",
+                            "desc": "hard code website for first demo",
+                            "comments": [],
+                            "members": [],
+                            "labels": [],
+                            "checklists": [],
+                            "dueDate": 1589985468456,
+                            "createdAt": 1589985468456,
+                            "byMember": {
+                                "_id": "u103",
+                                "fullName": "Adi Magori",
+                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                            }
+                        }
+                    ],
+                    "style": {}
+                },
+                {
+                    "id": "g102",
+                    "title": "In progress",
+                    "cards": [
+                        {
+                            "id": "c121",
+                            "title": "work on UI design",
+                            "desc": "pick colors and fonts ",
+                            "comments": [],
+                            "members": [],
+                            "labels": [],
+                            "checklists": [],
+                            "dueDate": 1589985468424,
+                            "createdAt": 1589985468456,
+                            "byMember": {
+                                "_id": "u103",
+                                "fullName": "Adi Magori",
+                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                            }
+                        },
+                        {
+                            "id": "c122",
+                            "title": "Add Demo Data",
+                            "desc": "add relevant data",
+                            "comments": [],
+                            "members": [],
+                            "labels": [],
+                            "checklists": [],
+                            "dueDate": 1589985468424,
+                            "createdAt": 1589985468456,
+                            "byMember": {
+                                "_id": "u103",
+                                "fullName": "Adi Magori",
+                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                            }
+                        }
+                    ],
+                    "style": {}
+                },
+                {
+                    "id": "g103",
+                    "title": "Waiting for approval",
+                    "cards": [
+                        {
+                            "id": "c131",
+                            "title": "Yaron approval for data model",
+                            "desc": "need to be reviewed by Yaron B.",
+                            "comments": [],
+                            "members": [],
+                            "labels": [],
+                            "checklists": [],
+                            "dueDate": 1589985468456,
+                            "createdAt": 1589985468456,
+                            "byMember": {
+                                "_id": "u102",
+                                "fullname": "Mosh Malka",
+                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                            }
+                        },
+                        {
+                            "id": "c132",
+                            "title": "Assaf M. UI approval",
+                            "desc": "need to be approved by assaf before starting frontend development",
+                            "comments": [],
+                            "members": [],
+                            "labels": [],
+                            "checklists": [],
+                            "dueDate": 1589985438456,
+                            "createdAt": 1589985468576,
+                            "byMember": {
+                                "_id": "u102",
+                                "fullname": "Mosh Malka",
+                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                            }
+                        }
+                    ],
+                    "style": {}
+                },
+                {
+                    "id": "g104",
+                    "title": "Done",
+                    "cards": [
+                        {
+                            "id": "c143",
+                            "title": "first meeting with team leader",
+                            "desc": "zoom meeting with Shahar P.",
+                            "comments": [],
+                            "members": [
+                                {
+                                    "_id": "u101",
+                                    "fullname": "Adi Sieradzki",
+                                    "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                                }
+                            ],
+                            "labels": [
+                                {
+                                    "title": "Feature",
+                                    "color": "#06F072"
+                                },
+                                {
+                                    "title": "Low priority",
+                                    "color": "#B91111"
+                                }
+                            ],
+                            "checklists": [],
+                            "dueDate": 1589985418424,
+                            "createdAt": 1589934468424,
+                            "byMember": {
+                                "_id": "u101",
+                                "fullname": "Adi Sieradzki",
+                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                            }
+                        },
+                        {
+                            "id": "c144",
+                            "title": "building data model",
+                            "description": "fill in all demo data",
+                            "comments": [
+                                {
+                                    "id": "cm141",
+                                    "txt": "may god help us all!",
+                                    "createdAt": 1589934468424,
+                                    "byMember": {
+                                        "_id": "u102",
+                                        "fullname": "Mosh Malka",
+                                        "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                                    }
+                                }
+                            ],
+                            "checklists": [
+                                {
+                                    "id": "ch104",
+                                    "title": "Checklist",
+                                    "todos": [
+                                        {
+                                            "id": "td141",
+                                            "txt": "come up with cards",
+                                            "isDone": true,
+                                            "createdAt": 15899834645618
+                                        },
+                                        {
+                                            "id": "td142",
+                                            "txt": "validate json data",
+                                            "isDone": true,
+                                            "createdAt": 15899834685618
+                                        }
+                                    ]
+                                }
+                            ],
+                            "members": [
+                                {
+                                    "_id": "u101",
+                                    "fullname": "Adi Sieradzki",
+                                    "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                                }
+                            ],
+                            "labels": [],
+                            "createdAt": 1590999730348,
+                            "dueDate": 16156215211,
+                            "byMember": {
+                                "_id": "u103",
+                                "fullName": "Adi Magori",
+                                "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                            },
+                            "style": {}
+                        }
+                    ],
+                    "style": {}
+                }
+            ],
+            "activities": [
+                {
+                    "id": "a101",
+                    "txt": "Changed Color",
+                    "createdAt": 154514,
+                    "byMember": {
+                        "_id": "u101",
+                        "fullname": "Adi Sieradzki",
+                        "imgUrl": "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+                    },
+                    "card": {
+                        "id": "c101",
+                        "title": "Look for cool app name"
+                    }
+                }
+            ]
+        }
+    ]
+}
