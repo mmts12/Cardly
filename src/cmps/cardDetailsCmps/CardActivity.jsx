@@ -11,14 +11,12 @@ export class CardActivity extends React.Component {
     render() {
         return (
             <section>
-                <div className="flex">
-                    <h3>Activity</h3>
-                </div >
+                <h3>Activity</h3>
                 <div className="card-details-activity">
-                    <textarea className="card-details-activity-textarea" placeholder='Add a more detailed description...' rows="4" cols="50"></textarea>
-                    <div className="activity-bar flex space-between">
+                    <textarea className="card-details-activity-textarea" placeholder='Add a more detailed description...'></textarea>
+                    <div className="activity-bar">
                         <button className="card-details-activity-button">Save</button>
-                        <div className="flex">
+                        <div className="activity-bar-icons" >
                             <AttachFileIcon></AttachFileIcon>
                             <AlternateEmailIcon></AlternateEmailIcon>
                         </div>

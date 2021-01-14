@@ -1,0 +1,56 @@
+.pop-up-labels {
+    background-color: #fff;
+    color: gray;
+    padding: 10px;
+    position: fixed;
+    border-radius: 3px;
+    width: 230px;
+    top: 47%;
+    transform: translate(-50%, 0);
+}
+
+.pop-up-labels-btn {
+    border: 0;
+    font-size: 0.7em;
+    border-radius: 3px;
+    margin: 10px;
+    padding: 7px;
+    width: 10rem;
+}
+
+.label-color-pick:empty {
+    border: 0;
+    height: 1.6em;
+    margin: 1.6px;
+    width: 13em;
+    border-radius: 3px;
+}
+
+.label-green-label {
+    background-color: #78ba5d;
+}
+.label-yellow-label {
+    width: 100rem;
+    background-color: #edd647;
+}
+.label-orange-label {
+    width: 100rem;
+    background-color: #f2a240;
+}
+.label-red-label {
+    width: 100rem;
+    background-color: #da644f;
+}
+.label-purple-label {
+    width: 100rem;
+    background-color: #b87cda;
+}
+
+.label-blue-label {
+    width: 100rem;
+    background-color: #3478ba;
+}
+
+.label-icon {
+    font-size: 10px;
+}
