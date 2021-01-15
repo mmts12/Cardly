@@ -15,7 +15,8 @@ export const boardService = {
     query,
     getBoardById,
     saveNewStack,
-    removeStack
+    removeStack,
+    saveStack
 }
 
 
@@ -59,9 +60,13 @@ function removeStack(stackId, boardId, selectedBoard) {
     const stacks = selectedBoard.stacks.filter((stack) => stack.id !== stackId)
     selectedBoard.stacks = stacks
     // const board = selectedBoard.stacks.filter((stack) => stack.id !== stackId)
-    console.log('service board is:', selectedBoard);
     axios.put(`${baseUrl}/${boardId}`, selectedBoard)
         .then(res => res.data)
     return Promise.resolve(selectedBoard)
 }
 
+function saveStack(stack, selectedBoard) {
+    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoard)
+        .then(res => res.data)
+    return Promise.resolve(selectedBoard)
+}
