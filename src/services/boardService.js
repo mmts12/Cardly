@@ -12,7 +12,10 @@ var baseUrl = 'http://localhost:3030/board'
 
 
 export const boardService = {
-    query, getBoardById, saveNewStack, removeStack
+    query,
+    getBoardById,
+    saveNewStack,
+    removeStack
 }
 
 
@@ -53,9 +56,12 @@ async function saveNewStack(stack, boardId) {
 }
 
 function removeStack(stackId, boardId, selectedBoard) {
-    const board = selectedBoard.stacks.filter((stack) => stack.id !== stackId)
-    // axios.put(`${baseUrl}/${boardId}`, board)
-    //     .then(res => res.data)
-    return Promise.resolve(board)
+    const stacks = selectedBoard.stacks.filter((stack) => stack.id !== stackId)
+    selectedBoard.stacks = stacks
+    // const board = selectedBoard.stacks.filter((stack) => stack.id !== stackId)
+    console.log('service board is:', selectedBoard);
+    axios.put(`${baseUrl}/${boardId}`, selectedBoard)
+        .then(res => res.data)
+    return Promise.resolve(selectedBoard)
 }
 

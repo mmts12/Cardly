@@ -12,13 +12,9 @@ export function boardReducer(state = initialState, action) {
         case 'UPDATE_BOARD':
             return {
                 ...state,
-                boards: state.boards.map(board => (board._id === action.board._id) ? action.board : board)
+                boards: state.boards.map(board => (board._id === action.board._id) ? action.board : board),
+                selectedBoard: action.board
             }
-        case 'REMOVE_BOARD':
-            const selectedBoard = state.selectedBoard;
-            const stacks = state.selectedBoard.stacks.filter((stack) => stack.id !== action.stackId)
-            selectedBoard.stacks = stacks
-            return { ...state, selectedBoard: selectedBoard }
         default:
             return state
     }

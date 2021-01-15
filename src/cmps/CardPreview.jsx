@@ -26,7 +26,7 @@ export class CardPreview extends Component {
           <EditIcon className="card-preview-edit-icon"></EditIcon>
         </div>
         {isCardDetailsSelected && (
-          <CardDetails onCloseModal={this.closeModal} />
+          <CardDetails card={card} onCloseModal={this.closeModal} />
         )}
       </div>
     );
