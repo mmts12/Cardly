@@ -24,3 +24,16 @@ export function removeStack(stackId, boardId, selectedBoard) {
             })
     }
 }
+export function saveStack(stack, selectedBoard) {
+    return (dispatch) => {
+        return boardService.saveStack(stack, selectedBoard)
+            .then((board) => {
+                const action = {
+                    type: 'UPDATE_BOARD',
+                    board,
+                }
+                dispatch(action)
+            })
+    }
+}
+

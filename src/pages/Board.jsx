@@ -16,11 +16,11 @@ export class _Board extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // const x = JSON.stringify(prevProps.boards);
-    // const y = JSON.stringify(this.props.boards);
-    // if (x !== y) {
-    //   this.loadBoard();
-    // }
+    const x = JSON.stringify(prevProps.boards);
+    const y = JSON.stringify(this.props.boards);
+    if (x !== y) {
+      this.loadBoard();
+    }
   }
 
   loadBoard = () => {
@@ -61,7 +61,12 @@ export class _Board extends Component {
         <div className="stack-container flex">
           {selectedBoard && <StackList board={selectedBoard} />}
           <div className="add-new-stack">
-            <button  onClick={this.onAddSection}><span className="board-icon"><AddIcon></AddIcon></span><span className="btn1-span">Add another list</span></button>
+            <button onClick={this.onAddSection}>
+              <span className="board-icon">
+                <AddIcon></AddIcon>
+              </span>
+              <span className="btn1-span">Add another list</span>
+            </button>
             {this.state.isAddStack && (
               <AddStack
                 addNewStack={this.onAddNewStack}
