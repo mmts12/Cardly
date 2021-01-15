@@ -13,15 +13,15 @@ export class _CardlyApp extends Component {
 
   render() {
     const { boards } = this.props;
-    if (!boards) return <h1>Loading ...</h1>;
+    if (!boards) return <h1>Loading...!!</h1>;
     return (
       <section className="app-wrapper flex column justify-center align-center">
         {boards.map((board) => {
           return <BoardPreview key={board._id} board={board} />;
         })}
         <div className="app-btn-container flex">
-        <button className="btn2"><span>Clone Board</span></button>
-        <button className="btn2"><span>Add Board</span></button>
+          <button className="btn2"><span>Clone Board</span></button>
+          <button className="btn2"><span>Add Board</span></button>
         </div>
       </section>
     );

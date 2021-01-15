@@ -9,16 +9,17 @@ export class _Board extends Component {
   state = {
     isAddStack: false,
   };
+
   componentDidMount() {
     this.loadBoard();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const x = JSON.stringify(prevProps.boards);
-    const y = JSON.stringify(this.props.boards);
-    if (x !== y) {
-      this.loadBoard();
-    }
+    // const x = JSON.stringify(prevProps.boards);
+    // const y = JSON.stringify(this.props.boards);
+    // if (x !== y) {
+    //   this.loadBoard();
+    // }
   }
 
   loadBoard = () => {
