@@ -1,16 +1,42 @@
-import React from 'react'
+import React, { Component } from 'react';
+
 // import Icon from '@material-ui/core/Icon';
 
-export function CardDescription() {
-    return (
-        <div >
-            <div className="flex">
-                <h3>= Description</h3>
+
+export class CardDescription extends Component {
+    state = {
+        card: {}
+    }
+    componentDidMount() {
+        this.setState({ card: this.props.card })
+    }
+
+
+    handleInput = (ev) => {
+        const { card } = this.state
+        card.desc = ev.target.value
+        this.setState({ card })
+
+    }
+
+    onSaveCardDesc = () => {
+        //
+
+    }
+
+    render() {
+        const { card } = this.props
+        return (
+            <div >
+                <div className="flex">
+                    <h3>Description</h3>
+                </div>
+                <textarea className="card-details-btn-desc" placeholder='Add a more detailed description...' value={card.desc} rows="4" cols="50" onChange={this.handleInput}></textarea>
+                <div className="flex" >
+                    <button className="card-desc-save-btn" onClick={this.onSaveCardDesc}>Save</button>X
             </div>
-            <textarea className="card-details-btn-desc" placeholder='Add a more detailed description...' rows="4" cols="50"></textarea>
-            <div className="flex">
-                <button className="card-desc-save-btn">Save</button>X
-            </div>
-        </div>
-    )
+            </div >
+
+        )
+    }
 }

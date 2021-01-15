@@ -12,3 +12,15 @@ export function addStack(stack, boardId) {
             })
     }
 }
+export function removeStack(stackId, boardId, selectedBoard) {
+    return (dispatch) => {
+        return boardService.removeStack(stackId, boardId, selectedBoard)
+            .then((board) => {
+                const action = {
+                    type: 'UPDATE_BOARD',
+                    board,
+                }
+                dispatch(action)
+            })
+    }
+}
