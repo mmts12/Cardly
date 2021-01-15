@@ -9,16 +9,18 @@
     font-size: 15px;
     overflow-wrap: break-word;
     min-height: 18px;
+    // .card-preview-icons{
+
+    // }
+    .card-preview-edit-icon{
+        opacity: 0;
+        color: gray;
+        font-size: 1rem;
+    
+    }
     &:hover{
         .card-preview-edit-icon{
             opacity: 1;
         }
     }
-}
-
-
-.card-preview-edit-icon{
-    opacity: 0;
-    color: gray;
-
 }

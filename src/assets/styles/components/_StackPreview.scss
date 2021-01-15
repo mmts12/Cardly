@@ -1,27 +1,40 @@
-.stack-preview-card{
+.stack-preview-card {
     padding: 10px;
-}
-.stack-title{
-    cursor: pointer;
-    padding: 10px;
-    overflow-wrap: break-word;
-    &:hover {
-        .stack-preview-edit-icon,.stack-preview-delete-icon{
-            opacity: 1;
-        }
-        
-    }
-
-}
-.stack-preview-edit-icon,.stack-preview-delete-icon{
-    opacity: 0;
-    color: gray;
-}
-.add-new-card{
-    padding: 10px;
-    &:hover{
-        background-color: rgb(175, 175, 175);
+    .stack-title {
         cursor: pointer;
+        padding: 10px;
+        overflow-wrap: break-word;
+        &:hover {
+            .stack-preview-edit-icon,
+            .stack-preview-delete-icon {
+                opacity: 1;
+            }
+        }
     }
-}
+    .stack-preview-edit-icon,
+    .stack-preview-delete-icon {
+        opacity: 0;
+        color: gray;
+    }
+    .add-new-card {
+        // padding: 10px;
+        margin: 2px 0 8px 8px;
+        padding: 4px 8px;
+        position: relative;
+        border-radius: 3px;
+        color: #5e6c84;
+        min-height: 38px;
+        max-height: 38px;
+        &:hover {
+            // background-color: rgb(175, 175, 175);
+            background-color: rgba(9,30,66,.08);
+    color: #172b4d;
+            cursor: pointer;
+        }
+    }
+    .add-icon {
+        color: #6b778c;
+        margin-right: 2px;
+    }
 
+}

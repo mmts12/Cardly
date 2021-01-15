@@ -68,9 +68,9 @@ export class _StackPreview extends Component {
         {this.state.isAddShow ? (
           <AddCard closeAddSection={this.onCloseAddSection} />
         ) : (
-          <div onClick={this.onAddCard} className="add-new-card flex">
-            <AddIcon></AddIcon>
-            <span>Add Another Card</span>
+          <div onClick={this.onAddCard} className="add-new-card flex align-center">
+            <div className="add-icon flex justify-center align-center"><AddIcon></AddIcon></div>
+            <span className="add-text flex justify-center align-center">Add Another Card</span>
           </div>
         )}
       </div>
