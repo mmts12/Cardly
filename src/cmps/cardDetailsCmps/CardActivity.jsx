@@ -33,6 +33,9 @@ export class CardActivity extends Component {
                     </div>
                     <textarea className="card-details-activity-textarea" onChange={this.handleChange} value={comment.txt}></textarea>
                 </div>
+                <div className="activity-tbn-save flex" >
+                    <button className="card-desc-save-btn" onClick={this.onSaveCardDesc}>Save</button>
+                </div>
             </section>
         )
     }

@@ -1,21 +1,20 @@
 .board-container {
     background-image: url(https://res.cloudinary.com/drak3llqt/image/upload/v1610553512/img1_uyzefw.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
     height: 100vh;
     position: relative;
-    z-index: 1;
     overflow: hidden;
-    padding: 2rem;
     justify-content: flex-start;
 
-    & h2 {
+    .board-title {
         margin-block-start: 0;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        color: white;
+        color: $clr2;
         font-family: Roboto;
+        font-size: 1.5rem;
+        font-weight: 700;
     }
 
     .stack-container{
@@ -37,12 +36,10 @@
             display: flex;
             font-weight: 700;
             border-radius: 3px;
-            /* margin: 0 4px 0 0; */
             padding: 0; 
             white-space: nowrap;
             cursor: pointer;
         }
-        // padding: 10px;
     }
 
     .board-icon{

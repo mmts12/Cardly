@@ -50,6 +50,7 @@
     background-color: #fff;
     height: 100px;
 }
+<<<<<<< HEAD
 .card-desc-save-btn {
     background-color: #6ea952;
     border-radius: 3px;
@@ -58,4 +59,42 @@
     font-size: 0.75em;
     padding: 7px;
     width: 4rem;
+=======
+
+
+.card-details-activity {
+    position: relative;
+}
+.card-details-activity-textarea {
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    resize: none;
+    // box-sizing: border-box;
+}
+.card-details-activity-button {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    outline: none;
+    border: 0px;
+    border-radius: 3px;
+    padding: 5px;
+    width: 70px;
+}
+
+.activity-bar-icons {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    outline: none;
+    border: 0px;
+    border-radius: 3px;
+    padding: 5px;
+    width: 70px;
+}
+.activity-bar {
+    background-color: red;
+>>>>>>> 71ff5914178cd3cf31211ed749f2cdb122db54e6
 }

@@ -55,19 +55,28 @@ export class _Board extends Component {
     const { selectedBoard } = this.props;
     const boardId = this.props.match.params.id;
     return (
-      <section className="board-container flex column align-center">
+      <section className="board-container ">
+
         {/* <StatusBar /> */}
-        <h2>Board</h2>
-        <div className="stack-container flex">
-          {selectedBoard && <StackList board={selectedBoard} />}
-          <div className="add-new-stack">
-            <button onClick={this.onAddSection}><span className="board-icon"><AddIcon></AddIcon></span><span className="btn1-span">Add another list</span></button>
-            {this.state.isAddStack && (
-              <AddStack
-                addNewStack={this.onAddNewStack}
-                closeAddSection={this.onCloseAddSection}
-              />
-            )}
+        <div className="board-inner mt flex column align-center ">
+
+          <span className="board-title ">Board</span>
+          <div className="stack-container flex ">
+            {selectedBoard && <StackList board={selectedBoard} />}
+            <div className="add-new-stack">
+              <button onClick={this.onAddSection}>
+                <span className="board-icon">
+                  <AddIcon></AddIcon>
+                </span>
+                <span className="btn1-span">Add another list</span>
+              </button>
+              {this.state.isAddStack && (
+                <AddStack
+                  addNewStack={this.onAddNewStack}
+                  closeAddSection={this.onCloseAddSection}
+                />
+              )}
+            </div>
           </div>
         </div>
       </section>

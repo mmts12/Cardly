@@ -1,5 +1,5 @@
 .card-list{
-    background: #dfe3e6;
+    background: #ebecf0;
     flex-shrink: 0;
     width: 272px;
     height: fit-content;
@@ -7,4 +7,6 @@
     margin-right: 0;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.12);
+    color: $clr2
+    
 }
