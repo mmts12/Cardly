@@ -21,10 +21,8 @@ export class CardPreview extends Component {
     const { isCardDetailsSelected } = this.state;
     return (
       <div className="card-preview">
-        <div onClick={this.onShowCardDetails}>
-          {card.title}
-          <EditIcon className="card-preview-edit-icon"></EditIcon>
-        </div>
+        <div onClick={this.onShowCardDetails}>{card.title}</div>
+        <EditIcon className="card-preview-edit-icon"></EditIcon>
         {isCardDetailsSelected && (
           <CardDetails card={card} onCloseModal={this.closeModal} />
         )}

@@ -3,7 +3,7 @@
 import Axios from 'axios'
 import { utilService } from './misc/utilService';
 
-var gBoards;
+
 var axios = Axios.create({
     withCredentials: true
 })
@@ -16,7 +16,8 @@ export const boardService = {
     getBoardById,
     saveNewStack,
     removeStack,
-    saveStack
+    saveStack,
+    addCard
 }
 
 
@@ -70,3 +71,26 @@ function saveStack(stack, selectedBoard) {
         .then(res => res.data)
     return Promise.resolve(selectedBoard)
 }
+
+function addCard(cardToAdd, stack, selectedBoard) {
+    cardToAdd.id = utilService.makeId()
+    cardToAdd.desc = '';
+    cardToAdd.comments = [];
+    cardToAdd.members = [];
+    cardToAdd.labels = [];
+    cardToAdd.checklists = [];
+    cardToAdd.dueDate = Date.now() + 86400000
+    cardToAdd.createdAt = Date.now()
+    cardToAdd.byMember = {
+        _id: "u102",
+        fullname: "Mosh Malka",
+        imgUrl: "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+    }
+    stack.cards.push(cardToAdd)
+
+    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoard)
+        .then(res => res.data)
+    return Promise.resolve(selectedBoard)
+}
+
+

@@ -3,7 +3,11 @@ import { CardList } from './CardList';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
-import { removeStack, saveStack } from '../store/actions/stackActions.js';
+import {
+  removeStack,
+  saveStack,
+  addCard,
+} from '../store/actions/stackActions.js';
 import { setSelectedBoard } from '../store/actions/boardActions';
 import { EditStack } from './EditStack.jsx';
 import AddIcon from '@material-ui/icons/Add';
@@ -47,6 +51,13 @@ export class _StackPreview extends Component {
     this.setState({ isAddShow: false });
   };
 
+  onAddNewCard = (cardToadd) => {
+    console.log(cardToadd);
+    const { stack, selectedBoard } = this.props;
+    this.onCloseAddSection();
+    this.props.addCard(cardToadd, stack, selectedBoard);
+  };
+
   render() {
     const { stack } = this.props;
     return (
@@ -66,7 +77,10 @@ export class _StackPreview extends Component {
         </div>
         <CardList cards={stack.cards} />
         {this.state.isAddShow ? (
-          <AddCard closeAddSection={this.onCloseAddSection} />
+          <AddCard
+            addNewCard={this.onAddNewCard}
+            closeAddSection={this.onCloseAddSection}
+          />
         ) : (
           <div onClick={this.onAddCard} className="add-new-card flex">
             <AddIcon></AddIcon>
@@ -89,6 +103,7 @@ const mapDispatchToProps = {
   removeStack,
   setSelectedBoard,
   saveStack,
+  addCard,
 };
 
 export const StackPreview = connect(
