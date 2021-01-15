@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class DueDatePopup extends React.Component {
+export class DueDatePopup extends Component {
 
     state = {
 

@@ -1,0 +1,50 @@
+.card-activity-container {
+    position: relative;
+    width: 400px;
+    height: 30px;
+}
+
+.card-details-activity-textarea {
+    width: 400px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    resize: none;
+    border: 0;
+    // box-sizing: border-box;
+}
+
+.card-details-activity-textarea:focus {
+    width: 400px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(221, 160, 221, 0.249);
+    // .activity-bar-icons
+    // box-sizing: border-box;
+}
+
+// .card-details-activity-textarea.card-details-activity-button
+
+.card-activity-button {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    outline: none;
+    border: 0px;
+    border-radius: 3px;
+    padding: 5px;
+    width: 70px;
+}
+
+.activity-bar-icons {
+    position: absolute;
+    // display: inline-block;
+    top: 5px;
+    right: 10px;
+    outline: none;
+    border: 0px;
+    border-radius: 3px;
+    // padding: 5px;
+    width: 60px;
+}

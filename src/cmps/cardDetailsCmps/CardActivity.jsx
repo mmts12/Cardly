@@ -2,25 +2,36 @@ import React, { Component } from 'react';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 
-export class CardActivity extends React.Component {
+export class CardActivity extends Component {
 
     state = {
-
+        comment: {}
+    }
+    componentDidMount() {
+        this.setState({ comment: this.props.comment })
+    }
+    handleChange = (ev) => {
+        const { comment } = this.state
+        comment.txt = ev.target.value
+        this.setState({ comment })
     }
 
     render() {
+        const { comment } = this.props
         return (
             <section>
-                <h3>Activity</h3>
-                <div className="card-details-activity">
-                    <textarea className="card-details-activity-textarea" placeholder='Add a more detailed description...'></textarea>
-                    <div className="activity-bar">
-                        <button className="card-details-activity-button">Save</button>
-                        <div className="activity-bar-icons" >
-                            <AttachFileIcon></AttachFileIcon>
-                            <AlternateEmailIcon></AlternateEmailIcon>
+                <div className="card-activity-container">
+                    <div className="card-activity-bar flex space-between align-center">
+                        {/* <div className="activity-button">
+                            <button className="card-activity-button">Save</button>
                         </div>
+
+                        <div className="activity-bar-icons" >
+                            <span className="activity-att-icon"> <AttachFileIcon></AttachFileIcon></span>
+                            <span className="activity-mail-icon">   <AlternateEmailIcon></AlternateEmailIcon></span>
+                        </div> */}
                     </div>
+                    <textarea className="card-details-activity-textarea" onChange={this.handleChange} value={comment.txt}></textarea>
                 </div>
             </section>
         )

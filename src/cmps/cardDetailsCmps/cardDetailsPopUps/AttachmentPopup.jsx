@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class AttachmentPopup extends React.Component {
+export class AttachmentPopup extends Component {
 
     state = {
 

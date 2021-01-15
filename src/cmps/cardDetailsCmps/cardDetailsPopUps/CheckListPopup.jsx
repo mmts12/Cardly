@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class CheckListPopup extends React.Component {
+export class CheckListPopup extends Component {
 
     state = {
 

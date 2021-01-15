@@ -6,6 +6,7 @@ export class LabelsPopup extends Component {
 
     }
 
+
     render() {
         return (
             <section>
@@ -14,12 +15,12 @@ export class LabelsPopup extends Component {
                     <hr></hr>
                     <input autoFocus placeholder="Search labels..."></input>
                     <p>LABELS</p>
-                    <button className="label-color-pick label-green-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
-                    <button className="label-color-pick label-yellow-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
-                    <button className="label-color-pick label-orange-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
-                    <button className="label-color-pick label-red-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
-                    <button className="label-color-pick label-purple-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
-                    <button className="label-color-pick label-blue-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
+                    <button onClick={() => { this.props.onColorSelect('green') }} className="label-color-pick label-green-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
+                    <button onClick={() => { this.props.onColorSelect('yellow') }} className="label-color-pick label-yellow-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
+                    <button onClick={() => { this.props.onColorSelect('orange') }} className="label-color-pick label-orange-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
+                    <button onClick={() => { this.props.onColorSelect('red') }} className="label-color-pick label-red-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
+                    <button onClick={() => { this.props.onColorSelect('purple') }} className="label-color-pick label-purple-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
+                    <button onClick={() => { this.props.onColorSelect('blue') }} className="label-color-pick label-blue-label"></button><CreateOutlinedIcon></CreateOutlinedIcon>
                     <button className="pop-up-labels-btn">Create a new label</button>
                 </div>
             </section>

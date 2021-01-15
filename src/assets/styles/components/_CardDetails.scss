@@ -59,39 +59,3 @@
     padding: 7px;
     width: 4rem;
 }
-
-.card-details-activity {
-    position: relative;
-}
-.card-details-activity-textarea {
-    width: 100%;
-    height: 60px;
-    margin: 0;
-    padding: 0;
-    resize: none;
-    // box-sizing: border-box;
-}
-.card-details-activity-button {
-    position: absolute;
-    bottom: 5px;
-    left: 10px;
-    outline: none;
-    border: 0px;
-    border-radius: 3px;
-    padding: 5px;
-    width: 70px;
-}
-
-.activity-bar-icons {
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-    outline: none;
-    border: 0px;
-    border-radius: 3px;
-    padding: 5px;
-    width: 70px;
-}
-.activity-bar {
-    background-color: red;
-}

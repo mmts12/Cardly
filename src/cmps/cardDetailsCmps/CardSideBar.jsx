@@ -59,7 +59,7 @@ export class CardSideBar extends Component {
         <h4>ADD TO CARD</h4>
 
         {memberPopUp && <MembersPopup />}
-        {labelPopUp && <LabelsPopup />}
+        {labelPopUp && <LabelsPopup onColorSelect={this.props.onColorSelect} />}
         {checklistPopUp && <CheckListPopup />}
         {dueDatePopUp && <DueDatePopup />}
         {attachmentPopUp && <AttachmentPopup />}

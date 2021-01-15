@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class CoverPopup extends React.Component {
+export class CoverPopup extends Component {
 
     state = {
 
