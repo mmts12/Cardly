@@ -27,7 +27,7 @@ export class CardDetails extends Component {
       <>
         <div className="modal-bg" onClick={(ev) => onCloseModal(ev)}></div>
         <main>
-          <section className="card-details-container flex column" >
+          <section className="card-details-container flex " >
             <h2>{card.title}</h2>
             <div>
 
@@ -48,13 +48,7 @@ export class CardDetails extends Component {
               </div>
             </div>
             <CardSideBar onColorSelect={this.setLabelOnCard} />
-            <div className="card-inner-container flex">
-              <div>
-                <CardDescription card={card} />
-                <CardActivity />
-              </div>
-              <CardSideBar />
-            </div>
+
           </section>
 
         </main>
