@@ -6,6 +6,7 @@ import { setSelectedBoard } from '../store/actions/boardActions';
 import { addStack } from '../store/actions/stackActions';
 import { connect } from 'react-redux';
 import { AddStack } from '../cmps/AddStack';
+import AddIcon from '@material-ui/icons/Add';
 
 export class _Board extends Component {
   state = {
@@ -53,20 +54,22 @@ export class _Board extends Component {
   render() {
     const { selectedBoard } = this.props;
     return (
-      <div>
+      <section className="board-container flex column align-center">
         {/* <StatusBar /> */}
         <h2>Board</h2>
-        {selectedBoard && <StackList board={selectedBoard} />}
-        <div className="add-new-stack">
-          <button onClick={this.onAddSection}>+ Add New Stack</button>
-          {this.state.isAddStack && (
-            <AddStack
-              addNewStack={this.onAddNewStack}
-              closeAddSection={this.onCloseAddSection}
-            />
-          )}
+        <div className="stack-container flex">
+          {selectedBoard && <StackList board={selectedBoard} />}
+          <div className="add-new-stack">
+            <button  onClick={this.onAddSection}><span className="board-icon"><AddIcon></AddIcon></span><span className="btn1-span">Add another list</span></button>
+            {this.state.isAddStack && (
+              <AddStack
+                addNewStack={this.onAddNewStack}
+                closeAddSection={this.onCloseAddSection}
+              />
+            )}
+          </div>
         </div>
-      </div>
+      </section>
     );
   }
 }
