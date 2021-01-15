@@ -12,7 +12,7 @@ var baseUrl = 'http://localhost:3030/board'
 
 
 export const boardService = {
-    query, getBoardById, saveNewStack
+    query, getBoardById, saveNewStack, removeStack
 }
 
 
@@ -43,14 +43,19 @@ function getBoardById(boardId) {
 async function saveNewStack(stack, boardId) {
     stack.id = utilService.makeId()
     const board = await getBoardById(boardId)
-    board.stacks.unshift(stack)
-    // console.log('isBoard', board)
-    // const boardIdx = await _getBoardByIdx(boardId, gBoards)
-    // gBoards[boardIdx] = board
-    // console.log(gBoards)
+    board.stacks.push(stack)
+    console.log('board', board)
+    console.log('boardId', boardId)
+    axios.put(`${baseUrl}/${boardId}`, board)
+        .then(res => res.data)
     return Promise.resolve(board)
+
+}
+
+function removeStack(stackId, boardId, selectedBoard) {
+    const board = selectedBoard.stacks.filter((stack) => stack.id !== stackId)
     // axios.put(`${baseUrl}/${boardId}`, board)
     //     .then(res => res.data)
-
+    return Promise.resolve(board)
 }
 

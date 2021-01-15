@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { StatusBar } from './../cmps/StatusBar';
 import { StackList } from './../cmps/StackList';
-import { boardService } from '../services/boardService';
 import { setSelectedBoard } from '../store/actions/boardActions';
 import { addStack } from '../store/actions/stackActions';
 import { connect } from 'react-redux';
@@ -46,17 +44,19 @@ export class _Board extends Component {
 
   onAddNewStack = (stack) => {
     const boardId = this.props.match.params.id;
-    this.props.addStack(stack, boardId);
-    const { selectedBoard } = this.props;
+    this.props
+      .addStack(stack, boardId)
+      .then(() => this.setState({ isAddStack: false }));
   };
 
   render() {
     const { selectedBoard } = this.props;
+    const boardId = this.props.match.params.id;
     return (
       <div>
         {/* <StatusBar /> */}
         <h2>Board</h2>
-        {selectedBoard && <StackList board={selectedBoard} />}
+        {selectedBoard && <StackList boardId={boardId} board={selectedBoard} />}
         <div className="add-new-stack">
           <button onClick={this.onAddSection}>+ Add New Stack</button>
           {this.state.isAddStack && (
