@@ -14,13 +14,15 @@ export class CardDetails extends Component {
       <>
         <div className="modal-bg" onClick={(ev) => onCloseModal(ev)}></div>
         <main>
-          <section className="card-details-container flex" >
+          <section className="card-details-container flex column" >
             <h2>{card.title}</h2>
-            <div>
-              <CardDescription card={card} />
-              <CardActivity />
+            <div className="card-inner-container flex">
+              <div>
+                <CardDescription card={card} />
+                <CardActivity />
+              </div>
+              <CardSideBar />
             </div>
-            <CardSideBar />
           </section>
 
         </main>

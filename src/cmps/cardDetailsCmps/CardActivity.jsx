@@ -22,6 +22,9 @@ export class CardActivity extends React.Component {
                         </div>
                     </div>
                 </div>
+                <div className="activity-tbn-save flex" >
+                    <button className="card-desc-save-btn" onClick={this.onSaveCardDesc}>Save</button>
+                </div>
             </section>
         )
     }

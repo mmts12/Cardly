@@ -32,9 +32,7 @@ export class CardDescription extends Component {
                     <h3>Description</h3>
                 </div>
                 <textarea className="card-details-btn-desc" placeholder='Add a more detailed description...' value={card.desc} rows="4" cols="50" onChange={this.handleInput}></textarea>
-                <div className="flex" >
-                    <button className="card-desc-save-btn" onClick={this.onSaveCardDesc}>Save</button>X
-            </div>
+                
             </div >
 
         )
