@@ -12,14 +12,14 @@ export class _StackPreview extends Component {
     removeStack(stack.id, selectedBoard._id, selectedBoard);
   };
 
-  // componentDidMount() {
-  //   this.loadBoard();
-  // }
+  componentDidUpdate() {
+    this.loadBoard();
+  }
 
-  // loadBoard = () => {
-  //   const { selectedBoard } = this.props;
-  //   this.props.setSelectedBoard(selectedBoard);
-  // };
+  loadBoard = () => {
+    const { selectedBoard } = this.props;
+    this.props.setSelectedBoard(selectedBoard);
+  };
 
   render() {
     const { stack } = this.props;
