@@ -55,8 +55,8 @@ export class CardSideBar extends Component {
     const { attachmentPopUp } = this.state;
     const { coverPopUp } = this.state;
     return (
-      <div className="flex column">
-        <h4>ADD TO CARD</h4>
+      <div className="sidebar-container flex column">
+        <div className="sidebar-title">ADD TO CARD</div>
 
         {memberPopUp && <MembersPopup />}
         {labelPopUp && <LabelsPopup onLabelColorSelect={this.props.onLabelColorSelect} />}

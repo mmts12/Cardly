@@ -30,14 +30,28 @@
 .card-details-btn {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
     margin: 4px;
-    background-color: #ebecef;
+    background-color: rgba(9,30,66,.04);
     border: 0;
     border-radius: 3px;
-    padding: 6px;
+    padding: 6px 12px;
     width: 9rem;
     height: 30px;
+    overflow: hidden;
+    font-family: Roboto;
+    font-weight: 400;
+    color: #42526e;
+    max-width: 300px;
+    overflow: hidden;
+    .props-icon{
+        margin: 0px 6px 0 -6px;
+        & svg{
+            font-size: 1.2rem;
+        }
+    }
+    .props-txt{
+        line-height: 12px;
+    }
 }
 
 .card-details-btn:hover {
@@ -54,6 +68,13 @@
     resize: none;
     height: 40px;
 }
+
+.sidebar-title{
+    margin-bottom: 10px;
+    font-family: Roboto;
+    font-weight: 600;
+    padding-left: 6px;
+}
 // .card-details-btn-desc:focus {
 //     background-color: #fff;
 //     height: 100px;
@@ -68,6 +89,9 @@
     margin: 0;
     padding: 0;
     resize: none;
+    & textarea{
+        font-family: Roboto;
+    }
     // box-sizing: border-box;
 }
 .card-details-activity-button {
@@ -100,13 +124,29 @@
     height: 10px;
 }
 
-.cd-subtitle {
-    display: flex;
-    align-items: center;
+.card-activity{
+    margin-top: 10px;
 }
-.cd-subtitle-txt {
-    font-family: Roboto;
-    margin-left: 10px;
-    font-size: 16px;
-    font-weight: 600;
+
+.card-desc{
+    top: 8px;
+    
+    .cd-subtitle-txt {
+       padding-top: 2px;
+        font-family: Roboto;
+        margin-left: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        margin-block-start: 0;
+        margin-block-end: 10px;
+        // line-height: 20px;
+    }
 }
+
+.card-details-bottom{
+    margin-top: 10px;
+}
+// .cd-subtitle {
+   
+// }
+
