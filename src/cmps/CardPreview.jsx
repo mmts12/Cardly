@@ -5,6 +5,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { removeCard, saveCard } from '../store/actions/cardActions.js';
 import { connect } from 'react-redux';
 import { EditCard } from './EditCard';
+import { Draggable } from 'react-beautiful-dnd';
 
 export class _CardPreview extends Component {
   state = {
@@ -37,32 +38,41 @@ export class _CardPreview extends Component {
   };
 
   render() {
-    const { card, stack } = this.props;
+    const { card, stack, index } = this.props;
     const { isCardDetailsSelected, isEditCardModalShow } = this.state;
     return (
-      <div className="card-preview">
-        <div className="card-preview-line flex space-between">
-          <div onClick={this.onShowCardDetails}>{card.title}</div>
-          {!isEditCardModalShow ? (
-            <div className="card-preview-icons flex">
-              <div onClick={this.onEditCard}>
-                <EditIcon className="card-preview-edit-icon"></EditIcon>
-              </div>
-              <div onClick={() => this.onRemoveCard(card.id)}>
-                <DeleteIcon className="card-preview-edit-icon"></DeleteIcon>
-              </div>
+      <Draggable draggableId={card.id} index={index}>
+        {(provided) => (
+          <div
+            className="card-preview"
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+          >
+            <div className="card-preview-line flex space-between">
+              {!isEditCardModalShow ? (
+                <div className="card-preview-icons flex">
+                  <div onClick={this.onShowCardDetails}>{card.title}</div>
+                  <div onClick={this.onEditCard}>
+                    <EditIcon className="card-preview-edit-icon"></EditIcon>
+                  </div>
+                  <div onClick={() => this.onRemoveCard(card.id)}>
+                    <DeleteIcon className="card-preview-edit-icon"></DeleteIcon>
+                  </div>
+                </div>
+              ) : (
+                <EditCard
+                  saveEditedCard={this.onSaveEditedCard}
+                  card={card}
+                ></EditCard>
+              )}
             </div>
-          ) : (
-            <EditCard
-              saveEditedCard={this.onSaveEditedCard}
-              card={card}
-            ></EditCard>
-          )}
-        </div>
-        {isCardDetailsSelected && (
-          <CardDetails card={card} onCloseModal={this.closeModal} />
+            {isCardDetailsSelected && (
+              <CardDetails card={card} onCloseModal={this.closeModal} />
+            )}
+          </div>
         )}
-      </div>
+      </Draggable>
     );
   }
 }
