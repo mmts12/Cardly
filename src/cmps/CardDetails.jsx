@@ -79,23 +79,9 @@ export class CardDetails extends Component {
                 {checklists.length !== 0 && <CardChecklist onRemove={this.deleteChecklist} checklists={checklists} />}
 
                 {/* CARD ACTIVITY */}
-                <div className="cd-subtitle">
-                  <FormatListBulletedIcon />
-                  <h3 className="cd-subtitle-txt">Activity</h3>
-                </div>
-                <div >
-                  <textarea placeholder="Write a comment..." ></textarea>
-                  <div >
-                    <button >Save</button>
-                    {/* <div className="activity-bar-icons" >
-                    <AttachFileIcon></AttachFileIcon>
-                    <AlternateEmailIcon></AlternateEmailIcon>
-                  </div> */}
-                  </div>
-                </div>
-                <div>
-                  {card.comments.map(comment => <CardActivity key={comment.id} comment={comment} />)}
-                </div>
+
+                <CardActivity />
+
 
               </div>
               <div >
