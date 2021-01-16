@@ -3,7 +3,7 @@
 import Axios from 'axios'
 import { utilService } from './misc/utilService';
 
-var gBoards;
+
 var axios = Axios.create({
     withCredentials: true
 })
@@ -16,7 +16,9 @@ export const boardService = {
     getBoardById,
     saveNewStack,
     removeStack,
-    saveStack
+    saveStack,
+    addCard,
+    removeCard
 }
 
 
@@ -48,8 +50,6 @@ async function saveNewStack(stack, boardId) {
     stack.id = utilService.makeId()
     const board = await getBoardById(boardId)
     board.stacks.push(stack)
-    console.log('board', board)
-    console.log('boardId', boardId)
     axios.put(`${baseUrl}/${boardId}`, board)
         .then(res => res.data)
     return Promise.resolve(board)
@@ -70,3 +70,37 @@ function saveStack(stack, selectedBoard) {
         .then(res => res.data)
     return Promise.resolve(selectedBoard)
 }
+
+function addCard(cardToAdd, stack, selectedBoard) {
+    cardToAdd.id = utilService.makeId()
+    cardToAdd.desc = '';
+    cardToAdd.comments = [];
+    cardToAdd.members = [];
+    cardToAdd.labels = [];
+    cardToAdd.checklists = [];
+    cardToAdd.dueDate = Date.now() + 86400000
+    cardToAdd.createdAt = Date.now()
+    cardToAdd.byMember = {
+        _id: "u102",
+        fullname: "Mosh Malka",
+        imgUrl: "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+    }
+    stack.cards.push(cardToAdd)
+
+    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoard)
+        .then(res => res.data)
+    return Promise.resolve(selectedBoard)
+}
+
+function removeCard(cardId, stack, selectedBoard) {
+    const newCards = stack.cards.filter((card) => card.id !== cardId)
+    stack.cards = newCards
+    const newStack = stack
+    const newStacks = selectedBoard.stacks.map((stack) => (stack.id === newStack) ? newStack : stack)
+    selectedBoard.stacks = newStacks
+    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoard)
+        .then(res => res.data)
+    return Promise.resolve(selectedBoard)
+}
+
+

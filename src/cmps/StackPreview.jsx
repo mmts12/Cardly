@@ -3,7 +3,11 @@ import { CardList } from './CardList';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
-import { removeStack, saveStack } from '../store/actions/stackActions.js';
+import {
+  removeStack,
+  saveStack,
+  addCard,
+} from '../store/actions/stackActions.js';
 import { setSelectedBoard } from '../store/actions/boardActions';
 import { EditStack } from './EditStack.jsx';
 import AddIcon from '@material-ui/icons/Add';
@@ -47,6 +51,12 @@ export class _StackPreview extends Component {
     this.setState({ isAddShow: false });
   };
 
+  onAddNewCard = (cardToadd) => {
+    const { stack, selectedBoard } = this.props;
+    this.onCloseAddSection();
+    this.props.addCard(cardToadd, stack, selectedBoard);
+  };
+
   render() {
     const { stack } = this.props;
     return (
@@ -64,13 +74,23 @@ export class _StackPreview extends Component {
             <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
           </div>
         </div>
-        <CardList cards={stack.cards} />
+        <CardList stack={stack} cards={stack.cards} />
         {this.state.isAddShow ? (
-          <AddCard closeAddSection={this.onCloseAddSection} />
+          <AddCard
+            addNewCard={this.onAddNewCard}
+            closeAddSection={this.onCloseAddSection}
+          />
         ) : (
-          <div onClick={this.onAddCard} className="add-new-card flex">
-            <AddIcon></AddIcon>
-            <span>Add Another Card</span>
+          <div
+            onClick={this.onAddCard}
+            className="add-new-card flex align-center"
+          >
+            <div className="add-icon flex justify-center align-center">
+              <AddIcon></AddIcon>
+            </div>
+            <span className="add-text flex justify-center align-center">
+              Add Another Card
+            </span>
           </div>
         )}
       </div>
@@ -89,6 +109,7 @@ const mapDispatchToProps = {
   removeStack,
   setSelectedBoard,
   saveStack,
+  addCard,
 };
 
 export const StackPreview = connect(

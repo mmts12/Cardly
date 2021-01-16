@@ -36,4 +36,17 @@ export function saveStack(stack, selectedBoard) {
             })
     }
 }
+export function addCard(cardToAdd, stack, selectedBoard) {
+    return (dispatch) => {
+        return boardService.addCard(cardToAdd, stack, selectedBoard)
+        // .then((board) => {
+        //     const action = {
+        //         type: 'UPDATE_BOARD',
+        //         board,
+        //     }
+        //     dispatch(action)
+        // })
+    }
+}
+
 
