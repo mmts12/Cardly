@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { CardDetails } from './CardDetails';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { removeCard } from '../store/actions/cardActions.js';
+import { removeCard, saveCard } from '../store/actions/cardActions.js';
 import { connect } from 'react-redux';
 import { EditCard } from './EditCard';
 
@@ -31,7 +31,9 @@ export class _CardPreview extends Component {
   };
 
   onSaveEditedCard = (card) => {
-    console.log(card);
+    const { selectedBoard, stack } = this.props;
+    this.props.saveCard(card, stack, selectedBoard);
+    this.setState({ isEditCardModalShow: false });
   };
 
   render() {
@@ -74,6 +76,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   removeCard,
+  saveCard,
 };
 
 export const CardPreview = connect(

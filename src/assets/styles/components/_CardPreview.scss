@@ -23,4 +23,25 @@
             opacity: 1;
         }
     }
+
+}
+
+.card-preview-edit-card{
+    position: relative;
+    background-color:gray;
+    top: -3px;
+    left: -40px;
+    width: 375px;
+    z-index: 20;
+    // padding-top: 20px;
+    // padding-bottom: 20px;
+    padding: 20px;
+    &>textarea {
+        resize: none;
+        border: none;
+        outline: none;
+        width: 100%;
+        
+      }
+    
 }
