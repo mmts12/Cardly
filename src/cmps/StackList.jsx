@@ -7,7 +7,7 @@ export function StackList(props) {
 
   return (
     <div>
-      <div className=" flex ">
+      <div className="stack-list-container flex ">
         {props.board.stacks.map((stack) => {
           return (
             <StackPreview

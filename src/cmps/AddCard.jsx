@@ -24,17 +24,17 @@ export class AddCard extends Component {
 
   render() {
     return (
-      <section>
-        <div>
+      <section className="add-card-modal flex column">
+        <div className="add-card-input">
           <input
             type="text"
             onChange={this.handleInput}
             value={this.state.card.title}
           />
         </div>
-        <div>
-          <button onClick={this.onAdd}>Add</button>
-          <button onClick={this.props.closeAddSection}>
+        <div className="add-btn-container flex align-center">
+          <button className="save-btn" onClick={this.onAdd}>Add Card</button>
+          <button className="clear-btn" onClick={this.props.closeAddSection}>
             <ClearIcon></ClearIcon>
           </button>
         </div>
