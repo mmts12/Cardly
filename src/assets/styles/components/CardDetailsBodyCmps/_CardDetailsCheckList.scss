@@ -1,3 +1,41 @@
 .checklist-del-btn {
-    border: 0px;
+    font-size: 14px;
+    background-color: indianred;
+    line-height: 20px;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 6px 12px;
+    text-decoration: none;
+    background-color: rgba(9, 30, 66, 0.04);
+    border: 0;
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 85ms;
+    transition-timing-function: ease;
+}
+
+.todo-row {
+    cursor: pointer;
+    background: #ebecef;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 16px;
+    overflow-wrap: break-word;
+    min-height: 18px;
+    font-family: "Roboto";
+
+    .todo-delete-icon {
+        opacity: 0;
+        color: gray;
+        font-size: 1rem;
+    }
+    &:hover {
+        .todo-delete-icon {
+            opacity: 1;
+        }
+    }
 }

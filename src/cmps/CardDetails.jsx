@@ -5,7 +5,6 @@ import { CardDescription } from './cardDetailsCmps/cardDetailsBodyCmps/CardDescr
 import { CardActivity } from "./cardDetailsCmps/cardDetailsBodyCmps/CardActivity.jsx";
 import { CardLabels } from "./cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx"
 import { CardChecklist } from "./cardDetailsCmps/cardDetailsBodyCmps/CardChecklist.jsx"
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 // import AttachFileIcon from '@material-ui/icons/AttachFile';
 // import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 
@@ -79,23 +78,9 @@ export class CardDetails extends Component {
                 {checklists.length !== 0 && <CardChecklist onRemove={this.deleteChecklist} checklists={checklists} />}
 
                 {/* CARD ACTIVITY */}
-                <div className="cd-subtitle">
-                  <FormatListBulletedIcon></FormatListBulletedIcon>
-                  <h3 className="cd-subtitle-txt">Activity</h3>
-                </div>
-                <div >
-                  <textarea placeholder="Write a comment..." ></textarea>
-                  <div >
-                    <button >Save</button>
-                    {/* <div className="activity-bar-icons" >
-                    <AttachFileIcon></AttachFileIcon>
-                    <AlternateEmailIcon></AlternateEmailIcon>
-                  </div> */}
-                  </div>
-                </div>
-                <div>
-                  {card.comments.map(comment => <CardActivity key={comment.id} comment={comment} />)}
-                </div>
+
+                <CardActivity card={card} />
+
 
               </div>
               <div >
