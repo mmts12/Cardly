@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { utilService } from '../services/misc/utilService.js';
 import { CardSideBar } from './cardDetailsCmps/cardDetailsBodyCmps/CardSideBar.jsx';
 import { CardDescription } from './cardDetailsCmps/cardDetailsBodyCmps/CardDescription.jsx';
 import { CardActivity } from "./cardDetailsCmps/cardDetailsBodyCmps/CardActivity.jsx";
@@ -19,16 +20,21 @@ export class CardDetails extends Component {
     }
   }
 
+  componentDidMount() {
+    const { checklists } = this.props.card
+    this.setState(this.state.card.checklists = checklists)
+  }
+
+
   setLabelOnCard = (color) => {
     const { labels } = this.state.card
     const colorIndx = labels.findIndex(labelColor => labelColor === color)
-    console.log('colorIndx is:', colorIndx);//without this getting an error =>  Cannot access 'colorIndx' before initialization
+    console.log('colorIndx is:', colorIndx);
     (colorIndx === -1) ? labels.push(color) : labels.splice(colorIndx, 1)
     this.setState({ labels })
   }
 
   setCardColor = (color) => {
-    console.log('serCardColor color is:', color);
     let { style } = this.state
     style === color ? style = 'transparent' : style = color
     this.setState({ style })
@@ -36,9 +42,15 @@ export class CardDetails extends Component {
 
   addChecklist = (checklistName) => {
     const { checklists } = this.state.card
-    let checkListItem = { id: '123', title: checklistName, todos: [], createdAt: Date.now() }
+    let checkListItem = { id: utilService.makeId(), title: checklistName, todos: [], createdAt: Date.now() }
     checklists.push(checkListItem)
-    console.log('checklists is:', checklists);
+    this.setState({ checklists })
+  }
+
+  deleteChecklist = (checklistId) => {
+    const { checklists } = this.state.card
+    const currChecklistIdx = checklists.findIndex(cl => cl.id === checklistId);
+    checklists.splice(currChecklistIdx, 1)
     this.setState({ checklists })
   }
 
@@ -47,37 +59,49 @@ export class CardDetails extends Component {
     const { checklists } = this.state.card
     const labels = this.state.card.labels
     const { style } = this.state
+    // console.log('checklists is:', this.state.card);
     return (
       <>
         <div className="modal-bg" onClick={(ev) => onCloseModal(ev)}></div>
         <main>
-          <section className="card-details-container flex " >
-            <h2 style={{ background: `${style}` }}>{card.title}</h2>
-            <div>
-              {labels.length !== 0 && <CardLabels labels={labels} />}
-              <CardDescription card={card} />
+          <section className="card-details-container " >
+            <h2 className="card-details-title" style={{ background: `${style}` }}>{card.title}</h2>
+            <div className="flex" >
+              <div className="flex column">
 
-              {checklists.length !== 0 && <CardChecklist checklists={checklists} />}
-              <div className="flex">
-                <FormatListBulletedIcon></FormatListBulletedIcon>
-                <h3 className="cd-subtitle">Activity</h3>
-              </div>
-              <div >
-                <textarea placeholder="Write a comment..." ></textarea>
+                {/* CARD LABELS */}
+                {labels.length !== 0 && <CardLabels labels={labels} />}
+
+                {/* CARD DESCRIPTION */}
+                <CardDescription card={card} />
+
+                {/* CARD CHECKLIST */}
+                {checklists.length !== 0 && <CardChecklist onRemove={this.deleteChecklist} checklists={checklists} />}
+
+                {/* CARD ACTIVITY */}
+                <div className="cd-subtitle">
+                  <FormatListBulletedIcon></FormatListBulletedIcon>
+                  <h3 className="cd-subtitle-txt">Activity</h3>
+                </div>
                 <div >
-                  <button >Save</button>
-                  {/* <div className="activity-bar-icons" >
+                  <textarea placeholder="Write a comment..." ></textarea>
+                  <div >
+                    <button >Save</button>
+                    {/* <div className="activity-bar-icons" >
                     <AttachFileIcon></AttachFileIcon>
                     <AlternateEmailIcon></AlternateEmailIcon>
                   </div> */}
+                  </div>
                 </div>
+                <div>
+                  {card.comments.map(comment => <CardActivity key={comment.id} comment={comment} />)}
+                </div>
+
               </div>
-              <div>
-                {card.comments.map(comment => <CardActivity key={comment.id} comment={comment} />)}
+              <div >
+                <CardSideBar onCheckListSelect={this.addChecklist} onCoverColorSelect={this.setCardColor} onLabelColorSelect={this.setLabelOnCard} />
               </div>
             </div>
-            <CardSideBar onCheckListSelect={this.addChecklist} onCoverColorSelect={this.setCardColor} onLabelColorSelect={this.setLabelOnCard} />
-
           </section>
 
         </main>

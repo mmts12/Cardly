@@ -11,7 +11,7 @@ export class CardLabels extends Component {
         return (
             <section>
                 <div>
-                    <h3 className="cd-subtitle">Labels</h3>
+                    <h3 className="cd-subtitle-txt">Labels</h3>
                     {labels.map((label, idx) => {
                         return <button key={idx} className="card-label-preview" style={{ background: `${label}` }} ></button>
                     })}

@@ -28,9 +28,9 @@ export class CardDescription extends Component {
         const { card } = this.props
         return (
             <div >
-                <div className="flex">
+                <div className="cd-subtitle">
                     <SubjectIcon></SubjectIcon>
-                    <h3 className="cd-subtitle">Description</h3>
+                    <h3 className="cd-subtitle-txt">Description</h3>
                 </div>
                 <textarea className="card-details-btn-desc" placeholder='Add a more detailed description...' value={card.desc} rows="4" cols="50" onChange={this.handleInput}></textarea>
 

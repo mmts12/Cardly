@@ -6,10 +6,11 @@
     left: 50%;
     top: 10%;
     transform: translate(-50%, 0);
+    z-index: 1;
 }
 .modal-bg {
     position: fixed;
-    background-color: transparent;
+    background-color: rgba(51, 51, 51, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,6 +18,13 @@
     width: 100vw;
     top: 0;
     right: 0;
+}
+.card-details-title {
+    font-family: Roboto;
+    margin-top: 1px;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .card-details-btn {
@@ -93,5 +101,12 @@
 }
 
 .cd-subtitle {
-    margin: 4px;
+    display: flex;
+    align-items: center;
+}
+.cd-subtitle-txt {
+    font-family: Roboto;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 600;
 }
