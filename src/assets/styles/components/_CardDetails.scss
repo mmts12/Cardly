@@ -7,8 +7,11 @@
     top: 10%;
     transform: translate(-50%, 0);
     z-index: 1;
+    height: 80vh;
+    overflow-y: auto;
 }
 .modal-bg {
+    overflow-y: initial !important;
     position: fixed;
     background-color: rgba(51, 51, 51, 0.3);
     display: flex;
