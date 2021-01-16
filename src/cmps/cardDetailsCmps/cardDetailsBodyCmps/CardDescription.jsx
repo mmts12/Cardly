@@ -28,15 +28,15 @@ export class CardDescription extends Component {
         const { card } = this.props
         return (
             <section className="card-desc flex" >
-                    <SubjectIcon className="card-desc-icon"></SubjectIcon>
+                    <SubjectIcon className="card-desc-icon" />
                 <div className="cd-subtitle flex column">
                     <h3 className="cd-subtitle-txt flex align-center">Description</h3>
                     <textarea className="card-details-btn-desc" placeholder='Add a more detailed description...' value={card.desc} rows="4" cols="50" onChange={this.handleInput}></textarea>
             </div >
-                <div className="cd-subtitle">
+                {/* <div className="cd-subtitle">
                     <SubjectIcon />
                     <h3 className="cd-subtitle-txt">Description</h3>
-                </div>
+                </div> */}
 
             </section >
 

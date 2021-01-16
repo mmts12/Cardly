@@ -5,6 +5,9 @@
     position: relative;
     overflow: hidden;
     justify-content: flex-start;
+    overflow-y: scroll; /* Show vertical scrollbar */
+    overflow-x: scroll; /* Show horizontal scrollbar */
+    background-position: 50%;
 
     .board-title {
         margin-block-start: 0;

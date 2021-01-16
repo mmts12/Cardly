@@ -1,9 +1,9 @@
-.add-stack-modal{
+.add-stack-modal {
     background-color: #ebecf0;
     color: #172b4d;
     font-family: Roboto;
     font-size: 1rem;
-    .add-stack-input{
+    .add-stack-input {
         border: 1px solid rgba(0, 0, 0, 0.12);
         box-shadow: 0 1px 0 rgba(9, 45, 66, 0.25);
         overflow: hidden;
@@ -14,14 +14,12 @@
         background-color: #fff;
         border-color: transparent;
         padding: 10px;
-        & input{
+        & input:focus {
             border: 0;
-            &:focus{
-                outline: 0;
-            }
+            outline: 0;
         }
     }
-    .add-stack-container{
+    .add-stack-container {
         margin: 4px;
     }
 }
