@@ -18,7 +18,6 @@ export class CardActivity extends Component {
 
     render() {
         const { comment } = this.props
-        console.log('comment is:', comment);
         return (
             <section>
                 <div className="card-activity-container">

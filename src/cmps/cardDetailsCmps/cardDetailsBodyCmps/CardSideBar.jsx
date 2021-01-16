@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { CardDetailsButton } from './CardDetailsButton.jsx';
-import { MembersPopup } from './cardDetailsPopUps/MembersPopup.jsx'
-import { LabelsPopup } from './cardDetailsPopUps/LabelsPopup.jsx'
-import { CheckListPopup } from './cardDetailsPopUps/CheckListPopup.jsx'
-import { DueDatePopup } from './cardDetailsPopUps/DueDatePopup.jsx'
-import { AttachmentPopup } from './cardDetailsPopUps/AttachmentPopup.jsx'
-import { CoverPopup } from './cardDetailsPopUps/CoverPopup.jsx'
+import { CardDetailsButton } from '../CardDetailsButton.jsx';
+import { MembersPopup } from '../cardDetailsPopUps/MembersPopup.jsx'
+import { LabelsPopup } from '../cardDetailsPopUps/LabelsPopup.jsx'
+import { CheckListPopup } from '../cardDetailsPopUps/CheckListPopup.jsx'
+import { DueDatePopup } from '../cardDetailsPopUps/DueDatePopup.jsx'
+import { AttachmentPopup } from '../cardDetailsPopUps/AttachmentPopup.jsx'
+import { CoverPopup } from '../cardDetailsPopUps/CoverPopup.jsx'
 import PersonIcon from '@material-ui/icons/Person';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
@@ -59,11 +59,11 @@ export class CardSideBar extends Component {
         <h4>ADD TO CARD</h4>
 
         {memberPopUp && <MembersPopup />}
-        {labelPopUp && <LabelsPopup onColorSelect={this.props.onColorSelect} />}
-        {checklistPopUp && <CheckListPopup />}
+        {labelPopUp && <LabelsPopup onLabelColorSelect={this.props.onLabelColorSelect} />}
+        {checklistPopUp && <CheckListPopup onCheckListSelect={this.props.onCheckListSelect} />}
         {dueDatePopUp && <DueDatePopup />}
         {attachmentPopUp && <AttachmentPopup />}
-        {coverPopUp && <CoverPopup />}
+        {coverPopUp && <CoverPopup onCoverColorSelect={this.props.onCoverColorSelect} />}
 
         <CardDetailsButton icon={<PersonIcon></PersonIcon>} text="Members" name="memberPopUp" onButtonClick={this.callBack} />
 

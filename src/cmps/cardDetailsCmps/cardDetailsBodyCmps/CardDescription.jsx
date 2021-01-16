@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import SubjectIcon from '@material-ui/icons/Subject';
 // import Icon from '@material-ui/core/Icon';
 
 
@@ -29,10 +29,11 @@ export class CardDescription extends Component {
         return (
             <div >
                 <div className="flex">
-                    <h3>Description</h3>
+                    <SubjectIcon></SubjectIcon>
+                    <h3 className="cd-subtitle">Description</h3>
                 </div>
                 <textarea className="card-details-btn-desc" placeholder='Add a more detailed description...' value={card.desc} rows="4" cols="50" onChange={this.handleInput}></textarea>
-                
+
             </div >
 
         )
