@@ -14,3 +14,16 @@ export function removeCard(cardId, stack, selectedBoard) {
             })
     }
 }
+export function saveCard(card, stack, selectedBoard) {
+    return (dispatch) => {
+        return boardService.saveCard(card, stack, selectedBoard)
+        // .then((board) => {
+        //     console.log(board)
+        //     const action = {
+        //         type: 'UPDATE_BOARD',
+        //         board,
+        //     }
+        //     dispatch(action)
+        // })
+    }
+}

@@ -27,8 +27,8 @@ export class EditCard extends Component {
   render() {
     const { title } = this.state.card;
     return (
-      <div>
-        <input type="text" onChange={this.handleInput} value={title} />
+      <div className="card-preview-edit-card">
+        <textarea type="text" onChange={this.handleInput} value={title} />
         <button onClick={this.onSave}>Save</button>
       </div>
     );

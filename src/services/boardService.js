@@ -18,7 +18,8 @@ export const boardService = {
     removeStack,
     saveStack,
     addCard,
-    removeCard
+    removeCard,
+    saveCard
 }
 
 
@@ -103,4 +104,9 @@ function removeCard(cardId, stack, selectedBoard) {
     return Promise.resolve(selectedBoard)
 }
 
+function saveCard(card, stack, selectedBoard) {
+    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoard)
+        .then(res => res.data)
+
+}
 
