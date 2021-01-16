@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
-
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 export class CardActivity extends Component {
 
     state = {
