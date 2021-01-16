@@ -5,7 +5,6 @@ import { CardDescription } from './cardDetailsCmps/cardDetailsBodyCmps/CardDescr
 import { CardActivity } from "./cardDetailsCmps/cardDetailsBodyCmps/CardActivity.jsx";
 import { CardLabels } from "./cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx"
 import { CardChecklist } from "./cardDetailsCmps/cardDetailsBodyCmps/CardChecklist.jsx"
-
 // import AttachFileIcon from '@material-ui/icons/AttachFile';
 // import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 
@@ -80,7 +79,7 @@ export class CardDetails extends Component {
 
                 {/* CARD ACTIVITY */}
 
-                <CardActivity />
+                <CardActivity card={card} />
 
 
               </div>

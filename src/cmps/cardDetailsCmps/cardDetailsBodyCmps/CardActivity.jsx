@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+
+
 export class CardActivity extends Component {
 
     state = {
@@ -17,7 +19,8 @@ export class CardActivity extends Component {
     }
 
     render() {
-        const { comment } = this.props
+        const { card } = this.props
+
         return <main>
             <div className="cd-subtitle">
                 <FormatListBulletedIcon />
