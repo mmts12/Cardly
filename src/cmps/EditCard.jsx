@@ -18,7 +18,8 @@ export class EditCard extends Component {
     this.setState({ card });
   };
 
-  onSave = () => {
+  onSave = (ev) => {
+    ev.stopPropagation();
     const { card } = this.state;
     const { saveEditedCard } = this.props;
     saveEditedCard(card);
@@ -28,8 +29,12 @@ export class EditCard extends Component {
     const { title } = this.state.card;
     return (
       <div className="card-preview-edit-card">
-        <textarea type="text" onChange={this.handleInput} value={title} />
-        <button onClick={this.onSave}>Save</button>
+        <form action="" onSubmit={(ev) => this.onSave(ev)}>
+          <input type="text" onChange={this.handleInput} value={title} />
+          <button type="submit" onClick={this.onSave}>
+            Save
+          </button>
+        </form>
       </div>
     );
   }

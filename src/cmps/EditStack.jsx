@@ -25,14 +25,17 @@ export class EditStack extends Component {
   render() {
     return (
       <div className="edit-stack">
-        <input
-          type="text"
-          onChange={this.handleInput}
-          value={this.state.stack.title}
-          name=""
-          id=""
-        />
-        <button onClick={this.onSaveStack}>Save</button>
+        <form action="" onSubmit={this.onSaveStack}>
+          <input
+            type="text"
+            autoFocus
+            onChange={this.handleInput}
+            value={this.state.stack.title}
+            name=""
+            id=""
+          />
+          {/* <button onClick={this.onSaveStack}>Save</button> */}
+        </form>
       </div>
     );
   }

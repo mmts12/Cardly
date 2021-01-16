@@ -57,8 +57,8 @@ export class _Board extends Component {
     return (
       <section className="board-container ">
         {/* <StatusBar /> */}
-        <div className="board-inner mt flex column align-center ">
-          <span className="board-title ">Board</span>
+        <div className="board-inner mt flex column  ">
+          <span className="board-title flex align-center justify-center">Main Demo Board</span>
           <div className="stack-container flex ">
             {selectedBoard && <StackList board={selectedBoard} />}
             <div className="add-new-stack">

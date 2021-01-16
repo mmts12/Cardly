@@ -9,8 +9,8 @@ export function CardDetailsButton(props) {
     const txt = props.text;
     return (
         <button className="card-details-btn" onClick={togglePopUp}>
-            {props.icon}
-            {txt}
+            <div class="props-icon">{props.icon}</div>
+            <span class="props-txt">{txt}</span>
         </button>
     )
 
