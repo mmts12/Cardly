@@ -1,30 +1,68 @@
 import React, { Component } from 'react';
+import { utilService } from '../../../services/misc/utilService.js';
 import PlaylistAddCheckOutlinedIcon from '@material-ui/icons/PlaylistAddCheckOutlined';
 
 export class CardChecklist extends Component {
 
     state = {
-        show: 'false'
+        show: false,
+        newTodo: '',
+        todos: []
     }
-    // toggleAddItem(show) {
-    //     let { show } = this.state
-    //     this.setState({ show })
-    // }
+
+    componentDidMount() {
+        let todos = []
+        this.props.checklists.map(todoList => {
+            todos.push(todoList)
+        })
+        this.setState({ todos })
+    }
+
+    toggleAddItem() {
+        let { show } = this.state
+        show = !show
+        this.setState({ show })
+    }
+
+    handleInput = (ev) => {
+        let { newTodo } = this.state
+        newTodo = ev.target.value
+        this.setState({ newTodo })
+    }
+
+    addTodo = (currChecklist) => {
+        currChecklist.todos.push({ id: utilService.makeId(), txt: this.state.newTodo, isDone: false, createdAt: Date.now() })
+        this.setState(this.state.todos = currChecklist.todos)
+    }
 
     render() {
         const { checklists } = this.props
+        const { show } = this.state
         return (<div>
-            {checklists.map((checklist, idx) => {
-                return <section key={idx}>
-                    <div className="flex">
-                        <PlaylistAddCheckOutlinedIcon></PlaylistAddCheckOutlinedIcon>
-                        <h3 className="cd-subtitle"> {checklist.title}</h3>
+            {checklists.map(checklist => {
+                return <section key={checklist.id}>
+                    <div className="flex space-between">
+                        <div className="cd-subtitle">
+                            <PlaylistAddCheckOutlinedIcon></PlaylistAddCheckOutlinedIcon>
+                            <h3 className="cd-subtitle-txt"> {checklist.title}</h3>
+                        </div>
+                        <button className="checklist-del-btn" onClick={() => { this.props.onRemove(checklist.id) }}>Delete</button>
                     </div>
-                    {/* <button onClick={() => this.toggleAddItem(!show)} >Add an Item</button> */}
-                    {/* {show && <div>
-                        <input placeholder="Add an item" ></input>
-                        <button>Save</button>
-                    </div>} */}
+                    {checklist.todos.map(todo => {
+                        return <div key={todo.id} className="flex space-between">
+                            <div>
+                                <input type="checkbox" ></input>
+                                <span>{todo.txt}</span>
+                            </div>
+                            <span>Delete</span>
+                        </div>
+                    })}
+                    <button onClick={() => this.toggleAddItem()} >Add an Item</button>
+                    {show && <div>
+                        <input onChange={this.handleInput} placeholder="Add an item" ></input>
+                        <button onClick={() => this.addTodo(checklist)}>Add</button>
+                    </div>
+                    }
                 </section>
 
             })}
@@ -32,4 +70,8 @@ export class CardChecklist extends Component {
         )
     }
 }
+
+
+
+
 
