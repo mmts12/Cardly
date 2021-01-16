@@ -32,6 +32,10 @@ export class CardDescription extends Component {
                 <div className="cd-subtitle flex column">
                     <h3 className="cd-subtitle-txt flex align-center">Description</h3>
                     <textarea className="card-details-btn-desc" placeholder='Add a more detailed description...' value={card.desc} rows="4" cols="50" onChange={this.handleInput}></textarea>
+            </div >
+                <div className="cd-subtitle">
+                    <SubjectIcon />
+                    <h3 className="cd-subtitle-txt">Description</h3>
                 </div>
 
             </section >
