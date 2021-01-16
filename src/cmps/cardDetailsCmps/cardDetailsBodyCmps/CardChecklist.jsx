@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { utilService } from '../../../services/misc/utilService.js';
-import PlaylistAddCheckOutlinedIcon from '@material-ui/icons/PlaylistAddCheckOutlined';
+import LibraryAddCheckOutlinedIcon from '@material-ui/icons/LibraryAddCheckOutlined';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 export class CardChecklist extends Component {
 
@@ -43,18 +45,18 @@ export class CardChecklist extends Component {
                 return <section key={checklist.id}>
                     <div className="flex space-between">
                         <div className="cd-subtitle">
-                            <PlaylistAddCheckOutlinedIcon></PlaylistAddCheckOutlinedIcon>
+                            <LibraryAddCheckOutlinedIcon />
                             <h3 className="cd-subtitle-txt"> {checklist.title}</h3>
                         </div>
                         <button className="checklist-del-btn" onClick={() => { this.props.onRemove(checklist.id) }}>Delete</button>
                     </div>
                     {checklist.todos.map(todo => {
-                        return <div key={todo.id} className="flex space-between">
+                        return <div key={todo.id} className="todo-row flex space-between">
                             <div>
                                 <input type="checkbox" ></input>
                                 <span>{todo.txt}</span>
                             </div>
-                            <span>Delete</span>
+                            <DeleteIcon className="todo-delete-icon"></DeleteIcon>
                         </div>
                     })}
                     <button onClick={() => this.toggleAddItem()} >Add an Item</button>

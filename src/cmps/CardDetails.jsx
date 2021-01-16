@@ -80,7 +80,7 @@ export class CardDetails extends Component {
 
                 {/* CARD ACTIVITY */}
                 <div className="cd-subtitle">
-                  <FormatListBulletedIcon></FormatListBulletedIcon>
+                  <FormatListBulletedIcon />
                   <h3 className="cd-subtitle-txt">Activity</h3>
                 </div>
                 <div >
