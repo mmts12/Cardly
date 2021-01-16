@@ -24,7 +24,7 @@ export class EditStack extends Component {
 
   render() {
     return (
-      <div>
+      <div className="edit-stack">
         <input
           type="text"
           onChange={this.handleInput}

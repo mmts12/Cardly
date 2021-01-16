@@ -62,7 +62,7 @@ export class _Board extends Component {
           <div className="stack-container flex ">
             {selectedBoard && <StackList board={selectedBoard} />}
             <div className="add-new-stack">
-              <button onClick={this.onAddSection}>
+              <button className="board-open-modal-btn" onClick={this.onAddSection}>
                 <span className="board-icon">
                   <AddIcon></AddIcon>
                 </span>
