@@ -52,7 +52,6 @@ export class _StackPreview extends Component {
   };
 
   onAddNewCard = (cardToadd) => {
-    console.log(cardToadd);
     const { stack, selectedBoard } = this.props;
     this.onCloseAddSection();
     this.props.addCard(cardToadd, stack, selectedBoard);
@@ -75,16 +74,23 @@ export class _StackPreview extends Component {
             <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
           </div>
         </div>
-        <CardList cards={stack.cards} />
+        <CardList stack={stack} cards={stack.cards} />
         {this.state.isAddShow ? (
           <AddCard
             addNewCard={this.onAddNewCard}
             closeAddSection={this.onCloseAddSection}
           />
         ) : (
-          <div onClick={this.onAddCard} className="add-new-card flex align-center">
-            <div className="add-icon flex justify-center align-center"><AddIcon></AddIcon></div>
-            <span className="add-text flex justify-center align-center">Add Another Card</span>
+          <div
+            onClick={this.onAddCard}
+            className="add-new-card flex align-center"
+          >
+            <div className="add-icon flex justify-center align-center">
+              <AddIcon></AddIcon>
+            </div>
+            <span className="add-text flex justify-center align-center">
+              Add Another Card
+            </span>
           </div>
         )}
       </div>

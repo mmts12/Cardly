@@ -3,11 +3,11 @@ import { CardPreview } from './CardPreview';
 
 export class CardList extends Component {
   render() {
-    const { cards } = this.props;
+    const { cards, stack } = this.props;
     return (
       <div>
         {cards.map((card) => {
-          return <CardPreview key={card.id} card={card} />;
+          return <CardPreview stack={stack} key={card.id} card={card} />;
         })}
       </div>
     );

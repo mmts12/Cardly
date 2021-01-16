@@ -17,7 +17,8 @@ export const boardService = {
     saveNewStack,
     removeStack,
     saveStack,
-    addCard
+    addCard,
+    removeCard
 }
 
 
@@ -49,8 +50,6 @@ async function saveNewStack(stack, boardId) {
     stack.id = utilService.makeId()
     const board = await getBoardById(boardId)
     board.stacks.push(stack)
-    console.log('board', board)
-    console.log('boardId', boardId)
     axios.put(`${baseUrl}/${boardId}`, board)
         .then(res => res.data)
     return Promise.resolve(board)
@@ -88,6 +87,17 @@ function addCard(cardToAdd, stack, selectedBoard) {
     }
     stack.cards.push(cardToAdd)
 
+    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoard)
+        .then(res => res.data)
+    return Promise.resolve(selectedBoard)
+}
+
+function removeCard(cardId, stack, selectedBoard) {
+    const newCards = stack.cards.filter((card) => card.id !== cardId)
+    stack.cards = newCards
+    const newStack = stack
+    const newStacks = selectedBoard.stacks.map((stack) => (stack.id === newStack) ? newStack : stack)
+    selectedBoard.stacks = newStacks
     axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoard)
         .then(res => res.data)
     return Promise.resolve(selectedBoard)
