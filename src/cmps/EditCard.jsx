@@ -9,7 +9,8 @@ export class EditCard extends Component {
 
   componentDidMount() {
     const { card } = this.props;
-    this.setState({ card });
+    const cardCopy = { ...card };
+    this.setState({ card: cardCopy });
   }
 
   handleInput = (ev) => {
@@ -30,7 +31,12 @@ export class EditCard extends Component {
     return (
       <div className="card-preview-edit-card">
         <form action="" onSubmit={(ev) => this.onSave(ev)}>
-          <input type="text" onChange={this.handleInput} value={title} />
+          <input
+            onBlur={this.onSave}
+            type="text"
+            onChange={this.handleInput}
+            value={title}
+          />
           <button type="submit" onClick={this.onSave}>
             Save
           </button>

@@ -3,11 +3,8 @@ import { CardList } from './CardList';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
-import {
-  removeStack,
-  saveStack,
-  addCard,
-} from '../store/actions/stackActions.js';
+import { removeStack, saveStack } from '../store/actions/stackActions.js';
+import { addCard } from '../store/actions/cardActions';
 import { setSelectedBoard } from '../store/actions/boardActions';
 import { EditStack } from './EditStack.jsx';
 import AddIcon from '@material-ui/icons/Add';
@@ -62,28 +59,28 @@ export class _StackPreview extends Component {
     const { stack } = this.props;
     return (
       <div className="stack-preview-card card-list">
-        <div className="stack-title flex space-between">
-          <div className="stack-title-icons flex">
-            {this.state.isEditShow ? (
-              <EditStack
-                className="stack-preview-edit flex"
-                saveStack={this.onSaveStack}
-                stack={stack}
-              />
-            ) : (
-                <div className="flex">
-                  <h4 onClick={this.onEdit} className="stack-title-words">
-                    {stack.title}
-                  </h4>
-                  {/* <div onClick={this.onEdit}>
+        <div className="stack-title flex">
+
+          {this.state.isEditShow ? (
+            <EditStack
+              className="stack-preview-edit flex"
+              saveStack={this.onSaveStack}
+              stack={stack}
+            />
+          ) : (
+              <div className="flex space-between align-center">
+                <h4 onClick={this.onEdit} className="stack-title-words">
+                  {stack.title}
+                </h4>
+                {/* <div onClick={this.onEdit}>
                   <EditIcon className="stack-preview-edit-icon"></EditIcon>
                 </div> */}
-                  <div onClick={this.onRemoveStack}>
-                    <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
-                  </div>
+                <div onClick={this.onRemoveStack} className="flex">
+                  <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
                 </div>
-              )}
-          </div>
+              </div>
+            )}
+
         </div>
         <CardList stack={stack} cards={stack.cards} />
         {this.state.isAddShow ? (

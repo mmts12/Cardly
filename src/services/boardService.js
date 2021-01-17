@@ -19,7 +19,8 @@ export const boardService = {
     saveStack,
     addCard,
     removeCard,
-    saveCard
+    saveCard,
+    updateDragCard
 }
 
 
@@ -47,32 +48,39 @@ function getBoardById(boardId) {
 
 
 
-async function saveNewStack(stack, boardId) {
+function saveNewStack(stack, selectedBoard) {
+    const selectedBoardCopy = { ...selectedBoard }
     stack.id = utilService.makeId()
-    const board = await getBoardById(boardId)
-    board.stacks.push(stack)
-    axios.put(`${baseUrl}/${boardId}`, board)
+    selectedBoardCopy.stacks.push(stack)
+    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
         .then(res => res.data)
-    return Promise.resolve(board)
+    return Promise.resolve(selectedBoardCopy)
 
 }
 
+
+
 function removeStack(stackId, boardId, selectedBoard) {
+    const selectedBoardCopy = { ...selectedBoard }
     const stacks = selectedBoard.stacks.filter((stack) => stack.id !== stackId)
-    selectedBoard.stacks = stacks
-    // const board = selectedBoard.stacks.filter((stack) => stack.id !== stackId)
-    axios.put(`${baseUrl}/${boardId}`, selectedBoard)
+    selectedBoardCopy.stacks = stacks
+    axios.put(`${baseUrl}/${boardId}`, selectedBoardCopy)
         .then(res => res.data)
-    return Promise.resolve(selectedBoard)
+    return Promise.resolve(selectedBoardCopy)
 }
 
 function saveStack(stack, selectedBoard) {
-    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoard)
+    const selectedBoardCopy = { ...selectedBoard }
+    const newStacks = selectedBoardCopy.stacks.map((currStack) => currStack.id === stack.id ? stack : currStack)
+    selectedBoardCopy.stacks = newStacks
+    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
         .then(res => res.data)
-    return Promise.resolve(selectedBoard)
+    return Promise.resolve(selectedBoardCopy)
 }
 
 function addCard(cardToAdd, stack, selectedBoard) {
+    const stackCopy = { ...stack }
+    const selectedBoardCopy = { ...selectedBoard }
     cardToAdd.id = utilService.makeId()
     cardToAdd.desc = '';
     cardToAdd.comments = [];
@@ -86,19 +94,20 @@ function addCard(cardToAdd, stack, selectedBoard) {
         fullname: "Mosh Malka",
         imgUrl: "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
     }
-    stack.cards.push(cardToAdd)
-
-    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoard)
+    stackCopy.cards.push(cardToAdd)
+    const newStacks = selectedBoardCopy.stacks.map((currStack) => currStack.id === stackCopy.id ? stackCopy : currStack)
+    selectedBoardCopy.stacks = newStacks
+    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
         .then(res => res.data)
-    return Promise.resolve(selectedBoard)
+    return Promise.resolve(selectedBoardCopy)
 }
 
 function removeCard(cardId, stack, selectedBoard) {
+    const stackCopy = { ...stack }
     const selectedBoardCopy = { ...selectedBoard }
-    const newCards = stack.cards.filter((card) => card.id !== cardId)
-    stack.cards = newCards
-    const newStack = stack
-    const newStacks = selectedBoardCopy.stacks.map((stack) => (stack.id === newStack) ? newStack : stack)
+    const newCards = stackCopy.cards.filter((card) => card.id !== cardId)
+    stackCopy.cards = newCards
+    const newStacks = selectedBoardCopy.stacks.map((stack) => (stack.id === stackCopy.id) ? stackCopy : stack)
     selectedBoardCopy.stacks = newStacks
     axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
         .then(res => res.data)
@@ -106,12 +115,27 @@ function removeCard(cardId, stack, selectedBoard) {
 }
 
 function saveCard(card, stack, selectedBoard) {
+    const cardCopy = { ...card }
+    const stackCopy = { ...stack }
     const selectedBoardCopy = { ...selectedBoard }
-    console.log('selectedBoardCopy is:', selectedBoardCopy);
-    // selectedBoardCopy.stack = stack
-    // selectedBoardCopy.card = card
-    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoardCopy)
+    const newCards = stackCopy.cards.map((card) => card.id === cardCopy.id ? cardCopy : card)
+    stackCopy.cards = newCards
+    const newStacks = selectedBoardCopy.stacks.map((stack) => (stack.id === stackCopy.id) ? stackCopy : stack)
+    selectedBoardCopy.stacks = newStacks
+    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
         .then(res => res.data)
     return Promise.resolve(selectedBoardCopy)
 }
 
+function updateDragCard(result, stacks, selectedBoard) {
+    const stacksCopy = [...stacks];
+    const selectedBoardCopy = { ...selectedBoard };
+    const selectedStack = stacksCopy.find((stack) => stack.id === result.destination.droppableId)
+    const cardsCopy = [...selectedStack.cards]
+    const cardRemoved = cardsCopy.splice(result.source.index, 1)[0]
+    cardsCopy.splice(result.destination.index, 0, cardRemoved)
+    selectedStack.cards = cardsCopy
+    const stacksToUpdate = selectedBoardCopy.stacks.map((stack) => stack.id === selectedStack.id ? selectedStack : stack)
+    selectedBoardCopy.stacks = stacksToUpdate
+    return Promise.resolve(selectedBoardCopy)
+}

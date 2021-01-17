@@ -27,7 +27,7 @@ export class CardDescription extends Component {
     render() {
         const { card } = this.props
         return (
-            <section className="cd-cmp flex" >
+            <section className="card-desc flex" >
                 <SubjectIcon className="card-desc-icon" />
                 <div className="cd-subtitle flex column">
                     <h3 className="cd-subtitle-txt flex align-center">Description</h3>

@@ -42,12 +42,11 @@ export class CardChecklist extends Component {
         const { show } = this.state
         return (<div>
             {checklists.map(checklist => {
-                return <section className="cd-cmp flex" key={checklist.id}>
-                    <LibraryAddCheckOutlinedIcon className="card-desc-icon" />
-                    <div className="cd-subtitle flex column">
-                        <div className="flex space-between">
-                            <h3 className="cd-subtitle-txt flex align-center"> {checklist.title}</h3>
-                            <button className="checklist-del-btn" onClick={() => { this.props.onRemove(checklist.id) }}>Delete</button>
+                return <section key={checklist.id} className="checklist">
+                    <div className="flex space-between">
+                        <div className="cl-subtitle flex column">
+                            <LibraryAddCheckOutlinedIcon />
+                            <h3 className="cl-subtitle-txt flex align-center"> {checklist.title}</h3>
                         </div>
                         {checklist.todos.map(todo => {
                             return <div key={todo.id} className="todo-row flex space-between">

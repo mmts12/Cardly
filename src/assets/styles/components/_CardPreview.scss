@@ -10,15 +10,17 @@
     overflow-wrap: break-word;
     min-height: 18px;
     font-family: "Roboto";
-    // .card-preview-icons{
 
-    // }
+    .card-preview-icons {
+        width: 100%;
+    }
     .card-preview-edit-icon {
         opacity: 0;
         color: gray;
         font-size: 1rem;
     }
     &:hover {
+        white-space: normal;
         .card-preview-edit-icon {
             opacity: 1;
         }
