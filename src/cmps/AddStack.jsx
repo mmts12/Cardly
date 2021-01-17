@@ -26,20 +26,24 @@ export class AddStack extends Component {
     const { stack } = this.state;
     return (
       <section className="add-stack-modal flex column">
-       <div className="add-stack-input">
+        <div className="add-stack-input">
           <input
             onChange={this.handleInput}
             type="text"
             name=""
             id=""
             placeholder="Title ?"
+            onBlur={() => addNewStack(stack)}
           />
-       </div>
-          <div className="add-stack-container flex align-center">
-            <button className="save-btn" onClick={() => addNewStack(stack)}>Add List</button>
-            <button className="clear-btn" onClick={closeAddSection}>  <ClearIcon></ClearIcon></button>
-          </div>
-      
+        </div>
+        <div className="add-stack-container flex align-center">
+          <button className="save-btn" onClick={() => addNewStack(stack)}>
+            Add List
+          </button>
+          <button className="clear-btn" onClick={closeAddSection}>
+            <ClearIcon></ClearIcon>
+          </button>
+        </div>
       </section>
     );
   }

@@ -1,8 +1,8 @@
 import { boardService } from './../../services/boardService';
 
-export function addStack(stack, boardId) {
+export function addStack(stack, selectedBoard) {
     return (dispatch) => {
-        return boardService.saveNewStack(stack, boardId)
+        return boardService.saveNewStack(stack, selectedBoard)
             .then((board) => {
                 const action = {
                     type: 'UPDATE_BOARD',
@@ -36,17 +36,4 @@ export function saveStack(stack, selectedBoard) {
             })
     }
 }
-export function addCard(cardToAdd, stack, selectedBoard) {
-    return (dispatch) => {
-        return boardService.addCard(cardToAdd, stack, selectedBoard)
-        // .then((board) => {
-        //     const action = {
-        //         type: 'UPDATE_BOARD',
-        //         board,
-        //     }
-        //     dispatch(action)
-        // })
-    }
-}
-
 

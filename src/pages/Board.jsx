@@ -45,9 +45,9 @@ export class _Board extends Component {
   };
 
   onAddNewStack = (stack) => {
-    const boardId = this.props.match.params.id;
+    const { selectedBoard } = this.props;
     this.props
-      .addStack(stack, boardId)
+      .addStack(stack, selectedBoard)
       .then(() => this.setState({ isAddStack: false }));
   };
 
@@ -58,11 +58,16 @@ export class _Board extends Component {
       <section className="board-container ">
         {/* <StatusBar /> */}
         <div className="board-inner mt flex column  ">
-          <span className="board-title flex align-center justify-center">Main Demo Board</span>
+          <span className="board-title flex align-center justify-center">
+            Main Demo Board
+          </span>
           <div className="stack-container flex ">
             {selectedBoard && <StackList board={selectedBoard} />}
             <div className="add-new-stack">
-              <button className="board-open-modal-btn" onClick={this.onAddSection}>
+              <button
+                className="board-open-modal-btn"
+                onClick={this.onAddSection}
+              >
                 <span className="board-icon">
                   <AddIcon></AddIcon>
                 </span>

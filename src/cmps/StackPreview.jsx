@@ -3,11 +3,8 @@ import { CardList } from './CardList';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
-import {
-  removeStack,
-  saveStack,
-  addCard,
-} from '../store/actions/stackActions.js';
+import { removeStack, saveStack } from '../store/actions/stackActions.js';
+import { addCard } from '../store/actions/cardActions';
 import { setSelectedBoard } from '../store/actions/boardActions';
 import { EditStack } from './EditStack.jsx';
 import AddIcon from '@material-ui/icons/Add';

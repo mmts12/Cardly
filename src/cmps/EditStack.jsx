@@ -8,7 +8,8 @@ export class EditStack extends Component {
   };
   componentDidMount() {
     const { stack } = this.props;
-    this.setState({ stack });
+    const copyStack = { ...stack };
+    this.setState({ stack: copyStack });
   }
 
   handleInput = (ev) => {
@@ -27,6 +28,7 @@ export class EditStack extends Component {
       <div className="edit-stack">
         <form action="" onSubmit={this.onSaveStack}>
           <input
+            onBlur={this.onSaveStack}
             type="text"
             autoFocus
             onChange={this.handleInput}
