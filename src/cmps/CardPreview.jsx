@@ -50,23 +50,25 @@ export class _CardPreview extends Component {
               {...provided.dragHandleProps}
               ref={provided.innerRef}
             >
-              <div className="card-preview-line flex space-between">
+              <div className="card-preview-line flex ">
                 {!isEditCardModalShow ? (
-                  <div className="card-preview-icons flex">
+                  <div className="card-preview-icons flex space-between">
                     <div onClick={this.onShowCardDetails}>{card.title}</div>
-                    <div onClick={this.onEditCard}>
-                      <EditIcon className="card-preview-edit-icon"></EditIcon>
-                    </div>
-                    <div onClick={() => this.onRemoveCard(card.id)}>
-                      <DeleteIcon className="card-preview-edit-icon"></DeleteIcon>
+                    <div className="icons-container flex">
+                      <div onClick={this.onEditCard}>
+                        <span><EditIcon className="card-preview-edit-icon"></EditIcon></span>
+                      </div>
+                      <div onClick={() => this.onRemoveCard(card.id)}>
+                        <span><DeleteIcon className="card-preview-edit-icon"></DeleteIcon></span>
+                      </div>
                     </div>
                   </div>
                 ) : (
-                  <EditCard
-                    saveEditedCard={this.onSaveEditedCard}
-                    card={card}
-                  ></EditCard>
-                )}
+                    <EditCard
+                      saveEditedCard={this.onSaveEditedCard}
+                      card={card}
+                    ></EditCard>
+                  )}
               </div>
             </div>
           )}

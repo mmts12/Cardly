@@ -61,8 +61,8 @@ export class _StackPreview extends Component {
     const { stack } = this.props;
     return (
       <div className="stack-preview-card card-list">
-        <div className="stack-title flex space-between">
-          <div className="stack-title-icons flex">
+        <div className="stack-title flex">
+         
             {this.state.isEditShow ? (
               <EditStack
                 className="stack-preview-edit flex"
@@ -70,19 +70,19 @@ export class _StackPreview extends Component {
                 stack={stack}
               />
             ) : (
-              <div className="flex">
+              <div className="flex space-between align-center">
                 <h4 onClick={this.onEdit} className="stack-title-words">
                   {stack.title}
                 </h4>
                 {/* <div onClick={this.onEdit}>
                   <EditIcon className="stack-preview-edit-icon"></EditIcon>
                 </div> */}
-                <div onClick={this.onRemoveStack}>
+                <div onClick={this.onRemoveStack} className="flex">
                   <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
                 </div>
               </div>
             )}
-          </div>
+         
         </div>
         <CardList stack={stack} cards={stack.cards} />
         {this.state.isAddShow ? (
