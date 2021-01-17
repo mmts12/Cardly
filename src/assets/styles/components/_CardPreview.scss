@@ -1,4 +1,4 @@
-.card-preview{
+.card-preview {
     cursor: pointer;
     background: white;
     margin: 5px;
@@ -9,36 +9,33 @@
     font-size: 15px;
     overflow-wrap: break-word;
     min-height: 18px;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     // .card-preview-icons{
 
     // }
-    .card-preview-edit-icon{
+    .card-preview-edit-icon {
         opacity: 0;
         color: gray;
         font-size: 1rem;
-    
     }
-    &:hover{
-        .card-preview-edit-icon{
+    &:hover {
+        .card-preview-edit-icon {
             opacity: 1;
         }
     }
-
 }
 
-.card-preview-edit-card{
-
-    &>form>input{
+.card-preview-edit-card {
+    & > form > input {
         border-radius: 3px;
         border: none;
         resize: none;
         outline: none;
         font-size: 15px;
         padding: 5px;
-        scroll-behavior:auto
+        scroll-behavior: auto;
     }
-    &>form>button{
+    & > form > button {
         background-color: #5aac44;
         box-shadow: none;
         border: none;
@@ -54,8 +51,10 @@
         cursor: pointer;
         padding: 6px 12px;
         text-decoration: none;
-        font-family: 'Roboto';
+        font-family: "Roboto";
     }
-    
-    
+}
+
+.card-preview-color {
+    height: 5px;
 }

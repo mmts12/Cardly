@@ -2,6 +2,12 @@
     position: relative;
     width: 400px;
     height: 30px;
+    margin: 8px;
+    outline: none;
+}
+.activity-bar {
+    position: relative;
+    margin: 10px;
 }
 
 .card-details-activity-textarea {
@@ -11,54 +17,49 @@
     padding: 0;
     resize: none;
     border: 0;
+    outline: none;
     // box-sizing: border-box;
 }
 
 .card-details-activity-textarea:focus {
     width: 400px;
-    height: 60px;
-    margin: 0;
-    padding: 0;
-    background-color: rgba(221, 160, 221, 0.249);
-    // .activity-bar-icons
-    // box-sizing: border-box;
-}
-
-// .card-details-activity-textarea.card-details-activity-button
-
-.card-activity-button {
-    position: absolute;
-    bottom: 5px;
-    left: 10px;
+    height: 70px;
     outline: none;
-    border: 0px;
-    border-radius: 3px;
-    padding: 5px;
-    width: 70px;
 }
 
 .activity-bar-icons {
-    position: absolute;
-    // display: inline-block;
+    position: relative;
     top: 5px;
     right: 10px;
     outline: none;
     border: 0px;
-    border-radius: 3px;
-    // padding: 5px;
-    width: 60px;
 }
-
-.activity-tbn-save{
+.activity-icon {
+    color: gray;
+    font-size: 1rem;
+}
+.activity-tbn-save {
     margin-top: 10px;
 }
 
-.card-desc-save-btn {
-    background-color: #6ea952;
+.activity-btn-save {
     border-radius: 3px;
+    background-color: transparent;
     border: 0;
-    color: #ebecef;
+    color: grey;
     font-size: 0.75em;
     padding: 7px;
     width: 4rem;
+    z-index: 1;
 }
+
+// .card-activity-button {
+//     position: absolute;
+//     bottom: 5px;
+//     left: 10px;
+//     outline: none;
+//     border: 0px;
+//     border-radius: 3px;
+//     padding: 5px;
+//     width: 70px;
+// }

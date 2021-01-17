@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 
 export class CoverPopup extends Component {
 
-    state = {
-
-    }
-
-
     render() {
         return (
             <section>

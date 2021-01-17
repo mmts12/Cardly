@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { utilService } from '../services/misc/utilService.js';
 import { CardSideBar } from './cardDetailsCmps/cardDetailsBodyCmps/CardSideBar.jsx';
 import { CardDescription } from './cardDetailsCmps/cardDetailsBodyCmps/CardDescription.jsx';
@@ -7,43 +8,60 @@ import { CardLabels } from "./cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx
 import { CardChecklist } from "./cardDetailsCmps/cardDetailsBodyCmps/CardChecklist.jsx"
 // import AttachFileIcon from '@material-ui/icons/AttachFile';
 // import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
+import { saveCard } from '../store/actions/cardActions.js';
 
-export class CardDetails extends Component {
+export class _CardDetails extends Component {
 
   state = {
-    style: '',
     card: {
       comments: '',
       labels: [],
       checklists: [],
+      coverColor: ''
     }
   }
 
   componentDidMount() {
-    const { checklists } = this.props.card
-    this.setState(this.state.card.checklists = checklists)
+    const { card } = this.props
+    this.setState(card)
+    // this.setState(this.state.card.labels = labels)
+
   }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log('prevState is:', prevState);
+  //   console.log('this.state is:', this.state);
+
+  //   const x = JSON.stringify(prevState)
+  //   const y = JSON.stringify(this.state)
+  //   if (x !== y) {
+  //     this.props.saveCard(this.state.card, this.props.stack, this.props.selectedBoard)
+  //   }
+  // }
 
 
   setLabelOnCard = (color) => {
     const { labels } = this.state.card
     const colorIndx = labels.findIndex(labelColor => labelColor === color)
-    console.log('colorIndx is:', colorIndx);
-    (colorIndx === -1) ? labels.push(color) : labels.splice(colorIndx, 1)
+    if (colorIndx === -1) labels.push(color)
+    else labels.splice(colorIndx, 1)
     this.setState({ labels })
+    this.props.saveCard(this.state.card, this.props.stack, this.props.selectedBoard)
   }
 
   setCardColor = (color) => {
-    let { style } = this.state
-    style === color ? style = 'transparent' : style = color
-    this.setState({ style })
+    let { card } = this.state
+    if (card.coverColor === color) card.coverColor = 'transparent'
+    else card.coverColor = color
+    this.setState({ card }, () => { this.props.saveCard(this.state.card, this.props.stack, this.props.selectedBoard) })
+
   }
 
   addChecklist = (checklistName) => {
-    const { checklists } = this.state.card
+    const { card } = this.state
     let checkListItem = { id: utilService.makeId(), title: checklistName, todos: [], createdAt: Date.now() }
-    checklists.push(checkListItem)
-    this.setState({ checklists })
+    card.checklists.push(checkListItem)
+    this.setState({ card })
   }
 
   deleteChecklist = (checklistId) => {
@@ -57,19 +75,19 @@ export class CardDetails extends Component {
     const { card, onCloseModal } = this.props
     const { checklists } = this.state.card
     const labels = this.state.card.labels
-    const { style } = this.state
-    // console.log('checklists is:', this.state.card);
+
     return (
       <>
         <div className="modal-bg" onClick={(ev) => onCloseModal(ev)}></div>
         <main>
           <section className="card-details-container " >
-            <h2 className="card-details-title" style={{ background: `${style}` }}>{card.title}</h2>
+            <div className="card-details-cover" style={{ background: `${this.state.card.coverColor}` }}></div>
+            <h2 className="card-details-title" >{card.title}</h2>
             <div className="flex" >
               <div className="flex column">
 
                 {/* CARD LABELS */}
-                {labels.length !== 0 && <CardLabels labels={labels} />}
+                {labels.length !== 0 && <>  <p className="labels-txt">Labels</p><CardLabels labels={labels} /></>}
 
                 {/* CARD DESCRIPTION */}
                 <CardDescription card={card} />
@@ -80,7 +98,6 @@ export class CardDetails extends Component {
                 {/* CARD ACTIVITY */}
 
                 <CardActivity card={card} />
-
 
               </div>
               <div >
@@ -93,5 +110,18 @@ export class CardDetails extends Component {
       </>
     );
   }
-
 }
+
+const mapStateToProps = (state) => {
+  return {
+    selectedBoard: state.boardModule.selectedBoard,
+  };
+};
+
+const mapDispatchToProps = {
+  saveCard
+};
+
+export const CardDetails = connect(mapStateToProps, mapDispatchToProps
+)(_CardDetails);
+

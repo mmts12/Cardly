@@ -42,29 +42,29 @@ export class CardChecklist extends Component {
         const { show } = this.state
         return (<div>
             {checklists.map(checklist => {
-                return <section key={checklist.id}>
-                    <div className="flex space-between">
-                        <div className="cd-subtitle">
-                            <LibraryAddCheckOutlinedIcon />
-                            <h3 className="cd-subtitle-txt"> {checklist.title}</h3>
+                return <section className="cd-cmp flex" key={checklist.id}>
+                    <LibraryAddCheckOutlinedIcon className="card-desc-icon" />
+                    <div className="cd-subtitle flex column">
+                        <div className="flex space-between">
+                            <h3 className="cd-subtitle-txt flex align-center"> {checklist.title}</h3>
+                            <button className="checklist-del-btn" onClick={() => { this.props.onRemove(checklist.id) }}>Delete</button>
                         </div>
-                        <button className="checklist-del-btn" onClick={() => { this.props.onRemove(checklist.id) }}>Delete</button>
-                    </div>
-                    {checklist.todos.map(todo => {
-                        return <div key={todo.id} className="todo-row flex space-between">
-                            <div>
-                                <input type="checkbox" ></input>
-                                <span>{todo.txt}</span>
+                        {checklist.todos.map(todo => {
+                            return <div key={todo.id} className="todo-row flex space-between">
+                                <div>
+                                    <input type="checkbox" ></input>
+                                    <span>{todo.txt}</span>
+                                </div>
+                                <DeleteIcon className="todo-delete-icon"></DeleteIcon>
                             </div>
-                            <DeleteIcon className="todo-delete-icon"></DeleteIcon>
+                        })}
+                        <button onClick={() => this.toggleAddItem()} >Add an Item</button>
+                        {show && <div>
+                            <input onChange={this.handleInput} placeholder="Add an item" ></input>
+                            <button onClick={() => this.addTodo(checklist)}>Add</button>
                         </div>
-                    })}
-                    <button onClick={() => this.toggleAddItem()} >Add an Item</button>
-                    {show && <div>
-                        <input onChange={this.handleInput} placeholder="Add an item" ></input>
-                        <button onClick={() => this.addTodo(checklist)}>Add</button>
+                        }
                     </div>
-                    }
                 </section>
 
             })}

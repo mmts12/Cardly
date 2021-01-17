@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CardDetails } from './CardDetails';
+import { CardLabels } from "./cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx"
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { removeCard, saveCard } from '../store/actions/cardActions.js';
@@ -11,7 +12,12 @@ export class _CardPreview extends Component {
   state = {
     isCardDetailsSelected: false,
     isEditCardModalShow: false,
+    labels: []
   };
+  componentDidMount() {
+    this.setState(this.state.labels = this.props.card.labels)
+
+  }
 
   onShowCardDetails = () => {
     this.setState({ isCardDetailsSelected: true });
@@ -39,7 +45,9 @@ export class _CardPreview extends Component {
 
   render() {
     const { card, stack, index } = this.props;
+    const { labels } = this.state
     const { isCardDetailsSelected, isEditCardModalShow } = this.state;
+    if (!card || !stack) return <h1>loading..</h1>
     return (
       <>
         <Draggable draggableId={card.id} index={index}>
@@ -50,6 +58,8 @@ export class _CardPreview extends Component {
               {...provided.dragHandleProps}
               ref={provided.innerRef}
             >
+              <div className="card-preview-color" style={{}}></div>
+              {labels.length !== 0 && <CardLabels labels={labels} />}
               <div className="card-preview-line flex space-between">
                 {!isEditCardModalShow ? (
                   <div className="card-preview-icons flex">
@@ -62,17 +72,17 @@ export class _CardPreview extends Component {
                     </div>
                   </div>
                 ) : (
-                  <EditCard
-                    saveEditedCard={this.onSaveEditedCard}
-                    card={card}
-                  ></EditCard>
-                )}
+                    <EditCard
+                      saveEditedCard={this.onSaveEditedCard}
+                      card={card}
+                    ></EditCard>
+                  )}
               </div>
             </div>
           )}
         </Draggable>
         {isCardDetailsSelected && (
-          <CardDetails card={card} onCloseModal={this.closeModal} />
+          <CardDetails stack={stack} card={card} onCloseModal={this.closeModal} />
         )}
       </>
     );

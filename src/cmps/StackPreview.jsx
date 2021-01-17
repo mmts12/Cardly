@@ -30,6 +30,7 @@ export class _StackPreview extends Component {
 
   onSaveStack = (stack) => {
     const { selectedBoard } = this.props;
+    console.log('selectedBoard is:', this.props.selectedBoard);
     this.props.saveStack(stack, selectedBoard);
     this.setState({ isEditShow: false });
   };
@@ -70,18 +71,18 @@ export class _StackPreview extends Component {
                 stack={stack}
               />
             ) : (
-              <div className="flex">
-                <h4 onClick={this.onEdit} className="stack-title-words">
-                  {stack.title}
-                </h4>
-                {/* <div onClick={this.onEdit}>
+                <div className="flex">
+                  <h4 onClick={this.onEdit} className="stack-title-words">
+                    {stack.title}
+                  </h4>
+                  {/* <div onClick={this.onEdit}>
                   <EditIcon className="stack-preview-edit-icon"></EditIcon>
                 </div> */}
-                <div onClick={this.onRemoveStack}>
-                  <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
+                  <div onClick={this.onRemoveStack}>
+                    <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
         </div>
         <CardList stack={stack} cards={stack.cards} />
@@ -91,18 +92,18 @@ export class _StackPreview extends Component {
             closeAddSection={this.onCloseAddSection}
           />
         ) : (
-          <div
-            onClick={this.onAddCard}
-            className="add-new-card flex align-center"
-          >
-            <div className="add-icon flex justify-center align-center">
-              <AddIcon></AddIcon>
-            </div>
-            <span className="add-text flex justify-center align-center">
-              Add Another Card
+            <div
+              onClick={this.onAddCard}
+              className="add-new-card flex align-center"
+            >
+              <div className="add-icon flex justify-center align-center">
+                <AddIcon></AddIcon>
+              </div>
+              <span className="add-text flex justify-center align-center">
+                Add Another Card
             </span>
-          </div>
-        )}
+            </div>
+          )}
       </div>
     );
   }

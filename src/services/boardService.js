@@ -94,19 +94,24 @@ function addCard(cardToAdd, stack, selectedBoard) {
 }
 
 function removeCard(cardId, stack, selectedBoard) {
+    const selectedBoardCopy = { ...selectedBoard }
     const newCards = stack.cards.filter((card) => card.id !== cardId)
     stack.cards = newCards
     const newStack = stack
-    const newStacks = selectedBoard.stacks.map((stack) => (stack.id === newStack) ? newStack : stack)
-    selectedBoard.stacks = newStacks
-    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoard)
+    const newStacks = selectedBoardCopy.stacks.map((stack) => (stack.id === newStack) ? newStack : stack)
+    selectedBoardCopy.stacks = newStacks
+    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
         .then(res => res.data)
-    return Promise.resolve(selectedBoard)
+    return Promise.resolve(selectedBoardCopy)
 }
 
 function saveCard(card, stack, selectedBoard) {
-    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoard)
+    const selectedBoardCopy = { ...selectedBoard }
+    console.log('selectedBoardCopy is:', selectedBoardCopy);
+    // selectedBoardCopy.stack = stack
+    // selectedBoardCopy.card = card
+    axios.put(`${baseUrl}/${selectedBoard._id}`, selectedBoardCopy)
         .then(res => res.data)
-
+    return Promise.resolve(selectedBoardCopy)
 }
 
