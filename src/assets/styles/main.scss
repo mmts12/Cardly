@@ -1,6 +1,7 @@
 //Setup
 @import "./setup/typography.scss";
 @import "./setup/variables.scss";
+@import "./setup/_mixins.scss";
 
 //Basics
 @import "./basics/base.scss";
@@ -26,6 +27,8 @@
 @import "./components/cardDetailsPopups/_AttachmentPopup.scss";
 @import "./components/AddCard.scss";
 @import "./components/AddStack.scss";
+
+
 
 //Views
 @import "./views/CardlyApp.scss";
