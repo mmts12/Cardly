@@ -20,7 +20,8 @@ export const boardService = {
     addCard,
     removeCard,
     saveCard,
-    updateDragCard
+    updateDragCard,
+    updateDragCardToOtherList
 }
 
 
@@ -137,5 +138,32 @@ function updateDragCard(result, stacks, selectedBoard) {
     selectedStack.cards = cardsCopy
     const stacksToUpdate = selectedBoardCopy.stacks.map((stack) => stack.id === selectedStack.id ? selectedStack : stack)
     selectedBoardCopy.stacks = stacksToUpdate
+    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
+        .then(res => res.data)
     return Promise.resolve(selectedBoardCopy)
 }
+
+function updateDragCardToOtherList(result, stacks, selectedBoard) {
+    const { destination, source } = result;
+    const stacksCopy = [...stacks];
+    const selectedBoardCopy = { ...selectedBoard };
+    const sourceStack = stacksCopy.find((stack) => stack.id === source.droppableId);
+    const cardsSourceCopy = [...sourceStack.cards]
+    sourceStack.cards = cardsSourceCopy
+    const cardRemoved = sourceStack.cards.splice(result.source.index, 1)[0]
+    const destinationStack = stacksCopy.find((stack) => stack.id === destination.droppableId);
+    const cardsDestinationCopy = [...destinationStack.cards]
+    destinationStack.cards = cardsDestinationCopy
+    destinationStack.cards.splice(result.destination.index, 0, cardRemoved)
+    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
+        .then(res => res.data)
+    return Promise.resolve(selectedBoardCopy)
+}
+
+// combine: null
+// destination: {droppableId: "g102", index: 3}
+// draggableId: "eW541"
+// mode: "FLUID"
+// reason: "DROP"
+// source: {index: 4, droppableId: "g101"}
+// type: "DEFAULT"

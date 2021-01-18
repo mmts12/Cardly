@@ -14,7 +14,7 @@ export class _CardDetails extends Component {
 
   state = {
     card: {
-      comments: '',
+      comments: [],
       labels: [],
       checklists: [],
       coverColor: ''
@@ -23,8 +23,7 @@ export class _CardDetails extends Component {
 
   componentDidMount() {
     const { card } = this.props
-    this.setState(card)
-    // this.setState(this.state.card.labels = labels)
+    this.setState({ card })
 
   }
 
@@ -39,37 +38,65 @@ export class _CardDetails extends Component {
   //   }
   // }
 
-
   setLabelOnCard = (color) => {
-    const { labels } = this.state.card
-    const colorIndx = labels.findIndex(labelColor => labelColor === color)
-    if (colorIndx === -1) labels.push(color)
-    else labels.splice(colorIndx, 1)
-    this.setState({ labels })
+    const { card } = this.state
+    let { comments } = card
+    const colorIndx = card.labels.findIndex(labelColor => labelColor === color)
+    if (colorIndx === -1) {
+      comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: 'Adi Magori added card label color' })
+      card.labels.push(color)
+    }
+    else {
+      comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: 'Adi Magori removed card label color' })
+      card.labels.splice(colorIndx, 1)
+    }
+    this.setState({ card, comments })
+
     this.props.saveCard(this.state.card, this.props.stack, this.props.selectedBoard)
   }
 
   setCardColor = (color) => {
     let { card } = this.state
-    if (card.coverColor === color) card.coverColor = 'transparent'
-    else card.coverColor = color
-    this.setState({ card }, () => { this.props.saveCard(this.state.card, this.props.stack, this.props.selectedBoard) })
+    let { comments } = card
+    if (card.coverColor === color) {
+      comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: 'Adi Magori removed card cover color' })
+      card.coverColor = 'transparent'
+    }
+    else {
+      comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: 'Adi Magori added card cover color' })
+      card.coverColor = color
+    }
+
+    this.setState({ card, comments }, () => { this.props.saveCard(this.state.card, this.props.stack, this.props.selectedBoard) })
 
   }
 
   addChecklist = (checklistName) => {
     const { card } = this.state
+    let { comments } = card
     let checkListItem = { id: utilService.makeId(), title: checklistName, todos: [], createdAt: Date.now() }
+    comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: `Adi Magori added checklist - ${checklistName}` })
     card.checklists.push(checkListItem)
     this.setState({ card })
   }
 
   deleteChecklist = (checklistId) => {
-    const { checklists } = this.state.card
-    const currChecklistIdx = checklists.findIndex(cl => cl.id === checklistId);
-    checklists.splice(currChecklistIdx, 1)
-    this.setState({ checklists })
+    const { card } = this.state
+    let { comments } = card
+    const currChecklistIdx = card.checklists.findIndex(cl => cl.id === checklistId);
+    const checklistName = card.checklists[currChecklistIdx].title
+    card.checklists.splice(currChecklistIdx, 1)
+    comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: `Adi Magori deleted checklist - ${checklistName}` })
+    this.setState({ card })
   }
+  addComment = (comment) => {
+    const { card } = this.state
+    card.comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: `Adi Magori added comment - ${comment}` })
+    this.setState({ card })
+
+  }
+
+
 
   render() {
     const { card, onCloseModal } = this.props
@@ -97,7 +124,7 @@ export class _CardDetails extends Component {
 
                 {/* CARD ACTIVITY */}
 
-                <CardActivity card={card} />
+                <CardActivity card={card} onCommentAdd={this.addComment} />
 
               </div>
               <div >

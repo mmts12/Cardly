@@ -20,6 +20,7 @@ export class EditStack extends Component {
 
   onSaveStack = () => {
     const { stack } = this.state;
+    if (!stack.title) return;
     this.props.saveStack(stack);
   };
 

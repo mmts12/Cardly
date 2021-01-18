@@ -47,6 +47,7 @@ export class CardChecklist extends Component {
                         <div className="cl-subtitle flex column">
                             <LibraryAddCheckOutlinedIcon />
                             <h3 className="cl-subtitle-txt flex align-center"> {checklist.title}</h3>
+                            <button className="checklist-del-btn" onClick={() => { this.props.onRemove(checklist.id) }}>Delete</button>
                         </div>
                         {checklist.todos.map(todo => {
                             return <div key={todo.id} className="todo-row flex space-between">

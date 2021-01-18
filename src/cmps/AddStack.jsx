@@ -16,13 +16,14 @@ export class AddStack extends Component {
     this.setState({ stack });
   };
 
-  //   cards: (2) [{…}, {…}]
-  // id: "g101"
-  // style: {}
-  // title: "To Do"
+  onAdd = (stack) => {
+    if (!stack.title) return;
+    const { addNewStack } = this.props;
+    addNewStack(stack);
+  };
 
   render() {
-    const { addNewStack, closeAddSection } = this.props;
+    const { closeAddSection } = this.props;
     const { stack } = this.state;
     return (
       <section className="add-stack-modal flex column">
@@ -33,11 +34,11 @@ export class AddStack extends Component {
             name=""
             id=""
             placeholder="Title ?"
-            onBlur={() => addNewStack(stack)}
+            onBlur={this.props.onCloseAddSection}
           />
         </div>
         <div className="add-stack-container flex align-center">
-          <button className="save-btn" onClick={() => addNewStack(stack)}>
+          <button className="save-btn" onClick={() => this.onAdd(stack)}>
             Add List
           </button>
           <button className="clear-btn" onClick={closeAddSection}>

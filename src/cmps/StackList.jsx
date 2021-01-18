@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { StackPreview } from './StackPreview.jsx';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
-import { updateDragCard } from '../store/actions/cardActions.js';
+import {
+  updateDragCard,
+  updateDragCardToOtherList,
+} from '../store/actions/cardActions.js';
 
 export class _StackList extends Component {
   dragEnd = (result) => {
     const { selectedBoard } = this.props;
-    const { stacks } = this.props.board;
+    const { stacks } = this.props.selectedBoard;
     const { destination, source, draggableId } = result;
     if (!destination) return;
     if (
@@ -17,6 +20,9 @@ export class _StackList extends Component {
       return;
     if (result.destination.droppableId === result.source.droppableId) {
       this.props.updateDragCard(result, stacks, selectedBoard);
+    }
+    if (result.destination.droppableId !== result.source.droppableId) {
+      this.props.updateDragCardToOtherList(result, stacks, selectedBoard);
     }
   };
 
@@ -52,6 +58,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   updateDragCard,
+  updateDragCardToOtherList,
 };
 
 export const StackList = connect(

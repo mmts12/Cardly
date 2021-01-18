@@ -22,6 +22,7 @@ export class EditCard extends Component {
   onSave = (ev) => {
     ev.stopPropagation();
     const { card } = this.state;
+    if (!card.title) return;
     const { saveEditedCard } = this.props;
     saveEditedCard(card);
   };

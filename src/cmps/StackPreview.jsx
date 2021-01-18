@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { CardList } from './CardList';
-import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
 import { removeStack, saveStack } from '../store/actions/stackActions.js';
@@ -60,7 +59,6 @@ export class _StackPreview extends Component {
     return (
       <div className="stack-preview-card card-list">
         <div className="stack-title flex">
-
           {this.state.isEditShow ? (
             <EditStack
               className="stack-preview-edit flex"
@@ -68,19 +66,15 @@ export class _StackPreview extends Component {
               stack={stack}
             />
           ) : (
-              <div className="flex space-between align-center">
-                <h4 onClick={this.onEdit} className="stack-title-words">
-                  {stack.title}
-                </h4>
-                {/* <div onClick={this.onEdit}>
-                  <EditIcon className="stack-preview-edit-icon"></EditIcon>
-                </div> */}
-                <div onClick={this.onRemoveStack} className="flex">
-                  <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
-                </div>
+            <div className="flex space-between align-center">
+              <h4 onClick={this.onEdit} className="stack-title-words">
+                {stack.title}
+              </h4>
+              <div onClick={this.onRemoveStack} className="flex">
+                <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
               </div>
-            )}
-
+            </div>
+          )}
         </div>
         <CardList stack={stack} cards={stack.cards} />
         {this.state.isAddShow ? (
@@ -89,18 +83,18 @@ export class _StackPreview extends Component {
             closeAddSection={this.onCloseAddSection}
           />
         ) : (
-            <div
-              onClick={this.onAddCard}
-              className="add-new-card flex align-center"
-            >
-              <div className="add-icon flex justify-center align-center">
-                <AddIcon></AddIcon>
-              </div>
-              <span className="add-text flex justify-center align-center">
-                Add Another Card
-            </span>
+          <div
+            onClick={this.onAddCard}
+            className="add-new-card flex align-center"
+          >
+            <div className="add-icon flex justify-center align-center">
+              <AddIcon></AddIcon>
             </div>
-          )}
+            <span className="add-text flex justify-center align-center">
+              Add Another Card
+            </span>
+          </div>
+        )}
       </div>
     );
   }
