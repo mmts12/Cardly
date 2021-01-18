@@ -1,16 +1,3 @@
-.card-details-container {
-    background-color: #f4f5f7;
-    padding: 30px;
-    padding-top: 0;
-    position: fixed;
-    border-radius: 2px;
-    left: 50%;
-    top: 10%;
-    transform: translate(-50%, 0);
-    z-index: 1;
-    height: 65%;
-    overflow-y: auto;
-}
 .modal-bg {
     overflow-y: initial !important;
     position: fixed;
@@ -24,78 +11,100 @@
     right: 0;
 }
 
-.card-details-cover:empty {
-    height: 30px;
-}
-.card-details-title {
-    font-family: Roboto;
-    margin-top: 1px;
-    margin-left: 10px;
-    font-size: 20px;
-    font-weight: 600;
-}
+.card-details-container {
+    background-color: #f4f5f7;
+    padding: 30px;
+    padding-top: 0;
+    position: fixed;
+    border-radius: 2px;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, 0);
+    z-index: 1;
+    height: 65%;
+    overflow-y: auto;
+    max-width: 600px;
+    .card-details-cover:empty {
+        height: 30px;
+    }
+    .card-details-title {
+        font-family: Roboto;
+        margin-top: 1px;
+        margin-left: 10px;
+        font-size: 20px;
+        font-weight: 600;
+    }
 
-.card-details-btn {
-    display: flex;
-    align-items: center;
-    margin: 4px;
-    background-color: rgba(9, 30, 66, 0.04);
-    border: 0;
-    border-radius: 3px;
-    padding: 6px 12px;
-    width: 9rem;
-    height: 30px;
-    overflow: hidden;
-    font-family: Roboto;
-    font-weight: 400;
-    color: #42526e;
-    max-width: 300px;
-    overflow: hidden;
-    .props-icon {
-        margin: 0px 6px 0 -6px;
-        & svg {
-            font-size: 1.2rem;
+    .card-details-btn {
+        display: flex;
+        align-items: center;
+        margin: 4px;
+        background-color: rgba(9, 30, 66, 0.04);
+        border: 0;
+        border-radius: 3px;
+        padding: 6px 12px;
+        width: 9rem;
+        height: 30px;
+        overflow: hidden;
+        font-family: Roboto;
+        font-weight: 400;
+        color: #42526e;
+        max-width: 300px;
+        overflow: hidden;
+        .props-icon {
+            margin: 0px 6px 0 -6px;
+            & svg {
+                font-size: 1.2rem;
+            }
+        }
+        .props-txt {
+            line-height: 12px;
         }
     }
-    .props-txt {
-        line-height: 12px;
+
+    .card-details-btn:hover {
+        background-color: #e2e4e9;
+    }
+
+    .card-details-btn:focus {
+        outline: none;
+    }
+
+    .card-details-btn-desc {
+        border: 0px;
+        background-color: #ebecef;
+        resize: none;
+        height: 40px;
+    }
+    .sidebar-title {
+        margin-bottom: 10px;
+        font-family: Roboto;
+        font-weight: 600;
+        padding-left: 6px;
+    }
+
+    .card-details-bottom {
+        margin-top: 10px;
+    }
+    
+    .card-label-preview:empty {
+        display: inline;
+        border: 0;
+        border-radius: 3px;
+        margin: 4px;
+        width: 38px;
+        height: 10px;
+    }
+    .labels-txt {
+        font-family: Roboto;
+        margin: 0;
     }
 }
 
-.card-details-btn:hover {
-    background-color: #e2e4e9;
-}
-
-.card-details-btn:focus {
-    outline: none;
-}
-
-.card-details-btn-desc {
-    border: 0px;
-    background-color: #ebecef;
-    resize: none;
-    height: 40px;
-}
-
-.sidebar-title {
-    margin-bottom: 10px;
-    font-family: Roboto;
-    font-weight: 600;
-    padding-left: 6px;
-}
 // .card-details-btn-desc:focus {
 //     background-color: #fff;
 //     height: 100px;
 // }
-
-.card-label-preview:empty {
-    display: inline;
-    border: 0;
-    border-radius: 3px;
-    margin: 4px;
-    width: 38px;
-    height: 10px;
-}
 
 .cd-cmp {
     top: 1px;
@@ -111,12 +120,4 @@
         margin-block-end: 10px;
         // line-height: 20px;
     }
-}
-
-.card-details-bottom {
-    margin-top: 10px;
-}
-.labels-txt {
-    font-family: Roboto;
-    margin: 0;
 }

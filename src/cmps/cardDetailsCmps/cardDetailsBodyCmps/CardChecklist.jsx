@@ -43,7 +43,7 @@ export class CardChecklist extends Component {
         return (<div>
             {checklists.map(checklist => {
                 return <section key={checklist.id} className="checklist">
-                    <div className="flex space-between">
+                    <div className="flex space-between column">
                         <div className="cl-subtitle flex column">
                             <LibraryAddCheckOutlinedIcon />
                             <h3 className="cl-subtitle-txt flex align-center"> {checklist.title}</h3>
