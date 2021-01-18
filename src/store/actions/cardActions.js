@@ -28,11 +28,6 @@ export function removeCard(cardId, stack, selectedBoard) {
     }
 }
 
-// export function updateCardDetails(cardId){
-//     return (dispatch)=>{
-//         return 
-//     }
-// }
 
 export function saveCard(card, stack, selectedBoard) {
     return (dispatch) => {
@@ -60,3 +55,17 @@ export function updateDragCard(result, stacks, selectedBoard) {
             })
     }
 }
+
+export function updateDragCardToOtherList(result, stacks, selectedBoard) {
+    return (dispatch) => {
+        return boardService.updateDragCardToOtherList(result, stacks, selectedBoard)
+            .then((board) => {
+                const action = {
+                    type: 'UPDATE_BOARD',
+                    board,
+                }
+                dispatch(action)
+            })
+    }
+}
+

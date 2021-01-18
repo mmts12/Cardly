@@ -11,15 +11,12 @@ export class AddCard extends Component {
   handleInput = (ev) => {
     const { card } = this.state;
     card.title = ev.target.value;
-    this.setState({ card }, () => {
-      // console.log(this.state);
-    });
+    this.setState({ card });
   };
 
   onAdd = () => {
+    if (!this.state.card.title) return;
     this.props.addNewCard(this.state.card);
-    // this.state.card.title = '';
-    // this.setState({ card: '' });
   };
 
   render() {
