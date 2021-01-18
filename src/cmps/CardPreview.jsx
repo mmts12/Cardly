@@ -62,7 +62,7 @@ export class _CardPreview extends Component {
               {...provided.dragHandleProps}
               ref={provided.innerRef}
             >
-              <div className="card-preview-color" style={{ background: `${coverColor}` }}></div>
+              {coverColor !== '' && <div className="card-preview-color" style={{ background: `${coverColor}` }}></div>}
               {labels.length !== 0 && <CardLabels labels={labels} />}
               <div className="card-preview-line flex space-between">
                 {!isEditCardModalShow ? (
