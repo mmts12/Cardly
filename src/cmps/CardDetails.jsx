@@ -60,7 +60,7 @@ export class _CardDetails extends Component {
     let { comments } = card
     if (card.coverColor === color) {
       comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: 'Adi Magori removed card cover color' })
-      card.coverColor = 'transparent'
+      card.coverColor = ''
     }
     else {
       comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: 'Adi Magori added card cover color' })
@@ -107,14 +107,14 @@ export class _CardDetails extends Component {
       <>
         <div className="modal-bg" onClick={(ev) => onCloseModal(ev)}></div>
         <main>
-          <section className="card-details-container " >
-            <div className="card-details-cover" style={{ background: `${this.state.card.coverColor}` }}></div>
+          <section className="card-details-container" >
+            {card.coverColor.length && <div className="card-details-cover" style={{ background: `${this.state.card.coverColor}` }}></div>}
             <h2 className="card-details-title" >{card.title}</h2>
             <div className="flex" >
               <div className="flex column">
 
                 {/* CARD LABELS */}
-                {labels.length !== 0 && <>  <p className="labels-txt">Labels</p><CardLabels labels={labels} /></>}
+                <>  <p className="labels-txt">Labels</p><CardLabels labels={labels} /></>
 
                 {/* CARD DESCRIPTION */}
                 <CardDescription card={card} />
