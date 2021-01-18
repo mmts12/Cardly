@@ -4,6 +4,7 @@ import { CardlyApp } from './pages/CardlyApp';
 import { CardDetails } from './cmps/CardDetails'
 import { Board } from './pages/Board';
 import { About } from './pages/About';
+import { SignUp } from './pages/SignUp';
 
 export const routes = [
     {
@@ -22,6 +23,10 @@ export const routes = [
     {
         path: '/login',
         component: Login
+    },
+    {
+        path: '/signup',
+        component: SignUp
     },
     {
         path: '/about',
