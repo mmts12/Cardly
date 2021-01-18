@@ -8,7 +8,7 @@ var axios = Axios.create({
     withCredentials: true
 })
 
-var baseUrl = 'http://localhost:3030/board'
+var baseUrl = 'http://localhost:3030/api/board'
 
 
 export const boardService = {

@@ -13,6 +13,7 @@ export class _CardlyApp extends Component {
 
   render() {
     const { boards } = this.props;
+    console.log('boards is:', boards);
     if (!boards) return <h1>Loading...!!</h1>;
     return (
       <section className="app-wrapper flex column justify-center align-center">
