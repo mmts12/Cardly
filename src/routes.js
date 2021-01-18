@@ -19,7 +19,6 @@ export const routes = [
         path: '/Cardly',
         component: CardlyApp
     },
-
     {
         path: '/login',
         component: Login
