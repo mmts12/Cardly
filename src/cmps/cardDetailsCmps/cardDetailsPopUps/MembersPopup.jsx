@@ -9,7 +9,7 @@ export class MembersPopup extends Component {
 
     render() {
         return (
-            <section>
+            <section className="members-container">
                 <div className="pop-up-members">
                     <p className="pop-up-header"> Members</p>
                     <hr></hr>
