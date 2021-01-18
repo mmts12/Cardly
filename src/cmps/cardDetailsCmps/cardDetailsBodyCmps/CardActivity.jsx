@@ -7,15 +7,15 @@ import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 export class CardActivity extends Component {
 
     state = {
-        comment: {},
+        comment: '',
         isActivitySelected: false,
     }
     componentDidMount() {
         this.setState({ comment: this.props.comment })
     }
     handleChange = (ev) => {
-        const { comment } = this.state
-        comment.txt = ev.target.value
+        let { comment } = this.state
+        comment = ev.target.value
         this.setState({ comment })
     }
 
@@ -30,13 +30,13 @@ export class CardActivity extends Component {
             <FormatListBulletedIcon />
             <div className="cd-subtitle-txt">
                 <h3 className="cd-subtitle-txt flex align-center">Activity</h3>
-                <textarea placeholder="Write a comment..." ></textarea>
+                <textarea onChange={this.handleChange} placeholder="Write a comment..." ></textarea>
                 <div >
-                    <button >Save</button>
+                    <button onClick={() => this.props.onCommentAdd(this.state.comment)} >Save</button>
                 </div>
 
                 {card.comments.map(comment => {
-                    return <section key={comment.id}>
+                    return <div key={comment.id} >
                         {!this.state.isActivitySelected ? (
                             <div className="card-activity-container">
                                 <textarea className="card-details-activity-textarea" onClick={this.onEditActivity} onChange={this.handleChange} value={comment.txt}></textarea>
@@ -48,7 +48,7 @@ export class CardActivity extends Component {
                                 </div>
                                 <div className="activity-bar flex space-between">
                                     < div className="activity-btn-save" >
-                                        <button className="card-desc-save-btn" onClick={this.onSaveCardDesc}>Save</button>
+                                        <button className="card-desc-save-btn" >Save</button>
                                     </div>
                                     <div className="activity-bar-icons" >
                                         <AttachFileIcon className="activity-icon" />
@@ -58,7 +58,7 @@ export class CardActivity extends Component {
                             </>
                             )
                         }
-                    </section>
+                    </div>
                 }
                 )
                 }

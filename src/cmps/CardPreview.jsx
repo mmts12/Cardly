@@ -12,9 +12,12 @@ export class _CardPreview extends Component {
   state = {
     isCardDetailsSelected: false,
     isEditCardModalShow: false,
-    labels: []
+    card: {},
+    labels: [],
   };
   componentDidMount() {
+    const { card } = this.props
+    this.setState({ card })
     this.setState(this.state.labels = this.props.card.labels)
 
   }
@@ -46,6 +49,7 @@ export class _CardPreview extends Component {
   render() {
     const { card, stack, index } = this.props;
     const { labels } = this.state
+    const { coverColor } = this.state.card
     const { isCardDetailsSelected, isEditCardModalShow } = this.state;
     if (!card || !stack) return <h1>loading..</h1>
     return (
@@ -58,7 +62,7 @@ export class _CardPreview extends Component {
               {...provided.dragHandleProps}
               ref={provided.innerRef}
             >
-              <div className="card-preview-color" style={{}}></div>
+              <div className="card-preview-color" style={{ background: `${coverColor}` }}></div>
               {labels.length !== 0 && <CardLabels labels={labels} />}
               <div className="card-preview-line flex space-between">
                 {!isEditCardModalShow ? (
