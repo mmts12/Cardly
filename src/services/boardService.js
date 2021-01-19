@@ -35,19 +35,14 @@ function query() {
 }
 
 function getBoardById(boardId) {
-
     return axios.get(`${baseUrl}/${boardId}`)
         .then(res => res.data)
-
 }
 
 
 // async function _getBoardByIdx(boardId, gBoards) {
 //     return gBoards.findIndex((board) => board._id === boardId)
 // }
-
-
-
 
 function saveNewStack(stack, selectedBoard) {
     const selectedBoardCopy = { ...selectedBoard }

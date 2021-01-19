@@ -193,17 +193,20 @@ export class _CardDetails extends Component {
               style={{ background: `${this.state.card.coverColor}` }}
             ></div>
             <div className="card-details-body">
-              <h2 className="card-details-title">{card.title}</h2>
-              <h4>in list {stack.title} </h4>
-              <div className="flex">
-                <div className="flex column">
+              <div className="card-details-top">
+                <h2 className="card-details-title">{card.title}</h2>
+                <p className="card-details-list">in list {stack.title} </p>
+              </div>
+              <div className="details-list-container flex">
+                <div className="column-container flex column">
+                  {/* CARD LABELS */}
                   {labels.length !== 0 && (<CardLabels className="labels-txt" labels={labels} />)}
                   {cardMembers.length !== 0 && <MembersAvatar users={cardMembers} />}
                   <CardDescription card={card} />
                   {checklists.length !== 0 && (<CardChecklist onRemove={this.deleteChecklist} checklists={checklists} />)}
                   <CardActivity card={card} onCommentAdd={this.addComment} />
                 </div>
-                <div>
+                <div className="sidebar-container">
                   <CardSideBar
                     card={card}
                     stack={stack}

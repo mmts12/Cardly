@@ -8,6 +8,7 @@ import { setSelectedBoard } from '../store/actions/boardActions';
 import { EditStack } from './EditStack.jsx';
 import AddIcon from '@material-ui/icons/Add';
 import { AddCard } from './AddCard';
+import { boardService } from './../services/boardService';
 
 export class _StackPreview extends Component {
   state = {
@@ -51,6 +52,8 @@ export class _StackPreview extends Component {
   onAddNewCard = (cardToadd) => {
     const { stack, selectedBoard } = this.props;
     this.onCloseAddSection();
+    // const board = boardService.addCard(cardToadd, stack, selectedBoard);
+    // console.log(board);
     this.props.addCard(cardToadd, stack, selectedBoard);
   };
 

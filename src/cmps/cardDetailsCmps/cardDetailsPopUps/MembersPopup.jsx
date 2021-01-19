@@ -23,7 +23,7 @@ export class MembersPopup extends Component {
                 <div className="pop-up-members">
                     <p className="pop-up-header"> Members</p>
                     <hr></hr>
-                    <input autoFocus placeholder="Search members"></input>
+                    <input autoFocus placeholder="Search members" className="members-input"></input>
                     <p>BOARD MEMBERS</p>
                     <MembersList onMemberAdd={this.props.onMemberAdd} users={boardUsers} />
                 </div>
