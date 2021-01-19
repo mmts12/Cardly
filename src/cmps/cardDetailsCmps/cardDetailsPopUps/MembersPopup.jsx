@@ -5,14 +5,10 @@ import { MembersList } from '../MembersList.jsx'
 export class MembersPopup extends Component {
 
     state = {
-        isTeamShows: false
+
     }
 
-    onShowTeamMembers = () => {
-        let { isTeamShows } = this.state
-        isTeamShows = !isTeamShows
-        this.setState({ isTeamShows })
-    }
+
 
     componentDidMount() {
         //    users = getUsers()
@@ -30,8 +26,6 @@ export class MembersPopup extends Component {
                     <input autoFocus placeholder="Search members" className="members-input"></input>
                     <p>BOARD MEMBERS</p>
                     <MembersList onMemberAdd={this.props.onMemberAdd} users={boardUsers} />
-                    {/* {!isTeamShows && <button onClick={this.onShowTeamMembers} className="pop-up-members-btn">Show other team members</button>} */}
-                    {isTeamShows && <MembersList users={boardUsers} />}
                 </div>
             </section >
         )

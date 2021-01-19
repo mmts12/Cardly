@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CardDetailsButton } from '../CardDetailsButton.jsx';
+import { eventBus } from '../../../services/eventBusService.js'
 import { MembersPopup } from '../cardDetailsPopUps/MembersPopup.jsx';
 import { LabelsPopup } from '../cardDetailsPopUps/LabelsPopup.jsx';
 import { CheckListPopup } from '../cardDetailsPopUps/CheckListPopup.jsx';
@@ -14,6 +15,7 @@ import AttachFileIcon from '@material-ui/icons/AttachFile';
 import VideoLabelIcon from '@material-ui/icons/VideoLabel';
 
 export class CardSideBar extends Component {
+
   state = {
     memberPopUp: false,
     labelPopUp: false,
@@ -22,6 +24,25 @@ export class CardSideBar extends Component {
     attachmentPopUp: false,
     coverPopUp: false,
   };
+  componentDidMount() {
+
+    this.closeListener = eventBus.on('close', () => {
+      this.setState(
+        {
+          memberPopUp: false,
+          labelPopUp: false,
+          checklistPopUp: false,
+          dueDatePopUp: false,
+          attachmentPopUp: false,
+          coverPopUp: false,
+        })
+    })
+  }
+
+  componentWillUnmount() {
+    this.closeListener()
+  }
+
 
   onMemberClick = (e) => {
     const showModlaMember = !this.state.memberPopUp;
@@ -58,17 +79,12 @@ export class CardSideBar extends Component {
     return (
       <div className="sidebar-container flex column">
         <div className="sidebar-title">ADD TO CARD</div>
-
         {memberPopUp && <MembersPopup onMemberAdd={this.props.onMemberAdd} boardUsers={this.props.boardUsers} />}
         {labelPopUp && <LabelsPopup onLabelColorSelect={this.props.onLabelColorSelect} />}
         {checklistPopUp && <CheckListPopup onCheckListSelect={this.props.onCheckListSelect} />}
         {dueDatePopUp && <DueDatePopup />}
-        {attachmentPopUp && (
-          <AttachmentPopup stack={this.props.stack} card={this.props.card} />
-        )}
-        {coverPopUp && (
-          <CoverPopup onCoverColorSelect={this.props.onCoverColorSelect} />
-        )}
+        {attachmentPopUp && <AttachmentPopup stack={this.props.stack} card={this.props.card} />}
+        {coverPopUp && <CoverPopup onCoverColorSelect={this.props.onCoverColorSelect} />}
 
         <CardDetailsButton
           icon={<PersonIcon></PersonIcon>}

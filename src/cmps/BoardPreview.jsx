@@ -4,7 +4,6 @@ export class BoardPreview extends Component {
   render() {
     const { board } = this.props;
     // const style = {}
-    console.log(board);
     return (
       <div className="board-preview">
         <div
