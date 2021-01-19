@@ -9,7 +9,7 @@ function saveUser(key, value) {
 }
 
 function getUser(key) {
-    // Get saved data from sessionStorage
+    // Get saved data from sessionStorage    
     var value = sessionStorage.getItem(key);
     if (!value) return null
     else return JSON.parse(value)

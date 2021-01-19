@@ -54,13 +54,14 @@ export class _Board extends Component {
 
   render() {
     const { selectedBoard } = this.props;
+    const boardTitle = selectedBoard ? selectedBoard.title : ''
     // const boardId = this.props.match.params.id;
     return (
       <section className="board-container ">
         {/* <StatusBar /> */}
         <div className="board-inner mt flex column  ">
           <span className="board-title flex align-center justify-center">
-            Main Demo Board
+            {boardTitle}
           </span>
           <div className="stack-container flex ">
             {selectedBoard && <StackList board={selectedBoard} />}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { eventBus } from '../services/eventBusService.js'
 import { utilService } from '../services/misc/utilService.js';
 import { CardSideBar } from './cardDetailsCmps/cardDetailsBodyCmps/CardSideBar.jsx';
 import { CardDescription } from './cardDetailsCmps/cardDetailsBodyCmps/CardDescription.jsx';
@@ -9,6 +10,8 @@ import { CardChecklist } from './cardDetailsCmps/cardDetailsBodyCmps/CardCheckli
 import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/MembersAvatar.jsx';
 import { saveCard } from '../store/actions/cardActions.js';
 import { loadUsers } from '../store/actions/userActions.js'
+import { userService } from '../services/userService';
+
 
 export class _CardDetails extends Component {
   state = {
@@ -21,11 +24,15 @@ export class _CardDetails extends Component {
       members: [],
     },
     boardUsers: [],
+    loggedUser: {}
   };
 
   componentDidMount() {
     const { card } = this.props;
     const boardUsers = this.props.selectedBoard.members;
+    const loggedUser = userService.getLoggedinUser();
+
+    this.setState({ loggedUser })
     this.setState({ card });
     this.setState({ boardUsers });
   }
@@ -64,6 +71,8 @@ export class _CardDetails extends Component {
   setLabelOnCard = (color) => {
     const { card } = this.state;
     let { comments } = card;
+    // const { loggedUser } = this.state;
+
     const colorIndx = card.labels.findIndex(
       (labelColor) => labelColor === color
     );
@@ -71,14 +80,14 @@ export class _CardDetails extends Component {
       comments.unshift({
         id: utilService.makeId(),
         createdAt: Date.now(),
-        txt: 'Adi Magori added card label color',
+        txt: `${this.state.loggedUser.fullname} added card label color`,
       });
       card.labels.push(color);
     } else {
       comments.unshift({
         id: utilService.makeId(),
         createdAt: Date.now(),
-        txt: 'Adi Magori removed card label color',
+        txt: `${this.state.loggedUser.fullname} removed card label color`,
       });
       card.labels.splice(colorIndx, 1);
     }
@@ -98,14 +107,14 @@ export class _CardDetails extends Component {
       comments.unshift({
         id: utilService.makeId(),
         createdAt: Date.now(),
-        txt: 'Adi Magori removed card cover color',
+        txt: `${this.state.loggedUser.fullname} removed card cover color`,
       });
       card.coverColor = '';
     } else {
       comments.unshift({
         id: utilService.makeId(),
         createdAt: Date.now(),
-        txt: 'Adi Magori added card cover color',
+        txt: `${this.state.loggedUser.fullname} added card cover color`,
       });
       card.coverColor = color;
     }
@@ -131,11 +140,16 @@ export class _CardDetails extends Component {
     comments.unshift({
       id: utilService.makeId(),
       createdAt: Date.now(),
-      txt: `Adi Magori added checklist - ${checklistName}`,
+      txt: `${this.state.loggedUser.fullname} added checklist - ${checklistName}`,
     });
     card.checklists.push(checkListItem);
     this.setState({ card });
   };
+
+  onClosePopUps = () => {
+    eventBus.emit('close')
+
+  }
 
   deleteChecklist = (checklistId) => {
     const { card } = this.state;
@@ -148,7 +162,7 @@ export class _CardDetails extends Component {
     comments.unshift({
       id: utilService.makeId(),
       createdAt: Date.now(),
-      txt: `Adi Magori deleted checklist - ${checklistName}`,
+      txt: `${this.state.loggedUser.fullname} deleted checklist - ${checklistName}`,
     });
     this.setState({ card });
   };
@@ -157,7 +171,7 @@ export class _CardDetails extends Component {
     card.comments.unshift({
       id: utilService.makeId(),
       createdAt: Date.now(),
-      txt: `Adi Magori added comment - ${comment}`,
+      txt: `${this.state.loggedUser.fullname} added comment - ${comment}`,
     });
     this.setState({ card });
   };
@@ -173,7 +187,7 @@ export class _CardDetails extends Component {
       <>
         <div className="modal-bg" onClick={(ev) => onCloseModal(ev)}></div>
         <main>
-          <section className="card-details-container ">
+          <section onClick={this.onClosePopUps} className="card-details-container">
             <div
               className="card-details-cover"
               style={{ background: `${this.state.card.coverColor}` }}
@@ -183,28 +197,10 @@ export class _CardDetails extends Component {
               <h4>in list {stack.title} </h4>
               <div className="flex">
                 <div className="flex column">
-                  {/* CARD LABELS */}
-                  {labels.length !== 0 && (
-                    <>
-                      {' '}
-                      <p className="labels-txt">Labels</p>
-                      <CardLabels labels={labels} />
-                    </>
-                  )}
+                  {labels.length !== 0 && (<CardLabels className="labels-txt" labels={labels} />)}
                   {cardMembers.length !== 0 && <MembersAvatar users={cardMembers} />}
-                  {/* CARD DESCRIPTION */}
                   <CardDescription card={card} />
-
-                  {/* CARD CHECKLIST */}
-                  {checklists.length !== 0 && (
-                    <CardChecklist
-                      onRemove={this.deleteChecklist}
-                      checklists={checklists}
-                    />
-                  )}
-
-                  {/* CARD ACTIVITY */}
-
+                  {checklists.length !== 0 && (<CardChecklist onRemove={this.deleteChecklist} checklists={checklists} />)}
                   <CardActivity card={card} onCommentAdd={this.addComment} />
                 </div>
                 <div>

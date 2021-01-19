@@ -168,3 +168,4 @@ function updateDragCardToOtherList(result, stacks, selectedBoard) {
 // reason: "DROP"
 // source: {index: 4, droppableId: "g101"}
 // type: "DEFAULT"
+
