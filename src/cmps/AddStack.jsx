@@ -16,7 +16,8 @@ export class AddStack extends Component {
     this.setState({ stack });
   };
 
-  onAdd = (stack) => {
+  onAdd = (ev, stack) => {
+    ev.preventDefault();
     if (!stack.title) return;
     const { addNewStack } = this.props;
     addNewStack(stack);
@@ -28,14 +29,16 @@ export class AddStack extends Component {
     return (
       <section className="add-stack-modal flex column">
         <div className="add-stack-input">
-          <input
-            onChange={this.handleInput}
-            type="text"
-            name=""
-            id=""
-            placeholder="Title ?"
-            onBlur={this.props.onCloseAddSection}
-          />
+          <form onSubmit={(ev) => this.onAdd(ev, stack)}>
+            <input
+              onChange={this.handleInput}
+              type="text"
+              name=""
+              id=""
+              placeholder="Title ?"
+              onBlur={this.props.onCloseAddSection}
+            />
+          </form>
         </div>
         <div className="add-stack-container flex align-center">
           <button className="save-btn" onClick={() => this.onAdd(stack)}>

@@ -19,9 +19,9 @@ export class CheckListPopup extends Component {
                 <div className="pop-up-checklist">
                     <p className="pop-up-header">Add Checklist</p>
                     <hr></hr>
-                    <div>Title</div>
-                    <input autoFocus onChange={this.handleInput} defaultValue="Checklist"></input>
-                    <button onClick={() => { this.props.onCheckListSelect(this.state.value) }} className="pop-up-checklist-btn">Add</button>
+                    <div className="pop-up-title">Title</div>
+                    <input autoFocus onChange={this.handleInput} defaultValue="Checklist" className="checklist-input"></input>
+                    <button onClick={() => { this.props.onCheckListSelect(this.state.value) }} className="save-btn">Add</button>
                 </div>
             </section>
         )

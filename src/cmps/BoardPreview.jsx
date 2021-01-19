@@ -4,9 +4,13 @@ export class BoardPreview extends Component {
   render() {
     const { board } = this.props;
     // const style = {}
+    console.log(board);
     return (
       <div className="board-preview">
-        <div className="board-preview-image" style={{backgroundImage: `url(${board.createdBy.imgUrl})`}} >
+        <div
+          className="board-preview-image"
+          style={{ backgroundImage: `url(${board.createdBy.imgUrl})` }}
+        >
           <Link to={`./cardly/${board._id}`}>
             <div className="board-preview-card">
               <h3 className="board-preview-title">{board.title}</h3>

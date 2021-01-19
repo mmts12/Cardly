@@ -1,56 +1,112 @@
 .pop-up-labels {
     background-color: #fff;
+    box-shadow: 0 8px 16px -4px rgba(9,30,66,.25), 0 0 0 1px rgba(9,30,66,.08);
     color: gray;
     padding: 10px;
     position: absolute;
     border-radius: 3px;
     width: 230px;
     top: 105px;
-    // left: 24%;
     right: 0;
     transform: translate(1%, 0);
-}
 
-.pop-up-labels-btn {
-    border: 0;
-    font-size: 0.7em;
-    border-radius: 3px;
-    margin: 10px;
-    padding: 7px;
-    width: 10rem;
-}
+    .pop-up-header{
+        margin-block-start: 0;
+        margin-block-end: 0.5em;
+        font-size: 14px;
+    }
 
-.label-color-pick:empty {
-    border: 0;
-    height: 1.6em;
-    margin: 1.6px;
-    width: 13em;
-    border-radius: 3px;
-}
+    .label-input {
+        margin: 4px 0 12px;
+        width: 100%;
+        outline: none;
+        border: none;
+        box-shadow: inset 0 0 0 2px #dfe1e6;
+        background-color: #fafbfc;
+        border-radius: 3px;
+        line-height: 20px;
+        margin-bottom: 12px;
+        padding: 8px 12px;
+    }
 
-.label-green-label {
-    background-color: #78ba5d;
-}
-.label-yellow-label {
-    width: 100rem;
-    background-color: #edd647;
-}
-.label-orange-label {
-    width: 100rem;
-    background-color: #f2a240;
-}
-.label-red-label {
-    width: 100rem;
-    background-color: #da644f;
-}
-.label-purple-label {
-    width: 100rem;
-    background-color: #b87cda;
-}
+    .label-title{
+        margin-block-start: 0;
+        margin-block-end: 0.5em;
+        font-size: 14px;
+    }
 
-.label-blue-label {
-    width: 100rem;
-    background-color: #3478ba;
+    .pop-up-labels-btn {
+        border: 0;
+        border-radius: 3px;
+        color: #172b4d;
+        font-weight: 400;
+        font-size: 14px;
+        height: 2em;
+        margin: 1.3px;
+        width: 100%;
+        padding: 6px 12px;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .label-color-pick:empty {
+        border: 0;
+        height: 1.6em;
+        margin: 1.6px;
+        width: 13em;
+        border-radius: 3px;
+    }
+
+    .label-green-label {
+        background-color: #78ba5d;
+        &:hover {
+            box-shadow: -8px 0 #519839;
+        }
+    }
+    .label-yellow-label {
+        width: 100rem;
+        background-color: #edd647;
+        &:hover {
+            box-shadow: -8px 0 #d9b51c;
+        }
+    }
+    .label-orange-label {
+        width: 100rem;
+        background-color: #f2a240;
+        &:hover {
+            box-shadow: -8px 0 #cd8313;
+        }
+    }
+    .label-red-label {
+        width: 100rem;
+        background-color: #da644f;
+        &:hover {
+            box-shadow: -8px 0 #b04632;
+        }
+    }
+    .label-purple-label {
+        width: 100rem;
+        background-color: #b87cda;
+        &:hover {
+            box-shadow: -8px 0 #89609e;
+        }
+    }
+
+    .label-blue-label {
+        width: 100rem;
+        background-color: #3478ba;
+        &:hover {
+            box-shadow: -8px 0 #055a8c;
+        }
+    }
+
+    .edit-icon {
+        font-size: 1.1rem;
+        &:hover {
+            background-color: rgba(9, 30, 66, 0.08);
+            font-size: 1.3rem;
+        }
+    }
 }
 
 .label-icon {

@@ -1,0 +1,23 @@
+.add-new-board{
+position: fixed;
+    &img{
+        object-fit: cover;
+        width: 100%;
+        height:  100%;
+    }
+
+    top:45px;
+    
+    border: 1px solid lightgray;
+    padding: 20px;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+    grid-template-rows: 100px 100px;
+    grid-gap: 0.5rem;
+    /* This is the standardized property now, but has slightly less support */
+    /* gap: 1rem */
+  }

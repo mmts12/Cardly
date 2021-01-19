@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CardDetails } from './CardDetails';
-import { CardLabels } from "./cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx"
+import { CardLabels } from './cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { removeCard, saveCard } from '../store/actions/cardActions.js';
@@ -9,6 +9,8 @@ import { EditCard } from './EditCard';
 import { Draggable } from 'react-beautiful-dnd';
 import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/MembersAvatar.jsx';
 
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export class _CardPreview extends Component {
   state = {
@@ -50,11 +52,18 @@ export class _CardPreview extends Component {
 
   render() {
     const { card, stack, index } = this.props;
-    const { labels } = this.state
-    const { coverColor } = this.state.card
+    const { labels, onLoadImg } = this.state;
+    const { coverColor } = this.state.card;
     const { isCardDetailsSelected, isEditCardModalShow } = this.state;
-    if (!card || !stack) return <h1>loading..</h1>
-
+    if (!card || !stack) return <h1>loading..</h1>;
+    const classes = makeStyles((theme) => ({
+      root: {
+        display: 'flex',
+        '& > * + *': {
+          marginLeft: theme.spacing(2),
+        },
+      },
+    }));
     return (
       <>
         <Draggable draggableId={card.id} index={index}>
@@ -65,19 +74,38 @@ export class _CardPreview extends Component {
               {...provided.dragHandleProps}
               ref={provided.innerRef}
             >
-              {coverColor !== '' && <div className="card-preview-color" style={{ background: `${coverColor}` }}></div>}
+              {coverColor !== '' && (
+                <div
+                  className="card-preview-color"
+                  style={{ background: `${coverColor}` }}
+                ></div>
+              )}
               {labels.length !== 0 && <CardLabels labels={labels} />}
 
               <div className="card-preview-line flex space-between">
                 {!isEditCardModalShow ? (
                   <div className="card-preview-icons flex space-between">
                     <div onClick={this.onShowCardDetails}>{card.title}</div>
+                    {card.imgUrl && (
+                      <div>
+                        <img src={card.imgUrl} alt="" />
+                      </div>
+                    )}
+                    {/* {onLoadImg && (
+                      <div className={classes.root}>
+                        <CircularProgress />
+                      </div>
+                    )} */}
                     <div className="icons-container flex">
                       <div onClick={this.onEditCard}>
-                        <span><EditIcon className="card-preview-edit-icon"></EditIcon></span>
+                        <span>
+                          <EditIcon className="card-preview-edit-icon"></EditIcon>
+                        </span>
                       </div>
                       <div onClick={() => this.onRemoveCard(card.id)}>
-                        <span><DeleteIcon className="card-preview-edit-icon"></DeleteIcon></span>
+                        <span>
+                          <DeleteIcon className="card-preview-edit-icon"></DeleteIcon>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -93,7 +121,11 @@ export class _CardPreview extends Component {
           )}
         </Draggable>
         {isCardDetailsSelected && (
-          <CardDetails stack={stack} card={card} onCloseModal={this.closeModal} />
+          <CardDetails
+            stack={stack}
+            card={card}
+            onCloseModal={this.closeModal}
+          />
         )}
       </>
     );
