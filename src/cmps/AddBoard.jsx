@@ -6,22 +6,48 @@ export class _AddBoard extends Component {
     board: {
       activities: [],
       createdAt: '',
-      createdBy: '',
+      createdBy: {},
       members: [],
       stacks: [],
       style: {
         bgc: '',
         mode: '',
-        title: '',
       },
+      title: '',
     },
   };
+  componentDidMount() {
+    const { loggedInUser } = this.props;
+    const { createdBy } = this.state.board;
+    console.log(loggedInUser);
+    if (loggedInUser) {
+      createdBy.fullname = loggedInUser.fullname;
+      createdBy.imgUrl = loggedInUser.imgUrl;
+      createdBy._id = loggedInUser._id;
+      this.setState({ createdBy });
+    } else {
+      createdBy.fullname = 'guest';
+    }
+  }
+  //   cards: []
+  // fullname: "Mosh Malka"
+  // imgUrl: "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
+  // isGuest: false
+  // username: "mmts12@gmail.com"
+  // _id: "6005a60f22fe2c973b43a8ab"
 
   handleInput = (ev) => {
     const { board } = this.state;
     const { value } = ev.target;
     board.title = value;
     this.setState({ board });
+  };
+
+  onSelectNewBoard = (bgc) => {
+    const { board } = this.state;
+    // if (!board.title) return;
+    board.bgc = bgc;
+    console.log(board);
   };
 
   render() {
@@ -44,6 +70,7 @@ export class _AddBoard extends Component {
           {bgc.colors.map((color) => {
             return (
               <div
+                onClick={() => this.onSelectNewBoard(color)}
                 key={color}
                 className="bgc-add-board"
                 onChange={this.handleInput}
@@ -53,7 +80,11 @@ export class _AddBoard extends Component {
           })}
           {bgc.imgsUrl.map((img) => {
             return (
-              <div key={img} className="add-new-board-img">
+              <div
+                onClick={() => this.onSelectNewBoard(img)}
+                key={img}
+                className="add-new-board-img"
+              >
                 <img src={img} />
               </div>
             );
@@ -68,6 +99,7 @@ export class _AddBoard extends Component {
 const mapStateToProps = (state) => {
   return {
     boards: state.boardModule.boards,
+    loggedInUser: state.userModule.loggedInUser,
   };
 };
 

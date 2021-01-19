@@ -15,27 +15,18 @@ export class _Board extends Component {
     this.loadBoard();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const x = JSON.stringify(prevProps.boards);
-    const y = JSON.stringify(this.props.boards);
-    if (x !== y) {
-      this.loadBoard();
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   const x = JSON.stringify(prevProps.boards);
+  //   const y = JSON.stringify(this.props.boards);
+  //   if (x !== y) {
+  //     this.loadBoard();
+  //   }
+  // }
 
-  loadBoard = () => {
+  async loadBoard() {
     const boardId = this.props.match.params.id;
-    this._getBoardById(boardId).then((res) => {
-      this.props.setSelectedBoard(res);
-    });
-  };
-
-
-  _getBoardById = (boardId) => {
-    const { boards } = this.props;
-    const board = boards.find((board) => board._id === boardId);
-    return Promise.resolve(board);
-  };
+    this.props.setSelectedBoard(boardId);
+  }
 
   onAddSection = () => {
     this.setState({ isAddStack: true });
