@@ -12,14 +12,14 @@ export class AttachmentPopup extends Component {
                 <div className="pop-up-attachments">
                     <p className="pop-up-header"> Attach From...</p>
                     <hr></hr>
-                    <p>Computer</p>
-                    <p>Google Drive</p>
-                    <p>DropBox</p>
-                    <p>One Drive</p>
+                    <p className="attach-choice">Computer</p>
+                    <p className="attach-choice">Google Drive</p>
+                    <p className="attach-choice">DropBox</p>
+                    <p className="attach-choice">One Drive</p>
                     <hr></hr>
-                    <label>Attach a link</label>
-                    <input autoFocus placeholder="Paster any link here"></input>
-                    <button className="pop-up-attachment-btn">Attach</button>
+                    <label className="attach-label">Attach a link</label>
+                    <input autoFocus placeholder="Paste any link here" className="attach-input"></input>
+                    <button className="pop-up-attach-btn">Attach</button>
                 </div>
             </section>
         )

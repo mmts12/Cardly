@@ -1,5 +1,6 @@
 .pop-up-cover {
     background-color: #fff;
+    box-shadow: 0 8px 16px -4px rgba(9,30,66,.25), 0 0 0 1px rgba(9,30,66,.08);
     color: gray;
     padding: 10px;
     border-radius: 3px;
@@ -8,57 +9,73 @@
     top: 257px;
     right: -114px;
     transform: translate(-50%, 0);
+
+    .color-title{
+        margin-top: 5px;
+        font-size: 12px;
+    }
+
+    .cover-color-container {
+        display: wrap;
+        flex-wrap: wrap;
+        margin-top: 5px;
+        
+            .cover-color:empty {
+                border: 0;
+                height: 1.6em;
+                margin: 1.6px;
+                width: 2.3em;
+                border-radius: 3px;
+            }
+            .cover-green-label {
+                background-color: #8bc274;
+            }
+            .cover-yellow-label {
+                background-color: #f1dd54;
+            }
+            .cover-orange-label {
+                background-color: #f3b156;
+            }
+            .cover-red-label {
+                background-color: #df7c6a;
+            }
+            .cover-purple-label {
+                background-color: #c491e0;
+            }
+            .cover-blue-label {
+                background-color: #699cc4;
+            }
+            .cover-light-blue-label {
+                background-color: #63c9e2;
+            }
+            .cover-light-green-label {
+                background-color: #8fe8ae;
+            }
+            .cover-pink-label {
+                background-color: #f095d1;
+            }
+            .cover-black-label {
+                background-color: #172b4d;
+            }
+    }
+
+   
+
+    .pop-up-members-btn{
+        background-color: rgba(9, 30, 66, 0.04);
+        box-shadow: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 400;
+        line-height: 20px;
+        padding: 6px 12px;
+        text-align: center;
+        margin: 0;
+        outline: none;
+        border-radius: 3px;
+        font-size: 14px;
+        margin-top: 5px;
+    }
 }
 
-.pop-up-due-date-save-btn {
-    border: 0;
-    font-size: 0.7em;
-    border-radius: 3px;
-    background-color: #6ea952;
-    color: white;
-    margin: 10px;
-    padding: 7px;
-    width: 10rem;
-}
 
-.cover-color-contianer {
-    display: wrap;
-    flex-wrap: wrap;
-}
-.cover-color:empty {
-    border: 0;
-    height: 1.6em;
-    margin: 1.6px;
-    width: 2.3em;
-    border-radius: 3px;
-}
-.cover-green-label {
-    background-color: #8bc274;
-}
-.cover-yellow-label {
-    background-color: #f1dd54;
-}
-.cover-orange-label {
-    background-color: #f3b156;
-}
-.cover-red-label {
-    background-color: #df7c6a;
-}
-.cover-purple-label {
-    background-color: #c491e0;
-}
-.cover-blue-label {
-    background-color: #699cc4;
-}
-.cover-light-blue-label {
-    background-color: #63c9e2;
-}
-.cover-light-green-label {
-    background-color: #8fe8ae;
-}
-.cover-pink-label {
-    background-color: #f095d1;
-}
-.cover-black-label {
-    background-color: #1c2a4b;
-}

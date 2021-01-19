@@ -8,8 +8,8 @@ export class CoverPopup extends Component {
                 <div className="pop-up-cover">
                     <p className="pop-up-header">Cover</p>
                     <hr></hr>
-                    <label>COLORS</label>
-                    <section className="cover-color-contianer flex">
+                    <label className="color-title">COLORS</label>
+                    <section className="cover-color-container flex">
                         <div className="cover-color cover-green-label" onClick={() => this.props.onCoverColorSelect('#97BF7C')}></div>
                         <div className="cover-color cover-yellow-label" onClick={() => this.props.onCoverColorSelect('#EEDD6B')}></div>
                         <div className="cover-color cover-orange-label" onClick={() => this.props.onCoverColorSelect('#E9B366')}></div>
@@ -19,7 +19,7 @@ export class CoverPopup extends Component {
                         <div className="cover-color cover-light-blue-label" onClick={() => this.props.onCoverColorSelect('#7DC7DF')}></div>
                         <div className="cover-color cover-light-green-label" onClick={() => this.props.onCoverColorSelect('#9DDCAB')}></div>
                         <div className="cover-color cover-pink-label" onClick={() => this.props.onCoverColorSelect('#E39ACE')}></div>
-                        <div className="cover-color cover-black-label" onClick={() => this.props.onCoverColorSelect('#333')}></div>
+                        <div className="cover-color cover-black-label" onClick={() => this.props.onCoverColorSelect('#172b4d')}></div>
                     </section>
                     <button className="pop-up-members-btn">Add</button>
                 </div>
