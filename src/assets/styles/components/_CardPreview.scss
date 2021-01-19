@@ -27,6 +27,9 @@
             opacity: 1;
         }
     }
+    .icons-container{
+        height: 1.5rem;
+    }
 }
 
 .card-preview-edit-card {
@@ -38,6 +41,8 @@
         font-size: 15px;
         padding: 5px;
         scroll-behavior: auto;
+        width: 100%;
+        margin: 5px;
     }
     & > form > button {
         background-color: #5aac44;
@@ -56,11 +61,13 @@
         padding: 6px 12px;
         text-decoration: none;
         font-family: "Roboto";
+        margin: 5px;
     }
 }
 
 .card-preview-color {
-    height: 30px;
+    height: 15px;
     margin-top: 0;
+    border-radius: 3px 3px 0 0;
     // width: 100%;
 }

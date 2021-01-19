@@ -4,7 +4,8 @@
     padding: 0 4px;
     display: inline-block;
     overflow-y: auto;
-    max-height: 550px;
+    max-height: 83vh;
+    min-height: 15vh;
     
     .stack-title {
         cursor: pointer;
