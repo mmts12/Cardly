@@ -30,8 +30,11 @@ export class _CardDetails extends Component {
   componentDidMount() {
     const { card } = this.props;
     const boardUsers = this.props.selectedBoard.members;
-    const loggedUser = userService.getLoggedinUser();
-
+    let loggedUser = userService.getLoggedinUser();
+    if (!loggedUser) {
+      loggedUser = { fullname: 'Guest' }
+      console.log('loggedUser is:', loggedUser);
+    }
     this.setState({ loggedUser })
     this.setState({ card });
     this.setState({ boardUsers });
@@ -49,13 +52,15 @@ export class _CardDetails extends Component {
   // }
   onMemberAdd = (user) => {
     let { card } = this.state
+    let { loggedUser } = this.state
+
     const memberIndx = card.members.findIndex(member => member._id === user._id)
     if (memberIndx === -1) {
-      card.comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: `Adi Magori added ${user.fullname} to this card` })
       card.members.push(user)
+      card.comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: `${loggedUser.fullname} added ${user.fullname} to this card` })
     }
     else {
-      card.comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: `Adi Magori removed ${user.fullname} from this card` })
+      card.comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: `${loggedUser.fullname} removed ${user.fullname} from this card` })
       card.members.splice(memberIndx, 1)
     }
     this.setState({ card }, () => {
