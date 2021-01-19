@@ -211,6 +211,8 @@ export class _CardDetails extends Component {
                   <CardSideBar
                     card={card}
                     stack={stack}
+                    onMemberAdd={this.onMemberAdd}
+                    boardUsers={this.state.boardUsers}
                     onCheckListSelect={this.addChecklist}
                     onCoverColorSelect={this.setCardColor}
                     onLabelColorSelect={this.setLabelOnCard}

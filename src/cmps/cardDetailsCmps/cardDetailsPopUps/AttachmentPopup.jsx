@@ -23,14 +23,13 @@ export class _AttachmentPopup extends Component {
     });
   };
 
-<<<<<<< HEAD
   render() {
     return (
       <section>
         <div className="pop-up-attachments">
           <p className="pop-up-header"> Attach From...</p>
           <hr></hr>
-          <p>
+          <p className="attach-choice">
             <input
               id="file-upload"
               placeholder="Computer"
@@ -41,40 +40,20 @@ export class _AttachmentPopup extends Component {
               Computer
             </label>
           </p>
-          <p>Google Drive</p>
-          <p>DropBox</p>
-          <p>One Drive</p>
+          <p className="attach-choice">Google Drive</p>
+          <p className="attach-choice">DropBox</p>
+          <p className="attach-choice">One Drive</p>
           <hr></hr>
-          <label>Attach a link</label>
-          <input autoFocus placeholder="Paster any link here"></input>
-          <button className="pop-up-attachment-btn">Attach</button>
+          <label className="attach-label">Attach a link</label>
+          <input autoFocus placeholder="Paster any link here" className="attach-input"></input>
+          <button className="pop-up-attach-btn">Attach</button>
         </div>
       </section>
     );
   }
-=======
-    }
-
-    render() {
-        return (
-            <section>
-                <div className="pop-up-attachments">
-                    <p className="pop-up-header"> Attach From...</p>
-                    <hr></hr>
-                    <p className="attach-choice">Computer</p>
-                    <p className="attach-choice">Google Drive</p>
-                    <p className="attach-choice">DropBox</p>
-                    <p className="attach-choice">One Drive</p>
-                    <hr></hr>
-                    <label className="attach-label">Attach a link</label>
-                    <input autoFocus placeholder="Paste any link here" className="attach-input"></input>
-                    <button className="pop-up-attach-btn">Attach</button>
-                </div>
-            </section>
-        )
-    }
->>>>>>> 21089892abe1a694235a746e2d310ea1394477f3
 }
+
+
 
 const mapStateToProps = (state) => {
   return {
