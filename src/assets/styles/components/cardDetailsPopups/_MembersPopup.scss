@@ -9,15 +9,39 @@
     top: 66px;
     right: -12px;
     transform: translate(1%, 0);
+    overflow-y: auto;
+    .members-input{
+        margin: 4px 0 12px;
+        width: 100%;
+        outline: none;
+        border: none;
+        box-shadow: inset 0 0 0 2px #dfe1e6;
+        background-color: #fafbfc;
+        border-radius: 3px;
+        line-height: 20px;
+        margin-bottom: 12px;
+        padding: 8px 12px;
+    }
+    .member-row {
+        align-items: center;
+        justify-content: space-evenly;
+        color: gray;
+        font-size: 0.8em;
+        .avatars{
+            margin: 4px;
+            .avatar-username{
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                margin-left: 5px;
+                margin-block-start: 0;
+                margin-block-end: 0;
+            }
+        }
+    }
 }
 
 // 
-.member-row {
-    align-items: center;
-    justify-content: space-evenly;
-    color: gray;
-    font-size: 0.8em;
-}
 .pop-up-members-btn {
     border: 0;
     font-size: 0.7em;

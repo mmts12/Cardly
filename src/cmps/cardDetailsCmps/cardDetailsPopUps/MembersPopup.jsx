@@ -27,10 +27,10 @@ export class MembersPopup extends Component {
                 <div className="pop-up-members">
                     <p className="pop-up-header"> Members</p>
                     <hr></hr>
-                    <input autoFocus placeholder="Search members"></input>
+                    <input autoFocus placeholder="Search members" className="members-input"></input>
                     <p>BOARD MEMBERS</p>
                     <MembersList onMemberAdd={this.props.onMemberAdd} users={boardUsers} />
-                    {!isTeamShows && <button onClick={this.onShowTeamMembers} className="pop-up-members-btn">Show other team members</button>}
+                    {/* {!isTeamShows && <button onClick={this.onShowTeamMembers} className="pop-up-members-btn">Show other team members</button>} */}
                     {isTeamShows && <MembersList users={boardUsers} />}
                 </div>
             </section >
