@@ -90,6 +90,7 @@ function addCard(cardToAdd, stack, selectedBoard) {
     cardToAdd.checklists = [];
     cardToAdd.dueDate = Date.now() + 86400000
     cardToAdd.createdAt = Date.now()
+    cardToAdd.coverColor = ''
     cardToAdd.byMember = {
         _id: "u102",
         fullname: "Mosh Malka",

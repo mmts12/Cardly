@@ -79,13 +79,13 @@ export class _Header extends Component {
           {loggedInUser ? (
             <div>
               Welcome {loggedInUser.fullname}
-              <button onClick={this.props.logout}>Logout</button>
+              <Link to="/"><button onClick={this.props.logout}>Logout</button></Link>
             </div>
           ) : (
-            <Link to="/login">
-              <button>Login</button>
-            </Link>
-          )}
+              <Link to="/login">
+                <button>Login</button>
+              </Link>
+            )}
           <button className="header-username">AS</button>
         </div>
       </div>

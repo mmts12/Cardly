@@ -7,6 +7,8 @@ import { removeCard, saveCard } from '../store/actions/cardActions.js';
 import { connect } from 'react-redux';
 import { EditCard } from './EditCard';
 import { Draggable } from 'react-beautiful-dnd';
+import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/MembersAvatar.jsx';
+
 
 export class _CardPreview extends Component {
   state = {
@@ -15,11 +17,11 @@ export class _CardPreview extends Component {
     card: {},
     labels: [],
   };
+
   componentDidMount() {
     const { card } = this.props
     this.setState({ card })
     this.setState(this.state.labels = this.props.card.labels)
-
   }
 
   onShowCardDetails = () => {
@@ -52,6 +54,7 @@ export class _CardPreview extends Component {
     const { coverColor } = this.state.card
     const { isCardDetailsSelected, isEditCardModalShow } = this.state;
     if (!card || !stack) return <h1>loading..</h1>
+
     return (
       <>
         <Draggable draggableId={card.id} index={index}>
@@ -64,6 +67,7 @@ export class _CardPreview extends Component {
             >
               {coverColor !== '' && <div className="card-preview-color" style={{ background: `${coverColor}` }}></div>}
               {labels.length !== 0 && <CardLabels labels={labels} />}
+
               <div className="card-preview-line flex space-between">
                 {!isEditCardModalShow ? (
                   <div className="card-preview-icons flex space-between">
@@ -84,6 +88,7 @@ export class _CardPreview extends Component {
                     ></EditCard>
                   )}
               </div>
+              {card.members.length !== 0 && <MembersAvatar users={card.members} />}
             </div>
           )}
         </Draggable>

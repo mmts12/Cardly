@@ -30,6 +30,7 @@ export class _Board extends Component {
     });
   };
 
+
   _getBoardById = (boardId) => {
     const { boards } = this.props;
     const board = boards.find((board) => board._id === boardId);

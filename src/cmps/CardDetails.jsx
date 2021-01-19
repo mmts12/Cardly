@@ -6,23 +6,28 @@ import { CardDescription } from './cardDetailsCmps/cardDetailsBodyCmps/CardDescr
 import { CardActivity } from './cardDetailsCmps/cardDetailsBodyCmps/CardActivity.jsx';
 import { CardLabels } from './cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx';
 import { CardChecklist } from './cardDetailsCmps/cardDetailsBodyCmps/CardChecklist.jsx';
-// import AttachFileIcon from '@material-ui/icons/AttachFile';
-// import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
+import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/MembersAvatar.jsx';
 import { saveCard } from '../store/actions/cardActions.js';
+import { loadUsers } from '../store/actions/userActions.js'
 
 export class _CardDetails extends Component {
   state = {
+
     card: {
       comments: [],
       labels: [],
       checklists: [],
       coverColor: '',
+      members: [],
     },
+    boardUsers: [],
   };
 
   componentDidMount() {
     const { card } = this.props;
+    const boardUsers = this.props.selectedBoard.members;
     this.setState({ card });
+    this.setState({ boardUsers });
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -35,6 +40,26 @@ export class _CardDetails extends Component {
   //     this.props.saveCard(this.state.card, this.props.stack, this.props.selectedBoard)
   //   }
   // }
+  onMemberAdd = (user) => {
+    let { card } = this.state
+    const memberIndx = card.members.findIndex(member => member._id === user._id)
+    if (memberIndx === -1) {
+      card.comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: `Adi Magori added ${user.fullname} to this card` })
+      card.members.push(user)
+    }
+    else {
+      card.comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: `Adi Magori removed ${user.fullname} from this card` })
+      card.members.splice(memberIndx, 1)
+    }
+    this.setState({ card }, () => {
+      this.props.saveCard(
+        this.state.card,
+        this.props.stack,
+        this.props.selectedBoard
+      );
+    });
+  }
+
 
   setLabelOnCard = (color) => {
     const { card } = this.state;
@@ -131,9 +156,11 @@ export class _CardDetails extends Component {
   };
 
   render() {
-    const { card, onCloseModal } = this.props;
+    const { stack, card, onCloseModal } = this.props;
     const { checklists } = this.state.card;
     const labels = this.state.card.labels;
+    const { boardUsers } = this.state;
+    const cardMembers = this.state.card.members;
 
     return (
       <>
@@ -146,6 +173,7 @@ export class _CardDetails extends Component {
             ></div>
             <div className="card-details-body">
               <h2 className="card-details-title">{card.title}</h2>
+              <h4>in list {stack.title} </h4>
               <div className="flex">
                 <div className="flex column">
                   {/* CARD LABELS */}
@@ -156,7 +184,7 @@ export class _CardDetails extends Component {
                       <CardLabels labels={labels} />
                     </>
                   )}
-
+                  {cardMembers.length !== 0 && <MembersAvatar users={cardMembers} />}
                   {/* CARD DESCRIPTION */}
                   <CardDescription card={card} />
 
@@ -174,6 +202,8 @@ export class _CardDetails extends Component {
                 </div>
                 <div>
                   <CardSideBar
+                    boardUsers={boardUsers}
+                    onMemberAdd={this.onMemberAdd}
                     onCheckListSelect={this.addChecklist}
                     onCoverColorSelect={this.setCardColor}
                     onLabelColorSelect={this.setLabelOnCard}
@@ -191,11 +221,13 @@ export class _CardDetails extends Component {
 const mapStateToProps = (state) => {
   return {
     selectedBoard: state.boardModule.selectedBoard,
+    users: state.userModule.users
   };
 };
 
 const mapDispatchToProps = {
   saveCard,
+  loadUsers,
 };
 
 export const CardDetails = connect(

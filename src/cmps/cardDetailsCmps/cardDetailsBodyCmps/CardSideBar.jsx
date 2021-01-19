@@ -58,7 +58,7 @@ export class CardSideBar extends Component {
       <div className="sidebar-container flex column">
         <div className="sidebar-title">ADD TO CARD</div>
 
-        {memberPopUp && <MembersPopup />}
+        {memberPopUp && <MembersPopup onMemberAdd={this.props.onMemberAdd} boardUsers={this.props.boardUsers} />}
         {labelPopUp && <LabelsPopup onLabelColorSelect={this.props.onLabelColorSelect} />}
         {checklistPopUp && <CheckListPopup onCheckListSelect={this.props.onCheckListSelect} />}
         {dueDatePopUp && <DueDatePopup />}
