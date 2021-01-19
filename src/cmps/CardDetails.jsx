@@ -70,12 +70,19 @@ export class _CardDetails extends Component {
     let { card } = this.state;
     let { comments } = card;
     if (card.coverColor === color) {
-      comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: 'Adi Magori removed card cover color' })
-      card.coverColor = ''
-    }
-    else {
-      comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: 'Adi Magori added card cover color' })
-      card.coverColor = color
+      comments.unshift({
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        txt: 'Adi Magori removed card cover color',
+      });
+      card.coverColor = '';
+    } else {
+      comments.unshift({
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        txt: 'Adi Magori added card cover color',
+      });
+      card.coverColor = color;
     }
 
     this.setState({ card, comments }, () => {
@@ -131,7 +138,7 @@ export class _CardDetails extends Component {
   };
 
   render() {
-    const { card, onCloseModal } = this.props;
+    const { card, onCloseModal, stack } = this.props;
     const { checklists } = this.state.card;
     const labels = this.state.card.labels;
 
@@ -174,6 +181,8 @@ export class _CardDetails extends Component {
                 </div>
                 <div>
                   <CardSideBar
+                    card={card}
+                    stack={stack}
                     onCheckListSelect={this.addChecklist}
                     onCoverColorSelect={this.setCardColor}
                     onLabelColorSelect={this.setLabelOnCard}
