@@ -1,6 +1,30 @@
 import { boardService } from '../../services/boardService';
 
 
+export function addBoard(board) {
+    return async dispatch => {
+        try {
+            const boardAdded = await boardService.addBoard(board)
+            dispatch({ type: 'ADD_BOARD', boardAdded })
+            return boardAdded;
+        }
+        catch (err) {
+            console.log('boardActions: err in addBoard', err)
+        }
+    }
+}
+
+export function removeBoard(boardId) {
+    return async dispatch => {
+        try {
+            boardService.removeBoard(boardId)
+            dispatch({ type: 'DELETE_BOARD', boardId })
+        }
+        catch (err) {
+            console.log('boardActions: err in delete board', err)
+        }
+    }
+}
 
 export function loadBoards() { // Action Creator
     return async dispatch => {

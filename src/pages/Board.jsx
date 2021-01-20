@@ -45,10 +45,20 @@ export class _Board extends Component {
 
   render() {
     const { selectedBoard } = this.props;
-    const boardTitle = selectedBoard ? selectedBoard.title : ''
-    // const boardId = this.props.match.params.id;
+    const boardTitle = selectedBoard ? selectedBoard.title : '';
+    if (selectedBoard === {}) return <h1>Loading...</h1>;
+    // else const { bgc } = selectedBoard.style;
+    // console.log(selectedBoard);
+
     return (
-      <section className="board-container ">
+      <section
+        // style={
+        //   bgc.startsWith('#')
+        //     ? { backgroundColor: bgc }
+        //     : { backgroundImage: `url(${bgc})` }
+        // }
+        className="board-container"
+      >
         {/* <StatusBar /> */}
         <div className="board-inner mt flex column  ">
           <span className="board-title flex align-center justify-center">

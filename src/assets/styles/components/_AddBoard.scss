@@ -1,15 +1,18 @@
 .add-new-board{
 position: fixed;
-    &img{
-        object-fit: cover;
-        width: 100%;
-        height:  100%;
-    }
+   
 
     top:45px;
     
     border: 1px solid lightgray;
     padding: 20px;
+}
+.add-new-board-img{
+    &>img{
+        object-fit: cover;
+        width: 100%;
+        height:  100%;
+    }
 }
 
 

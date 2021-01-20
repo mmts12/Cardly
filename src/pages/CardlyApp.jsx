@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loadBoards } from './../store/actions/boardActions.js';
+import { loadBoards, removeBoard } from './../store/actions/boardActions.js';
 import { connect } from 'react-redux';
 import { BoardPreview } from './../cmps/BoardPreview';
 import { AddBoard } from '../cmps/AddBoard.jsx';
@@ -21,6 +21,14 @@ export class _CardlyApp extends Component {
     this.setState({ isAddBoardShow: true });
   };
 
+  onCloseAddBoardSection = () => {
+    this.setState({ isAddBoardShow: false });
+  };
+
+  onRemove = (boardId) => {
+    this.props.removeBoard(boardId);
+  };
+
   render() {
     const { boards } = this.props;
     const { isAddBoardShow } = this.state;
@@ -32,7 +40,13 @@ export class _CardlyApp extends Component {
         </header>
         <div className="template-wrapper">
           {boards.map((board) => {
-            return <BoardPreview key={board._id} board={board} />;
+            return (
+              <BoardPreview
+                onRemove={this.onRemove}
+                key={board._id}
+                board={board}
+              />
+            );
           })}
           <div
             className="board-template"
@@ -64,7 +78,11 @@ export class _CardlyApp extends Component {
           <button className="btn2" onClick={this.onShowAddBoardSection}>
             <span>Add Board</span>
           </button>
-          {isAddBoardShow && <AddBoard></AddBoard>}
+          {isAddBoardShow && (
+            <AddBoard
+              onCloseAddBoardSection={this.onCloseAddBoardSection}
+            ></AddBoard>
+          )}
         </div>
       </section>
     );
@@ -79,6 +97,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   loadBoards,
+  removeBoard,
 };
 
 export const CardlyApp = connect(

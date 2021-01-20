@@ -41,7 +41,7 @@ export class AddStack extends Component {
           </form>
         </div>
         <div className="add-stack-container flex align-center">
-          <button className="save-btn" onClick={() => this.onAdd(stack)}>
+          <button className="save-btn" onClick={(ev) => this.onAdd(ev, stack)}>
             Add List
           </button>
           <button className="clear-btn" onClick={closeAddSection}>

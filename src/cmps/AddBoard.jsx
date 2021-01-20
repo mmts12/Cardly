@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addBoard } from '../store/actions/boardActions';
+import { utilService } from './../services/misc/utilService';
 
 export class _AddBoard extends Component {
   state = {
     board: {
       activities: [],
-      createdAt: '',
+      createdAt: Date.now(),
       createdBy: {},
       members: [],
-      stacks: [],
+      stacks: [{ id: utilService.makeId(), cards: [], style: {}, title: '' }],
       style: {
         bgc: '',
         mode: '',
@@ -16,25 +18,6 @@ export class _AddBoard extends Component {
       title: '',
     },
   };
-  componentDidMount() {
-    const { loggedInUser } = this.props;
-    const { createdBy } = this.state.board;
-    console.log(loggedInUser);
-    if (loggedInUser) {
-      createdBy.fullname = loggedInUser.fullname;
-      createdBy.imgUrl = loggedInUser.imgUrl;
-      createdBy._id = loggedInUser._id;
-      this.setState({ createdBy });
-    } else {
-      createdBy.fullname = 'guest';
-    }
-  }
-  //   cards: []
-  // fullname: "Mosh Malka"
-  // imgUrl: "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-  // isGuest: false
-  // username: "mmts12@gmail.com"
-  // _id: "6005a60f22fe2c973b43a8ab"
 
   handleInput = (ev) => {
     const { board } = this.state;
@@ -43,12 +26,14 @@ export class _AddBoard extends Component {
     this.setState({ board });
   };
 
-  onSelectNewBoard = (bgc) => {
+  async onSelectNewBoard(bgc) {
     const { board } = this.state;
-    // if (!board.title) return;
-    board.bgc = bgc;
-    console.log(board);
-  };
+    if (!board.title) return;
+    board.style.bgc = bgc;
+    this.setState({ board });
+    this.props.addBoard(board);
+    this.props.onCloseAddBoardSection();
+  }
 
   render() {
     const bgc = {
@@ -56,15 +41,23 @@ export class _AddBoard extends Component {
       imgsUrl: [
         'https://res.cloudinary.com/dscb3040k/image/upload/v1611048026/Screenshot_2021-01-12_130444_ihywxs.png',
         'https://res.cloudinary.com/dscb3040k/image/upload/v1610463893/WhatsApp_Image_2021-01-12_at_17.04.06_idr6gn.jpg',
-        'https://res.cloudinary.com/dscb3040k/image/upload/v1611048112/wot_object_268_1920x1080_noc_eng_klurct.jpg',
-        'https://res.cloudinary.com/dscb3040k/image/upload/v1611048182/jp-e100_1920x1080cal_sbf3oe.jpg',
+        'https://res.cloudinary.com/drak3llqt/image/upload/v1610553514/img4_ohr2cl.png',
+        'https://res.cloudinary.com/drak3llqt/image/upload/v1610553508/img3_g44phk.png',
       ],
     };
+    const { onCloseAddBoardSection } = this.props;
     return (
       <section className="add-new-board">
+        <button onClick={onCloseAddBoardSection}>X</button>
         <form>
           <label htmlFor="">Title:</label>
-          <input type="text" name="" id="" />
+          <input
+            type="text"
+            name=""
+            onChange={this.handleInput}
+            id=""
+            value={this.state.board.title}
+          />
         </form>
         <div className=" grid">
           {bgc.colors.map((color) => {
@@ -73,7 +66,6 @@ export class _AddBoard extends Component {
                 onClick={() => this.onSelectNewBoard(color)}
                 key={color}
                 className="bgc-add-board"
-                onChange={this.handleInput}
                 style={{ backgroundColor: color }}
               ></div>
             );
@@ -103,6 +95,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  addBoard,
+};
 
 export const AddBoard = connect(mapStateToProps, mapDispatchToProps)(_AddBoard);

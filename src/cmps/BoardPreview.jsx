@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 export class BoardPreview extends Component {
   render() {
-    const { board } = this.props;
-    // const style = {}
+    const { board, onRemove } = this.props;
+    const { bgc } = board.style;
+
     return (
       <div className="board-preview">
+        <button onClick={() => onRemove(board._id)}>X</button>
         <div
           className="board-preview-image"
-          style={{ backgroundImage: `url(${board.createdBy.imgUrl})` }}
+          style={
+            bgc.startsWith('#')
+              ? { backgroundColor: bgc }
+              : { backgroundImage: `url(${bgc})` }
+          }
         >
           <Link to={`./cardly/${board._id}`}>
             <div className="board-preview-card">

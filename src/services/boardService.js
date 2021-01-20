@@ -4,6 +4,7 @@ import Axios from 'axios'
 import { utilService } from './misc/utilService';
 
 
+
 var axios = Axios.create({
     withCredentials: true
 })
@@ -21,7 +22,9 @@ export const boardService = {
     removeCard,
     saveCard,
     updateDragCard,
-    updateDragCardToOtherList
+    updateDragCardToOtherList,
+    addBoard,
+    removeBoard
 }
 
 
@@ -39,10 +42,15 @@ function getBoardById(boardId) {
         .then(res => res.data)
 }
 
+function addBoard(board) {
+    return axios.post(`${baseUrl}`, board)
+        .then(res => res.data)
+}
 
-// async function _getBoardByIdx(boardId, gBoards) {
-//     return gBoards.findIndex((board) => board._id === boardId)
-// }
+function removeBoard(boardId) {
+    return axios.delete(`${baseUrl}/${boardId}`)
+    // .then(res => res.data)
+}
 
 function saveNewStack(stack, selectedBoard) {
     const selectedBoardCopy = { ...selectedBoard }
