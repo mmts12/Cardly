@@ -83,7 +83,9 @@ export class _Header extends Component {
             </div>
           ) : (
               <Link to="/login">
-                <button>Login</button>
+                <button className="btn1">
+                  <span className="header-icon-word">Login</span>
+                </button>
               </Link>
             )}
           <button className="header-username">AS</button>

@@ -42,9 +42,9 @@ export class CardChecklist extends Component {
         const { show } = this.state
         return (<div>
             {checklists.map(checklist => {
-                return <section key={checklist.id} className="checklist">
+                return <section key={checklist.id} className="checklist flex column">
                     <div className="flex space-between column">
-                        <div className="cl-subtitle flex column">
+                        <div className="cl-subtitle ">
                             <LibraryAddCheckOutlinedIcon className="checklist-icon" />
                             <div className="cl-inner-span flex space-between">
                                 <h3 className="cl-subtitle-txt flex align-center"> {checklist.title}</h3>
@@ -55,12 +55,12 @@ export class CardChecklist extends Component {
                             return <div key={todo.id} className="todo-row flex space-between">
                                 <div>
                                     <input type="checkbox" ></input>
-                                    <span>{todo.txt}</span>
+                                    <span className="todo-txt">{todo.txt}</span>
                                 </div>
                                 <DeleteIcon className="todo-delete-icon"></DeleteIcon>
                             </div>
                         })}
-                        <button onClick={() => this.toggleAddItem()} >Add an Item</button>
+                        <div className="flex"><button className="checklist-add" onClick={() => this.toggleAddItem()} >Add an Item</button></div>
                         {show && <div>
                             <input onChange={this.handleInput} placeholder="Add an item" ></input>
                             <button onClick={() => this.addTodo(checklist)}>Add</button>

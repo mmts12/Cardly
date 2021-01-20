@@ -40,16 +40,6 @@ export class _CardDetails extends Component {
     this.setState({ boardUsers });
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log('prevState is:', prevState);
-  //   console.log('this.state is:', this.state);
-
-  //   const x = JSON.stringify(prevState)
-  //   const y = JSON.stringify(this.state)
-  //   if (x !== y) {
-  //     this.props.saveCard(this.state.card, this.props.stack, this.props.selectedBoard)
-  //   }
-  // }
   onMemberAdd = (user) => {
     let { card } = this.state
     let { loggedUser } = this.state
@@ -71,7 +61,6 @@ export class _CardDetails extends Component {
       );
     });
   }
-
 
   setLabelOnCard = (color) => {
     const { card } = this.state;
@@ -171,10 +160,12 @@ export class _CardDetails extends Component {
     });
     this.setState({ card });
   };
+
   addComment = (comment) => {
     const { card } = this.state;
     card.comments.unshift({
       id: utilService.makeId(),
+      createdBy: this.state.loggedUser,
       createdAt: Date.now(),
       txt: `${this.state.loggedUser.fullname} added comment - ${comment}`,
     });
@@ -185,9 +176,9 @@ export class _CardDetails extends Component {
     const { card, onCloseModal, stack } = this.props;
     const { checklists } = this.state.card;
     const labels = this.state.card.labels;
-    const { boardUsers } = this.state;
+    // const { boardUsers } = this.state;
     const cardMembers = this.state.card.members;
-
+    console.log('card is:', card);
     return (
       <>
         <div className="modal-bg" onClick={(ev) => onCloseModal(ev)}></div>
@@ -200,7 +191,7 @@ export class _CardDetails extends Component {
             <div className="card-details-body">
               <div className="card-details-top">
                 <h2 className="card-details-title">{card.title}</h2>
-                <p className="card-details-list">in list {stack.title} </p>
+                <p className="card-details-list">in list <span className="list-fake-link">{stack.title}</span></p>
               </div>
               <div className="details-list-container flex">
                 <div className="column-container flex column">
