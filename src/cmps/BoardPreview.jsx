@@ -7,7 +7,7 @@ export class BoardPreview extends Component {
 
     return (
       <div className="board-preview">
-        <button onClick={() => onRemove(board._id)}>X</button>
+        {/* <button onClick={() => onRemove(board._id)}>X</button> */}
         <div
           className="board-preview-image"
           style={
