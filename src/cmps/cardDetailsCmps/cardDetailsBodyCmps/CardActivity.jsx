@@ -37,8 +37,8 @@ export class CardActivity extends Component {
                     <div className="card-act-textarea">
                         <textarea onChange={this.handleChange} className="act-textarea" placeholder="Write a comment..." ></textarea>
                     </div>
-                    <div className="act-original-save flex space-between">
-                        <button onClick={() => this.props.onCommentAdd(this.state.comment)} >Save</button>
+                    <div className="act-original-save flex space-between align-center">
+                        <button className="save-btn" onClick={() => this.props.onCommentAdd(this.state.comment)} >Save</button>
                         <div className="activity-bar-icons" >
                             <AttachFileIcon className="activity-icon" />
                             <AlternateEmailIcon className="activity-icon" />
