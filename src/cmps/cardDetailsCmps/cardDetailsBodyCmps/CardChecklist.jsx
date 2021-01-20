@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { utilService } from '../../../services/misc/utilService.js';
-import LibraryAddCheckOutlinedIcon from '@material-ui/icons/LibraryAddCheckOutlined';
-import DeleteIcon from '@material-ui/icons/Delete';
+import { ChecklistPreview } from './ChecklistPreview.jsx';
 
 export class CardChecklist extends Component {
   state = {
-    show: false,
     newTodo: '',
     todos: [],
   };
@@ -43,55 +41,18 @@ export class CardChecklist extends Component {
 
   render() {
     const { checklists } = this.props;
-    const { show: showAddTodoSection } = this.state;
     return (
       <div>
         {checklists.map((checklist) => {
           return (
-            <section key={checklist.id} className="checklist flex column">
-              <div className="flex space-between column">
-                <div className="cl-subtitle ">
-                  <LibraryAddCheckOutlinedIcon className="checklist-icon" />
-                  <div className="cl-inner-span flex space-between">
-                    <h3 className="cl-subtitle-txt flex align-center">
-                      {' '}
-                      {checklist.title}
-                    </h3>
-                    <button
-                      className="checklist-del-btn"
-                      onClick={() => {
-                        this.props.onRemove(checklist.id);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-                {checklist.todos.map((todo) => {
-                  return (
-                    <div key={todo.id} className="todo-row flex space-between">
-                      <div>
-                        <input type="checkbox"></input>
-                        <span className="todo-txt">{todo.txt}</span>
-                      </div>
-                      <DeleteIcon
-                        onClick={() =>
-                          this.props.onRemoveTodo(todo.id, checklist)
-                        }
-                        className="todo-delete-icon"
-                      ></DeleteIcon>
-                    </div>
-                  );
-                })}
-                <div className="flex">
-                  <button className="checklist-add" onClick={() => this.toggleAddItem()}>Add an Item</button>
-                </div>
-                {showAddTodoSection && (<div><input onChange={this.handleInput} placeholder="Add an item"></input>
-                  <button onClick={() => this.addTodo(checklist)}>Add</button>
-                </div>
-                )}
-              </div>
-            </section>
+            <ChecklistPreview
+              checklist={checklist}
+              onRemoveTodo={this.props.onRemoveTodo}
+              handleInput={this.handleInput}
+              addTodo={this.addTodo}
+              toggleAddItem={this.toggleAddItem}
+              onRemove={this.props.onRemove}
+            />
           );
         })}
       </div>

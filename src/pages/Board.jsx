@@ -50,13 +50,15 @@ export class _Board extends Component {
     if (!selectedBoard) return <h1>Loading...</h1>;
     if (selectedBoard.style) {
       const bgc = selectedBoard.style.bgc;
-      style = bgc.startsWith('#') ? { backgroundColor: bgc } : { backgroundImage: `url(${bgc})` }
+      style = bgc.startsWith('#')
+        ? { backgroundColor: bgc }
+        : { backgroundImage: `url(${bgc})` };
     }
     const boardTitle = selectedBoard ? selectedBoard.title : '';
     return (
-      <section className="board-container" style={style} >
+      <section className="board-container" style={style}>
         <StatusBar />
-        < div className="board-inner mt flex column  ">
+        <div className="board-inner mt flex column  ">
           {/* <span className="board-title flex align-center justify-center">
             {boardTitle}
           </span> */}
@@ -81,7 +83,7 @@ export class _Board extends Component {
             </div>
           </div>
         </div>
-      </section >
+      </section>
     );
   }
 }
