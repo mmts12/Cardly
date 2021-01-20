@@ -80,8 +80,10 @@ export class CardActivity extends Component {
                                 !initials.length ? <Avatar size="10" src="frontend/src/assets/imgs/avatar-person.svg"></Avatar> :
                                     <Avatar size="10" >{initials}</Avatar>
                             }
-                            <textarea className="card-details-activity-textarea" onClick={this.onEditActivity} onChange={this.handleChange} value={comment.txt}></textarea>
-                            <div>{date}</div>
+                            <div className="card-activity-row">
+                                <input className="card-details-activity-textarea" onClick={this.onEditActivity} onChange={this.handleChange} value={comment.txt}></input>
+                                <div className="card-activity-date">{date}</div>
+                            </div>
                         </div>
                     ) :
                         (<>
