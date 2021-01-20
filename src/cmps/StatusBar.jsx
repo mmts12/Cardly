@@ -22,9 +22,13 @@ export class _StatusBar extends React.Component {
     }
     return (
       <section>
-        <div className="status-bar-container flex align-center">
-          <h2>{selectedBoard.title}</h2>
-          {members.length && <MembersAvatar users={selectedBoard.members} />}
+        <div className='status-bar-container flex space-between' >
+          <div className="flex align-center">
+            <h2 style={{ color: 'white' }}>{selectedBoard.title}</h2>
+            {members.length !== 0 && <MembersAvatar users={selectedBoard.members} />}
+          </div>
+          <button onClick={this.onMenuSelect}>Show Menu</button>
+
         </div>
       </section>
     );

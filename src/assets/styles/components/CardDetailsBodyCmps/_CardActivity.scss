@@ -1,6 +1,5 @@
 .cd-cmp {
     margin-bottom: 24px;
-
     top: 1px;
     margin-top: 10px;
 
@@ -75,11 +74,11 @@
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
-        &:hover{
+        &:hover {
             background-color: rgba(9, 30, 66, 0.08);
             cursor: pointer;
         }
-        .card-activity-row{
+        .card-activity-row {
             .card-details-activity-textarea {
                 width: 400px;
                 margin: 0;
@@ -92,13 +91,13 @@
                 background-color: transparent;
                 padding-left: 12px;
             }
-        
-            .card-details-activity-textarea:focus {
-                width: 400px;
-                height: 70px;
-                outline: none;
-            }
-            .card-activity-date{
+
+            // .card-details-activity-textarea:focus {
+            //     width: 400px;
+            //     height: 70px;
+            //     outline: none;
+            // }
+            .card-activity-date {
                 margin: 0;
                 outline: none;
                 font-size: 14px;
@@ -110,7 +109,7 @@
         position: relative;
         margin: 10px;
     }
- 
+
     .activity-bar-icons {
         position: relative;
         top: 5px;
@@ -137,4 +136,3 @@
         z-index: 1;
     }
 }
-

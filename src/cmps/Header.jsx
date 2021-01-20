@@ -83,6 +83,7 @@ export class _Header extends Component {
           </button>
 
           {loggedInUser ? (
+<<<<<<< HEAD
             <div>
               Welcome {loggedInUser.fullname}
               <Link to="/">
@@ -96,6 +97,19 @@ export class _Header extends Component {
               </button>
             </Link>
           )}
+=======
+            <div className="flex">
+              {/* Welcome {loggedInUser.fullname} */}
+              <Link to="/"><button className="btn1" onClick={this.props.logout}> <span className="header-icon-word">Logout</span></button></Link>
+            </div>
+          ) : (
+              <Link to="/login">
+                <button className="btn1">
+                  <span className="header-icon-word">Login</span>
+                </button>
+              </Link>
+            )}
+>>>>>>> 17d9789371dc63ff063977edb52b7beb34069333
           <button className="header-username">{initials}</button>
         </div>
       </div>
