@@ -13,6 +13,7 @@
 @import "./components/BoardPreview.scss";
 @import "./components/StackList.scss";
 @import "./components/StackPreview.scss";
+@import "./components/StatusBar.scss";
 @import "./components/CardDetails.scss";
 @import "./components/CardList.scss";
 @import "./components/CardPreview.scss";
@@ -31,11 +32,9 @@
 @import "./components/AddStack.scss";
 @import "./components/AddBoard.scss";
 
-
-
 //Views
 @import "./views/CardlyApp.scss";
 @import "./views/Home.scss";
 @import "./components/BoardPreview.scss";
 @import "./views/Board.scss";
-@import "./views/_Login.scss"
+@import "./views/_Login.scss";
