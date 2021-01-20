@@ -1,5 +1,5 @@
 .board-container {
-    background-image: url(https://res.cloudinary.com/drak3llqt/image/upload/v1610553512/img1_uyzefw.jpg);
+    // background-image: url(https://res.cloudinary.com/drak3llqt/image/upload/v1610553512/img1_uyzefw.jpg);
     background-size: cover;
     height: 100vh;
     position: relative;
@@ -20,14 +20,14 @@
         font-weight: 700;
     }
 
-    .stack-container{
+    .stack-container {
         align-items: flex-start;
     }
 
-    .add-new-stack{
+    .add-new-stack {
         margin: 10px;
-        
-        .board-open-modal-btn{
+
+        .board-open-modal-btn {
             width: 272px;
             color: white;
             height: 32px;
@@ -40,13 +40,13 @@
             display: flex;
             font-weight: 700;
             border-radius: 3px;
-            padding: 0; 
+            padding: 0;
             white-space: nowrap;
             cursor: pointer;
         }
     }
 
-    .board-icon{
+    .board-icon {
         display: flex;
         width: 32px;
         justify-content: center;

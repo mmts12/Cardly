@@ -4,6 +4,7 @@ import { setSelectedBoard } from '../store/actions/boardActions';
 import { addStack } from '../store/actions/stackActions';
 import { connect } from 'react-redux';
 import { AddStack } from '../cmps/AddStack';
+import { StatusBar } from '../cmps/StatusBar';
 import AddIcon from '@material-ui/icons/Add';
 
 export class _Board extends Component {
@@ -45,25 +46,20 @@ export class _Board extends Component {
 
   render() {
     const { selectedBoard } = this.props;
+    let style = { backgroundColor: 'white' };
+    if (!selectedBoard) return <h1>Loading...</h1>;
+    if (selectedBoard.style) {
+      const bgc = selectedBoard.style.bgc;
+      style = bgc.startsWith('#') ? { backgroundColor: bgc } : { backgroundImage: `url(${bgc})` }
+    }
     const boardTitle = selectedBoard ? selectedBoard.title : '';
-    if (selectedBoard === {}) return <h1>Loading...</h1>;
-    // else const { bgc } = selectedBoard.style;
-    // console.log(selectedBoard);
-
     return (
-      <section
-        // style={
-        //   bgc.startsWith('#')
-        //     ? { backgroundColor: bgc }
-        //     : { backgroundImage: `url(${bgc})` }
-        // }
-        className="board-container"
-      >
-        {/* <StatusBar /> */}
-        <div className="board-inner mt flex column  ">
-          <span className="board-title flex align-center justify-center">
+      <section className="board-container" style={style} >
+        <StatusBar />
+        < div className="board-inner mt flex column  ">
+          {/* <span className="board-title flex align-center justify-center">
             {boardTitle}
-          </span>
+          </span> */}
           <div className="stack-container flex ">
             {selectedBoard && <StackList board={selectedBoard} />}
             <div className="add-new-stack">
@@ -85,7 +81,7 @@ export class _Board extends Component {
             </div>
           </div>
         </div>
-      </section>
+      </section >
     );
   }
 }
