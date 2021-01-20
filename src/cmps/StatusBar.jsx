@@ -4,32 +4,30 @@ import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/Membe
 
 // import { setSelectedBoard } from '../store/actions/boardActions';
 
-
 export class _StatusBar extends React.Component {
-
   state = {
-    selectedBoard: {}
-  }
+    selectedBoard: {},
+  };
   componentDidMount() {
-    const { selectedBoard } = this.props
-    this.setState({ selectedBoard })
+    const { selectedBoard } = this.props;
+    this.setState({ selectedBoard });
   }
 
   render() {
-    const { selectedBoard } = this.state
+    const { selectedBoard } = this.props;
     let members = '';
-    if (!selectedBoard) return <h5>Loading...</h5>
+    if (!selectedBoard) return <h5>Loading...</h5>;
     if (selectedBoard.members) {
-      members = selectedBoard.members
+      members = selectedBoard.members;
     }
     return (
       <section>
-        <div className='status-bar-container flex align-center' >
+        <div className="status-bar-container flex align-center">
           <h2>{selectedBoard.title}</h2>
           {members.length && <MembersAvatar users={selectedBoard.members} />}
         </div>
       </section>
-    )
+    );
   }
 }
 const mapStateToProps = (state) => {
@@ -38,10 +36,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
+const mapDispatchToProps = {};
 
-};
-
-export const StatusBar = connect(mapStateToProps, mapDispatchToProps)(_StatusBar);
-
-
+export const StatusBar = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_StatusBar);
