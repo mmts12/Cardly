@@ -15,6 +15,7 @@
     background-color: #f4f5f7;
 
     max-height: 80vh;
+    min-height: 55vh;
     // max-height: 550px;
     padding-top: 0;
     position: fixed;
@@ -34,8 +35,8 @@
         // padding: 30px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        // justify-content: center;
+        // align-items: center;
         .card-details-top{
             margin: 12px 40px 8px 56px;
             min-height: 32px;
@@ -56,6 +57,10 @@
                 display: inline-block;
                 margin: 4px 8px 4px 2px;
                 color: #5e6c84;
+                .list-fake-link{
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
             }
         }
         .details-list-container {
@@ -74,6 +79,7 @@
     .card-details-btn {
         display: flex;
         align-items: center;
+        cursor: pointer;
         margin: 4px;
         background-color: rgba(9, 30, 66, 0.04);
         border: 0;

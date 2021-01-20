@@ -64,7 +64,7 @@ export class _Login extends Component {
   render() {
     return (
       // const loggedInUser = userService.getLoggedinUser();
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" className="login-container">
         <CssBaseline />
         <div
           style={{

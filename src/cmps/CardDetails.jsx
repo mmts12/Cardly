@@ -191,7 +191,7 @@ export class _CardDetails extends Component {
             <div className="card-details-body">
               <div className="card-details-top">
                 <h2 className="card-details-title">{card.title}</h2>
-                <p className="card-details-list">in list {stack.title} </p>
+                <p className="card-details-list">in list <span className="list-fake-link">{stack.title}</span></p>
               </div>
               <div className="details-list-container flex">
                 <div className="column-container flex column">
