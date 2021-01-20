@@ -84,21 +84,11 @@ export class CardChecklist extends Component {
                   );
                 })}
                 <div className="flex">
-                  <button
-                    className="checklist-add"
-                    onClick={() => this.toggleAddItem()}
-                  >
-                    Add an Item
-                  </button>
+                  <button className="checklist-add" onClick={() => this.toggleAddItem()}>Add an Item</button>
                 </div>
-                {showAddTodoSection && (
-                  <div>
-                    <input
-                      onChange={this.handleInput}
-                      placeholder="Add an item"
-                    ></input>
-                    <button onClick={() => this.addTodo(checklist)}>Add</button>
-                  </div>
+                {showAddTodoSection && (<div><input onChange={this.handleInput} placeholder="Add an item"></input>
+                  <button onClick={() => this.addTodo(checklist)}>Add</button>
+                </div>
                 )}
               </div>
             </section>

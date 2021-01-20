@@ -31,29 +31,22 @@ export class CardActivity extends Component {
     }
 
     convertToDate = (timestamp) => {
-        console.log('timestamp is:', timestamp);
-        const date = new Date(timestamp).toLocaleString();
-        console.log('date is:', date);
-        const day = date.substring(0, date.indexOf('/'));
-        const month = date.substring(2, 4);
-        const year = date.substring(5, 7);
-        const time = date.substring(11, 16);
-
-        return (`${day}-${month}-${year} ${time}`)
+        let date = new Date(timestamp).toLocaleString();
+        const dateCopy = date.split('/')
+        const day = dateCopy[0];
+        const month = dateCopy[1];
+        const year = dateCopy[2];
+        return (`${day}/${month}/${year}`)
     }
 
     render() {
         const { card } = this.props
         return <section className="cd-cmp flex column">
-
             <div className="card-act-title">
                 <FormatListBulletedIcon className="act-icon" />
                 <h3 className="cd-subtitle-words">Activity</h3>
             </div>
             <div className="cd-subtitle-txt">
-                <div className="card-act-textarea">
-                    <textarea onChange={this.handleChange} className="act-textarea" placeholder="Write a comment..." ></textarea>
-                </div>
                 <div className="cd-subtitle-txt">
                     <div className="card-act-textarea">
                         <textarea onChange={this.handleChange} className="act-textarea" placeholder="Write a comment..." ></textarea>
@@ -74,34 +67,16 @@ export class CardActivity extends Component {
                 const date = this.convertToDate(comment.createdAt)
                 // console.log('date is:', date);
                 return <div key={comment.id} >
-                    {!this.state.isActivitySelected ? (
-                        <div className="card-activity-container flex">
-                            {
-                                !initials.length ? <Avatar size="10" src="frontend/src/assets/imgs/avatar-person.svg"></Avatar> :
-                                    <Avatar size="10" >{initials}</Avatar>
-                            }
-                            <div className="card-activity-row">
-                                <input className="card-details-activity-textarea" onClick={this.onEditActivity} onChange={this.handleChange} value={comment.txt}></input>
-                                <div className="card-activity-date">{date}</div>
-                            </div>
+                    <div className="card-activity-container flex">
+                        {
+                            !initials.length ? <Avatar size="10" src="frontend/src/assets/imgs/avatar-person.svg"></Avatar> :
+                                <Avatar size="10" >{initials}</Avatar>
+                        }
+                        <div className="card-activity-row">
+                            <input className="card-details-activity-textarea" onClick={this.onEditActivity} onChange={this.handleChange} value={comment.txt}></input>
+                            <div className="card-activity-date">{date}</div>
                         </div>
-                    ) :
-                        (<>
-                            <div className="card-activity-container">
-                                <textarea className="card-details-activity-textarea" onClick={this.onEditActivity} onChange={this.handleChange} value={comment.txt}></textarea>
-                            </div>
-                            <div className="activity-bar flex space-between">
-                                < div className="activity-btn-save" >
-                                    <button className="card-desc-save-btn" >Save</button>
-                                </div>
-                                <div className="activity-bar-icons" >
-                                    <AttachFileIcon className="activity-icon" />
-                                    <AlternateEmailIcon className="activity-icon" />
-                                </div>
-                            </div>
-                        </>
-                        )
-                    }
+                    </div>
                 </div>
             }
             )
