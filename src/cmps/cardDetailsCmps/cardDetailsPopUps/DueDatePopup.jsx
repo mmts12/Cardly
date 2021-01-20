@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Calendar from 'react-calendar';
 
 export class DueDatePopup extends Component {
 
@@ -13,9 +14,10 @@ export class DueDatePopup extends Component {
                 <div className="pop-up-due-date">
                     <p className="pop-up-header">Change Due Date</p>
                     <hr></hr>
-                    <input type="date" autoFocus ></input>
+                    {/* <input type="date" autoFocus ></input> */}
                     <input type="time" autoFocus ></input>
                     <p>CALENDAR</p>
+                    <Calendar />
                     <button className="save-btn">Save</button>
                 </div>
             </section>

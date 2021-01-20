@@ -25,7 +25,6 @@ export class CardSideBar extends Component {
     coverPopUp: false,
   };
   componentDidMount() {
-
     this.closeListener = eventBus.on('close', () => {
       this.setState(
         {

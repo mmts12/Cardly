@@ -18,6 +18,7 @@ export class _Header extends Component {
 
   render() {
     const { loggedInUser } = this.props;
+    const initials = loggedInUser.fullname.substring(0, 1) + loggedInUser.fullname.charAt(loggedInUser.fullname.indexOf(' ') + 1)
     return (
       <div className="header-wrapper">
         <div className="header-left">
@@ -77,9 +78,9 @@ export class _Header extends Component {
           </button>
 
           {loggedInUser ? (
-            <div>
-              Welcome {loggedInUser.fullname}
-              <Link to="/"><button onClick={this.props.logout}>Logout</button></Link>
+            <div className="flex">
+              {/* Welcome {loggedInUser.fullname} */}
+              <Link to="/"><button className="btn1" onClick={this.props.logout}> <span className="header-icon-word">Logout</span></button></Link>
             </div>
           ) : (
               <Link to="/login">
@@ -88,7 +89,7 @@ export class _Header extends Component {
                 </button>
               </Link>
             )}
-          <button className="header-username">AS</button>
+          <button className="header-username">{initials}</button>
         </div>
       </div>
     );

@@ -170,7 +170,7 @@ export class _CardDetails extends Component {
   };
 
   onClosePopUps = () => {
-    eventBus.emit('close');
+    // eventBus.emit('close');
   };
 
   deleteChecklist = (checklistId) => {
@@ -203,10 +203,8 @@ export class _CardDetails extends Component {
   render() {
     const { card, onCloseModal, stack } = this.props;
     const { checklists } = this.state.card;
-    console.log(checklists);
     const labels = this.state.card.labels;
     const cardMembers = this.state.card.members;
-    console.log('card is:', card);
     return (
       <>
         <div className="modal-bg" onClick={(ev) => onCloseModal(ev)}></div>

@@ -29,7 +29,7 @@ export class _StackList extends Component {
   render() {
     const { stacks } = this.props.board;
 
-    if (!stacks) return <h1>Loading ...(stacks)</h1>;
+    if (!stacks) return <h1>Loading ...</h1>;
     return (
       <div>
         <div className="stack-list-container flex ">
