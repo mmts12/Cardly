@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { eventBus } from '../services/eventBusService.js'
+import { eventBus } from '../services/eventBusService.js';
 import { utilService } from '../services/misc/utilService.js';
 import { CardSideBar } from './cardDetailsCmps/cardDetailsBodyCmps/CardSideBar.jsx';
 import { CardDescription } from './cardDetailsCmps/cardDetailsBodyCmps/CardDescription.jsx';
@@ -9,13 +9,11 @@ import { CardLabels } from './cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx
 import { CardChecklist } from './cardDetailsCmps/cardDetailsBodyCmps/CardChecklist.jsx';
 import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/MembersAvatar.jsx';
 import { saveCard } from '../store/actions/cardActions.js';
-import { loadUsers } from '../store/actions/userActions.js'
+import { loadUsers } from '../store/actions/userActions.js';
 import { userService } from '../services/userService';
-
 
 export class _CardDetails extends Component {
   state = {
-
     card: {
       comments: [],
       labels: [],
@@ -24,7 +22,7 @@ export class _CardDetails extends Component {
       members: [],
     },
     boardUsers: [],
-    loggedUser: {}
+    loggedUser: {},
   };
 
   componentDidMount() {
@@ -32,26 +30,35 @@ export class _CardDetails extends Component {
     const boardUsers = this.props.selectedBoard.members;
     let loggedUser = userService.getLoggedinUser();
     if (!loggedUser) {
-      loggedUser = { fullname: 'Guest' }
+      loggedUser = { fullname: 'Guest' };
       console.log('loggedUser is:', loggedUser);
     }
-    this.setState({ loggedUser })
+    this.setState({ loggedUser });
     this.setState({ card });
     this.setState({ boardUsers });
   }
 
   onMemberAdd = (user) => {
-    let { card } = this.state
-    let { loggedUser } = this.state
+    let { card } = this.state;
+    let { loggedUser } = this.state;
 
-    const memberIndx = card.members.findIndex(member => member._id === user._id)
+    const memberIndx = card.members.findIndex(
+      (member) => member._id === user._id
+    );
     if (memberIndx === -1) {
-      card.members.push(user)
-      card.comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: `${loggedUser.fullname} added ${user.fullname} to this card` })
-    }
-    else {
-      card.comments.unshift({ id: utilService.makeId(), createdAt: Date.now(), txt: `${loggedUser.fullname} removed ${user.fullname} from this card` })
-      card.members.splice(memberIndx, 1)
+      card.members.push(user);
+      card.comments.unshift({
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        txt: `${loggedUser.fullname} added ${user.fullname} to this card`,
+      });
+    } else {
+      card.comments.unshift({
+        id: utilService.makeId(),
+        createdAt: Date.now(),
+        txt: `${loggedUser.fullname} removed ${user.fullname} from this card`,
+      });
+      card.members.splice(memberIndx, 1);
     }
     this.setState({ card }, () => {
       this.props.saveCard(
@@ -60,7 +67,7 @@ export class _CardDetails extends Component {
         this.props.selectedBoard
       );
     });
-  }
+  };
 
   setLabelOnCard = (color) => {
     const { card } = this.state;
@@ -140,10 +147,31 @@ export class _CardDetails extends Component {
     this.setState({ card });
   };
 
-  onClosePopUps = () => {
-    eventBus.emit('close')
+  onAddTodo = (checklist) => {
+    const { card } = this.state;
+    const checklistsToAdd = card.checklists.map((currChecklist) =>
+      currChecklist.id === checklist.id ? checklist : currChecklist
+    );
+    card.checklists = checklistsToAdd;
+    this.props.saveCard(card, this.props.stack, this.props.selectedBoard);
+  };
 
-  }
+  onRemoveTodo = (todoId, checklists) => {
+    const { card } = this.state;
+    const copyChecklists = { ...checklists };
+    const { todos } = copyChecklists;
+    const filteredTodos = todos.filter((todo) => todo.id !== todoId);
+    copyChecklists.todos = filteredTodos;
+    const filteredChecklists = card.checklists.map((currChecklist) =>
+      currChecklist.id === copyChecklists.id ? copyChecklists : currChecklist
+    );
+    card.checklists = filteredChecklists;
+    this.props.saveCard(card, this.props.stack, this.props.selectedBoard);
+  };
+
+  onClosePopUps = () => {
+    eventBus.emit('close');
+  };
 
   deleteChecklist = (checklistId) => {
     const { card } = this.state;
@@ -175,15 +203,18 @@ export class _CardDetails extends Component {
   render() {
     const { card, onCloseModal, stack } = this.props;
     const { checklists } = this.state.card;
+    console.log(checklists);
     const labels = this.state.card.labels;
-    // const { boardUsers } = this.state;
     const cardMembers = this.state.card.members;
     console.log('card is:', card);
     return (
       <>
         <div className="modal-bg" onClick={(ev) => onCloseModal(ev)}></div>
         <main>
-          <section onClick={this.onClosePopUps} className="card-details-container">
+          <section
+            onClick={this.onClosePopUps}
+            className="card-details-container"
+          >
             <div
               className="card-details-cover"
               style={{ background: `${this.state.card.coverColor}` }}
@@ -191,15 +222,28 @@ export class _CardDetails extends Component {
             <div className="card-details-body">
               <div className="card-details-top">
                 <h2 className="card-details-title">{card.title}</h2>
-                <p className="card-details-list">in list <span className="list-fake-link">{stack.title}</span></p>
+                <p className="card-details-list">
+                  in list <span className="list-fake-link">{stack.title}</span>
+                </p>
               </div>
               <div className="details-list-container flex">
                 <div className="column-container flex column">
                   {/* CARD LABELS */}
-                  {labels.length !== 0 && (<CardLabels className="labels-txt" labels={labels} />)}
-                  {cardMembers.length !== 0 && <MembersAvatar users={cardMembers} />}
+                  {labels.length !== 0 && (
+                    <CardLabels className="labels-txt" labels={labels} />
+                  )}
+                  {cardMembers.length !== 0 && (
+                    <MembersAvatar users={cardMembers} />
+                  )}
                   <CardDescription card={card} />
-                  {checklists.length !== 0 && (<CardChecklist onRemove={this.deleteChecklist} checklists={checklists} />)}
+                  {checklists.length !== 0 && (
+                    <CardChecklist
+                      onAddTodo={this.onAddTodo}
+                      onRemoveTodo={this.onRemoveTodo}
+                      onRemove={this.deleteChecklist}
+                      checklists={checklists}
+                    />
+                  )}
                   <CardActivity card={card} onCommentAdd={this.addComment} />
                 </div>
                 <div className="sidebar-container">
@@ -225,7 +269,7 @@ export class _CardDetails extends Component {
 const mapStateToProps = (state) => {
   return {
     selectedBoard: state.boardModule.selectedBoard,
-    users: state.userModule.users
+    users: state.userModule.users,
   };
 };
 

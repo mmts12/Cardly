@@ -18,7 +18,6 @@
         flex-direction: column;
         margin-top: 8px;
         margin-left: 26px;
-        // line-height: 20px;
     }
 
     .card-act-title {
@@ -69,42 +68,49 @@
 
     .card-activity-container {
         position: relative;
-        // width: 400px;
-        // height: 30px;
-        // margin: 8px;
         outline: none;
-        background-color: #fff;
         border-radius: 3px;
-        box-shadow: 0 1px 2px -1px rgba(9,30,66,.25), 0 0 0 1px rgba(9,30,66,.08);
         clear: both;
-     
-        margin: 4px 2px 4px 0;
+        margin: 5px 2px 5px 0;
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
+        &:hover{
+            background-color: rgba(9, 30, 66, 0.08);
+            cursor: pointer;
+        }
+        .card-activity-row{
+            .card-details-activity-textarea {
+                width: 400px;
+                margin: 0;
+                resize: none;
+                border: 0;
+                outline: none;
+                // padding: 8px 12px;
+                font-size: 14px;
+                min-height: 32px;
+                background-color: transparent;
+                padding-left: 12px;
+            }
+        
+            .card-details-activity-textarea:focus {
+                width: 400px;
+                height: 70px;
+                outline: none;
+            }
+            .card-activity-date{
+                margin: 0;
+                outline: none;
+                font-size: 14px;
+                padding-left: 12px;
+            }
+        }
     }
     .activity-bar {
         position: relative;
         margin: 10px;
     }
-    .card-details-activity-textarea {
-        width: 400px;
-        margin: 0;
-        resize: none;
-        border: 0;
-        outline: none;
-        padding: 8px 12px;
-        font-size: 14px;
-        min-height: 32px;
-        
-      
-    }
-
-    .card-details-activity-textarea:focus {
-        width: 400px;
-        height: 70px;
-        outline: none;
-    }
+ 
     .activity-bar-icons {
         position: relative;
         top: 5px;
