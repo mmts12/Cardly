@@ -46,6 +46,7 @@ export class CardChecklist extends Component {
         {checklists.map((checklist) => {
           return (
             <ChecklistPreview
+              key={checklist.id}
               checklist={checklist}
               onRemoveTodo={this.props.onRemoveTodo}
               handleInput={this.handleInput}

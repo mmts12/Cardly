@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { StackList } from './../cmps/StackList';
-import { setSelectedBoard } from '../store/actions/boardActions';
+import { setSelectedBoard, updateBoard } from '../store/actions/boardActions';
 import { addStack } from '../store/actions/stackActions';
 import { connect } from 'react-redux';
 import { AddStack } from '../cmps/AddStack';
 import { StatusBar } from '../cmps/StatusBar';
 import AddIcon from '@material-ui/icons/Add';
+import { socketService } from '../services/misc/socketService';
 
 export class _Board extends Component {
   state = {
@@ -13,16 +14,21 @@ export class _Board extends Component {
   };
 
   componentDidMount() {
+
     this.loadBoard();
+    socketService.setup();//on the road
+    socketService.emit('join board', this.props.match.params.id);//notify server i joined the lane
+    socketService.on('update board', this.handleUpdateBoard)// let me know on every change
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   const x = JSON.stringify(prevProps.boards);
-  //   const y = JSON.stringify(this.props.boards);
-  //   if (x !== y) {
-  //     this.loadBoard();
-  //   }
-  // }
+
+  componentWillUnmount() {
+    socketService.terminate()
+  }
+
+  handleUpdateBoard = (board) => {
+    this.props.updateBoard(board)//call action 
+  }
 
   async loadBoard() {
     const boardId = this.props.match.params.id;
@@ -98,6 +104,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   setSelectedBoard,
   addStack,
+  updateBoard
 };
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board);

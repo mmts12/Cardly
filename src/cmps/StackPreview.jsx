@@ -4,17 +4,33 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
 import { removeStack, saveStack } from '../store/actions/stackActions.js';
 import { addCard } from '../store/actions/cardActions';
-import { setSelectedBoard } from '../store/actions/boardActions';
+import { updateBoard, setSelectedBoard } from '../store/actions/boardActions';
 import { EditStack } from './EditStack.jsx';
 import AddIcon from '@material-ui/icons/Add';
 import { AddCard } from './AddCard';
 import { boardService } from './../services/boardService';
+import { socketService } from '../services/misc/socketService'
+
 
 export class _StackPreview extends Component {
   state = {
     isEditShow: false,
     isAddShow: false,
   };
+  componentDidMount() {
+    // const savedMsgs = socketService.getMsgsFromStorage() || [];
+    //   this.setState({ msgs: savedMsgs });
+    // socketService.setup()
+    // socketService.on('board updateBoard', this.onEmitSocket)
+  }
+  componentWillUnmount() {
+
+  }
+
+
+  // onEmitSocket = () => {
+  //   console.log('RUMPUS')
+  // }
 
   onRemoveStack = () => {
     const { stack, selectedBoard, removeStack } = this.props;
@@ -69,15 +85,15 @@ export class _StackPreview extends Component {
               stack={stack}
             />
           ) : (
-            <div className="flex space-between align-center">
-              <h4 onClick={this.onEdit} className="stack-title-words">
-                {stack.title}
-              </h4>
-              <div onClick={this.onRemoveStack} className="flex">
-                <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
+              <div className="flex space-between align-center">
+                <h4 onClick={this.onEdit} className="stack-title-words">
+                  {stack.title}
+                </h4>
+                <div onClick={this.onRemoveStack} className="flex">
+                  <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
         <CardList stack={stack} cards={stack.cards} />
         {this.state.isAddShow ? (
@@ -86,18 +102,18 @@ export class _StackPreview extends Component {
             closeAddSection={this.onCloseAddSection}
           />
         ) : (
-          <div
-            onClick={this.onAddCard}
-            className="add-new-card flex align-center"
-          >
-            <div className="add-icon flex justify-center align-center">
-              <AddIcon></AddIcon>
-            </div>
-            <span className="add-text flex justify-center align-center">
-              Add Another Card
+            <div
+              onClick={this.onAddCard}
+              className="add-new-card flex align-center"
+            >
+              <div className="add-icon flex justify-center align-center">
+                <AddIcon></AddIcon>
+              </div>
+              <span className="add-text flex justify-center align-center">
+                Add Another Card
             </span>
-          </div>
-        )}
+            </div>
+          )}
       </div>
     );
   }
@@ -115,6 +131,7 @@ const mapDispatchToProps = {
   setSelectedBoard,
   saveStack,
   addCard,
+  updateBoard
 };
 
 export const StackPreview = connect(

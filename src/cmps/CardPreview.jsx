@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import { EditCard } from './EditCard';
 import { Draggable } from 'react-beautiful-dnd';
 import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/MembersAvatar.jsx';
+// import { socketService } from '../services/misc/socketService';
+// import { updateBoard } from '../store/actions/boardActions';
 
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -24,10 +26,14 @@ export class _CardPreview extends Component {
     const { card } = this.props
     this.setState({ card })
     this.setState(this.state.labels = this.props.card.labels)
+
   }
 
+
+
   onShowCardDetails = () => {
-    this.setState({ isCardDetailsSelected: true });
+    if (!this.state.isEditCardModalShow)
+      this.setState({ isCardDetailsSelected: true });
   };
 
   closeModal = (ev) => {
@@ -40,7 +46,8 @@ export class _CardPreview extends Component {
     this.props.removeCard(cardId, stack, selectedBoard);
   };
 
-  onEditCard = () => {
+  onEditCard = (ev) => {
+    ev.stopPropagation()
     this.setState({ isEditCardModalShow: true });
   };
 
@@ -72,30 +79,25 @@ export class _CardPreview extends Component {
               className="card-preview"
               {...provided.draggableProps}
               {...provided.dragHandleProps}
-              ref={provided.innerRef}
-            >
-              {coverColor !== '' && (
-                <div
-                  className="card-preview-color"
-                  style={{ background: `${coverColor}` }}
-                ></div>
-              )}
+              ref={provided.innerRef} >
+              { card.imgUrl ?
+                // {coverColor !== '' && (
+                <img src={card.imgUrl} alt="" /> :
+                <div className="card-preview-color" style={{ background: `${coverColor}` }}></div>
+                // )}
+              }
               {labels.length !== 0 && <CardLabels labels={labels} />}
 
-              <div className="card-preview-line flex space-between">
+              <div onClick={this.onShowCardDetails} className="card-preview-line flex space-between">
                 {!isEditCardModalShow ? (
                   <div className="card-preview-icons flex space-between">
-                    <div onClick={this.onShowCardDetails}>{card.title}</div>
-                    {card.imgUrl && (
+                    <div>{card.title}</div>
+                    {/* {card.imgUrl && (
                       <div>
                         <img src={card.imgUrl} alt="" />
                       </div>
-                    )}
-                    {/* {onLoadImg && (
-                      <div className={classes.root}>
-                        <CircularProgress />
-                      </div>
                     )} */}
+
                     <div className="icons-container flex">
                       <div onClick={this.onEditCard}>
                         <span>
