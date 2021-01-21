@@ -18,7 +18,8 @@ export class _Header extends Component {
 
   render() {
     const { loggedInUser } = this.props;
-    const initials = loggedInUser.fullname.substring(0, 1) + loggedInUser.fullname.charAt(loggedInUser.fullname.indexOf(' ') + 1)
+    let initials = 'G' 
+    if (loggedInUser) { initials = loggedInUser.fullname.substring(0, 1) + loggedInUser.fullname.charAt(loggedInUser.fullname.indexOf(' ') + 1)}
     return (
       <div className="header-wrapper">
         <div className="header-left">
