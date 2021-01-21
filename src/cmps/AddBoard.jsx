@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addBoard } from '../store/actions/boardActions';
 import { utilService } from './../services/misc/utilService';
+import ClearIcon from '@material-ui/icons/Clear';
 
 export class _AddBoard extends Component {
   state = {
@@ -37,50 +38,53 @@ export class _AddBoard extends Component {
 
   render() {
     const bgc = {
-      colors: ['#3f89e6', '#3fe6a8', '#f585ae', '#f59f85'],
+      colors: ['#2e6cb0', '#889BC0', '#A36890', '#F0EFBD'],
       imgsUrl: [
-        'https://res.cloudinary.com/dscb3040k/image/upload/v1611048026/Screenshot_2021-01-12_130444_ihywxs.png',
-        'https://res.cloudinary.com/dscb3040k/image/upload/v1610463893/WhatsApp_Image_2021-01-12_at_17.04.06_idr6gn.jpg',
+        'https://res.cloudinary.com/drak3llqt/image/upload/v1611243032/forest_bjdy6y.png',
+        'https://res.cloudinary.com/drak3llqt/image/upload/v1610553512/img1_uyzefw.jpg',
         'https://res.cloudinary.com/drak3llqt/image/upload/v1610553514/img4_ohr2cl.png',
         'https://res.cloudinary.com/drak3llqt/image/upload/v1610553508/img3_g44phk.png',
       ],
     };
     const { onCloseAddBoardSection } = this.props;
     return (
-      <section className="add-new-board">
-        <button onClick={onCloseAddBoardSection}>X</button>
-        <form>
-          <label htmlFor="">Title:</label>
-          <input
-            type="text"
-            name=""
-            onChange={this.handleInput}
-            id=""
-            value={this.state.board.title}
-          />
-        </form>
-        <div className=" grid">
-          {bgc.colors.map((color) => {
-            return (
-              <div
-                onClick={() => this.onSelectNewBoard(color)}
-                key={color}
-                className="bgc-add-board"
-                style={{ backgroundColor: color }}
-              ></div>
-            );
-          })}
-          {bgc.imgsUrl.map((img) => {
-            return (
-              <div
-                onClick={() => this.onSelectNewBoard(img)}
-                key={img}
-                className="add-new-board-img"
-              >
-                <img src={img} />
-              </div>
-            );
-          })}
+      <section className="add-board-background">
+        <div className="add-new-board">
+          <button className="clear-btn no-growth flex justify-center align-center" onClick={onCloseAddBoardSection}><ClearIcon></ClearIcon></button>
+          <form className="add-board-form flex align-center justify-center">
+            <label className="add-board-title">Title:</label>
+            <input
+              className="add-board-input"
+              type="text"
+              name=""
+              onChange={this.handleInput}
+              id=""
+              value={this.state.board.title}
+            />
+          </form>
+          <div className=" grid">
+            {bgc.colors.map((color) => {
+              return (
+                <div
+                  onClick={() => this.onSelectNewBoard(color)}
+                  key={color}
+                  className="bgc-add-board"
+                  style={{ backgroundColor: color }}
+                ></div>
+              );
+            })}
+            {bgc.imgsUrl.map((img) => {
+              return (
+                <div
+                  onClick={() => this.onSelectNewBoard(img)}
+                  key={img}
+                  className="add-new-board-img"
+                >
+                  <img src={img} />
+                </div>
+              );
+            })}
+          </div>
         </div>
         {/* <button>Add </button> */}
       </section>

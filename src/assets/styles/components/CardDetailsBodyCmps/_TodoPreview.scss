@@ -10,6 +10,9 @@
     overflow-wrap: break-word;
     min-height: 18px;
     font-family: "Roboto";
+    &:checked{
+        text-decoration: line-through;
+    }
     .todo-input{
         border-radius: 2px;
         height: 16px;
@@ -28,6 +31,7 @@
 
     .todo-txt{
         padding-left: 3px;
+        
     }
 
     .todo-delete-icon {

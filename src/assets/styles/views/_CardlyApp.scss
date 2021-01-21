@@ -1,16 +1,39 @@
-.app-wrapper{
- 
+.app-wrapper {
     height: 100vh;
 
-    & a{
+    & a {
         text-decoration: none;
     }
 
-    .app-header{
-        font-family: Ubuntu;
+    .app-header {
+        .boards-title {
+            font-family: Roboto-Bold;
+            font-size: 2.5rem;
+            color: $clr2;
+        }
     }
 
-    .template-wrapper{
+    .cardly-btn {
+        font-size: 1.1rem;
+        color: #0079bf;
+        height: 32px;
+        line-height: 32px;
+        text-decoration: none;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.3);
+        box-shadow: none;
+        border: 2px solid #0079bf;
+        display: flex;
+        font-weight: 700;
+        border-radius: 3px;
+        margin: 0.5rem;
+        padding: 0;
+        white-space: nowrap;
+        cursor: pointer;
+        padding: 1rem;
+    }
+
+    .template-wrapper {
         display: grid;
         grid-template-columns: 300px 300px 300px;
         gap: 1rem;
@@ -19,19 +42,19 @@
         padding: 0 1rem;
         margin: 0 auto;
 
-        .board-template{
+        .board-template {
             background-position: 50%;
             background-size: cover;
             position: relative;
             height: 12rem;
-            border-radius: .1875rem;
+            border-radius: 0.1875rem;
             cursor: pointer;
         }
-        .board-template-card{
+        .board-template-card {
             height: 100%;
-            border-radius: .1875rem;
-            background: linear-gradient(170deg,#202020,rgba(204,207,213,0) 45%);
-            .board-template-title{
+            border-radius: 0.1875rem;
+            background: linear-gradient(170deg, #202020, rgba(204, 207, 213, 0) 45%);
+            .board-template-title {
                 margin-block-start: 0;
                 margin-block-end: 0;
                 border: 0;
@@ -43,5 +66,4 @@
             }
         }
     }
-
 }

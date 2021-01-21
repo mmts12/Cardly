@@ -36,7 +36,7 @@ export class _CardlyApp extends Component {
     return (
       <section className="app-wrapper flex column justify-center align-center">
         <header className="app-header">
-          <h1>Boards</h1>
+          <h1 className="boards-title">Boards</h1>
         </header>
         <div className="template-wrapper">
           {boards.map((board) => {
@@ -50,10 +50,10 @@ export class _CardlyApp extends Component {
           })}
         </div>
         <div className="app-btn-container flex">
-          <button className="btn2">
+          <button className="cardly-btn">
             <span>Clone Board</span>
           </button>
-          <button className="btn2" onClick={this.onShowAddBoardSection}>
+          <button className="cardly-btn" onClick={this.onShowAddBoardSection}>
             <span>Add Board</span>
           </button>
           {isAddBoardShow && (
