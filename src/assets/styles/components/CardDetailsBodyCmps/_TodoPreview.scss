@@ -1,3 +1,6 @@
+.todo-done{
+    text-decoration: line-through;
+}
 .todo-row{
     cursor: pointer;
     // background: #ebecef;
@@ -10,9 +13,7 @@
     overflow-wrap: break-word;
     min-height: 18px;
     font-family: "Roboto";
-    &:checked{
-        text-decoration: line-through;
-    }
+
     .todo-input{
         border-radius: 2px;
         height: 16px;

@@ -24,7 +24,8 @@ export const boardService = {
     updateDragCard,
     updateDragCardToOtherList,
     addBoard,
-    removeBoard
+    removeBoard,
+    moveStack
 }
 
 
@@ -164,11 +165,14 @@ function updateDragCardToOtherList(result, stacks, selectedBoard) {
     return Promise.resolve(selectedBoardCopy)
 }
 
-// combine: null
-// destination: {droppableId: "g102", index: 3}
-// draggableId: "eW541"
-// mode: "FLUID"
-// reason: "DROP"
-// source: {index: 4, droppableId: "g101"}
-// type: "DEFAULT"
-
+function moveStack(result, stacks, selectedBoard) {
+    const { destination, source } = result;
+    const stacksCopy = [...stacks];
+    const selectedBoardCopy = { ...selectedBoard };
+    const stackRemoved = stacksCopy.splice(source.index, 1)[0];
+    stacksCopy.splice(destination.index, 0, stackRemoved)
+    selectedBoardCopy.stacks = stacksCopy
+    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
+        .then(res => res.data)
+    return Promise.resolve(selectedBoardCopy)
+}

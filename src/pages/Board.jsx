@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { AddStack } from '../cmps/AddStack';
 import { StatusBar } from '../cmps/StatusBar';
 import AddIcon from '@material-ui/icons/Add';
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { socketService } from '../services/misc/socketService';
 
 export class _Board extends Component {
@@ -14,21 +16,19 @@ export class _Board extends Component {
   };
 
   componentDidMount() {
-
     this.loadBoard();
-    socketService.setup();//on the road
-    socketService.emit('join board', this.props.match.params.id);//notify server i joined the lane
-    socketService.on('update board', this.handleUpdateBoard)// let me know on every change
+    socketService.setup(); //on the road
+    socketService.emit('join board', this.props.match.params.id); //notify server i joined the lane
+    socketService.on('update board', this.handleUpdateBoard); // let me know on every change
   }
 
-
   componentWillUnmount() {
-    socketService.terminate()
+    socketService.terminate();
   }
 
   handleUpdateBoard = (board) => {
-    this.props.updateBoard(board)//call action 
-  }
+    this.props.updateBoard(board); //call action
+  };
 
   async loadBoard() {
     const boardId = this.props.match.params.id;
@@ -51,9 +51,17 @@ export class _Board extends Component {
   };
 
   render() {
+    const classes = makeStyles((theme) => ({
+      root: {
+        display: 'flex',
+        '& > * + *': {
+          marginLeft: theme.spacing(2),
+        },
+      },
+    }));
     const { selectedBoard } = this.props;
     let style = { backgroundColor: 'white' };
-    if (!selectedBoard) return <h1>Loading...</h1>;
+    if (!selectedBoard) return <CircularProgress />;
     if (selectedBoard.style) {
       const bgc = selectedBoard.style.bgc;
       style = bgc.startsWith('#')
@@ -64,10 +72,8 @@ export class _Board extends Component {
     return (
       <section className="board-container" style={style}>
         <StatusBar />
+
         <div className="board-inner mt flex column  ">
-          {/* <span className="board-title flex align-center justify-center">
-            {boardTitle}
-          </span> */}
           <div className="stack-container flex ">
             {selectedBoard && <StackList board={selectedBoard} />}
             <div className="add-new-stack">
@@ -104,7 +110,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   setSelectedBoard,
   addStack,
-  updateBoard
+  updateBoard,
 };
 
 export const Board = connect(mapStateToProps, mapDispatchToProps)(_Board);

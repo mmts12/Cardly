@@ -9,7 +9,7 @@ import { CardLabels } from './cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx
 import { CardChecklist } from './cardDetailsCmps/cardDetailsBodyCmps/CardChecklist.jsx';
 import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/MembersAvatar.jsx';
 import { saveCard } from '../store/actions/cardActions.js';
-import { CardImg } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/CardImg.jsx'
+import { CardImg } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/CardImg.jsx';
 import { loadUsers } from '../store/actions/userActions.js';
 import { userService } from '../services/userService';
 import CloseIcon from '@material-ui/icons/Close';
@@ -101,8 +101,6 @@ export class _CardDetails extends Component {
         this.props.selectedBoard
       );
     });
-
-
   };
 
   setCardColor = (color) => {
@@ -151,7 +149,7 @@ export class _CardDetails extends Component {
     this.setState({ card });
   };
 
-  onAddTodo = (checklist) => {
+  updateChecklist = (checklist) => {
     const { card } = this.state;
     const checklistsToAdd = card.checklists.map((currChecklist) =>
       currChecklist.id === checklist.id ? checklist : currChecklist
@@ -217,8 +215,12 @@ export class _CardDetails extends Component {
         <main>
           <section
             onClick={this.onClosePopUps}
-            className="card-details-container" >
-            <CloseIcon className="close-cd" onClick={(ev) => onCloseModal(ev)} />
+            className="card-details-container"
+          >
+            <CloseIcon
+              className="close-cd"
+              onClick={(ev) => onCloseModal(ev)}
+            />
             <div
               className="card-details-cover"
               style={{ background: `${this.state.card.coverColor}` }}
@@ -240,15 +242,16 @@ export class _CardDetails extends Component {
                     <MembersAvatar users={cardMembers} />
                   )}
                   <CardDescription card={card} />
+                  {card.imgUrl && <CardImg card={card} />}
                   {checklists.length !== 0 && (
                     <CardChecklist
-                      onAddTodo={this.onAddTodo}
+                      updateChecklist={this.updateChecklist}
                       onRemoveTodo={this.onRemoveTodo}
                       onRemove={this.deleteChecklist}
                       checklists={checklists}
                     />
                   )}
-                  {card.imgUrl && <CardImg card={card} />}
+
                   <CardActivity card={card} onCommentAdd={this.addComment} />
                 </div>
                 <div className="sidebar-container">
