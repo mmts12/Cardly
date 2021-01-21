@@ -4,18 +4,31 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
 import { removeStack, saveStack } from '../store/actions/stackActions.js';
 import { addCard } from '../store/actions/cardActions';
-import { setSelectedBoard } from '../store/actions/boardActions';
+import { updateBoard, setSelectedBoard } from '../store/actions/boardActions';
 import { EditStack } from './EditStack.jsx';
 import AddIcon from '@material-ui/icons/Add';
 import { AddCard } from './AddCard';
 // import { boardService } from './../services/boardService';
 import { Draggable } from 'react-beautiful-dnd';
+import { boardService } from './../services/boardService';
+import { socketService } from '../services/misc/socketService';
 
 export class _StackPreview extends Component {
   state = {
     isEditShow: false,
     isAddShow: false,
   };
+  componentDidMount() {
+    // const savedMsgs = socketService.getMsgsFromStorage() || [];
+    //   this.setState({ msgs: savedMsgs });
+    // socketService.setup()
+    // socketService.on('board updateBoard', this.onEmitSocket)
+  }
+  componentWillUnmount() {}
+
+  // onEmitSocket = () => {
+  //   console.log('RUMPUS')
+  // }
 
   onRemoveStack = () => {
     const { stack, selectedBoard, removeStack } = this.props;
@@ -125,6 +138,7 @@ const mapDispatchToProps = {
   setSelectedBoard,
   saveStack,
   addCard,
+  updateBoard,
 };
 
 export const StackPreview = connect(

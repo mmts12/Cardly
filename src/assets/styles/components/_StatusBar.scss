@@ -2,4 +2,14 @@
     background-color: rgba(17, 17, 28, 0.09);
     margin-top: 40px;
     height: 40px;
+    position: fixed;
+    width: 100%;
+    padding: 8px;
+    .diff-bgc{
+        background-color: rgba(0,0,0,.11);
+        &:hover{
+            background-color: rgba(0,0,0,.2);
+        }
+    }
+    // background: hsla(0,0%,100%,.24);
 }

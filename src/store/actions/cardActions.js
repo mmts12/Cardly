@@ -1,9 +1,12 @@
 import { boardService } from './../../services/boardService';
+import { socketService } from '../../services/misc/socketService.js'
+
 
 export function addCard(cardToAdd, stack, selectedBoard) {
     return (dispatch) => {
         return boardService.addCard(cardToAdd, stack, selectedBoard)
             .then((board) => {
+                socketService.emit('update board', board)
                 const action = {
                     type: 'UPDATE_BOARD',
                     board,
@@ -18,6 +21,7 @@ export function removeCard(cardId, stack, selectedBoard) {
     return (dispatch) => {
         return boardService.removeCard(cardId, stack, selectedBoard)
             .then((board) => {
+                socketService.emit('update board', board)
                 console.log(board)
                 const action = {
                     type: 'UPDATE_BOARD',
@@ -33,6 +37,7 @@ export function saveCard(card, stack, selectedBoard) {
     return (dispatch) => {
         return boardService.saveCard(card, stack, selectedBoard)
             .then((board) => {
+                socketService.emit('update board', board)
                 const action = {
                     type: 'UPDATE_BOARD',
                     board,
@@ -46,6 +51,7 @@ export function updateDragCard(result, stacks, selectedBoard) {
     return (dispatch) => {
         return boardService.updateDragCard(result, stacks, selectedBoard)
             .then((board) => {
+                socketService.emit('update board', board)
                 const action = {
                     type: 'UPDATE_BOARD',
                     board,
@@ -59,6 +65,7 @@ export function updateDragCardToOtherList(result, stacks, selectedBoard) {
     return (dispatch) => {
         return boardService.updateDragCardToOtherList(result, stacks, selectedBoard)
             .then((board) => {
+                socketService.emit('update board', board)
                 const action = {
                     type: 'UPDATE_BOARD',
                     board,

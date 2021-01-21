@@ -11,6 +11,7 @@ export function TodoPreview({
     <div key={todo.id} className="todo-row flex space-between">
       <div>
         <input
+          className="todo-input"
           checked={todo.isDone ? 'checked' : ''}
           onChange={() => handleCheckboxTodo(todo.id, checklist)}
           type="checkbox"
