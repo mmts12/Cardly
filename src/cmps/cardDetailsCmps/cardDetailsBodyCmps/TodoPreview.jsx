@@ -5,7 +5,7 @@ export function TodoPreview({ todo, onRemoveTodo, checklist }) {
   return (
     <div key={todo.id} className="todo-row flex space-between">
       <div>
-        <input type="checkbox"></input>
+        <input className="todo-input" type="checkbox"></input>
         <span className="todo-txt">{todo.txt}</span>
       </div>
       <DeleteIcon

@@ -7,6 +7,9 @@
     margin-right: 0;
     border-radius: 3px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    color: $clr2
+    color: $clr2;
+    .stack-drop{
+        min-height: 40px;
+    }
     
 }

@@ -9,7 +9,7 @@ export class CardList extends Component {
     return (
       <Droppable droppableId={stack.id}>
         {(provided) => (
-          <div ref={provided.innerRef} {...provided.droppableProps}>
+          <div className="stack-drop" ref={provided.innerRef} {...provided.droppableProps}>
             {cards.map((card, index) => {
               return (
                 <CardPreview

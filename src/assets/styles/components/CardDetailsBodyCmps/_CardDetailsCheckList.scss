@@ -1,5 +1,6 @@
 .checklist {
     .checklist-add {
+        color: #172b4d;
         font-size: 14px;
         height: 2rem;
         line-height: 20px;
@@ -17,7 +18,7 @@
         transition-property: background-color, border-color, box-shadow;
         transition-duration: 85ms;
         transition-timing-function: ease;
-        margin-left: 20px;
+        margin-left: 30px;
         &:hover{
             background-color: rgba(9,30,66,.08);
             box-shadow: none;
@@ -65,30 +66,3 @@
     }
 }
 
-.todo-row {
-    cursor: pointer;
-    // background: #ebecef;
-    margin: 5px;
-    padding: 5px 5px 0 0;
-    margin-left: 0;
-    // padding-left: 0;
-    border-radius: 3px;
-    font-size: 16px;
-    overflow-wrap: break-word;
-    min-height: 18px;
-    font-family: "Roboto";
-    .todo-txt{
-        padding-left: 3px;
-    }
-
-    .todo-delete-icon {
-        opacity: 0;
-        color: gray;
-        font-size: 1rem;
-    }
-    &:hover {
-        .todo-delete-icon {
-            opacity: 1;
-        }
-    }
-}

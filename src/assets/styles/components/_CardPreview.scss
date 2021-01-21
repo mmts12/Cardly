@@ -1,7 +1,7 @@
 .card-preview {
     cursor: pointer;
     background: white;
-    margin: 5px;
+    margin: 8px;
     // padding: 10px;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.12);
@@ -14,7 +14,7 @@
     .card-preview-icons {
         width: 100%;
         padding: 7px;
-        flex-direction: column;
+        // flex-direction: column;
     }
     .card-preview-edit-icon {
         opacity: 0;
