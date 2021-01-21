@@ -8,9 +8,13 @@ export class ChecklistPreview extends Component {
   state = { isAddItemShow: false };
 
   componentDidMount() {
-    eventBus.on('closeAddSection', (data) =>
+    this.unsubscribeFromEventBus = eventBus.on('closeAddSection', (data) =>
       this.setState({ isAddItemShow: false })
     );
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromEventBus();
   }
 
   toggleAddItem() {
@@ -58,7 +62,9 @@ export class ChecklistPreview extends Component {
               </button>
             </div>
           </div>
-          <LinearProgressWithLabel value={this.calcTodosForPrograss()} />
+          {checklist.todos.length !== 0 && (
+            <LinearProgressWithLabel value={this.calcTodosForPrograss()} />
+          )}
           {checklist.todos.map((todo) => {
             return (
               <TodoPreview
