@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { AddStack } from '../cmps/AddStack';
 import { StatusBar } from '../cmps/StatusBar';
 import AddIcon from '@material-ui/icons/Add';
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export class _Board extends Component {
   state = {
@@ -45,9 +47,17 @@ export class _Board extends Component {
   };
 
   render() {
+    const classes = makeStyles((theme) => ({
+      root: {
+        display: 'flex',
+        '& > * + *': {
+          marginLeft: theme.spacing(2),
+        },
+      },
+    }));
     const { selectedBoard } = this.props;
     let style = { backgroundColor: 'white' };
-    if (!selectedBoard) return <h1>Loading...</h1>;
+    if (!selectedBoard) return <CircularProgress />;
     if (selectedBoard.style) {
       const bgc = selectedBoard.style.bgc;
       style = bgc.startsWith('#')
@@ -58,10 +68,8 @@ export class _Board extends Component {
     return (
       <section className="board-container" style={style}>
         <StatusBar />
+
         <div className="board-inner mt flex column  ">
-          {/* <span className="board-title flex align-center justify-center">
-            {boardTitle}
-          </span> */}
           <div className="stack-container flex ">
             {selectedBoard && <StackList board={selectedBoard} />}
             <div className="add-new-stack">

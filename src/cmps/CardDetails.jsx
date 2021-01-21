@@ -147,7 +147,7 @@ export class _CardDetails extends Component {
     this.setState({ card });
   };
 
-  onAddTodo = (checklist) => {
+  updateChecklist = (checklist) => {
     const { card } = this.state;
     const checklistsToAdd = card.checklists.map((currChecklist) =>
       currChecklist.id === checklist.id ? checklist : currChecklist
@@ -236,7 +236,7 @@ export class _CardDetails extends Component {
                   <CardDescription card={card} />
                   {checklists.length !== 0 && (
                     <CardChecklist
-                      onAddTodo={this.onAddTodo}
+                      updateChecklist={this.updateChecklist}
                       onRemoveTodo={this.onRemoveTodo}
                       onRemove={this.deleteChecklist}
                       checklists={checklists}
