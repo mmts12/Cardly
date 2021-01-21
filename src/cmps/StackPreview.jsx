@@ -8,9 +8,10 @@ import { updateBoard, setSelectedBoard } from '../store/actions/boardActions';
 import { EditStack } from './EditStack.jsx';
 import AddIcon from '@material-ui/icons/Add';
 import { AddCard } from './AddCard';
+// import { boardService } from './../services/boardService';
+import { Draggable } from 'react-beautiful-dnd';
 import { boardService } from './../services/boardService';
-import { socketService } from '../services/misc/socketService'
-
+import { socketService } from '../services/misc/socketService';
 
 export class _StackPreview extends Component {
   state = {
@@ -23,10 +24,7 @@ export class _StackPreview extends Component {
     // socketService.setup()
     // socketService.on('board updateBoard', this.onEmitSocket)
   }
-  componentWillUnmount() {
-
-  }
-
+  componentWillUnmount() {}
 
   // onEmitSocket = () => {
   //   console.log('RUMPUS')
@@ -76,45 +74,54 @@ export class _StackPreview extends Component {
   render() {
     const { stack } = this.props;
     return (
-      <div className="stack-preview-card card-list">
-        <div className="stack-title flex">
-          {this.state.isEditShow ? (
-            <EditStack
-              className="stack-preview-edit flex"
-              saveStack={this.onSaveStack}
-              stack={stack}
-            />
-          ) : (
-              <div className="flex space-between align-center">
-                <h4 onClick={this.onEdit} className="stack-title-words">
-                  {stack.title}
-                </h4>
-                <div onClick={this.onRemoveStack} className="flex">
-                  <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
+      <Draggable draggableId={stack.id} index={this.props.index}>
+        {(provided) => (
+          <div
+            {...provided.draggableProps}
+            ref={provided.innerRef}
+            {...provided.dragHandleProps}
+            className="stack-preview-card card-list"
+          >
+            <div className="stack-title flex">
+              {this.state.isEditShow ? (
+                <EditStack
+                  className="stack-preview-edit flex"
+                  saveStack={this.onSaveStack}
+                  stack={stack}
+                />
+              ) : (
+                <div className="flex space-between align-center">
+                  <h4 onClick={this.onEdit} className="stack-title-words">
+                    {stack.title}
+                  </h4>
+                  <div onClick={this.onRemoveStack} className="flex">
+                    <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
+                  </div>
                 </div>
+              )}
+            </div>
+            <CardList stack={stack} cards={stack.cards} />
+            {this.state.isAddShow ? (
+              <AddCard
+                addNewCard={this.onAddNewCard}
+                closeAddSection={this.onCloseAddSection}
+              />
+            ) : (
+              <div
+                onClick={this.onAddCard}
+                className="add-new-card flex align-center"
+              >
+                <div className="add-icon flex justify-center align-center">
+                  <AddIcon></AddIcon>
+                </div>
+                <span className="add-text flex justify-center align-center">
+                  Add Another Card
+                </span>
               </div>
             )}
-        </div>
-        <CardList stack={stack} cards={stack.cards} />
-        {this.state.isAddShow ? (
-          <AddCard
-            addNewCard={this.onAddNewCard}
-            closeAddSection={this.onCloseAddSection}
-          />
-        ) : (
-            <div
-              onClick={this.onAddCard}
-              className="add-new-card flex align-center"
-            >
-              <div className="add-icon flex justify-center align-center">
-                <AddIcon></AddIcon>
-              </div>
-              <span className="add-text flex justify-center align-center">
-                Add Another Card
-            </span>
-            </div>
-          )}
-      </div>
+          </div>
+        )}
+      </Draggable>
     );
   }
 }
@@ -131,7 +138,7 @@ const mapDispatchToProps = {
   setSelectedBoard,
   saveStack,
   addCard,
-  updateBoard
+  updateBoard,
 };
 
 export const StackPreview = connect(

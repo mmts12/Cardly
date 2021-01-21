@@ -42,3 +42,20 @@ export function saveStack(stack, selectedBoard) {
     }
 }
 
+
+
+
+export function moveStack(result, stacks, selectedBoard) {
+    return async dispatch => {
+        try {
+            const board = await boardService.moveStack(result, stacks, selectedBoard)
+            dispatch({ type: 'UPDATE_BOARD', board })
+        }
+        catch (err) {
+            console.log('stackActions: err in updateBoard', err)
+        }
+    }
+}
+
+
+

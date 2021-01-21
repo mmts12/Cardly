@@ -1,7 +1,19 @@
 .home-page {
     background-color: white;
-    background-image: url(../../imgs/cubes.png);
     height: 100vh;
+    .home-container{
+        background-image: url(../../imgs/teamwork.svg);
+        background-repeat: no-repeat;
+        height: 92%;
+    width: 90%;
+    background-position-x: right;
+    background-position-y: bottom;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+
+    }
     .home-title {
         font-weight: 700;
         font-size: 5rem;
@@ -9,15 +21,28 @@
         color: $clr1;
         padding: 1rem;
         margin: 1rem;
+        // margin-left: 1rem;
     }
     .home-slogan {
         font-weight: 700;
         font-size: 3rem;
-        font-family: Caveat;
+        font-family: Pacifico;
+      
         padding: 1.5rem;
         margin-block-start: 0;
         margin-block-end: 0;
-        color: rgba(0, 0, 0, 0.65);
+        color: #333;
+        margin-left: -1rem;
+    }
+    .subtitle{
+        font-weight: 400;
+        font-size: 2.5rem;
+        font-family: Caveat;
+        padding: 0;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        color: #a4a2a5;
+        margin-left: 1rem;
     }
     .home-btn {
         font-family: Roboto;
@@ -31,6 +56,8 @@
         margin-top: 0.8rem;
         background-color: lightgrey;
         opacity: 0.75;
+        margin-left: 1rem;
+        margin-top: 4rem;
     }
 
     .home-footer {
