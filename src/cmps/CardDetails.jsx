@@ -9,8 +9,10 @@ import { CardLabels } from './cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx
 import { CardChecklist } from './cardDetailsCmps/cardDetailsBodyCmps/CardChecklist.jsx';
 import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/MembersAvatar.jsx';
 import { saveCard } from '../store/actions/cardActions.js';
+import { CardImg } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/CardImg.jsx'
 import { loadUsers } from '../store/actions/userActions.js';
 import { userService } from '../services/userService';
+import CloseIcon from '@material-ui/icons/Close';
 
 export class _CardDetails extends Component {
   state = {
@@ -73,7 +75,6 @@ export class _CardDetails extends Component {
     const { card } = this.state;
     let { comments } = card;
     // const { loggedUser } = this.state;
-
     const colorIndx = card.labels.findIndex(
       (labelColor) => labelColor === color
     );
@@ -92,13 +93,16 @@ export class _CardDetails extends Component {
       });
       card.labels.splice(colorIndx, 1);
     }
-    this.setState({ card, comments });
+    this.setState({ card, comments }, () => {
+      console.log('this.state.card is:', this.state.card);
+      this.props.saveCard(
+        this.state.card,
+        this.props.stack,
+        this.props.selectedBoard
+      );
+    });
 
-    this.props.saveCard(
-      this.state.card,
-      this.props.stack,
-      this.props.selectedBoard
-    );
+
   };
 
   setCardColor = (color) => {
@@ -186,7 +190,9 @@ export class _CardDetails extends Component {
       createdAt: Date.now(),
       txt: `${this.state.loggedUser.fullname} deleted checklist - ${checklistName}`,
     });
+
     this.setState({ card });
+    this.props.saveCard(card, this.props.stack, this.props.selectedBoard);
   };
 
   addComment = (comment) => {
@@ -211,8 +217,8 @@ export class _CardDetails extends Component {
         <main>
           <section
             onClick={this.onClosePopUps}
-            className="card-details-container"
-          >
+            className="card-details-container" >
+            <CloseIcon className="close-cd" onClick={(ev) => onCloseModal(ev)} />
             <div
               className="card-details-cover"
               style={{ background: `${this.state.card.coverColor}` }}
@@ -242,6 +248,7 @@ export class _CardDetails extends Component {
                       checklists={checklists}
                     />
                   )}
+                  {card.imgUrl && <CardImg card={card} />}
                   <CardActivity card={card} onCommentAdd={this.addComment} />
                 </div>
                 <div className="sidebar-container">

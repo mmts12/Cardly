@@ -33,6 +33,7 @@ export class ChecklistPreview extends Component {
           {checklist.todos.map((todo) => {
             return (
               <TodoPreview
+                key={todo.id}
                 todo={todo}
                 checklist={checklist}
                 onRemoveTodo={onRemoveTodo}
