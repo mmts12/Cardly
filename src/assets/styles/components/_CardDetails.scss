@@ -1,29 +1,53 @@
 .modal-bg {
-    overflow-y: initial !important;
+    // overflow-y: scroll;
+    // // overflow-y: initial !important;
+    // position: fixed;
+    // background-color: rgba(51, 51, 51, 0.3);
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // height: 100vh;
+    // width: 100vw;
+    // top: 0;
+    // right: 0;
+    min-height: 100vh;
+    z-index: 10;
     position: fixed;
-    background-color: rgba(51, 51, 51, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
     top: 0;
-    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.64);
+    align-items: flex-start;
+    height: 100%;
+    overflow-y: auto;
+    width: 100%;
 }
 
 .card-details-container {
-    background-color: #f4f5f7;
+    // background-color: #f4f5f7;
     width: 768px;
-    max-height: 80vh;
-    min-height: 55vh;
-    padding-top: 0;
-    position: fixed;
-    border-radius: 2px;
-    left: 50%;
-    top: 4rem;
-    transform: translate(-50%, 0);
-    z-index: 1;
-    overflow-y: scroll;
+    // max-height: 80vh;
+    // min-height: 55vh;
+    // padding-top: 0;
+    // position: fixed;
+    // border-radius: 2px;
+    // left: 50%;
+    // top: 4rem;
+    // transform: translate(-50%, 0);
+    // z-index: 1;
+    // overflow-y: scroll;
+    border-radius: 3px;
+    min-height: 85vh;
+    margin: 50px 0px 80px;
+    padding: 16px;
+    background-color: #f4f5f7;
+    // grid-template-columns: 580px 190px;
+    // grid-template-rows: 80px minmax(500px, auto);
+    overflow: hidden;
+    position: absolute;
+    // position: relative;
+    z-index: 25;
+    top: -50px;
+
 
     .card-details-cover:empty {
         height: 20px;
