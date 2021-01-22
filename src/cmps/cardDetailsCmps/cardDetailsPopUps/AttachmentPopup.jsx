@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import { cloudinaryService } from '../../../services/cloudinaryService.js';
 import { saveCard } from './../../../store/actions/cardActions';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
 import CircularProgress from '@material-ui/core/CircularProgress';
-=======
 import CloseIcon from '@material-ui/icons/Close';
-
->>>>>>> 839dfd50eac1b67fb6da335b125bb10a8f95d6de
 
 export class _AttachmentPopup extends Component {
   state = {
@@ -20,9 +16,9 @@ export class _AttachmentPopup extends Component {
   }
 
   togglePopUp = (ev) => {
-    const { name, onButtonClick } = this.props
-    onButtonClick(name)
-  }
+    const { name, onButtonClick } = this.props;
+    onButtonClick(name);
+  };
 
   upload = (ev) => {
     this.setState({ imageUpload: 'Uploading' });
@@ -63,7 +59,11 @@ export class _AttachmentPopup extends Component {
           <p className="attach-choice">One Drive</p>
           <hr></hr>
           <label className="attach-label">Attach a link</label>
-          <input autoFocus placeholder="Paste any link here" className="attach-input"></input>
+          <input
+            autoFocus
+            placeholder="Paste any link here"
+            className="attach-input"
+          ></input>
           <button className="pop-up-attach-btn">Attach</button>
         </div>
       </section>

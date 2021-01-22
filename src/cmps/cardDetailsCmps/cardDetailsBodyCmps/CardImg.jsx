@@ -1,7 +1,7 @@
 import React from 'react';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 
-export function CardImg({ card }) {
+export function CardImg({ card, onRemoveImage }) {
   return (
     <section>
       <div className="card-att-title flex">
