@@ -49,6 +49,7 @@ export function moveStack(result, stacks, selectedBoard) {
     return async dispatch => {
         try {
             const board = await boardService.moveStack(result, stacks, selectedBoard)
+            socketService.emit('update board', board)
             dispatch({ type: 'UPDATE_BOARD', board })
         }
         catch (err) {

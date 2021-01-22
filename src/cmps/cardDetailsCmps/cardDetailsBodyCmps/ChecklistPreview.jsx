@@ -62,9 +62,7 @@ export class ChecklistPreview extends Component {
               </button>
             </div>
           </div>
-          {checklist.todos.length !== 0 && (
-            <LinearProgressWithLabel value={this.calcTodosForPrograss()} />
-          )}
+          <LinearProgressWithLabel value={this.calcTodosForPrograss()} />
           {checklist.todos.map((todo) => {
             return (
               <TodoPreview

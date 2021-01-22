@@ -49,9 +49,14 @@
     top: -50px;
 
 
-    .card-details-cover:empty {
-        height: 20px;
+    .card-details-cover {
+        height: 40px;
+        text-align: end;
+        padding: 8px;
+       
     }
+
+    
 
     .card-details-body {
         // padding: 30px;
@@ -174,7 +179,3 @@
     width: 38px;
     height: 10px;
 }
-// .card-details-btn-desc:focus {
-//     background-color: #fff;
-//     height: 100px;
-// }

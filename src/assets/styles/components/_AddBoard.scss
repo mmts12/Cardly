@@ -1,7 +1,7 @@
-.add-board-background{
+.add-board-background {
     position: fixed;
     // background-color: rgba(51, 51, 51, 0.3);
-    background: rgba(0,0,0,.75);
+    background: rgba(0, 0, 0, 0.75);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,22 +25,22 @@
     .bgc-add-board {
         border-radius: 3px;
     }
-    .no-growth{
-        &:hover{
+
+    .no-growth {
+        &:hover {
             padding: 0;
             margin: 0;
         }
     }
-
     .add-board-form {
         padding: 15px 0;
-        .add-board-title{
+        .add-board-title {
             padding-right: 5px;
             font-size: 1.4rem;
             color: $clr2;
         }
-        .add-board-input{
-            background-color: #fff;           
+        .add-board-input {
+            background-color: #fff;
             display: block;
             margin: 0;
             outline: none;
@@ -51,6 +51,7 @@
         }
     }
 }
+
 .add-new-board-img {
     & > img {
         object-fit: cover;

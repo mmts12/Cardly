@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
+import CloseIcon from '@material-ui/icons/Close';
+
+
 export class LabelsPopup extends Component {
 
     state = {
 
     }
-
+    togglePopUp = (ev) => {
+        const { name, onButtonClick } = this.props
+        onButtonClick(name)
+    }
 
     render() {
         return (
             <section>
                 <div className="pop-up-labels">
+                    <CloseIcon
+                        className="close-pop-up-btn"
+                        onClick={(ev) => this.togglePopUp(ev)}
+                    />
                     <p className="pop-up-header">Labels</p>
                     <hr></hr>
                     <input autoFocus placeholder="Search labels..." className="label-input"></input>

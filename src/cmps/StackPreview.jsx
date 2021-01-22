@@ -18,13 +18,13 @@ export class _StackPreview extends Component {
     isEditShow: false,
     isAddShow: false,
   };
-  componentDidMount() {
-    // const savedMsgs = socketService.getMsgsFromStorage() || [];
-    //   this.setState({ msgs: savedMsgs });
-    // socketService.setup()
-    // socketService.on('board updateBoard', this.onEmitSocket)
-  }
-  componentWillUnmount() {}
+  // componentDidMount() {
+  // const savedMsgs = socketService.getMsgsFromStorage() || [];
+  //   this.setState({ msgs: savedMsgs });
+  // socketService.setup()
+  // socketService.on('board updateBoard', this.onEmitSocket)
+  // }
+  // componentWillUnmount() {}
 
   // onEmitSocket = () => {
   //   console.log('RUMPUS')

@@ -116,7 +116,6 @@ function removeCard(cardId, stack, selectedBoard) {
     const newStacks = selectedBoardCopy.stacks.map((stack) => (stack.id === stackCopy.id) ? stackCopy : stack)
     selectedBoardCopy.stacks = newStacks
     axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-        .then(res => res.data)
     return Promise.resolve(selectedBoardCopy)
 }
 
@@ -129,7 +128,6 @@ function saveCard(card, stack, selectedBoard) {
     const newStacks = selectedBoardCopy.stacks.map((stack) => (stack.id === stackCopy.id) ? stackCopy : stack)
     selectedBoardCopy.stacks = newStacks
     axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-        .then(res => res.data)
     return Promise.resolve(selectedBoardCopy)
 }
 
@@ -144,7 +142,6 @@ function updateDragCard(result, stacks, selectedBoard) {
     const stacksToUpdate = selectedBoardCopy.stacks.map((stack) => stack.id === selectedStack.id ? selectedStack : stack)
     selectedBoardCopy.stacks = stacksToUpdate
     axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-        .then(res => res.data)
     return Promise.resolve(selectedBoardCopy)
 }
 
@@ -161,7 +158,6 @@ function updateDragCardToOtherList(result, stacks, selectedBoard) {
     destinationStack.cards = cardsDestinationCopy
     destinationStack.cards.splice(result.destination.index, 0, cardRemoved)
     axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-        .then(res => res.data)
     return Promise.resolve(selectedBoardCopy)
 }
 
@@ -173,6 +169,5 @@ function moveStack(result, stacks, selectedBoard) {
     stacksCopy.splice(destination.index, 0, stackRemoved)
     selectedBoardCopy.stacks = stacksCopy
     axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-        .then(res => res.data)
     return Promise.resolve(selectedBoardCopy)
 }

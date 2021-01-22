@@ -17,7 +17,7 @@ export class AddStack extends Component {
   };
 
   onAdd = (ev, stack) => {
-    ev.preventDefault();
+    ev.stopPropagation();
     if (!stack.title) return;
     const { addNewStack } = this.props;
     addNewStack(stack);
@@ -28,8 +28,9 @@ export class AddStack extends Component {
     const { stack } = this.state;
     return (
       <section className="add-stack-modal flex column">
-        <div className="add-stack-input">
-          <form onSubmit={(ev) => this.onAdd(ev, stack)}>
+        <form onClick={(ev) => this.onAdd(ev, stack)}>
+          <div className="add-stack-input">
+            {/* <form onSubmit={(ev) => this.onAdd(ev, stack)}> */}
             <input
               onChange={this.handleInput}
               type="text"
@@ -38,16 +39,17 @@ export class AddStack extends Component {
               placeholder="Title ?"
               onBlur={this.props.onCloseAddSection}
             />
-          </form>
-        </div>
-        <div className="add-stack-container flex align-center">
-          <button className="save-btn" onClick={(ev) => this.onAdd(ev, stack)}>
-            Add List
+            {/* </form> */}
+          </div>
+          <div className="add-stack-container flex align-center">
+            <button className="save-btn" onClick={(ev) => this.onAdd(ev, stack)}>
+              Add List
           </button>
-          <button className="clear-btn" onClick={closeAddSection}>
-            <ClearIcon></ClearIcon>
-          </button>
-        </div>
+            <button className="clear-btn" onClick={closeAddSection}>
+              <ClearIcon></ClearIcon>
+            </button>
+          </div>
+        </form>
       </section>
     );
   }

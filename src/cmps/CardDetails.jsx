@@ -121,7 +121,6 @@ export class _CardDetails extends Component {
       });
       card.coverColor = color;
     }
-
     this.setState({ card, comments }, () => {
       this.props.saveCard(
         this.state.card,
@@ -177,6 +176,7 @@ export class _CardDetails extends Component {
 
   deleteChecklist = (checklistId) => {
     const { card } = this.state;
+    const { stack, selectedBoard } = this.props;
     let { comments } = card;
     const currChecklistIdx = card.checklists.findIndex(
       (cl) => cl.id === checklistId
@@ -190,7 +190,7 @@ export class _CardDetails extends Component {
     });
 
     this.setState({ card });
-    this.props.saveCard(card, this.props.stack, this.props.selectedBoard);
+    this.props.saveCard(card, stack, selectedBoard);
   };
 
   addComment = (comment) => {
@@ -202,6 +202,15 @@ export class _CardDetails extends Component {
       txt: `${this.state.loggedUser.fullname} added comment - ${comment}`,
     });
     this.setState({ card });
+  };
+
+  onRemoveImage = (card) => {
+    const { stack, selectedBoard } = this.props;
+    console.log('Remove IMG');
+    const copyCard = { ...card };
+    copyCard.imgUrl = '';
+    console.log(copyCard);
+    this.props.saveCard(copyCard, stack, selectedBoard);
   };
 
   render() {
@@ -217,14 +226,16 @@ export class _CardDetails extends Component {
             onClick={this.onClosePopUps}
             className="card-details-container"
           >
-            <CloseIcon
-              className="close-cd"
-              onClick={(ev) => onCloseModal(ev)}
-            />
             <div
               className="card-details-cover"
               style={{ background: `${this.state.card.coverColor}` }}
-            ></div>
+            >
+              <CloseIcon
+                className="close-cd"
+                onClick={(ev) => onCloseModal(ev)}
+              />
+            </div>
+
             <div className="card-details-body">
               <div className="card-details-top">
                 <h2 className="card-details-title">{card.title}</h2>
@@ -242,7 +253,9 @@ export class _CardDetails extends Component {
                     <MembersAvatar users={cardMembers} />
                   )}
                   <CardDescription card={card} />
-                  {card.imgUrl && <CardImg card={card} />}
+                  {card.imgUrl && (
+                    <CardImg onRemoveImage={this.onRemoveImage} card={card} />
+                  )}
                   {checklists.length !== 0 && (
                     <CardChecklist
                       updateChecklist={this.updateChecklist}
