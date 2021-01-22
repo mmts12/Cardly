@@ -13,7 +13,7 @@ export class _StackList extends Component {
   dragEnd = (result) => {
     const { selectedBoard, moveStack } = this.props;
     const { stacks } = this.props.selectedBoard;
-    const { destination, source, draggableId, type } = result;
+    const { destination, source, type } = result;
     if (!destination) return;
     if (
       destination.droppableId === source.droppableId &&
@@ -29,8 +29,7 @@ export class _StackList extends Component {
         this.props.updateDragCardToOtherList(result, stacks, selectedBoard);
       }
     } else {
-      console.log('stack moved');
-      this.props.moveStack(result, stacks, selectedBoard);
+      moveStack(result, stacks, selectedBoard);
     }
   };
 

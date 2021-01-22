@@ -30,7 +30,7 @@ export class _Board extends Component {
     this.props.updateBoard(board); //call action
   };
 
-  async loadBoard() {
+  loadBoard() {
     const boardId = this.props.match.params.id;
     this.props.setSelectedBoard(boardId);
   }
@@ -51,14 +51,14 @@ export class _Board extends Component {
   };
 
   render() {
-    const classes = makeStyles((theme) => ({
-      root: {
-        display: 'flex',
-        '& > * + *': {
-          marginLeft: theme.spacing(2),
-        },
-      },
-    }));
+    // const classes = makeStyles((theme) => ({
+    //   root: {
+    //     display: 'flex',
+    //     '& > * + *': {
+    //       marginLeft: theme.spacing(2),
+    //     },
+    //   },
+    // }));
     const { selectedBoard } = this.props;
     let style = { backgroundColor: 'white' };
     if (!selectedBoard) return <CircularProgress />;
@@ -68,7 +68,7 @@ export class _Board extends Component {
         ? { backgroundColor: bgc }
         : { backgroundImage: `url(${bgc})` };
     }
-    const boardTitle = selectedBoard ? selectedBoard.title : '';
+    // const boardTitle = selectedBoard ? selectedBoard.title : '';
     return (
       <section className="board-container" style={style}>
         <StatusBar />

@@ -1,4 +1,5 @@
 import { boardService } from '../../services/boardService';
+import { socketService } from './../../services/misc/socketService';
 
 
 export function addBoard(board) {
@@ -43,6 +44,7 @@ export function setSelectedBoard(boardId) {
     return async dispatch => {
         try {
             const board = await boardService.getBoardById(boardId)
+            socketService.emit('update board', board)
             dispatch({ type: 'SET_BOARD', board })
         }
         catch (err) {
