@@ -68,7 +68,7 @@ export class _AddBoard extends Component {
                 <div
                   onClick={() => this.onSelectNewBoard(color)}
                   key={color}
-                  className="bgc-add-board"
+                  className="bgc-add-board pointer"
                   style={{ backgroundColor: color }}
                 ></div>
               );
@@ -78,7 +78,7 @@ export class _AddBoard extends Component {
                 <div
                   onClick={() => this.onSelectNewBoard(img)}
                   key={img}
-                  className="add-new-board-img"
+                  className="add-new-board-img pointer"
                 >
                   <img src={img} />
                 </div>
