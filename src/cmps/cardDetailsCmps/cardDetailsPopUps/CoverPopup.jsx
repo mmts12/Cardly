@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
+import CloseIcon from '@material-ui/icons/Close';
+
 
 export class CoverPopup extends Component {
+    togglePopUp = (ev) => {
+        const { name, onButtonClick } = this.props
+        onButtonClick(name)
+    }
 
     render() {
         return (
             <section>
                 <div className="pop-up-cover">
+                    <CloseIcon
+                        className="close-pop-up-btn"
+                        onClick={(ev) => this.togglePopUp(ev)}
+                    />
                     <p className="pop-up-header">Cover</p>
                     <hr></hr>
                     <label className="color-title">COLORS</label>

@@ -11,17 +11,10 @@ export class CardDescription extends Component {
         this.setState({ card: this.props.card })
     }
 
-
     handleInput = (ev) => {
         const { card } = this.state
         card.desc = ev.target.value
         this.setState({ card })
-
-    }
-
-    onSaveCardDesc = () => {
-        //
-
     }
 
     render() {
@@ -34,6 +27,7 @@ export class CardDescription extends Component {
                 </div>
                 <div className="card-desc-textarea">
                     <textarea className="cd-textarea" placeholder='Add a more detailed description...' value={card.desc} rows="4" cols="50" onChange={this.handleInput}></textarea>
+                    <button className="save-btn" >Save</button>
                 </div >
             </section >
 

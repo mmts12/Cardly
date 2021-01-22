@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { cloudinaryService } from '../../../services/cloudinaryService.js';
 import { saveCard } from './../../../store/actions/cardActions';
 import { connect } from 'react-redux';
+import CloseIcon from '@material-ui/icons/Close';
+
 
 export class _AttachmentPopup extends Component {
   state = {
@@ -10,6 +12,11 @@ export class _AttachmentPopup extends Component {
   componentDidMount() {
     const { card } = this.props;
     this.setState({ card });
+  }
+
+  togglePopUp = (ev) => {
+    const { name, onButtonClick } = this.props
+    onButtonClick(name)
   }
 
   upload = (ev) => {
@@ -27,6 +34,10 @@ export class _AttachmentPopup extends Component {
     return (
       <section>
         <div className="pop-up-attachments">
+          <CloseIcon
+            className="close-pop-up-btn"
+            onClick={(ev) => this.togglePopUp(ev)}
+          />
           <p className="pop-up-header"> Attach From...</p>
           <hr></hr>
           <p className="attach-choice">
@@ -45,7 +56,7 @@ export class _AttachmentPopup extends Component {
           <p className="attach-choice">One Drive</p>
           <hr></hr>
           <label className="attach-label">Attach a link</label>
-          <input autoFocus placeholder="Paster any link here" className="attach-input"></input>
+          <input autoFocus placeholder="Paste any link here" className="attach-input"></input>
           <button className="pop-up-attach-btn">Attach</button>
         </div>
       </section>

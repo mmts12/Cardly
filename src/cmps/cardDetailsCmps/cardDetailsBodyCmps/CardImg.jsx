@@ -11,8 +11,8 @@ export function CardImg({ card }) {
             <div className="flex">
                 <img className="cd-img" src={card.imgUrl} alt="" />
                 <div className="flex column">
-                    <p>{card.imgUrl}</p>
-                    <button>Delete</button>
+                    <p className="img-name">{card.imgUrl}</p>
+                    <button className="attachment-del-btn">Delete</button>
                 </div>
             </div>
         </section>
