@@ -37,6 +37,7 @@ export class _CardPreview extends Component {
   };
 
   closeModal = (ev) => {
+    // ev.preventDefault();
     ev.stopPropagation();
     this.setState({ isCardDetailsSelected: false });
   };

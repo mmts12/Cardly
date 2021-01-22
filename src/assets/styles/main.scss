@@ -1,43 +1,43 @@
 //Setup
-@import "./setup/typography.scss";
-@import "./setup/variables.scss";
-@import "./setup/_mixins.scss";
+@import "./setup/typography";
+@import "./setup/variables";
+@import "./setup/mixins";
 
 //Basics
-@import "./basics/base.scss";
-@import "./basics/helpers.scss";
-@import "./basics/buttons.scss";
+@import "./basics/base";
+@import "./basics/helpers";
+@import "./basics/buttons";
 
 //Components
-@import "./components/Header.scss";
-@import "./components/BoardPreview.scss";
-@import "./components/StackList.scss";
-@import "./components/StackPreview.scss";
-@import "./components/StatusBar.scss";
-@import "./components/CardDetails.scss";
-@import "./components/CardList.scss";
-@import "./components/CardPreview.scss";
-@import "./components/cardDetailsBodyCmps/_CardDetailsSideBar.scss";
-@import "./components/cardDetailsBodyCmps/_CardDetailsChecklist.scss";
-@import "./components/CardDetailsBodyCmps/_CardActivity.scss";
-@import "./components/CardDetailsBodyCmps/_CardDescription.scss";
-@import "./components/CardDetailsBodyCmps/_MembersAvatar.scss";
-@import "./components/CardDetailsBodyCmps/_TodoPreview.scss";
-@import "./components/cardDetailsPopups/_MembersPopup.scss";
-@import "./components/cardDetailsPopups/_LabelsPopup.scss";
-@import "./components/cardDetailsPopups/_DueDatePopup.scss";
-@import "./components/cardDetailsPopups/_CoverPopup.scss";
-@import "./components/cardDetailsPopups/_CheckListPopup.scss";
-@import "./components/cardDetailsPopups/_AttachmentPopup.scss";
-@import "./components/AddCard.scss";
-@import "./components/AddStack.scss";
-@import "./components/AddBoard.scss";
-@import "./components/CardDetailsBodyCmps/TodoPreview.scss";
-@import "./components/cardDetailsBodyCmps/_CardImg.scss";
+@import "./components/Header";
+@import "./components/BoardPreview";
+@import "./components/StackList";
+@import "./components/StackPreview";
+@import "./components/StatusBar";
+@import "./components/CardDetails";
+@import "./components/CardList";
+@import "./components/CardPreview";
+@import "./components/cardDetailsBodyCmps/CardDetailsSideBar";
+@import "./components/cardDetailsBodyCmps/CardImg";
+@import "./components/cardDetailsBodyCmps/CardDetailsChecklist";
+@import "./components/CardDetailsBodyCmps/CardActivity";
+@import "./components/CardDetailsBodyCmps/CardDescription";
+@import "./components/CardDetailsBodyCmps/MembersAvatar";
+@import "./components/CardDetailsBodyCmps/TodoPreview";
+@import "./components/cardDetailsPopups/MembersPopup";
+@import "./components/cardDetailsPopups/LabelsPopup";
+@import "./components/cardDetailsPopups/DueDatePopup";
+@import "./components/cardDetailsPopups/CoverPopup";
+@import "./components/cardDetailsPopups/CheckListPopup";
+@import "./components/cardDetailsPopups/AttachmentPopup";
+@import "./components/AddCard";
+@import "./components/AddStack";
+@import "./components/AddBoard";
+@import "./components/CardDetailsBodyCmps/TodoPreview";
 
 //Views
-@import "./views/CardlyApp.scss";
-@import "./views/Home.scss";
-@import "./components/BoardPreview.scss";
-@import "./views/Board.scss";
-@import "./views/_Login.scss";
+@import "./views/CardlyApp";
+@import "./views/Home";
+@import "./components/BoardPreview";
+@import "./views/Board";
+@import "./views/Login";
