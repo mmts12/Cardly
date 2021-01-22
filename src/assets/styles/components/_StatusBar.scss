@@ -5,11 +5,26 @@
     position: fixed;
     width: 100%;
     padding: 8px;
+    .status-board-title{
+        font-family: 'Roboto-Bold';
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 32px;
+        padding: 0px 5px;
+    }
     .diff-bgc{
         background-color: rgba(0,0,0,.11);
         &:hover{
             background-color: rgba(0,0,0,.2);
         }
+    }
+
+    @include for-mobile-layout{
+        position: relative;
+        height: auto;
+        padding: 8px 4px 4px 8px;
+        flex-wrap: wrap;
+        flex-direction: row;
     }
     // background: hsla(0,0%,100%,.24);
 }

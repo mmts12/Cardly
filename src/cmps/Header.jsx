@@ -44,7 +44,7 @@ export class _Header extends Component {
               <span className="header-icon-word">Boards</span>
             </button>
           </Link>
-          <form className="header-input flex">
+          {/* <form className="header-input flex">
             <label hidden>Search Bar</label>
             <input type="text" />
             <div className={this.searchClass} onClick={this.onOpenSearch}>
@@ -52,7 +52,7 @@ export class _Header extends Component {
                 <SearchIcon></SearchIcon>
               </div>
             </div>
-          </form>
+          </form> */}
         </div>
         <button className="logo-wrapper">
           <Link to="/">
@@ -60,20 +60,20 @@ export class _Header extends Component {
           </Link>
         </button>
         <div className="header-right">
-          <button className="btn1">
+          {/* <button className="btn1">
             <div className="btn1-span">
               <span className="header-icon">
                 <AddIcon></AddIcon>
               </span>
             </div>
-          </button>
-          <button className="btn1">
+          </button> */}
+          {/* <button className="btn1">
             <div className="btn1-span">
               <span className="header-icon">
                 <InfoIcon></InfoIcon>
               </span>
             </div>
-          </button>
+          </button> */}
           <button className="btn1">
             <div className="btn1-span">
               <span className="header-icon">
@@ -99,7 +99,7 @@ export class _Header extends Component {
               </button>
             </Link>
           )}
-          <button className="header-username">{initials}</button>
+          <button className="header-username pointer">{initials}</button>
         </div>
       </div>
     );
