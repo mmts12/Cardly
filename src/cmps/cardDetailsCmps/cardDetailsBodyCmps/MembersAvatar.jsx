@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 export function MembersAvatar({ users }) {
     const classes = useStyles();
     return (
-        <section className="members-avatar-cont flex ">
+        <section className="members-avatar-cont flex pointer">
             {users.map(user => {
                 return <div key={user._id} className="avatar-cont" >
                     <Avatar className={classes.small} size="10" src={user.imgUrl} />

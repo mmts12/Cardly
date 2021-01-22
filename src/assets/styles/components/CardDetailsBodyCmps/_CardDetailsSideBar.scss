@@ -1,15 +1,21 @@
 .pop-up-header {
     text-align: center;
-   
+    margin: 0;
+}
+.close-pop-up {
+    position: relative;
+    left: 180px;
 }
 
-.sidebar-container{
+.sidebar-container {
     position: relative;
-    .sidebar-title{
+    .sidebar-title {
         display: flex;
-    align-items: center;
-    justify-content: center;
+        align-items: center;
+        justify-content: center;
     }
 }
-
-
+.close-pop-up-btn {
+    position: relative;
+    left: 180px;
+}
