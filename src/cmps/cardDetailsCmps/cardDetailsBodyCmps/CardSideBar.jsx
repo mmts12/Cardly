@@ -73,8 +73,9 @@ export class CardSideBar extends Component {
     const { attachmentPopUp } = this.state;
     const { coverPopUp } = this.state;
     return (
-      <div className="sidebar-container flex column">
+      <div className="sidebar-container ">
         <div className="sidebar-title">ADD TO CARD</div>
+        <div className="sidebar-btns flex wrap">
         {memberPopUp && (
           <MembersPopup
             name="memberPopUp"
@@ -161,6 +162,7 @@ export class CardSideBar extends Component {
           name="coverPopUp"
           onButtonClick={this.callBack}
         />
+        </div>
       </div>
     );
   }

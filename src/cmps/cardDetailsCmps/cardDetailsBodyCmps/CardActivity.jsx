@@ -66,6 +66,7 @@ export class CardActivity extends Component {
                         </div>
                     </div>
                 </div>
+
             </div>
 
             {card.comments.map(comment => {
