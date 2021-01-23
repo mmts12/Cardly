@@ -21,7 +21,7 @@
     }
 
     @include for-mobile-layout {
-        position: relative;
+        // position: relative;
         height: auto;
         padding: 8px 4px 4px 8px;
         flex-wrap: wrap;

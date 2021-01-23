@@ -1,65 +1,87 @@
-.home-page {
-    background-color: white;
-    height: 100vh;
-    .home-container{
-        background-image: url(../../imgs/teamwork.svg);
-        background-repeat: no-repeat;
-        height: 92%;
-    width: 90%;
-    background-position-x: right;
-    background-position-y: bottom;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: baseline;
-
+.hero {
+    .home-container {
+        padding-top: 3rem;
+        padding-bottom: 5rem;
+        .home-content {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+            .home-words {
+                & h1 {
+                    font-weight: 700;
+                    font-size: 5rem;
+                    font-family: Pacifico;
+                    color: $clr1;
+                    padding: 1rem;
+                    margin: 1rem;
+                    @include for-mobile-layout {
+                        font-size: 3rem;
+                        padding: 0;
+                        margin-left: 1rem;
+                        margin-bottom: 0;
+                    }
+                }
+                .p1 {
+                    font-weight: 700;
+                    font-size: 3rem;
+                    font-family: Pacifico;
+                    padding: 1.5rem;
+                    margin-block-start: 0;
+                    margin-block-end: 0;
+                    color: #333;
+                    @include for-mobile-layout {
+                        font-size: 2rem;
+                        padding: 1rem;
+                    }
+                }
+                .p2 {
+                    font-weight: 400;
+                    font-size: 2.5rem;
+                    font-family: Caveat;
+                    padding: 0;
+                    margin-block-start: 0;
+                    margin-block-end: 0;
+                    color: #a4a2a5;
+                    margin-left: 1rem;
+                    @include for-mobile-layout {
+                        font-size: 1.75rem;
+                    }
+                }
+            }
+            .home-img {
+                position: relative;
+                width: 100%;
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
+                .cardly-img {
+                    height: auto;
+                    vertical-align: middle;
+                    border-style: none;
+                }
+            }
+            .home-btn {
+                font-family: Roboto;
+                font-weight: 700;
+                font-size: 2rem;
+                cursor: pointer;
+                border: 3px solid $clr1;
+                padding: 1rem;
+                border-radius: 40px;
+                margin-top: 0.8rem;
+                background-color: lightgrey;
+                opacity: 0.75;
+                margin-left: 1rem;
+                margin-top: 4rem;
+                @include for-mobile-layout{
+                    font-size: 1.5rem;
+                    margin-top: 1.5rem;
+                }
+            }
+        }
     }
-    .home-title {
-        font-weight: 700;
-        font-size: 5rem;
-        font-family: Pacifico;
-        color: $clr1;
-        padding: 1rem;
-        margin: 1rem;
-        // margin-left: 1rem;
-    }
-    .home-slogan {
-        font-weight: 700;
-        font-size: 3rem;
-        font-family: Pacifico;
-      
-        padding: 1.5rem;
-        margin-block-start: 0;
-        margin-block-end: 0;
-        color: #333;
-        margin-left: -1rem;
-    }
-    .subtitle{
-        font-weight: 400;
-        font-size: 2.5rem;
-        font-family: Caveat;
-        padding: 0;
-        margin-block-start: 0;
-        margin-block-end: 0;
-        color: #a4a2a5;
-        margin-left: 1rem;
-    }
-    .home-btn {
-        font-family: Roboto;
-        font-weight: 700;
-        font-size: 2rem;
-        cursor: pointer;
-        // background-color: transparent;
-        border: 3px solid $clr1;
-        padding: 1rem;
-        border-radius: 40px;
-        margin-top: 0.8rem;
-        background-color: lightgrey;
-        opacity: 0.75;
-        margin-left: 1rem;
-        margin-top: 4rem;
-    }
-
     .home-footer {
         position: fixed;
         left: 0;
@@ -72,15 +94,99 @@
         max-height: 40px;
         overflow: hidden;
         padding: 8px;
-     align-items: center;
-     
+        align-items: center;
         color: white;
         font-family: Roboto;
-        & a{
+        & a {
             text-decoration: none;
         }
     }
-    // .footer-p{
-    //     margin-right: 1rem;
-    // }
+    .footer-p {
+        margin-right: 1rem;
+    }
 }
+
+// .home-page {
+//     background-color: white;
+//     height: 100vh;
+//     .home-container {
+//         background-image: url(../../imgs/teamwork.svg);
+//         background-repeat: no-repeat;
+//         height: 92%;
+//         width: 90%;
+//         background-position-x: right;
+//         background-position-y: bottom;
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: flex-start;
+//         align-items: baseline;
+//     }
+//     .home-title {
+//         font-weight: 700;
+//         font-size: 5rem;
+//         font-family: Pacifico;
+//         color: $clr1;
+//         padding: 1rem;
+//         margin: 1rem;
+//         // margin-left: 1rem;
+//     }
+//     .home-slogan {
+//         font-weight: 700;
+//         font-size: 3rem;
+//         font-family: Pacifico;
+
+//         padding: 1.5rem;
+//         margin-block-start: 0;
+//         margin-block-end: 0;
+//         color: #333;
+//         margin-left: -1rem;
+//     }
+//     .subtitle {
+//         font-weight: 400;
+//         font-size: 2.5rem;
+//         font-family: Caveat;
+//         padding: 0;
+//         margin-block-start: 0;
+//         margin-block-end: 0;
+//         color: #a4a2a5;
+//         margin-left: 1rem;
+//     }
+//     .home-btn {
+//         font-family: Roboto;
+//         font-weight: 700;
+//         font-size: 2rem;
+//         cursor: pointer;
+//         // background-color: transparent;
+//         border: 3px solid $clr1;
+//         padding: 1rem;
+//         border-radius: 40px;
+//         margin-top: 0.8rem;
+//         background-color: lightgrey;
+//         opacity: 0.75;
+//         margin-left: 1rem;
+//         margin-top: 4rem;
+//     }
+
+//     .home-footer {
+//         position: fixed;
+//         left: 0;
+//         bottom: 0;
+//         width: 100%;
+//         background-color: $clr1;
+//         display: flex;
+//         min-height: 40px;
+//         max-height: 40px;
+//         max-height: 40px;
+//         overflow: hidden;
+//         padding: 8px;
+//         align-items: center;
+//         color: white;
+//         font-family: Roboto;
+//         & a {
+//             text-decoration: none;
+//         }
+//     }
+//     // .footer-p{
+//     //     margin-right: 1rem;
+//     // }
+// }
