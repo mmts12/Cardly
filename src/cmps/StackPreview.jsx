@@ -17,18 +17,15 @@ export class _StackPreview extends Component {
   state = {
     isEditShow: false,
     isAddShow: false,
+    dragEnable: true,
   };
-  componentDidMount() {
-    // const savedMsgs = socketService.getMsgsFromStorage() || [];
-    //   this.setState({ msgs: savedMsgs });
-    // socketService.setup()
-    // socketService.on('board updateBoard', this.onEmitSocket)
-  }
-  componentWillUnmount() {}
 
-  // onEmitSocket = () => {
-  //   console.log('RUMPUS')
-  // }
+  disableStackDrag = () => {
+    this.setState({ dragEnable: false });
+  };
+  allowStackDrag = () => {
+    this.setState({ dragEnable: true });
+  };
 
   onRemoveStack = () => {
     const { stack, selectedBoard, removeStack } = this.props;
@@ -46,15 +43,6 @@ export class _StackPreview extends Component {
     this.setState({ isEditShow: false });
   };
 
-  // componentDidUpdate() {
-  //   this.loadBoard();
-  // }
-
-  // loadBoard = () => {
-  //   const { selectedBoard } = this.props;
-  //   this.props.setSelectedBoard(selectedBoard);
-  // };
-
   onAddCard = () => {
     this.setState({ isAddShow: true });
   };
@@ -71,57 +59,73 @@ export class _StackPreview extends Component {
     this.props.addCard(cardToadd, stack, selectedBoard);
   };
 
+  onDragDis = () => {
+    return true;
+  };
+
   render() {
     const { stack } = this.props;
+    const { dragEnable } = this.state;
     return (
-      <Draggable draggableId={stack.id} index={this.props.index}>
-        {(provided) => (
-          <div
-            {...provided.draggableProps}
-            ref={provided.innerRef}
-            {...provided.dragHandleProps}
-            className="stack-preview-card card-list"
-          >
-            <div className="stack-title flex">
-              {this.state.isEditShow ? (
-                <EditStack
-                  className="stack-preview-edit flex"
-                  saveStack={this.onSaveStack}
-                  stack={stack}
+      <>
+        <Draggable
+          isDragDisabled={dragEnable === false}
+          draggableId={stack.id}
+          index={this.props.index}
+        >
+          {(provided) => (
+            <div
+              {...provided.draggableProps}
+              ref={provided.innerRef}
+              {...provided.dragHandleProps}
+              className="stack-preview-card card-list"
+            >
+              <div className="stack-title flex">
+                {this.state.isEditShow ? (
+                  <EditStack
+                    className="stack-preview-edit flex"
+                    saveStack={this.onSaveStack}
+                    stack={stack}
+                  />
+                ) : (
+                  <div className="flex space-between align-center">
+                    <h4 onClick={this.onEdit} className="stack-title-words">
+                      {stack.title}
+                    </h4>
+                    <div onClick={this.onRemoveStack} className="flex">
+                      <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <CardList
+                allowStackDrag={this.allowStackDrag}
+                disableStackDrag={this.disableStackDrag}
+                stack={stack}
+                cards={stack.cards}
+              />
+              {this.state.isAddShow ? (
+                <AddCard
+                  addNewCard={this.onAddNewCard}
+                  closeAddSection={this.onCloseAddSection}
                 />
               ) : (
-                <div className="flex space-between align-center">
-                  <h4 onClick={this.onEdit} className="stack-title-words">
-                    {stack.title}
-                  </h4>
-                  <div onClick={this.onRemoveStack} className="flex">
-                    <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
+                <div
+                  onClick={this.onAddCard}
+                  className="add-new-card flex align-center"
+                >
+                  <div className="add-icon flex justify-center align-center">
+                    <AddIcon></AddIcon>
                   </div>
+                  <span className="add-text flex justify-center align-center">
+                    Add Another Card
+                  </span>
                 </div>
               )}
             </div>
-            <CardList stack={stack} cards={stack.cards} />
-            {this.state.isAddShow ? (
-              <AddCard
-                addNewCard={this.onAddNewCard}
-                closeAddSection={this.onCloseAddSection}
-              />
-            ) : (
-              <div
-                onClick={this.onAddCard}
-                className="add-new-card flex align-center"
-              >
-                <div className="add-icon flex justify-center align-center">
-                  <AddIcon></AddIcon>
-                </div>
-                <span className="add-text flex justify-center align-center">
-                  Add Another Card
-                </span>
-              </div>
-            )}
-          </div>
-        )}
-      </Draggable>
+          )}
+        </Draggable>
+      </>
     );
   }
 }

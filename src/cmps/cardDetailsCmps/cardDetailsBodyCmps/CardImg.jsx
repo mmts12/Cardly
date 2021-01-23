@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 
 export function CardImg({ card, onRemoveImage }) {
