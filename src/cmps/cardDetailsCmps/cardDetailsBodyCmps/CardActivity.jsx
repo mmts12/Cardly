@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import { clientsClaim } from 'workbox-core';
 import { Avatar } from '@material-ui/core';
 
 export class CardActivity extends Component {
@@ -36,28 +37,34 @@ export class CardActivity extends Component {
     return `${day}/${month}/${year}`;
   };
 
+  onCommentSave = () => {
+    const { onCommentAdd } = this.props;
+    onCommentAdd(this.state.comment);
+    const comment = '';
+    this.setState({ comment });
+  };
+
   render() {
     const { card } = this.props;
+    const { comment } = this.state;
     return (
       <section className="cd-cmp flex column">
         <div className="card-act-title">
           <FormatListBulletedIcon className="act-icon" />
           <h3 className="cd-subtitle-words">Activity</h3>
         </div>
-        <div className="cd-subtitle-txt">
+        <div>
           <div className="cd-subtitle-txt">
             <div className="card-act-textarea">
               <textarea
                 onChange={this.handleChange}
                 className="act-textarea"
+                value={comment}
                 placeholder="Write a comment..."
               ></textarea>
             </div>
             <div className="act-original-save flex space-between align-center">
-              <button
-                className="save-btn"
-                onClick={() => this.props.onCommentAdd(this.state.comment)}
-              >
+              <button className="save-btn" onClick={this.onCommentSave}>
                 Save
               </button>
               <div className="activity-bar-icons">

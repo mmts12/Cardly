@@ -1,6 +1,6 @@
 .pop-up-attachments {
     background-color: #fff;
-    box-shadow: 0 8px 16px -4px rgba(9,30,66,.25), 0 0 0 1px rgba(9,30,66,.08);
+    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
     color: gray;
     padding: 10px;
     border-radius: 3px;
@@ -9,6 +9,11 @@
     top: 218px;
     right: -115px;
     transform: translate(-50%, 0);
+    @include for-mobile-layout {
+        z-index: 99;
+        top: 95%;
+        right: 5%;
+    }
     .attach-choice {
         color: #172b4d;
         font-size: 14px;
@@ -51,9 +56,8 @@
         border-radius: 3px;
     }
 }
-input[type="file"] { 
+input[type="file"] {
     opacity: 0; /* make transparent */
     z-index: -1; /* move under anything else */
     position: absolute; /* don't let it take up space */
-  }
-  
+}
