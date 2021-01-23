@@ -92,7 +92,6 @@ function addCard(cardToAdd, stack, selectedBoard) {
     cardToAdd.members = [];
     cardToAdd.labels = [];
     cardToAdd.checklists = [];
-    cardToAdd.dueDate = Date.now() + 86400000
     cardToAdd.createdAt = Date.now()
     cardToAdd.coverColor = ''
     cardToAdd.byMember = {

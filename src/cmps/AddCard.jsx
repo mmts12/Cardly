@@ -16,7 +16,8 @@ export class AddCard extends Component {
 
   onAdd = () => {
     if (!this.state.card.title) return;
-    this.props.addNewCard(this.state.card);
+    const { card } = this.state;
+    this.props.addNewCard(card);
   };
 
   render() {
@@ -34,7 +35,7 @@ export class AddCard extends Component {
           <div className="add-btn-container flex align-center">
             <button className="save-btn" onClick={this.onAdd}>
               Add Card
-          </button>
+            </button>
             <button className="clear-btn" onClick={this.props.closeAddSection}>
               <ClearIcon></ClearIcon>
             </button>
