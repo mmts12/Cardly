@@ -264,6 +264,8 @@ export class _CardDetails extends Component {
                 </p>
               </div>
               <div className="details-list-container flex">
+
+
                 <div className="column-container flex column">
                   {/* CARD LABELS */}
                   {labels.length !== 0 && (
@@ -290,10 +292,8 @@ export class _CardDetails extends Component {
                       checklists={checklists}
                     />
                   )}
-
-                  <CardActivity card={card} onCommentAdd={this.addComment} />
                 </div>
-                <div className="sidebar-container">
+                <div className="sidebar-wrapper flex column">
                   <CardSideBar
                     onSetDueDate={this.onSetDueDate}
                     card={card}
@@ -305,7 +305,11 @@ export class _CardDetails extends Component {
                     onLabelColorSelect={this.setLabelOnCard}
                   />
                 </div>
+               <div className="column-container flex column"><CardActivity card={card} onCommentAdd={this.addComment} /></div>
+
+                
               </div>
+            
             </div>
           </section>
         </main>

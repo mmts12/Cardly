@@ -9,10 +9,22 @@
 
 .sidebar-container {
     position: relative;
+    padding: 0 16px 8px 8px;
+    width: 168px;
+    margin-top: 3rem;
+    @include for-mobile-layout {
+        width: 100%;
+        margin-top: 0;
+      
+    }
     .sidebar-title {
         display: flex;
         align-items: center;
         justify-content: center;
+        @include for-mobile-layout {
+            grid-column: 1 / span 2;
+            justify-content: flex-start;
+        }
     }
 }
 .close-pop-up-btn {

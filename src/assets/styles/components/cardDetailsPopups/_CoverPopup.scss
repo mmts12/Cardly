@@ -9,6 +9,11 @@
     top: 257px;
     right: -114px;
     transform: translate(-50%, 0);
+    @include for-mobile-layout{
+        top: 90%;
+        right: -20%;
+        z-index: 99;
+    }
 
     .color-title{
         margin-top: 5px;
