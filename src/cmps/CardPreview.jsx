@@ -58,14 +58,13 @@ export class _CardPreview extends Component {
   convertTime = () => {
     const { card } = this.props;
     if (!card.dueDate) return;
-    // console.log(card.dueDate);
-
     let cardCopy = { ...card };
     let timeDate = cardCopy.dueDate.split('T');
-    let dateToDisplay = `${timeDate[0].substring(5, 7)}/${timeDate[1].substring(
-      8
+    let dateToDisplay = `${timeDate[0].substring(8)}/${timeDate[0].substring(
+      5,
+      7
     )}`;
-    console.log(dateToDisplay);
+    return dateToDisplay;
   };
 
   calcDoneTodos = () => {
@@ -83,7 +82,7 @@ export class _CardPreview extends Component {
   };
 
   render() {
-    // this.convertTime();
+    const displayedDate = this.convertTime();
     const todosSummary = this.calcDoneTodos();
     const { card, stack, index } = this.props;
     const { coverColor, labels } = this.props.card;
@@ -118,18 +117,26 @@ export class _CardPreview extends Component {
                 className="card-preview-line flex space-between"
               >
                 {!isEditCardModalShow ? (
-                  <div className="card-preview-icons flex space-between">
+                  <div className="card-preview-icons  ">
                     <div>{card.title}</div>
-                    {card.desc && (
-                      <div>
-                        <SubjectIcon />
-                      </div>
-                    )}
-                    {todosSummary.length !== 0 && <PlaylistAddCheckIcon />}
-                    {todosSummary.length !== 0 &&
-                      ` ${todosSummary.done}/${todosSummary.length}`}
-                    {card.dueDate && <ScheduleIcon />}
-
+                    <div className="card-preview-summary-icons">
+                      {card.desc && (
+                        <div>
+                          <SubjectIcon />
+                        </div>
+                      )}
+                      {todosSummary.length !== 0 && (
+                        <div>
+                          <PlaylistAddCheckIcon />
+                          {todosSummary.done}/{todosSummary.length}
+                        </div>
+                      )}
+                      {card.dueDate && (
+                        <div>
+                          <ScheduleIcon /> {displayedDate}
+                        </div>
+                      )}
+                    </div>
                     <div className="icons-container flex">
                       <div onClick={this.onEditCard}>
                         <span>
