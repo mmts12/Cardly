@@ -8,9 +8,15 @@
     overflow-y: scroll; /* Show vertical scrollbar */
     overflow-x: scroll; /* Show horizontal scrollbar */
     background-position: 50%;
+    @include for-mobile-layout{
+        overflow-y: hidden;
+    }
 
     .mt{
         margin-top: 5rem;
+        @include for-mobile-layout{
+            margin-top: 9rem;
+        }
     }
     
 

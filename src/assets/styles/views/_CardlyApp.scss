@@ -6,10 +6,18 @@
     }
 
     .app-header {
+        @include for-mobile-layout {
+            padding-top: 4rem;
+        }
         .boards-title {
             font-family: Roboto-Bold;
             font-size: 2.5rem;
             color: $clr2;
+            @include for-mobile-layout {
+                font-size: 2rem;
+                margin-block-start: 0.4em;
+                margin-block-end: 0.4em;
+            }
         }
     }
 
@@ -41,6 +49,10 @@
         max-width: 67.5rem;
         padding: 0 1rem;
         margin: 0 auto;
+        @include for-mobile-layout {
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 0.5rem;
+        }
 
         .board-template {
             background-position: 50%;

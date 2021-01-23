@@ -99,7 +99,7 @@ export class _Header extends Component {
               </button>
             </Link>
           )}
-          <button className="header-username pointer">{initials}</button>
+          <div className="header-avatar"> <button className="header-username pointer">{initials}</button></div>
         </div>
       </div>
     );
