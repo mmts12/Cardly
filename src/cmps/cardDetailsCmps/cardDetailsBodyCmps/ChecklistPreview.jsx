@@ -75,9 +75,9 @@ export class ChecklistPreview extends Component {
             );
           })}
           {this.state.isAddItemShow && (
-            <div>
-              <input onChange={handleInput} placeholder="Add an item"></input>
-              <button onClick={() => addTodo(checklist)}>Add</button>
+            <div className="flex ">
+              <input class="add-todo-input" onChange={handleInput} placeholder="Add an item"></input>
+              <button className="add-todo-btn" onClick={() => addTodo(checklist)}>Add</button>
             </div>
           )}
           <div className="flex">

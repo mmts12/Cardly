@@ -40,7 +40,7 @@ export class _AddBoard extends Component {
     const bgc = {
       colors: ['#2e6cb0', '#889BC0', '#A36890', '#F0EFBD'],
       imgsUrl: [
-        'https://res.cloudinary.com/drak3llqt/image/upload/v1611243032/forest_bjdy6y.png',
+        'https://res.cloudinary.com/dng1vynbr/image/upload/v1611427008/hearts_j79qmn.jpg',
         'https://res.cloudinary.com/drak3llqt/image/upload/v1610553512/img1_uyzefw.jpg',
         'https://res.cloudinary.com/drak3llqt/image/upload/v1610553514/img4_ohr2cl.png',
         'https://res.cloudinary.com/drak3llqt/image/upload/v1610553508/img3_g44phk.png',

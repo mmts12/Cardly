@@ -1,8 +1,31 @@
-.todo-done{
+.todo-done {
     text-decoration: line-through;
     color: gray;
 }
-.todo-row{
+
+.add-todo-input {
+    margin: 5px 3px 0px 18px;
+    padding: 8px 12px;
+}
+.add-todo-btn {
+    background-color: #5aac44;
+    box-shadow: none;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 400;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 6px 20px;
+    text-decoration: none;
+    font-family: "Roboto";
+}
+.todo-row {
     cursor: pointer;
     // background: #ebecef;
     padding: 5px 5px 0 0;
@@ -14,13 +37,13 @@
     min-height: 18px;
     font-family: "Roboto";
 
-    .todo-input{
+    .todo-input {
         border-radius: 2px;
         height: 16px;
         width: 16px;
         overflow: hidden;
         white-space: nowrap;
-        transition: all .2s ease-in-out;
+        transition: all 0.2s ease-in-out;
         background-color: #fafbfc;
         box-shadow: inset 0 0 0 2px #dfe1e6;
         top: 5px;
@@ -30,9 +53,8 @@
         cursor: pointer;
     }
 
-    .todo-txt{
+    .todo-txt {
         padding-left: 3px;
-        
     }
 
     .todo-delete-icon {
