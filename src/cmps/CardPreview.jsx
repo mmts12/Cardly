@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { CardDetails } from './CardDetails';
-import { Link } from 'react-router-dom';
 import { CardLabels } from './cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';

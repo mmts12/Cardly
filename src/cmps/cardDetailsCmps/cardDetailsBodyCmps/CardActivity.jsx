@@ -18,7 +18,6 @@ export class CardActivity extends Component {
         this.setState({ comment: this.props.comment })
     }
 
-
     handleChange = (ev) => {
         let { comment } = this.state
         comment = ev.target.value
@@ -39,20 +38,28 @@ export class CardActivity extends Component {
         return (`${day}/${month}/${year}`)
     }
 
+    onCommentSave = () => {
+        const { onCommentAdd } = this.props
+        onCommentAdd(this.state.comment)
+        const comment = ''
+        this.setState({ comment })
+    }
+
     render() {
         const { card } = this.props
+        const { comment } = this.state
         return <section className="cd-cmp flex column">
             <div className="card-act-title">
                 <FormatListBulletedIcon className="act-icon" />
                 <h3 className="cd-subtitle-words">Activity</h3>
             </div>
-            <div className="cd-subtitle-txt">
+            <div>
                 <div className="cd-subtitle-txt">
                     <div className="card-act-textarea">
-                        <textarea onChange={this.handleChange} className="act-textarea" placeholder="Write a comment..." ></textarea>
+                        <textarea onChange={this.handleChange} className="act-textarea" value={comment} placeholder="Write a comment..." ></textarea>
                     </div>
                     <div className="act-original-save flex space-between align-center">
-                        <button className="save-btn" onClick={() => this.props.onCommentAdd(this.state.comment)} >Save</button>
+                        <button className="save-btn" onClick={this.onCommentSave} >Save</button>
                         <div className="activity-bar-icons" >
                             <AttachFileIcon className="activity-icon" />
                             <AlternateEmailIcon className="activity-icon" />

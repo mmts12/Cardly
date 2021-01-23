@@ -55,6 +55,11 @@
             line-height: 20px;
             font-weight: 400;
             resize: none;
+            padding-top: 10px;
+            padding-left: 15px;
+            &:focus {
+                outline: none;
+            }
         }
     }
 

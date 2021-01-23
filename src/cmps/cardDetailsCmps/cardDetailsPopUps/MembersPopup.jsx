@@ -14,7 +14,6 @@ export class MembersPopup extends Component {
     }
 
     render() {
-        const { isTeamShows } = this.state
         const boardUsers = this.props.boardUsers;
         return (
             <section className="members-container">

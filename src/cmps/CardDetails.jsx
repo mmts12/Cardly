@@ -205,6 +205,7 @@ export class _CardDetails extends Component {
     });
     this.setState({ card });
   };
+
   onRemoveImage = (card) => {
     const { stack, selectedBoard } = this.props;
     console.log('Remove IMG');

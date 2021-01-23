@@ -74,6 +74,12 @@ export class ChecklistPreview extends Component {
               />
             );
           })}
+          {this.state.isAddItemShow && (
+            <div>
+              <input onChange={handleInput} placeholder="Add an item"></input>
+              <button onClick={() => addTodo(checklist)}>Add</button>
+            </div>
+          )}
           <div className="flex">
             <button
               className="checklist-add"
@@ -83,12 +89,6 @@ export class ChecklistPreview extends Component {
             </button>
           </div>
         </div>
-        {this.state.isAddItemShow && (
-          <div>
-            <input onChange={handleInput} placeholder="Add an item"></input>
-            <button onClick={() => addTodo(checklist)}>Add</button>
-          </div>
-        )}
       </section>
     );
   }
