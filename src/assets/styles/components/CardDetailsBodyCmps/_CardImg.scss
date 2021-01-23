@@ -10,7 +10,10 @@
         margin-block-end: 0;
     }
 }
-
+.img-name {
+    overflow-wrap: anywhere;
+    padding: 9px;
+}
 .cd-img {
     width: 150px;
     // height: 150px;
@@ -19,9 +22,10 @@
     padding: 8px 12px;
 }
 
-.del-btn {
+.attachment-del-btn {
     font-size: 14px;
     height: 2rem;
+    width: 4rem;
     line-height: 20px;
     font-weight: 400;
     display: inline-flex;
@@ -37,4 +41,9 @@
     transition-property: background-color, border-color, box-shadow;
     transition-duration: 85ms;
     transition-timing-function: ease;
+    &:hover {
+        background-color: rgba(9, 30, 66, 0.08);
+        box-shadow: none;
+        border: none;
+    }
 }

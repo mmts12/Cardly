@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CardDetails } from './CardDetails';
+import { Link } from 'react-router-dom';
 import { CardLabels } from './cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -26,10 +27,7 @@ export class _CardPreview extends Component {
     const { card } = this.props
     this.setState({ card })
     this.setState(this.state.labels = this.props.card.labels)
-
   }
-
-
 
   onShowCardDetails = () => {
     if (!this.state.isEditCardModalShow)
@@ -112,6 +110,7 @@ export class _CardPreview extends Component {
                       </div>
                     </div>
                   </div>
+
                 ) : (
                     <EditCard
                       saveEditedCard={this.onSaveEditedCard}
@@ -119,6 +118,7 @@ export class _CardPreview extends Component {
                     ></EditCard>
                   )}
               </div>
+
               {card.members.length !== 0 && <MembersAvatar users={card.members} />}
             </div>
           )}

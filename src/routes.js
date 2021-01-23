@@ -12,7 +12,7 @@ export const routes = [
         component: Board
     },
     {
-        path: '/Cardly/card/:id',
+        path: '/Cardly/card/:id?',
         component: CardDetails
     },
 
