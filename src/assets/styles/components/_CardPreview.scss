@@ -9,6 +9,9 @@
     overflow-wrap: break-word;
     min-height: 18px;
     font-family: "Roboto";
+    .card-preview-summary-icons{
+       display: flex;
+    }
 
     .card-preview-icons {
         width: 100%;

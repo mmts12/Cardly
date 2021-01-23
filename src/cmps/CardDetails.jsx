@@ -214,15 +214,6 @@ export class _CardDetails extends Component {
     this.props.saveCard(copyCard, stack, selectedBoard);
   };
 
-  onRemoveImage = (card) => {
-    const { stack, selectedBoard } = this.props;
-    console.log('Remove IMG');
-    const copyCard = { ...card };
-    copyCard.imgUrl = '';
-    console.log(copyCard);
-    this.props.saveCard(copyCard, stack, selectedBoard);
-  };
-
   onSetDueDate = (dueDate) => {
     const { stack, selectedBoard } = this.props;
     const { card } = this.state;
@@ -230,6 +221,11 @@ export class _CardDetails extends Component {
     this.setState({ card }, () => {
       this.props.saveCard(card, stack, selectedBoard);
     });
+  };
+
+  onSaveCard = (card) => {
+    const { stack, selectedBoard } = this.props;
+    this.props.saveCard(card, stack, selectedBoard);
   };
 
   render() {
@@ -280,7 +276,7 @@ export class _CardDetails extends Component {
                   {cardMembers.length !== 0 && (
                     <MembersAvatar users={cardMembers} />
                   )}
-                  <CardDescription card={card} />
+                  <CardDescription onSaveCard={this.onSaveCard} card={card} />
                   {card.imgUrl && (
                     <CardImg onRemoveImage={this.onRemoveImage} card={card} />
                   )}
