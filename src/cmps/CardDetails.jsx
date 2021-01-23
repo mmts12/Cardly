@@ -13,6 +13,7 @@ import { CardImg } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/CardImg.jsx
 import { loadUsers } from '../store/actions/userActions.js';
 import { userService } from '../services/userService';
 import CloseIcon from '@material-ui/icons/Close';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 
 export class _CardDetails extends Component {
   state = {
@@ -22,6 +23,7 @@ export class _CardDetails extends Component {
       checklists: [],
       coverColor: '',
       members: [],
+      dueDate: '',
     },
     boardUsers: [],
     loggedUser: {},
@@ -213,11 +215,21 @@ export class _CardDetails extends Component {
     this.props.saveCard(copyCard, stack, selectedBoard);
   };
 
+  onSetDueDate = (dueDate) => {
+    const { stack, selectedBoard } = this.props;
+    const { card } = this.state;
+    card.dueDate = dueDate;
+    this.setState({ card }, () => {
+      this.props.saveCard(card, stack, selectedBoard);
+    });
+  };
+
   render() {
     const { card, onCloseModal, stack } = this.props;
     const { checklists } = this.state.card;
     const labels = this.state.card.labels;
     const cardMembers = this.state.card.members;
+    const { dueDate } = this.state.card;
     return (
       <>
         <div className="modal-bg" onClick={(ev) => onCloseModal(ev)}></div>
@@ -249,6 +261,12 @@ export class _CardDetails extends Component {
                   {labels.length !== 0 && (
                     <CardLabels className="labels-txt" labels={labels} />
                   )}
+                  {dueDate && (
+                    <div>
+                      <ScheduleIcon />
+                      <p>{dueDate}</p>
+                    </div>
+                  )}
                   {cardMembers.length !== 0 && (
                     <MembersAvatar users={cardMembers} />
                   )}
@@ -269,6 +287,7 @@ export class _CardDetails extends Component {
                 </div>
                 <div className="sidebar-container">
                   <CardSideBar
+                    onSetDueDate={this.onSetDueDate}
                     card={card}
                     stack={stack}
                     onMemberAdd={this.onMemberAdd}
