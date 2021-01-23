@@ -1,8 +1,5 @@
 .header-wrapper {
     background-color: rgba(0,0,0,.32);
-    // background-color: transparent;
-    // background-color: $clr1;
-    // opacity: 0.3;
     display: flex;
     min-height: 40px;
     max-height: 40px;
@@ -67,8 +64,7 @@
         margin: 0 4px 0 0;
         padding: 0;
         white-space: nowrap;
-        cursor: pointer;
-        
+        cursor: pointer;        
     }
     
     .header-home {
@@ -77,7 +73,6 @@
         flex-shrink: 0;
         line-height: 1;
         margin: 4px;
-
     }
     
     .header-icon {
@@ -119,7 +114,6 @@
         }
     }
     
-
     .header-left-space {
         flex: 1;
     }
