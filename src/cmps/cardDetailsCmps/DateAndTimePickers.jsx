@@ -23,7 +23,7 @@ export function DateAndTimePickers({ onSetDate }) {
         onChange={onSetDate}
         id="datetime-local"
         type="datetime-local"
-        defaultValue="2017-05-24T10:30"
+        defaultValue="2021-01-23T12:00"
         className={classes.textField}
         InputLabelProps={{
           shrink: true,

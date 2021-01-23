@@ -10,6 +10,7 @@ import { Draggable } from 'react-beautiful-dnd';
 import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/MembersAvatar.jsx';
 import SubjectIcon from '@material-ui/icons/Subject';
 import ScheduleIcon from '@material-ui/icons/Schedule';
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 
 export class _CardPreview extends Component {
   state = {
@@ -55,7 +56,14 @@ export class _CardPreview extends Component {
 
   convertTime = () => {
     const { card } = this.props;
-    console.log(card.dueDate);
+    if (!card.dueDate) return;
+    let cardCopy = { ...card };
+    let timeDate = cardCopy.dueDate.split('T');
+    let dateToDisplay = `${timeDate[0].substring(8)}/${timeDate[0].substring(
+      5,
+      7
+    )}`;
+    return dateToDisplay;
   };
 
   calcDoneTodos = () => {
@@ -73,6 +81,7 @@ export class _CardPreview extends Component {
   };
 
   render() {
+    const displayedDate = this.convertTime();
     const todosSummary = this.calcDoneTodos();
     const { card, stack, index } = this.props;
     const { coverColor, labels } = this.props.card;
@@ -93,11 +102,11 @@ export class _CardPreview extends Component {
                   // {coverColor !== '' && (
                   <img src={card.imgUrl} alt="" />
                 ) : (
-                    <div
-                      className="card-preview-color"
-                      style={{ background: `${coverColor}` }}
-                    ></div>
-                  )
+                  <div
+                    className="card-preview-color"
+                    style={{ background: `${coverColor}` }}
+                  ></div>
+                )
                 // )}
               }
               {labels.length !== 0 && <CardLabels labels={labels} />}
@@ -107,17 +116,26 @@ export class _CardPreview extends Component {
                 className="card-preview-line flex space-between"
               >
                 {!isEditCardModalShow ? (
-                  <div className="card-preview-icons flex space-between">
+                  <div className="card-preview-icons  ">
                     <div>{card.title}</div>
-                    {card.desc && (
-                      <div>
-                        <SubjectIcon />
-                      </div>
-                    )}
-                    {todosSummary.length !== 0 &&
-                      `${todosSummary.done}/${todosSummary.length}`}
-                    {card.dueDate && <ScheduleIcon />}
-
+                    <div className="card-preview-summary-icons">
+                      {card.desc && (
+                        <div>
+                          <SubjectIcon />
+                        </div>
+                      )}
+                      {todosSummary.length !== 0 && (
+                        <div>
+                          <PlaylistAddCheckIcon />
+                          {todosSummary.done}/{todosSummary.length}
+                        </div>
+                      )}
+                      {card.dueDate && (
+                        <div>
+                          <ScheduleIcon /> {displayedDate}
+                        </div>
+                      )}
+                    </div>
                     <div className="icons-container flex">
                       <div onClick={this.onEditCard}>
                         <span>
@@ -131,13 +149,12 @@ export class _CardPreview extends Component {
                       </div>
                     </div>
                   </div>
-
                 ) : (
-                    <EditCard
-                      saveEditedCard={this.onSaveEditedCard}
-                      card={card}
-                    ></EditCard>
-                  )}
+                  <EditCard
+                    saveEditedCard={this.onSaveEditedCard}
+                    card={card}
+                  ></EditCard>
+                )}
               </div>
               {card.members.length !== 0 && (
                 <MembersAvatar users={card.members} />
