@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CardDetails } from './CardDetails';
+import { Link } from 'react-router-dom';
 import { CardLabels } from './cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -9,6 +10,7 @@ import { EditCard } from './EditCard';
 import { Draggable } from 'react-beautiful-dnd';
 import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/MembersAvatar.jsx';
 import SubjectIcon from '@material-ui/icons/Subject';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 
 export class _CardPreview extends Component {
   state = {
@@ -25,12 +27,13 @@ export class _CardPreview extends Component {
   }
 
   onShowCardDetails = () => {
+    this.props.disableStackDrag();
     if (!this.state.isEditCardModalShow)
       this.setState({ isCardDetailsSelected: true });
   };
 
   closeModal = (ev) => {
-    // ev.preventDefault();
+    this.props.allowStackDrag();
     ev.stopPropagation();
     this.setState({ isCardDetailsSelected: false });
   };
@@ -51,7 +54,27 @@ export class _CardPreview extends Component {
     this.setState({ isEditCardModalShow: false });
   };
 
+  convertTime = () => {
+    const { card } = this.props;
+    console.log(card.dueDate);
+  };
+
+  calcDoneTodos = () => {
+    const { card } = this.props;
+    return card.checklists.reduce(
+      (acc, checklist) => {
+        checklist.todos.map((todo) => {
+          acc.length++;
+          if (todo.isDone) acc.done++;
+        });
+        return acc;
+      },
+      { done: 0, length: 0 }
+    );
+  };
+
   render() {
+    const todosSummary = this.calcDoneTodos();
     const { card, stack, index } = this.props;
     const { coverColor, labels } = this.props.card;
     const { isCardDetailsSelected, isEditCardModalShow } = this.state;
@@ -71,11 +94,11 @@ export class _CardPreview extends Component {
                   // {coverColor !== '' && (
                   <img src={card.imgUrl} alt="" />
                 ) : (
-                  <div
-                    className="card-preview-color"
-                    style={{ background: `${coverColor}` }}
-                  ></div>
-                )
+                    <div
+                      className="card-preview-color"
+                      style={{ background: `${coverColor}` }}
+                    ></div>
+                  )
                 // )}
               }
               {labels.length !== 0 && <CardLabels labels={labels} />}
@@ -92,6 +115,9 @@ export class _CardPreview extends Component {
                         <SubjectIcon />
                       </div>
                     )}
+                    {todosSummary.length !== 0 &&
+                      `${todosSummary.done}/${todosSummary.length}`}
+                    {card.dueDate && <ScheduleIcon />}
 
                     <div className="icons-container flex">
                       <div onClick={this.onEditCard}>
@@ -106,12 +132,13 @@ export class _CardPreview extends Component {
                       </div>
                     </div>
                   </div>
+
                 ) : (
-                  <EditCard
-                    saveEditedCard={this.onSaveEditedCard}
-                    card={card}
-                  ></EditCard>
-                )}
+                    <EditCard
+                      saveEditedCard={this.onSaveEditedCard}
+                      card={card}
+                    ></EditCard>
+                  )}
               </div>
               {card.members.length !== 0 && (
                 <MembersAvatar users={card.members} />
