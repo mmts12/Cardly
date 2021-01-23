@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import HomeIcon from '@material-ui/icons/Home';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import SearchIcon from '@material-ui/icons/Search';
-import AddIcon from '@material-ui/icons/Add';
-import InfoIcon from '@material-ui/icons/Info';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { connect } from 'react-redux';
 import { logout } from './../store/actions/userActions.js';
@@ -12,9 +9,9 @@ import { logout } from './../store/actions/userActions.js';
 export class _Header extends Component {
   state = {};
 
-  onOpenSearch() {
-    const searchClass = 'not-searched' ? 'searching-now' : 'not-searched';
-  }
+  // onOpenSearch() {
+  //   const searchClass = 'not-searched' ? 'searching-now' : 'not-searched';
+  // }
 
   render() {
     const { loggedInUser } = this.props;
@@ -60,20 +57,6 @@ export class _Header extends Component {
           </Link>
         </button>
         <div className="header-right">
-          {/* <button className="btn1">
-            <div className="btn1-span">
-              <span className="header-icon">
-                <AddIcon></AddIcon>
-              </span>
-            </div>
-          </button> */}
-          {/* <button className="btn1">
-            <div className="btn1-span">
-              <span className="header-icon">
-                <InfoIcon></InfoIcon>
-              </span>
-            </div>
-          </button> */}
           <button className="btn1">
             <div className="btn1-span">
               <span className="header-icon">
@@ -99,7 +82,10 @@ export class _Header extends Component {
               </button>
             </Link>
           )}
-          <div className="header-avatar"> <button className="header-username pointer">{initials}</button></div>
+          <div className="header-avatar">
+            {' '}
+            <button className="header-username pointer">{initials}</button>
+          </div>
         </div>
       </div>
     );

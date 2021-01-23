@@ -19,10 +19,20 @@
         padding: 7px;
         // flex-direction: column;
     }
+    .icon-preview{
+        font-size: 0.8rem;
+        color: gray;
+        display: flex;
+        align-items: center;
+        padding-inline-end: 5px;
+    }
     .card-preview-edit-icon {
         opacity: 0;
         color: gray;
         font-size: 1rem;
+    }
+    .icons{
+        font-size: 1.1rem;
     }
     &:hover {
         white-space: normal;

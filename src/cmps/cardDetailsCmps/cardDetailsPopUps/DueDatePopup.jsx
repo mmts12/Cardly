@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Calendar from 'react-calendar';
 import CloseIcon from '@material-ui/icons/Close';
 import { DateAndTimePickers } from './../DateAndTimePickers';
 

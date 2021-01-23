@@ -8,7 +8,7 @@ export function boardReducer(state = initialState, action) {
         case 'SET_BOARDS':
             return { ...state, boards: action.boards }
         case 'ADD_BOARD':
-            return { ...state, boards: [, ...state.boards, action.boardAdded], selectedBoard: action.boardAdded }
+            return { ...state, boards: [...state.boards, action.boardAdded], selectedBoard: action.boardAdded }
         case 'SET_BOARD':
             return { ...state, selectedBoard: action.board }
         case 'DELETE_BOARD':
