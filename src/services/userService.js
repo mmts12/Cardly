@@ -5,7 +5,12 @@ import Axios from 'axios'
 var axios = Axios.create({
     withCredentials: true
 })
-const baseUrl = 'http://localhost:3030/api/auth';
+
+//For Heroku use
+const baseUrl = (process.env.NODE_ENV !== 'development')
+    ? '/api/auth'
+    : '//localhost:3030/api/auth';
+// const baseUrl = 'http://localhost:3030/api/auth';
 
 // var gUser = null;
 const STORAGE_KEY = 'loggedinUser'

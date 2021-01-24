@@ -92,6 +92,7 @@ export class _CardPreview extends Component {
         <Draggable draggableId={card.id} index={index}>
           {(provided) => (
             <div
+              onClick={this.onShowCardDetails}
               className="card-preview"
               {...provided.draggableProps}
               {...provided.dragHandleProps}
@@ -102,17 +103,17 @@ export class _CardPreview extends Component {
                   // {coverColor !== '' && (
                   <img src={card.imgUrl} alt="" />
                 ) : (
-                  <div
-                    className="card-preview-color"
-                    style={{ background: `${coverColor}` }}
-                  ></div>
-                )
+                    <div
+                      className="card-preview-color"
+                      style={{ background: `${coverColor}` }}
+                    ></div>
+                  )
                 // )}
               }
               {labels.length !== 0 && <CardLabels labels={labels} />}
 
               <div
-                onClick={this.onShowCardDetails}
+
                 className="card-preview-line flex space-between"
               >
                 {!isEditCardModalShow ? (
@@ -150,11 +151,11 @@ export class _CardPreview extends Component {
                     </div>
                   </div>
                 ) : (
-                  <EditCard
-                    saveEditedCard={this.onSaveEditedCard}
-                    card={card}
-                  ></EditCard>
-                )}
+                    <EditCard
+                      saveEditedCard={this.onSaveEditedCard}
+                      card={card}
+                    ></EditCard>
+                  )}
               </div>
               {card.members.length !== 0 && (
                 <MembersAvatar users={card.members} />
