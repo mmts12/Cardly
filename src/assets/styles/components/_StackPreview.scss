@@ -1,12 +1,8 @@
 .stack-preview-card {
-    // padding: 10px;
     margin: 0 4px;
-    // padding: 0 4px;
     display: inline-block;
-    // overflow-y: auto;
     max-height: 83vh;
     min-height: 15vh;
-    // padding-right: 8px;
     @include for-mobile-layout{
         max-height: 78vh;
     }
