@@ -77,11 +77,11 @@ export class _CardPreview extends Component {
                   // {coverColor !== '' && (
                   <img src={card.imgUrl} alt="" />
                 ) : (
-                  <div
-                    className="card-preview-color"
-                    style={{ background: `${coverColor}` }}
-                  ></div>
-                )
+                    <div
+                      className="card-preview-color"
+                      style={{ background: `${coverColor}` }}
+                    ></div>
+                  )
                 // )}
               }
               {labels.length !== 0 && <CardLabels labels={labels} />}
@@ -93,43 +93,45 @@ export class _CardPreview extends Component {
                 {!isEditCardModalShow ? (
                   <div className="card-preview-icons  ">
                     <div>{card.title}</div>
-                    <div className="card-preview-summary-icons">
-                      {card.desc && (
-                        <div className="icon-preview">
-                          <SubjectIcon className="icons" />
-                        </div>
-                      )}
-                      {todosSummary.length !== 0 && (
-                        <div className="icon-preview">
-                          <PlaylistAddCheckIcon className="icons" />
-                          {todosSummary.done}/{todosSummary.length}
-                        </div>
-                      )}
-                      {card.dueDate && (
-                        <div className="icon-preview">
-                          <ScheduleIcon className="icons" /> {displayedDate}
-                        </div>
-                      )}
-                    </div>
-                    <div className="icons-container flex">
-                      <div onClick={this.onEditCard}>
-                        <span>
-                          <EditIcon className="card-preview-edit-icon"></EditIcon>
-                        </span>
+                    <div className="card-preview-bottom flex space-between">
+                      <div className="card-preview-summary-icons">
+                        {card.desc && (
+                          <div className="icon-preview">
+                            <SubjectIcon className="icons" />
+                          </div>
+                        )}
+                        {todosSummary.length !== 0 && (
+                          <div className="icon-preview">
+                            <PlaylistAddCheckIcon className="icons" />
+                            {todosSummary.done}/{todosSummary.length}
+                          </div>
+                        )}
+                        {card.dueDate && (
+                          <div className="icon-preview">
+                            <ScheduleIcon className="icons" /> {displayedDate}
+                          </div>
+                        )}
                       </div>
-                      <div onClick={() => this.onRemoveCard(card.id)}>
-                        <span>
-                          <DeleteIcon className="card-preview-edit-icon"></DeleteIcon>
-                        </span>
+                      <div className="icons-container flex">
+                        <div onClick={this.onEditCard}>
+                          <span>
+                            <EditIcon className="card-preview-edit-icon"></EditIcon>
+                          </span>
+                        </div>
+                        <div onClick={() => this.onRemoveCard(card.id)}>
+                          <span>
+                            <DeleteIcon className="card-preview-edit-icon"></DeleteIcon>
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <EditCard
-                    saveEditedCard={this.onSaveEditedCard}
-                    card={card}
-                  ></EditCard>
-                )}
+                    <EditCard
+                      saveEditedCard={this.onSaveEditedCard}
+                      card={card}
+                    ></EditCard>
+                  )}
               </div>
               {card.members.length !== 0 && (
                 <MembersAvatar users={card.members} />
