@@ -1,5 +1,8 @@
 .card-desc-container {
     margin-bottom: 24px;
+    @include for-mobile-layout{
+        margin-bottom: 10px;
+    }
     .card-desc-title {
         display: flex;
         align-items: center;
@@ -16,7 +19,6 @@
             padding-left: 5px;
             margin-block-start: 0;
             margin-block-end: 0;
-            // padding-bottom: 2px;
             & h3 {
                 font-size: 1rem;
                 font-weight: 600;
@@ -47,33 +49,3 @@
     }
 }
 
-// .card-desc {
-//     top: 8px;
-//     .cd-subtitle {
-//         padding-top: 2px;
-//         padding-left: 10px;
-//         font-family: Roboto;
-//         .cd-subtitle > h3 {
-//             padding-left: 5px;
-//             margin-block-start: 0;
-//             margin-block-end: 0;
-//             padding-bottom: 5px;
-//         }
-//         .cd-subtitle-txt {
-//             padding-top: 2px;
-//             font-family: Roboto;
-//             margin-left: 10px;
-//             font-size: 16px;
-//             font-weight: 600;
-//             // margin-block-start: 0;
-//             // margin-block-end: 10px;
-
-//             padding-left: 5px;
-//             margin-block-start: 0;
-//             margin-block-end: 0;
-//             padding-bottom: 5px;
-
-//             // line-height: 20px;
-//         }
-//     }
-// }

@@ -5,6 +5,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { connect } from 'react-redux';
 import { logout } from './../store/actions/userActions.js';
+import SearchIcon from '@material-ui/icons/Search';
 
 export class _Header extends Component {
   state = {};
@@ -41,7 +42,7 @@ export class _Header extends Component {
               <span className="header-icon-word">Boards</span>
             </button>
           </Link>
-          {/* <form className="header-input flex">
+          <form className="header-input flex">
             <label hidden>Search Bar</label>
             <input type="text" />
             <div className={this.searchClass} onClick={this.onOpenSearch}>
@@ -49,7 +50,7 @@ export class _Header extends Component {
                 <SearchIcon></SearchIcon>
               </div>
             </div>
-          </form> */}
+          </form>
         </div>
         <button className="logo-wrapper">
           <Link to="/">
