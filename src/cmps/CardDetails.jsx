@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { eventBus } from '../services/eventBusService.js';
 import { utilService } from '../services/misc/utilService.js';
 import { CardSideBar } from './cardDetailsCmps/cardDetailsBodyCmps/CardSideBar.jsx';
 import { CardDescription } from './cardDetailsCmps/cardDetailsBodyCmps/CardDescription.jsx';
@@ -35,11 +34,8 @@ export class _CardDetails extends Component {
     let loggedUser = userService.getLoggedinUser();
     if (!loggedUser) {
       loggedUser = { fullname: 'Guest' };
-      console.log('loggedUser is:', loggedUser);
     }
-    this.setState({ loggedUser });
-    this.setState({ card });
-    this.setState({ boardUsers });
+    this.setState({ loggedUser, card, boardUsers });
   }
 
   onMemberAdd = (user) => {
@@ -234,7 +230,7 @@ export class _CardDetails extends Component {
     const { checklists } = this.state.card;
     const labels = this.state.card.labels;
     const cardMembers = this.state.card.members;
-    const { dueDate } = this.state.card;
+    const dueDate = utilService.formatTime(card, 'dateTime');
     return (
       <>
         <div className="modal-bg" onClick={(ev) => onCloseModal(ev)}></div>
@@ -270,8 +266,10 @@ export class _CardDetails extends Component {
                   )}
                   {dueDate && (
                     <div>
-                      <ScheduleIcon />
-                      <p>{dueDate}</p>
+                      <p>
+                        <ScheduleIcon />
+                        {dueDate}
+                      </p>
                     </div>
                   )}
                   {cardMembers.length !== 0 && (

@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { AddStack } from '../cmps/AddStack';
 import { StatusBar } from '../cmps/StatusBar';
 import AddIcon from '@material-ui/icons/Add';
-import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { socketService } from '../services/misc/socketService';
 
@@ -51,14 +50,6 @@ export class _Board extends Component {
   };
 
   render() {
-    // const classes = makeStyles((theme) => ({
-    //   root: {
-    //     display: 'flex',
-    //     '& > * + *': {
-    //       marginLeft: theme.spacing(2),
-    //     },
-    //   },
-    // }));
     const { selectedBoard } = this.props;
     let style = { backgroundColor: 'white' };
     if (!selectedBoard) return <CircularProgress />;
@@ -68,7 +59,6 @@ export class _Board extends Component {
         ? { backgroundColor: bgc }
         : { backgroundImage: `url(${bgc})` };
     }
-    // const boardTitle = selectedBoard ? selectedBoard.title : '';
     return (
       <section className="board-container" style={style}>
         <StatusBar />

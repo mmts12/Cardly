@@ -50,9 +50,9 @@ export class _CardlyApp extends Component {
           })}
         </div>
         <div className="app-btn-container flex">
-          <button className="cardly-btn">
+          {/* <button className="cardly-btn">
             <span>Clone Board</span>
-          </button>
+          </button> */}
           <button className="cardly-btn" onClick={this.onShowAddBoardSection}>
             <span>Add Board</span>
           </button>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Calendar from 'react-calendar';
 import CloseIcon from '@material-ui/icons/Close';
 import { DateAndTimePickers } from './../DateAndTimePickers';
 
@@ -35,9 +34,11 @@ export class DueDatePopup extends Component {
           <p className="pop-up-header">Change Due Date</p>
           <hr></hr>
           <DateAndTimePickers onSetDate={this.onSetDate} />
-          <button className="save-btn" onClick={this.onSaveDueDate}>
-            Save
+          <div className="save-btn-container">
+            <button className="save-btn" onClick={this.onSaveDueDate}>
+              Save
           </button>
+          </div>
         </div>
       </section>
     );

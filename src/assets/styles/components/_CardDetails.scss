@@ -38,17 +38,7 @@
     @include for-mobile-layout{
         width: 100%;
     }
-    // min-height: 85vh;
-    // margin: 50px 0px 80px;
-    // padding: 16px;
-    // background-color: #f4f5f7;
-    // grid-template-columns: 580px 190px;
-    // grid-template-rows: 80px minmax(500px, auto);
-    // overflow: hidden;
-    // position: absolute;
-    // position: relative;
-    // z-index: 25;
-    // top: -50px;
+  
 
 
     .card-details-cover {
@@ -58,18 +48,13 @@
     }
 
     .card-details-body {
-        // padding: 30px;
         display: flex;
         flex-direction: column;
-        // justify-content: center;
-        // align-items: center;
         .card-details-top {
             margin: 12px 40px 8px 56px;
             min-height: 32px;
             .card-details-title {
                 font-family: Roboto;
-                // margin-top: 1px;
-                // margin-left: 10px;
                 margin: 4px 0 0;
                 padding: 8px 0 0;
                 font-size: 20px;

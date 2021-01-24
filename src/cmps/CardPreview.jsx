@@ -11,6 +11,7 @@ import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/Membe
 import SubjectIcon from '@material-ui/icons/Subject';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import { utilService } from './../services/misc/utilService';
 
 export class _CardPreview extends Component {
   state = {
@@ -54,36 +55,10 @@ export class _CardPreview extends Component {
     this.setState({ isEditCardModalShow: false });
   };
 
-  convertTime = () => {
-    const { card } = this.props;
-    if (!card.dueDate) return;
-    let cardCopy = { ...card };
-    let timeDate = cardCopy.dueDate.split('T');
-    let dateToDisplay = `${timeDate[0].substring(8)}/${timeDate[0].substring(
-      5,
-      7
-    )}`;
-    return dateToDisplay;
-  };
-
-  calcDoneTodos = () => {
-    const { card } = this.props;
-    return card.checklists.reduce(
-      (acc, checklist) => {
-        checklist.todos.map((todo) => {
-          acc.length++;
-          if (todo.isDone) acc.done++;
-        });
-        return acc;
-      },
-      { done: 0, length: 0 }
-    );
-  };
-
   render() {
-    const displayedDate = this.convertTime();
-    const todosSummary = this.calcDoneTodos();
     const { card, stack, index } = this.props;
+    const todosSummary = utilService.calcDoneTodos(card);
+    const displayedDate = utilService.formatTime(card);
     const { coverColor, labels } = this.props.card;
     const { isCardDetailsSelected, isEditCardModalShow } = this.state;
     if (!card || !stack) return <h1>loading..</h1>;
@@ -119,34 +94,36 @@ export class _CardPreview extends Component {
                 {!isEditCardModalShow ? (
                   <div className="card-preview-icons  ">
                     <div>{card.title}</div>
-                    <div className="card-preview-summary-icons">
-                      {card.desc && (
-                        <div>
-                          <SubjectIcon />
-                        </div>
-                      )}
-                      {todosSummary.length !== 0 && (
-                        <div>
-                          <PlaylistAddCheckIcon />
-                          {todosSummary.done}/{todosSummary.length}
-                        </div>
-                      )}
-                      {card.dueDate && (
-                        <div>
-                          <ScheduleIcon /> {displayedDate}
-                        </div>
-                      )}
-                    </div>
-                    <div className="icons-container flex">
-                      <div onClick={this.onEditCard}>
-                        <span>
-                          <EditIcon className="card-preview-edit-icon"></EditIcon>
-                        </span>
+                    <div className="card-preview-bottom flex space-between">
+                      <div className="card-preview-summary-icons">
+                        {card.desc && (
+                          <div className="icon-preview">
+                            <SubjectIcon className="icons" />
+                          </div>
+                        )}
+                        {todosSummary.length !== 0 && (
+                          <div className="icon-preview">
+                            <PlaylistAddCheckIcon className="icons" />
+                            {todosSummary.done}/{todosSummary.length}
+                          </div>
+                        )}
+                        {card.dueDate && (
+                          <div className="icon-preview">
+                            <ScheduleIcon className="icons" /> {displayedDate}
+                          </div>
+                        )}
                       </div>
-                      <div onClick={() => this.onRemoveCard(card.id)}>
-                        <span>
-                          <DeleteIcon className="card-preview-edit-icon"></DeleteIcon>
-                        </span>
+                      <div className="icons-container flex">
+                        <div onClick={this.onEditCard}>
+                          <span>
+                            <EditIcon className="card-preview-edit-icon"></EditIcon>
+                          </span>
+                        </div>
+                        <div onClick={() => this.onRemoveCard(card.id)}>
+                          <span>
+                            <DeleteIcon className="card-preview-edit-icon"></DeleteIcon>
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>

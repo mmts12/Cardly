@@ -1,6 +1,5 @@
 .status-bar-container {
     background-color: rgba(17, 17, 28, 0.09);
-
     margin-top: 40px;
     height: 40px;
     position: fixed;
@@ -21,11 +20,10 @@
     }
 
     @include for-mobile-layout {
-        // position: relative;
         height: auto;
         padding: 8px 4px 4px 8px;
         flex-wrap: wrap;
         flex-direction: row;
     }
-    // background: hsla(0,0%,100%,.24);
+
 }

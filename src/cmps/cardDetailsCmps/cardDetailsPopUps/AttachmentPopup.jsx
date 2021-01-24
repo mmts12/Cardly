@@ -33,7 +33,7 @@ export class _AttachmentPopup extends Component {
   };
 
   render() {
-    const { card, imageUpload } = this.state;
+    const { imageUpload } = this.state;
     return (
       <section>
         <div className="pop-up-attachments">

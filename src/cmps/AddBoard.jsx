@@ -50,7 +50,12 @@ export class _AddBoard extends Component {
     return (
       <section className="add-board-background">
         <div className="add-new-board">
-          <button className="clear-btn no-growth flex justify-center align-center" onClick={onCloseAddBoardSection}><ClearIcon></ClearIcon></button>
+          <button
+            className="clear-btn no-growth flex justify-center align-center"
+            onClick={onCloseAddBoardSection}
+          >
+            <ClearIcon></ClearIcon>
+          </button>
           <form className="add-board-form flex align-center justify-center">
             <label className="add-board-title">Title:</label>
             <input
@@ -80,7 +85,7 @@ export class _AddBoard extends Component {
                   key={img}
                   className="add-new-board-img pointer"
                 >
-                  <img src={img} />
+                  <img alt="" src={img} />
                 </div>
               );
             })}

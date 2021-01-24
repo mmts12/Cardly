@@ -8,10 +8,7 @@ import { updateBoard, setSelectedBoard } from '../store/actions/boardActions';
 import { EditStack } from './EditStack.jsx';
 import AddIcon from '@material-ui/icons/Add';
 import { AddCard } from './AddCard';
-// import { boardService } from './../services/boardService';
 import { Draggable } from 'react-beautiful-dnd';
-import { boardService } from './../services/boardService';
-import { socketService } from '../services/misc/socketService';
 
 export class _StackPreview extends Component {
   state = {

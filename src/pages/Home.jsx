@@ -9,17 +9,23 @@ export function Home() {
           <div className="home-words">
             <h1>Cardly</h1>
             <p className="p1">Get your work organized just how you like it.</p>
-            <p className="p2">Cardly's boards, lists, and cards enable teams to organize and prioritize projects in a fun, flexible, and rewarding way.</p>
+            <p className="p2">
+              Cardly's boards, lists, and cards enable teams to organize and
+              prioritize projects in a fun, flexible, and rewarding way.
+            </p>
             <div className="btn">
-            <Link to="/Cardly">
-              <button className="home-btn">Get Started</button>
-            </Link>
-          </div>
+              <Link to="/Cardly">
+                <button className="home-btn">Get Started</button>
+              </Link>
+            </div>
           </div>
           <div className="home-img">
-            <img src="https://res.cloudinary.com/drak3llqt/image/upload/v1611398666/undraw_teamwork_hpdk_qoijno.svg" className="cardly-img" />
+            <img
+              src="https://res.cloudinary.com/drak3llqt/image/upload/v1611398666/undraw_teamwork_hpdk_qoijno.svg"
+              className="cardly-img"
+              alt=""
+            />
           </div>
-          
         </div>
       </div>
       <footer className="home-footer flex space-between">
@@ -31,7 +37,7 @@ export function Home() {
         <p className="footer-p">coffeerights 2021</p>
       </footer>
     </section>
-  )
+  );
 }
 
 // export function Home() {
