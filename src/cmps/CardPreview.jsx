@@ -67,6 +67,7 @@ export class _CardPreview extends Component {
         <Draggable draggableId={card.id} index={index}>
           {(provided) => (
             <div
+              onClick={this.onShowCardDetails}
               className="card-preview"
               {...provided.draggableProps}
               {...provided.dragHandleProps}
@@ -87,7 +88,7 @@ export class _CardPreview extends Component {
               {labels.length !== 0 && <CardLabels labels={labels} />}
 
               <div
-                onClick={this.onShowCardDetails}
+
                 className="card-preview-line flex space-between"
               >
                 {!isEditCardModalShow ? (

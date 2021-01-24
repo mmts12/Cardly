@@ -9,8 +9,11 @@ var axios = Axios.create({
     withCredentials: true
 })
 
-var baseUrl = 'http://localhost:3030/api/board'
-
+//For Heroku use
+const baseUrl = (process.env.NODE_ENV !== 'development')
+    ? '/api/board'
+    : '//localhost:3030/api/board';
+// var baseUrl = 'http://localhost:3030/api/board'
 
 export const boardService = {
     query,
