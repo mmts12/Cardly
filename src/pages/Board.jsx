@@ -17,8 +17,8 @@ export class _Board extends Component {
   componentDidMount() {
     this.loadBoard();
     socketService.setup(); //on the road
-    socketService.emit('join board', this.props.match.params.id); //notify server i joined the lane
-    socketService.on('update board', this.handleUpdateBoard); // let me know on every change
+    socketService.emit('join board', this.props.match.params.id);
+    socketService.on('update board', this.handleUpdateBoard);
   }
 
   componentWillUnmount() {
@@ -26,7 +26,7 @@ export class _Board extends Component {
   }
 
   handleUpdateBoard = (board) => {
-    this.props.updateBoard(board); //call action
+    this.props.updateBoard(board);
   };
 
   loadBoard() {

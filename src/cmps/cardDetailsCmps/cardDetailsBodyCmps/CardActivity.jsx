@@ -91,8 +91,8 @@ export class CardActivity extends Component {
                     src="frontend/src/assets/imgs/avatar-person.svg"
                   ></Avatar>
                 ) : (
-                  <Avatar size="10">{initials}</Avatar>
-                )}
+                    <Avatar size="10">{initials}</Avatar>
+                  )}
                 <div className="card-activity-row">
                   <input
                     className="card-details-activity-textarea"

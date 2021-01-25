@@ -56,7 +56,7 @@ export class _CardlyApp extends Component {
             <AddOutlinedIcon />
           </div>
         </div>
-        <div className="app-btn-container flex">
+        <div className="board-preview">
           {/* <button className="cardly-btn">
             <span>Clone Board</span>
           </button> */}
