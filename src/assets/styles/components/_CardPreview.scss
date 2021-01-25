@@ -31,6 +31,7 @@
     }
     .icons{
         font-size: 1.1rem;
+        
     }
     &:hover {
         white-space: normal;
@@ -41,7 +42,10 @@
     .icons-container{
         height: 1.5rem;
     }
+    
 }
+
+
 
 .card-preview-edit-card {
     & > form > input {

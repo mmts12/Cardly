@@ -78,22 +78,20 @@ export class _CardPreview extends Component {
                   // {coverColor !== '' && (
                   <img src={card.imgUrl} alt="" />
                 ) : (
-                    <div
-                      className="card-preview-color"
-                      style={{ background: `${coverColor}` }}
-                    ></div>
-                  )
+                  <div
+                    className="card-preview-color"
+                    style={{ background: `${coverColor}` }}
+                  ></div>
+                )
                 // )}
               }
               {labels.length !== 0 && <CardLabels labels={labels} />}
 
-              <div
-
-                className="card-preview-line flex space-between"
-              >
+              <div className="card-preview-line flex space-between">
                 {!isEditCardModalShow ? (
-                  <div className="card-preview-icons  ">
+                  <div className="card-preview-icons">
                     <div>{card.title}</div>
+
                     <div className="card-preview-bottom flex space-between">
                       <div className="card-preview-summary-icons">
                         {card.desc && (
@@ -128,11 +126,11 @@ export class _CardPreview extends Component {
                     </div>
                   </div>
                 ) : (
-                    <EditCard
-                      saveEditedCard={this.onSaveEditedCard}
-                      card={card}
-                    ></EditCard>
-                  )}
+                  <EditCard
+                    saveEditedCard={this.onSaveEditedCard}
+                    card={card}
+                  ></EditCard>
+                )}
               </div>
               {card.members.length !== 0 && (
                 <MembersAvatar users={card.members} />

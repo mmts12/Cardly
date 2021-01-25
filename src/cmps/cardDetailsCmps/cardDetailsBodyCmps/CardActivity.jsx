@@ -67,10 +67,10 @@ export class CardActivity extends Component {
               <button className="save-btn" onClick={this.onCommentSave}>
                 Save
               </button>
-              <div className="activity-bar-icons">
+              {/* <div className="activity-bar-icons">
                 <AttachFileIcon className="activity-icon" />
                 <AlternateEmailIcon className="activity-icon" />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

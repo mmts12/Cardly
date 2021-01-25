@@ -10,6 +10,16 @@
     @include for-mobile-layout{
         max-height: 78vh;
     }
+
+    .stack-menu-header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    &>.title-stack{
+        padding-inline-end: 80px;
+    }
+    
+    }
        
     .stack-title {
         cursor: pointer;
@@ -20,6 +30,33 @@
             .stack-preview-delete-icon {
                 opacity: 1;
             }
+        }
+        .stack-3dots-menu{
+            color: gray;
+        }
+        .bg-modal-stack{
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+        }
+        .stack-menu-modal{
+            position: absolute;
+            top: 40px;
+            left: -31px;
+            background-color: white;
+            z-index: 5;
+            border-radius: 3px;
+            box-shadow: 0 8px 16px -4px rgba(9,30,66,.25), 0 0 0 1px rgba(9,30,66,.08);
+            width: 304px;
+
+            &>ul{
+                list-style: none;
+                padding: 0 12px 12px;
+            }
+            &>ul>li{
+                padding: 6px 12px;
+            }
+
         }
     }
     .stack-title-words {

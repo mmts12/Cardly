@@ -9,12 +9,15 @@ import { EditStack } from './EditStack.jsx';
 import AddIcon from '@material-ui/icons/Add';
 import { AddCard } from './AddCard';
 import { Draggable } from 'react-beautiful-dnd';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import { StackMenu } from './StackMenu';
 
 export class _StackPreview extends Component {
   state = {
     isEditShow: false,
     isAddShow: false,
     dragEnable: true,
+    isOpenStackMenu: false,
   };
 
   disableStackDrag = () => {
@@ -27,6 +30,7 @@ export class _StackPreview extends Component {
   onRemoveStack = () => {
     const { stack, selectedBoard, removeStack } = this.props;
     removeStack(stack.id, selectedBoard._id, selectedBoard);
+    this.onCloseMenuModal();
   };
 
   onEdit = () => {
@@ -60,9 +64,19 @@ export class _StackPreview extends Component {
     return true;
   };
 
+  onToogleStackMenu = () => {
+    let { isOpenStackMenu } = this.state;
+    isOpenStackMenu = !isOpenStackMenu;
+    this.setState({ isOpenStackMenu });
+  };
+
+  onCloseMenuModal = () => {
+    this.setState({ isOpenStackMenu: false });
+  };
+
   render() {
     const { stack } = this.props;
-    const { dragEnable } = this.state;
+    const { dragEnable, isOpenStackMenu } = this.state;
     return (
       <>
         <Draggable
@@ -85,13 +99,23 @@ export class _StackPreview extends Component {
                     stack={stack}
                   />
                 ) : (
-                  <div className="flex space-between align-center">
+                  <div className="flex space-between align-center width100">
                     <h4 onClick={this.onEdit} className="stack-title-words">
                       {stack.title}
                     </h4>
-                    <div onClick={this.onRemoveStack} className="flex">
+                    {/* <div onClick={this.onRemoveStack} className="flex">
                       <DeleteIcon className="stack-preview-delete-icon"></DeleteIcon>
-                    </div>
+                    </div> */}
+                    {isOpenStackMenu && (
+                      <StackMenu
+                        onRemoveStack={this.onRemoveStack}
+                        onCloseMenuModal={this.onCloseMenuModal}
+                      />
+                    )}
+                    <MoreHorizIcon
+                      onClick={this.onToogleStackMenu}
+                      className="stack-3dots-menu"
+                    />
                   </div>
                 )}
               </div>

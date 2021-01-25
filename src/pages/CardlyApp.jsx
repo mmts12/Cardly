@@ -3,6 +3,7 @@ import { loadBoards, removeBoard } from './../store/actions/boardActions.js';
 import { connect } from 'react-redux';
 import { BoardPreview } from './../cmps/BoardPreview';
 import { AddBoard } from '../cmps/AddBoard.jsx';
+import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 
 export class _CardlyApp extends Component {
   state = {
@@ -48,14 +49,18 @@ export class _CardlyApp extends Component {
               />
             );
           })}
+          <div
+            className="board-preview-card add-board"
+            onClick={this.onShowAddBoardSection}
+          >
+            <AddOutlinedIcon />
+          </div>
         </div>
         <div className="app-btn-container flex">
           {/* <button className="cardly-btn">
             <span>Clone Board</span>
           </button> */}
-          <button className="cardly-btn" onClick={this.onShowAddBoardSection}>
-            <span>Add Board</span>
-          </button>
+
           {isAddBoardShow && (
             <AddBoard
               onCloseAddBoardSection={this.onCloseAddBoardSection}

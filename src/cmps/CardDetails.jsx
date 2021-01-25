@@ -220,6 +220,15 @@ export class _CardDetails extends Component {
     });
   };
 
+  onRemoveDueDate = () => {
+    const { stack, selectedBoard } = this.props;
+    const { card } = this.state;
+    card.dueDate = '';
+    this.setState({ card }, () => {
+      this.props.saveCard(card, stack, selectedBoard);
+    });
+  };
+
   onSaveCard = (card) => {
     const { stack, selectedBoard } = this.props;
     this.props.saveCard(card, stack, selectedBoard);
@@ -257,8 +266,6 @@ export class _CardDetails extends Component {
                 </p>
               </div>
               <div className="details-list-container flex">
-
-
                 <div className="column-container flex column">
                   {/* CARD LABELS */}
                   {labels.length !== 0 && (
@@ -291,6 +298,7 @@ export class _CardDetails extends Component {
                 <div className="sidebar-wrapper flex column">
                   <CardSideBar
                     onSetDueDate={this.onSetDueDate}
+                    onRemoveDueDate={this.onRemoveDueDate}
                     card={card}
                     stack={stack}
                     onMemberAdd={this.onMemberAdd}
@@ -300,11 +308,10 @@ export class _CardDetails extends Component {
                     onLabelColorSelect={this.setLabelOnCard}
                   />
                 </div>
-               <div className="column-container flex column"><CardActivity card={card} onCommentAdd={this.addComment} /></div>
-
-                
+                <div className="column-container flex column">
+                  <CardActivity card={card} onCommentAdd={this.addComment} />
+                </div>
               </div>
-            
             </div>
           </section>
         </main>
