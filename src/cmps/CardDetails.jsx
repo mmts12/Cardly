@@ -308,13 +308,9 @@ export class _CardDetails extends Component {
                     onLabelColorSelect={this.setLabelOnCard}
                   />
                 </div>
-<<<<<<< HEAD
                 <div className="column-container flex column">
                   <CardActivity card={card} onCommentAdd={this.addComment} />
                 </div>
-=======
-               <div className="column-container flex column"><CardActivity card={card} onCommentAdd={this.addComment} /></div>
->>>>>>> 000076d3ad812215e863c7d50c61450689ee99ec
               </div>
             </div>
           </section>
