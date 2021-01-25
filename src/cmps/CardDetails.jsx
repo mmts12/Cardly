@@ -273,8 +273,8 @@ export class _CardDetails extends Component {
                   )}
                   {dueDate && (
                     <div>
-                      <p>
-                        <ScheduleIcon />
+                      <p className="details-due-date">
+                        <span><ScheduleIcon /></span>
                         {dueDate}
                       </p>
                     </div>

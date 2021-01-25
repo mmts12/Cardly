@@ -7,15 +7,11 @@ export function StackMenu({ onCloseMenuModal, onRemoveStack }) {
       <div className="bg-modal-stack" onClick={onCloseMenuModal}></div>
       <div className="stack-menu-modal">
         <div className="stack-menu-header">
-          <span className="title-stack">List Actions</span>
-
-          <div>
+          <span className="title-stack">List Actions</span>        
             <span className="close-menu-btn" onClick={onCloseMenuModal}>
               <CloseIcon />
-            </span>
-          </div>
+            </span>        
         </div>
-        <hr />
         <ul>
           <li>Add Card...</li>
           <li>Copy List...</li>

@@ -25,10 +25,10 @@
     z-index: 15;
     overflow-y: scroll;
     border-radius: 3px;
-    @include for-mobile-layout{
+    @include for-mobile-layout {
         width: 100%;
     }
-  
+
     .card-details-cover {
         height: 40px;
         text-align: end;
@@ -66,21 +66,29 @@
             width: 100%;
             padding: 18px;
             flex-wrap: wrap;
-            @include for-mobile-layout{
+            @include for-mobile-layout {
                 padding: 0;
             }
-            .column-container {               
+            .column-container {
                 width: 552px;
                 margin: 0;
                 overflow-y: auto;
                 min-height: 24px;
                 padding: 0 8px 8px 16px;
+                .details-due-date {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    & span{
+                        margin: 3px;
+                    }
+                }
             }
         }
     }
 
-    .sidebar-wrapper{
-        @include for-mobile-layout{
+    .sidebar-wrapper {
+        @include for-mobile-layout {
             width: 100%;
         }
     }
@@ -94,7 +102,7 @@
         border: 0;
         border-radius: 3px;
         padding: 6px 12px;
-        @include for-wide-layout{
+        @include for-wide-layout {
             width: 9rem;
         }
         height: 30px;
@@ -153,7 +161,7 @@
     margin: 4px;
     width: 38px;
     height: 10px;
-    &:first-child{
+    &:first-child {
         margin-left: 6px;
     }
 }
