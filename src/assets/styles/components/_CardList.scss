@@ -9,10 +9,12 @@
     border: 1px solid rgba(0, 0, 0, 0.12);
     color: $clr2;
     position: relative;
+   
     .stack-drop {
         min-height: 40px;
         overflow-y: scroll;
         max-height: 70vh;
+       
         @include for-mobile-layout{
             max-height: 65vh;
         }

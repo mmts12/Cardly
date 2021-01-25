@@ -54,15 +54,22 @@ export class CardSideBar extends Component {
       {
         memberPopUp: false,
         labelPopUp: false,
-        checklistPopUp: false,
+        checklistPopUp: false, ///close
         dueDatePopUp: false,
         attachmentPopUp: false,
-        coverPopUp: false,
+        coverPopUp: false, //close
       },
       () => {
         this.setState({ [popupToOpen]: true });
       }
     );
+  };
+
+  onCloseCheckListPopUp = () => {
+    this.setState({ checklistPopUp: false });
+  };
+  onCloseCoverPopUp = () => {
+    this.setState({ coverPopUp: false });
   };
 
   render() {
@@ -76,92 +83,95 @@ export class CardSideBar extends Component {
       <div className="sidebar-container ">
         <div className="sidebar-title">ADD TO CARD</div>
         <div className="sidebar-btns flex wrap">
-        {memberPopUp && (
-          <MembersPopup
+          {memberPopUp && (
+            <MembersPopup
+              name="memberPopUp"
+              onButtonClick={this.callBack}
+              onMemberAdd={this.props.onMemberAdd}
+              boardUsers={this.props.boardUsers}
+            />
+          )}
+          {labelPopUp && (
+            <LabelsPopup
+              name="labelPopUp"
+              onButtonClick={this.callBack}
+              onLabelColorSelect={this.props.onLabelColorSelect}
+            />
+          )}
+          {checklistPopUp && (
+            <CheckListPopup
+              name="checklistPopUp"
+              onButtonClick={this.callBack}
+              onCheckListSelect={this.props.onCheckListSelect}
+              onCloseCheckListPopUp={this.onCloseCheckListPopUp}
+            />
+          )}
+          {dueDatePopUp && (
+            <DueDatePopup
+              onSetDueDate={this.props.onSetDueDate}
+              name="dueDatePopUp"
+              onButtonClick={this.callBack}
+              onRemoveDueDate={this.props.onRemoveDueDate}
+            />
+          )}
+          {attachmentPopUp && (
+            <AttachmentPopup
+              name="attachmentPopUp"
+              onButtonClick={this.callBack}
+              stack={this.props.stack}
+              card={this.props.card}
+            />
+          )}
+          {coverPopUp && (
+            <CoverPopup
+              name="coverPopUp"
+              onButtonClick={this.callBack}
+              onCoverColorSelect={this.props.onCoverColorSelect}
+              onCloseCoverPopUp={this.onCloseCoverPopUp}
+            />
+          )}
+
+          <CardDetailsButton
+            icon={<PersonIcon></PersonIcon>}
+            text="Members"
             name="memberPopUp"
             onButtonClick={this.callBack}
-            onMemberAdd={this.props.onMemberAdd}
-            boardUsers={this.props.boardUsers}
           />
-        )}
-        {labelPopUp && (
-          <LabelsPopup
+
+          <CardDetailsButton
+            icon={<LocalOfferIcon></LocalOfferIcon>}
+            text="Labels"
             name="labelPopUp"
             onButtonClick={this.callBack}
-            onLabelColorSelect={this.props.onLabelColorSelect}
           />
-        )}
-        {checklistPopUp && (
-          <CheckListPopup
+
+          <CardDetailsButton
+            icon={<CheckBoxIcon></CheckBoxIcon>}
+            text="Checklist"
             name="checklistPopUp"
             onButtonClick={this.callBack}
-            onCheckListSelect={this.props.onCheckListSelect}
           />
-        )}
-        {dueDatePopUp && (
-          <DueDatePopup
-            onSetDueDate={this.props.onSetDueDate}
+
+          <CardDetailsButton
+            icon={<ScheduleIcon></ScheduleIcon>}
+            text="Due Date"
             name="dueDatePopUp"
             onButtonClick={this.callBack}
           />
-        )}
-        {attachmentPopUp && (
-          <AttachmentPopup
+
+          <CardDetailsButton
+            icon={<AttachFileIcon></AttachFileIcon>}
+            text="Attachment"
             name="attachmentPopUp"
             onButtonClick={this.callBack}
-            stack={this.props.stack}
-            card={this.props.card}
           />
-        )}
-        {coverPopUp && (
-          <CoverPopup
+
+          <CardDetailsButton
+            icon={<VideoLabelIcon></VideoLabelIcon>}
+            text="Cover"
             name="coverPopUp"
             onButtonClick={this.callBack}
-            onCoverColorSelect={this.props.onCoverColorSelect}
           />
-        )}
-
-        <CardDetailsButton
-          icon={<PersonIcon></PersonIcon>}
-          text="Members"
-          name="memberPopUp"
-          onButtonClick={this.callBack}
-        />
-
-        <CardDetailsButton
-          icon={<LocalOfferIcon></LocalOfferIcon>}
-          text="Labels"
-          name="labelPopUp"
-          onButtonClick={this.callBack}
-        />
-
-        <CardDetailsButton
-          icon={<CheckBoxIcon></CheckBoxIcon>}
-          text="Checklist"
-          name="checklistPopUp"
-          onButtonClick={this.callBack}
-        />
-
-        <CardDetailsButton
-          icon={<ScheduleIcon></ScheduleIcon>}
-          text="Due Date"
-          name="dueDatePopUp"
-          onButtonClick={this.callBack}
-        />
-
-        <CardDetailsButton
-          icon={<AttachFileIcon></AttachFileIcon>}
-          text="Attachment"
-          name="attachmentPopUp"
-          onButtonClick={this.callBack}
-        />
-
-        <CardDetailsButton
-          icon={<VideoLabelIcon></VideoLabelIcon>}
-          text="Cover"
-          name="coverPopUp"
-          onButtonClick={this.callBack}
-        />
         </div>
       </div>
     );

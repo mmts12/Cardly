@@ -16,6 +16,11 @@ export class CheckListPopup extends Component {
     this.setState({ value });
   };
 
+  onAdd = (value) => {
+    this.props.onCheckListSelect(value);
+    this.props.onCloseCheckListPopUp();
+  };
+
   render() {
     let { value } = this.state;
     return (
@@ -28,20 +33,22 @@ export class CheckListPopup extends Component {
           <p className="pop-up-header">Add Checklist</p>
           <hr></hr>
           <div className="pop-up-title">Title</div>
-          <input
-            autoFocus
-            onChange={this.handleInput}
-            defaultValue="Checklist"
-            className="checklist-input"
-          ></input>
-          <button
-            onClick={() => {
-              this.props.onCheckListSelect(value);
-            }}
-            className="save-btn"
-          >
-            Add
-          </button>
+          <form onSubmit={() => this.onAdd(value)}>
+            <input
+              autoFocus
+              onChange={this.handleInput}
+              defaultValue="Checklist"
+              className="checklist-input"
+            ></input>
+            <button
+              onClick={() => {
+                this.onAdd(value);
+              }}
+              className="save-btn"
+            >
+              Add
+            </button>
+          </form>
         </div>
       </section>
     );

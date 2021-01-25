@@ -9,15 +9,11 @@ export function Home() {
           <div className="home-words">
             <h1>Cardly</h1>
             <p className="p1">Get your work organized just how you like it.</p>
-            <p className="p2">
+            {/* <p className="p2">
               Cardly's boards, lists, and cards enable teams to organize and
               prioritize projects in a fun, flexible, and rewarding way.
-            </p>
-            <div className="btn">
-              <Link to="/Cardly">
-                <button className="home-btn">Get Started</button>
-              </Link>
-            </div>
+            </p> */}
+           
           </div>
           <div className="home-img">
             <img
@@ -26,16 +22,21 @@ export function Home() {
               alt=""
             />
           </div>
+          <div className="btn">
+              <Link to="/Cardly">
+                <button className="home-btn">Get Started</button>
+              </Link>
+            </div>
         </div>
       </div>
-      <footer className="home-footer flex space-between">
+      {/* <footer className="home-footer flex space-between">
         <Link to="/">
           <button className="btn1">
             <span className="btn1-span">about us</span>
           </button>
         </Link>
         <p className="footer-p">coffeerights 2021</p>
-      </footer>
+      </footer> */}
     </section>
   );
 }

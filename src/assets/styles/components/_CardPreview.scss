@@ -9,6 +9,13 @@
     overflow-wrap: break-word;
     min-height: 18px;
     font-family: "Roboto";
+    &:first-child{
+        margin-top: 0;
+    }
+    &:last-child{
+        margin-bottom: 0;
+    }
+    &
     .card-preview-summary-icons{
        display: flex;
     }
@@ -16,6 +23,9 @@
     .card-preview-icons {
         width: 100%;
         padding: 7px;
+        .card-preview-bottom{
+            margin-top: 2px;
+        }
     }
     .icon-preview{
         font-size: 1rem;
@@ -31,6 +41,7 @@
     }
     .icons{
         font-size: 1.1rem;
+        
     }
     &:hover {
         white-space: normal;
@@ -41,7 +52,10 @@
     .icons-container{
         height: 1.5rem;
     }
+    
 }
+
+
 
 .card-preview-edit-card {
     & > form > input {

@@ -12,7 +12,6 @@
     .board-preview-card{
         height: 100%;
         border-radius: 3px;
-        // background: linear-gradient(170deg,#202020,rgba(204,207,213,0) 45%);
         background-color: rgba(0,0,0,.25);
         .board-preview-title{
             margin-block-start: 0;
@@ -31,4 +30,21 @@
         font-family: Roboto;
         font-size: 1rem;
     }
+}
+
+.add-board{
+    background-color: #c7c7c7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    &>svg{
+        font-size: 5rem;
+    }
+    border-radius: 3px;
+
+}
+.add-board:hover{
+    cursor: pointer;
+    opacity: 0.7;
 }

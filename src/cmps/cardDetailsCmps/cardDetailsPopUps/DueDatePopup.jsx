@@ -23,6 +23,12 @@ export class DueDatePopup extends Component {
     this.togglePopUp();
   };
 
+  onRemove = () => {
+    const { onRemoveDueDate } = this.props;
+    onRemoveDueDate();
+    this.togglePopUp();
+  };
+
   render() {
     return (
       <section>
@@ -34,10 +40,13 @@ export class DueDatePopup extends Component {
           <p className="pop-up-header">Change Due Date</p>
           <hr></hr>
           <DateAndTimePickers onSetDate={this.onSetDate} />
-          <div className="save-btn-container">
+          <div className="save-btn-container flex align-center space-between">
             <button className="save-btn" onClick={this.onSaveDueDate}>
               Save
-          </button>
+            </button>
+            <button className="remove-duedate-btn" onClick={this.onRemove}>
+              Remove
+            </button>
           </div>
         </div>
       </section>

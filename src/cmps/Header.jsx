@@ -6,13 +6,12 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { connect } from 'react-redux';
 import { logout } from './../store/actions/userActions.js';
 import SearchIcon from '@material-ui/icons/Search';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
+import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 
 export class _Header extends Component {
   state = {};
-
-  // onOpenSearch() {
-  //   const searchClass = 'not-searched' ? 'searching-now' : 'not-searched';
-  // }
 
   render() {
     const { loggedInUser } = this.props;
@@ -29,7 +28,7 @@ export class _Header extends Component {
             <button className="btn1">
               <span className="btn1-span">
                 <span className="header-icon">
-                  <HomeIcon></HomeIcon>
+                  <HomeOutlinedIcon></HomeOutlinedIcon>
                 </span>
               </span>
             </button>
@@ -37,7 +36,7 @@ export class _Header extends Component {
           <Link to="/Cardly">
             <button className="btn1">
               <span className="header-icon">
-                <DashboardIcon></DashboardIcon>
+                <DashboardOutlinedIcon></DashboardOutlinedIcon>
               </span>
               <span className="header-icon-word">Boards</span>
             </button>
@@ -61,7 +60,7 @@ export class _Header extends Component {
           <button className="btn1">
             <div className="btn1-span">
               <span className="header-icon">
-                <NotificationsIcon></NotificationsIcon>
+                <NotificationsNoneOutlinedIcon></NotificationsNoneOutlinedIcon>
               </span>
             </div>
           </button>
@@ -79,7 +78,7 @@ export class _Header extends Component {
           ) : (
             <Link to="/login">
               <button className="btn1">
-                <span className="header-icon-word">Login</span>
+                <span className="header-login">Login</span>
               </button>
             </Link>
           )}
