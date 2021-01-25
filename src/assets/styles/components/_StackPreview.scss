@@ -3,20 +3,19 @@
     display: inline-block;
     max-height: 83vh;
     // min-height: 15vh;
-    @include for-mobile-layout{
+    @include for-mobile-layout {
         max-height: 78vh;
     }
 
-    .stack-menu-header{
-    display: flex;
-    justify-content: flex-end;
-    align-items: baseline;
-    &>.title-stack{
-        padding-inline-end: 80px;
-    }
-    
-    }
-       
+    // .stack-menu-header {
+    //     display: flex;
+    //     justify-content: flex-end;
+    //     align-items: baseline;
+    //     & > .title-stack {
+    //         padding-inline-end: 80px;
+    //     }
+    // }
+
     .stack-title {
         cursor: pointer;
         padding: 10px;
@@ -27,36 +26,62 @@
                 opacity: 1;
             }
         }
-        .stack-3dots-menu{
+        .stack-3dots-menu {
             color: gray;
         }
-        .bg-modal-stack{
+        .bg-modal-stack {
             position: fixed;
             width: 100vw;
             height: 100vh;
         }
-        .stack-menu-modal{
+        .stack-menu-modal {
             position: absolute;
             top: 40px;
             left: -31px;
             background-color: white;
             z-index: 5;
             border-radius: 3px;
-            box-shadow: 0 8px 16px -4px rgba(9,30,66,.25), 0 0 0 1px rgba(9,30,66,.08);
+            box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
             width: 304px;
-
-            &>ul{
+            .stack-menu-header {
+                height: 40px;
+                position: relative;
+                margin-bottom: 8px;
+                text-align: center;
+                .title-stack {
+                    box-sizing: border-box;
+                    color: #5e6c84;
+                    display: block;
+                    line-height: 45px;
+                    border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+                    margin: 0 12px;
+                    overflow: hidden;
+                    padding: 0 32px;
+                    position: relative;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    z-index: 1;
+                }
+                .close-menu-btn {
+                    color: #6b778c;
+                    padding: 10px 12px 10px 8px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: 2;
+                }
+            }
+            & > ul {
                 list-style: none;
                 padding: 0 12px 12px;
             }
-            &>ul>li{
+            & > ul > li {
                 padding: 6px 12px;
             }
-
         }
     }
     .stack-title-words {
-        font-family: 'Roboto-Bold';
+        font-family: "Roboto-Bold";
         font-weight: 700;
         font-size: 1.2rem;
         margin-block-start: 0;
@@ -69,7 +94,6 @@
         font-size: 1.2rem;
     }
 
-   
     .add-new-card {
         font-family: "Roboto";
         margin: 8px;
@@ -91,18 +115,17 @@
     }
 }
 
-.edit-stack{
-    &>form>input{
+.edit-stack {
+    & > form > input {
         border-radius: 3px;
         border: none;
         resize: none;
         outline: none;
         font-size: 15px;
         padding: 5px;
-        scroll-behavior:auto;
-        
+        scroll-behavior: auto;
     }
-    &>form>button{
+    & > form > button {
         background-color: #5aac44;
         box-shadow: none;
         border: none;
@@ -118,6 +141,6 @@
         cursor: pointer;
         padding: 6px 12px;
         text-decoration: none;
-        font-family: 'Roboto';
+        font-family: "Roboto";
     }
 }
