@@ -2,7 +2,7 @@
     margin: 0 4px;
     display: inline-block;
     max-height: 83vh;
-    min-height: 15vh;
+    // min-height: 15vh;
     @include for-mobile-layout{
         max-height: 78vh;
     }
@@ -19,7 +19,7 @@
         }
     }
     .stack-title-words {
-        font-family: Ubuntu;
+        font-family: 'Roboto-Bold';
         font-weight: 700;
         font-size: 1.2rem;
         margin-block-start: 0;

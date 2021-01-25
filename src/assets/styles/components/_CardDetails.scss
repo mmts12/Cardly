@@ -153,4 +153,7 @@
     margin: 4px;
     width: 38px;
     height: 10px;
+    &:first-child{
+        margin-left: 6px;
+    }
 }

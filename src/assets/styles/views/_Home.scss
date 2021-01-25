@@ -1,19 +1,28 @@
 .hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #0079bf, #5067c5);
     .home-container {
-        padding-top: 3rem;
-        padding-bottom: 5rem;
+       
         .home-content {
             display: flex;
             align-items: center;
             flex-direction: column;
             justify-content: center;
             flex-wrap: wrap;
+            @include for-mobile-layout{
+                padding-top: 3rem;
+            }
             .home-words {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding-top: 2.5rem;
                 & h1 {
                     font-weight: 700;
                     font-size: 5rem;
                     font-family: Pacifico;
-                    color: $clr1;
+                    color: white;
                     padding: 1rem;
                     margin: 1rem;
                     @include for-mobile-layout {
@@ -25,14 +34,14 @@
                 }
                 .p1 {
                     font-weight: 700;
-                    font-size: 3rem;
-                    font-family: Pacifico;
-                    padding: 1.5rem;
+                    font-size: 2rem;
+                    font-family: Roboto;
+                    padding: 2rem;
                     margin-block-start: 0;
                     margin-block-end: 0;
-                    color: #333;
+                    color: white;
                     @include for-mobile-layout {
-                        font-size: 2rem;
+                        font-size: 1.2rem;
                         padding: 1rem;
                     }
                 }
@@ -57,7 +66,7 @@
                 padding-right: 15px;
                 padding-left: 15px;
                 .cardly-img {
-                    height: auto;
+                    height: 300px;
                     vertical-align: middle;
                     border-style: none;
                 }
@@ -65,17 +74,16 @@
             .home-btn {
                 font-family: Roboto;
                 font-weight: 700;
-                font-size: 2rem;
+                font-size: 2.5rem;
                 cursor: pointer;
-                border: 3px solid $clr1;
                 padding: 1rem;
-                border-radius: 40px;
-                margin-top: 0.8rem;
-                background-color: lightgrey;
-                opacity: 0.75;
-                margin-left: 1rem;
-                margin-top: 4rem;
-                @include for-mobile-layout{
+                border-radius: 5px;
+                background-color: white;
+                opacity: 0.95;
+                margin-top: 3rem;
+                outline: none;
+                border-color: transparent;
+                @include for-mobile-layout {
                     font-size: 1.5rem;
                     margin-top: 1.5rem;
                 }
@@ -87,7 +95,8 @@
         left: 0;
         bottom: 0;
         width: 100%;
-        background-color: $clr1;
+        background-color: rgba(0, 0, 0, 0.32);
+        // background-color: $clr1;
         display: flex;
         min-height: 40px;
         max-height: 40px;

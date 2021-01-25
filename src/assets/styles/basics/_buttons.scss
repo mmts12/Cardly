@@ -10,10 +10,16 @@
     display: flex;
     font-weight: 700;
     border-radius: 3px;
-    margin: 0 4px 0 0;
+    margin: 0 8px 0 0;
     padding: 0;
     white-space: nowrap;
     cursor: pointer;
+    &:focus{
+        outline: none;
+    }
+    @include for-mobile-layout{
+        margin: 0 4px 0 0;
+    }
 }
 
 .btn1-span {
@@ -22,6 +28,9 @@
     flex-shrink: 0;
     line-height: 1;
     margin: 4px;
+    @include for-mobile-layout{
+        margin: 0;
+    }
 }
 
 .btn2 {

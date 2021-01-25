@@ -257,8 +257,6 @@ export class _CardDetails extends Component {
                 </p>
               </div>
               <div className="details-list-container flex">
-
-
                 <div className="column-container flex column">
                   {/* CARD LABELS */}
                   {labels.length !== 0 && (
@@ -301,10 +299,7 @@ export class _CardDetails extends Component {
                   />
                 </div>
                <div className="column-container flex column"><CardActivity card={card} onCommentAdd={this.addComment} /></div>
-
-                
               </div>
-            
             </div>
           </section>
         </main>

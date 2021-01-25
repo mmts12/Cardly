@@ -10,10 +10,11 @@
     right: 4px;
     transform: translate(1%, 0);
     overflow-y: auto;
+    z-index: 99;
     @include for-mobile-layout{
         top: 60%;
         right: 42%;
-        z-index: 99;
+       
     }
     .members-input{
         margin: 4px 0 12px;

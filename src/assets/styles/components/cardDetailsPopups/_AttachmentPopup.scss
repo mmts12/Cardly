@@ -9,8 +9,8 @@
     top: 218px;
     right: -115px;
     transform: translate(-50%, 0);
+    z-index: 99;
     @include for-mobile-layout {
-        z-index: 99;
         top: 95%;
         right: 5%;
     }
