@@ -41,6 +41,9 @@
         .card-details-top {
             margin: 12px 40px 8px 56px;
             min-height: 32px;
+            @include for-mobile-layout{
+                margin: 12px 40px 8px 22px;
+            }
             .card-details-title {
                 font-family: Roboto;
                 margin: 4px 0 0;
@@ -79,97 +82,97 @@
                     display: flex;
                     align-items: center;
                     justify-content: flex-start;
-                    & span{
+                    & span {
                         margin: 3px;
                     }
                 }
-                .details-members{
+                .details-members {
                     justify-content: flex-start;
-                @include for-mobile-layout {
-                    width: 100%;
+                    @include for-mobile-layout {
+                        width: 100%;
+                    }
                 }
             }
         }
-    }
 
-    .sidebar-wrapper {
-        max-width: 25%;
-        @include for-mobile-layout {
-            // width: 100%;
-            width: 100%;
-        }
-    }
-
-    .card-details-btn {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        margin: 4px;
-        background-color: rgba(9, 30, 66, 0.04);
-        border: 0;
-        border-radius: 3px;
-        padding: 6px 12px;
-        @include for-wide-layout {
-            width: 9rem;
-        }
-        height: 30px;
-        overflow: hidden;
-        font-family: Roboto;
-        font-weight: 400;
-        color: #42526e;
-        max-width: 300px;
-        overflow: hidden;
-        .props-icon {
-            margin: 0px 6px 0 -6px;
-            & svg {
-                font-size: 1.2rem;
+        .sidebar-wrapper {
+            max-width: 25%;
+            @include for-mobile-layout {
+                max-width: 100%;
             }
         }
-        .props-txt {
-            line-height: 12px;
+
+        .card-details-btn {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin: 4px;
+            background-color: rgba(9, 30, 66, 0.04);
+            border: 0;
+            border-radius: 3px;
+            padding: 6px 12px;
+            @include for-wide-layout {
+                width: 9rem;
+            }
+            height: 30px;
+            overflow: hidden;
+            font-family: Roboto;
+            font-weight: 400;
+            color: #42526e;
+            max-width: 300px;
+            overflow: hidden;
+            .props-icon {
+                margin: 0px 6px 0 -6px;
+                & svg {
+                    font-size: 1.2rem;
+                }
+            }
+            .props-txt {
+                line-height: 12px;
+            }
+        }
+
+        .card-details-btn:hover {
+            background-color: #e2e4e9;
+        }
+
+        .card-details-btn:focus {
+            outline: none;
+        }
+
+        .card-details-btn-desc {
+            border: 0px;
+            background-color: #ebecef;
+            resize: none;
+            height: 40px;
+        }
+        .sidebar-title {
+            margin-bottom: 10px;
+            font-family: Roboto;
+            font-weight: 600;
+            padding-left: 6px;
+        }
+
+        .card-details-bottom {
+            margin-top: 10px;
         }
     }
 
-    .card-details-btn:hover {
-        background-color: #e2e4e9;
-    }
-
-    .card-details-btn:focus {
-        outline: none;
-    }
-
-    .card-details-btn-desc {
-        border: 0px;
-        background-color: #ebecef;
-        resize: none;
-        height: 40px;
-    }
-    .sidebar-title {
-        margin-bottom: 10px;
+    .labels-txt {
         font-family: Roboto;
-        font-weight: 600;
-        padding-left: 6px;
+        margin: 0;
     }
 
-    .card-details-bottom {
-        margin-top: 10px;
-    }
-}
-
-.labels-txt {
-    font-family: Roboto;
-    margin: 0;
-}
-
-.card-label-preview:empty {
-    display: inline;
-    border: 0;
-    border-radius: 3px;
-    margin: 4px;
-    width: 38px;
-    height: 10px;
-    &:first-child {
-        margin-left: 6px;
+    .card-label-preview:empty {
+        display: inline;
+        border: 0;
+        border-radius: 3px;
+        margin: 4px;
+        width: 38px;
+        height: 10px;
+        &:first-child {
+            margin-left: 6px;
+        }
     }
 }
 }
