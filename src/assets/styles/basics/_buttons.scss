@@ -85,14 +85,17 @@
     border: 0;
     cursor: pointer;
     padding: 6px 12px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
     &:hover {
         height: 32px;
         outline: 0;
-        background-color: rgba(9, 30, 66, 0.08);
+        // background-color: rgba(9, 30, 66, 0.08);
         color: #42526e;
         overflow: hidden;
-        padding: 4px;
-        margin: 4px;
+        // padding: 4px;
+        // margin: 4px;
         width: 32px;
         top: 0;
         right: 0;
