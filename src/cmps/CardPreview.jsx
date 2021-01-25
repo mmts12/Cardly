@@ -132,9 +132,11 @@ export class _CardPreview extends Component {
                   ></EditCard>
                 )}
               </div>
+              <div className="preview-members flex">
               {card.members.length !== 0 && (
-                <MembersAvatar users={card.members} />
+                <MembersAvatar users={card.members}  />
               )}
+              </div>
             </div>
           )}
         </Draggable>

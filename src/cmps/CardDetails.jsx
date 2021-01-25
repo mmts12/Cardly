@@ -280,7 +280,7 @@ export class _CardDetails extends Component {
                     </div>
                   )}
                   {cardMembers.length !== 0 && (
-                    <MembersAvatar users={cardMembers} />
+                    <MembersAvatar users={cardMembers} className="details-members" />
                   )}
                   <CardDescription onSaveCard={this.onSaveCard} card={card} />
                   {card.imgUrl && (
