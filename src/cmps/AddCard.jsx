@@ -43,6 +43,7 @@ export class AddCard extends Component {
           </div>
         </form>
       </section>
+      
     );
   }
 }

@@ -16,7 +16,7 @@
         max-height: 70vh;
        
         @include for-mobile-layout{
-            max-height: 65vh;
+            max-height: 60vh;
         }
         &::-webkit-scrollbar-track {
             position: absolute;
