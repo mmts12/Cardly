@@ -44,6 +44,8 @@ export class _AddBoard extends Component {
         'https://res.cloudinary.com/drak3llqt/image/upload/v1610553512/img1_uyzefw.jpg',
         'https://res.cloudinary.com/drak3llqt/image/upload/v1610553514/img4_ohr2cl.png',
         'https://res.cloudinary.com/drak3llqt/image/upload/v1610553508/img3_g44phk.png',
+        'https://res.cloudinary.com/drak3llqt/image/upload/v1611479917/KK4bC7ds_vuvzil.jpg',
+        'https://res.cloudinary.com/dng1vynbr/image/upload/v1611493508/download_smk3qa.jpg'
       ],
     };
     const { onCloseAddBoardSection } = this.props;

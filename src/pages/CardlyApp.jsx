@@ -49,7 +49,7 @@ export class _CardlyApp extends Component {
             );
           })}
         </div>
-        <div className="app-btn-container flex">
+        <div className="board-preview">
           {/* <button className="cardly-btn">
             <span>Clone Board</span>
           </button> */}

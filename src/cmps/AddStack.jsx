@@ -32,6 +32,7 @@ export class AddStack extends Component {
           <div className="add-stack-input">
             {/* <form onSubmit={(ev) => this.onAdd(ev, stack)}> */}
             <input
+              autoFocus
               onChange={this.handleInput}
               type="text"
               name=""

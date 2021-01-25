@@ -26,6 +26,7 @@ export class AddCard extends Component {
         <form onSubmit={this.onAdd}>
           <div className="add-card-input">
             <input
+              autoFocus
               onBlur={this.onAdd}
               type="text"
               onChange={this.handleInput}

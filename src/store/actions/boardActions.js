@@ -44,7 +44,7 @@ export function setSelectedBoard(boardId) {
     return async dispatch => {
         try {
             const board = await boardService.getBoardById(boardId)
-            socketService.emit('update board', board)
+            // socketService.emit('update board', board)
             dispatch({ type: 'SET_BOARD', board })
         }
         catch (err) {
@@ -57,6 +57,7 @@ export function setSelectedBoard(boardId) {
 export function updateBoard(board) {
     return async dispatch => {
         try {
+            console.log('UPDATE BOARD')
             dispatch({ type: 'UPDATE_BOARD', board })
         }
         catch (err) {

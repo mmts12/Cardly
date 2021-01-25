@@ -67,10 +67,10 @@ export class CardActivity extends Component {
               <button className="save-btn" onClick={this.onCommentSave}>
                 Save
               </button>
-              <div className="activity-bar-icons">
+              {/* <div className="activity-bar-icons">
                 <AttachFileIcon className="activity-icon" />
                 <AlternateEmailIcon className="activity-icon" />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -91,8 +91,8 @@ export class CardActivity extends Component {
                     src="frontend/src/assets/imgs/avatar-person.svg"
                   ></Avatar>
                 ) : (
-                  <Avatar size="10">{initials}</Avatar>
-                )}
+                    <Avatar size="10">{initials}</Avatar>
+                  )}
                 <div className="card-activity-row">
                   <input
                     className="card-details-activity-textarea"
