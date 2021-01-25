@@ -70,7 +70,7 @@
                 padding: 0;
             }
             .column-container {
-                width: 552px;
+                width: 75%;
                 margin: 0;
                 overflow-y: auto;
                 min-height: 24px;
@@ -85,13 +85,17 @@
                 }
                 .details-members{
                     justify-content: flex-start;
+                @include for-mobile-layout {
+                    width: 100%;
                 }
             }
         }
     }
 
     .sidebar-wrapper {
+        max-width: 25%;
         @include for-mobile-layout {
+            // width: 100%;
             width: 100%;
         }
     }
