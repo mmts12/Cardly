@@ -11,7 +11,9 @@ export class _AddBoard extends Component {
       createdAt: Date.now(),
       createdBy: {},
       members: [],
-      stacks: [{ id: utilService.makeId(), cards: [], style: {}, title: '' }],
+      stacks: [
+        { id: utilService.makeId(), cards: [], style: {}, title: 'New List' },
+      ],
       style: {
         bgc: '',
         mode: '',
@@ -45,7 +47,7 @@ export class _AddBoard extends Component {
         'https://res.cloudinary.com/drak3llqt/image/upload/v1610553514/img4_ohr2cl.png',
         'https://res.cloudinary.com/drak3llqt/image/upload/v1610553508/img3_g44phk.png',
         'https://res.cloudinary.com/drak3llqt/image/upload/v1611479917/KK4bC7ds_vuvzil.jpg',
-        'https://res.cloudinary.com/dng1vynbr/image/upload/v1611493508/download_smk3qa.jpg'
+        'https://res.cloudinary.com/dng1vynbr/image/upload/v1611493508/download_smk3qa.jpg',
       ],
     };
     const { onCloseAddBoardSection } = this.props;
