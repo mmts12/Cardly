@@ -9,10 +9,10 @@
     top: 182px;
     right: 0;
     transform: translate(1%, 0);
+    z-index: 99;
     @include for-mobile-layout {
         top: 91%;
         right: 42%;
-        z-index: 99;
     }
     .save-btn-container{
         margin-top: 5px;

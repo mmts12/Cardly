@@ -3,7 +3,6 @@
     display: flex;
     min-height: 40px;
     max-height: 40px;
-    max-height: 40px;
     overflow: hidden;
     padding: 4px;
     align-content: center;
@@ -31,14 +30,14 @@
         display: flex;
         font-weight: 700;
         border-radius: 3px;
-        margin: 0 4px 0 0;
+        margin: 1px 0 0 0;
         padding: 0;
         white-space: nowrap;
     }
     .logo {
         text-decoration: none;
         font-family: Pacifico, cursive;
-       font-size: 1.3rem;
+       font-size: 1.2rem;
         color: white;
         cursor: pointer;
         display: inline-block;
@@ -46,7 +45,7 @@
         width: 80px;
         line-height: 25px;
         font-weight: 350;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.08em;
     }
     .header-btn {
         
@@ -81,13 +80,25 @@
         justify-content: center;
         align-items: center;
         margin: 0px;
+        color: white;
+        @include for-mobile-layout{
+            display: inline-block;
+            fill: inherit;
+            flex-shrink: 0;
+            line-height: 1;
+            margin: 4px;
+        }
     }
     
     .header-icon-word {
+        
         overflow: hidden;
         padding: 0 8px 0 8px;
         max-width: 150px;
         font-size: 14px;
+        @include for-mobile-layout{
+            display: none;
+        }
     }
     
     .header-input {
@@ -104,12 +115,13 @@
         margin: 0;
         outline: none;
         padding-left: 8px;
-        padding-right: 30px;
+        // padding-right: 30px;
         transition: width 0.15s;
-        width: 214px;
+        // width: 214px;
         align-items: center;
+      
         @include for-mobile-layout{
-            width: 0;
+            width: 32px;
             padding-left: 0;
         }
         & input{
@@ -133,8 +145,14 @@
         & a{
             text-decoration: none;
         }
-        .header-avatar{
-            margin: 2px;
+        // .header-avatar{
+        //     margin: 2px;
+        // }
+        .header-login{
+            overflow: hidden;
+            padding: 0 8px 0 8px;
+            max-width: 150px;
+            font-size: 14px;
         }
     }
     

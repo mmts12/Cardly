@@ -9,10 +9,10 @@
     top: 257px;
     right: -114px;
     transform: translate(-50%, 0);
+    z-index: 99;
     @include for-mobile-layout{
         top: 90%;
         right: -20%;
-        z-index: 99;
     }
 
     .color-title{
@@ -63,8 +63,6 @@
                 background-color: #172b4d;
             }
     }
-
-   
 
     .pop-up-members-btn{
         background-color: rgba(9, 30, 66, 0.04);

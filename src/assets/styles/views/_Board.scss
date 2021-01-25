@@ -1,24 +1,22 @@
 .board-container {
-    // background-image: url(https://res.cloudinary.com/drak3llqt/image/upload/v1610553512/img1_uyzefw.jpg);
     background-size: cover;
     height: 100vh;
     position: relative;
     overflow: hidden;
     justify-content: flex-start;
-    overflow-y: scroll; /* Show vertical scrollbar */
-    overflow-x: scroll; /* Show horizontal scrollbar */
+    overflow-y: scroll;
+    overflow-x: scroll; 
     background-position: 50%;
     @include for-mobile-layout{
         overflow-y: hidden;
     }
 
     .mt{
-        margin-top: 5rem;
+        margin-top: 7rem;
         @include for-mobile-layout{
             margin-top: 9rem;
         }
     }
-    
 
     .board-title {
         margin-block-start: 0;

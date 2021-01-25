@@ -9,10 +9,10 @@
     top: 143px;
     right: 3px;
     transform: translate(1%, 0);
+    z-index: 99;
     @include for-mobile-layout{
         top: 60%;
         right: 12%;
-        z-index: 99;
     }
 
     .pop-up-header{
