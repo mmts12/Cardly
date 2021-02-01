@@ -32,6 +32,7 @@ export class _CardlyApp extends Component {
 
   render() {
     const { boards } = this.props;
+    console.log(boards);
     const { isAddBoardShow } = this.state;
     if (!boards) return <h1>Loading...!!</h1>;
     return (
@@ -60,7 +61,6 @@ export class _CardlyApp extends Component {
           {/* <button className="cardly-btn">
             <span>Clone Board</span>
           </button> */}
-
           {isAddBoardShow && (
             <AddBoard
               onCloseAddBoardSection={this.onCloseAddBoardSection}

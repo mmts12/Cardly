@@ -7,12 +7,14 @@ import { CardActivity } from './cardDetailsCmps/cardDetailsBodyCmps/CardActivity
 import { CardLabels } from './cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx';
 import { CardChecklist } from './cardDetailsCmps/cardDetailsBodyCmps/CardChecklist.jsx';
 import { MembersAvatar } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/MembersAvatar.jsx';
-import { saveCard } from '../store/actions/cardActions.js';
 import { CardImg } from '../cmps/cardDetailsCmps/cardDetailsBodyCmps/CardImg.jsx';
 import { loadUsers } from '../store/actions/userActions.js';
 import { userService } from '../services/userService';
 import CloseIcon from '@material-ui/icons/Close';
 import ScheduleIcon from '@material-ui/icons/Schedule';
+import { updateBoard } from './../store/actions/boardActions';
+import { socketService } from './../services/misc/socketService';
+import { boardService } from './../services/boardService';
 
 export class _CardDetails extends Component {
   state = {
@@ -61,11 +63,7 @@ export class _CardDetails extends Component {
       card.members.splice(memberIndx, 1);
     }
     this.setState({ card }, () => {
-      this.props.saveCard(
-        this.state.card,
-        this.props.stack,
-        this.props.selectedBoard
-      );
+      this.onSaveCard(card);
     });
   };
 
@@ -92,12 +90,7 @@ export class _CardDetails extends Component {
       card.labels.splice(colorIndx, 1);
     }
     this.setState({ card, comments }, () => {
-      console.log('this.state.card is:', this.state.card);
-      this.props.saveCard(
-        this.state.card,
-        this.props.stack,
-        this.props.selectedBoard
-      );
+      this.onSaveCard(card);
     });
   };
 
@@ -120,11 +113,7 @@ export class _CardDetails extends Component {
       card.coverColor = color;
     }
     this.setState({ card, comments }, () => {
-      this.props.saveCard(
-        this.state.card,
-        this.props.stack,
-        this.props.selectedBoard
-      );
+      this.onSaveCard(card);
     });
   };
 
@@ -152,7 +141,7 @@ export class _CardDetails extends Component {
       currChecklist.id === checklist.id ? checklist : currChecklist
     );
     card.checklists = checklistsToAdd;
-    this.props.saveCard(card, this.props.stack, this.props.selectedBoard);
+    this.onSaveCard(card);
   };
 
   onRemoveTodo = (todoId, checklists) => {
@@ -165,7 +154,7 @@ export class _CardDetails extends Component {
       currChecklist.id === copyChecklists.id ? copyChecklists : currChecklist
     );
     card.checklists = filteredChecklists;
-    this.props.saveCard(card, this.props.stack, this.props.selectedBoard);
+    this.onSaveCard(card);
   };
 
   onClosePopUps = () => {
@@ -188,7 +177,7 @@ export class _CardDetails extends Component {
     });
 
     this.setState({ card });
-    this.props.saveCard(card, stack, selectedBoard);
+    this.onSaveCard(card);
   };
 
   addComment = (comment) => {
@@ -203,35 +192,33 @@ export class _CardDetails extends Component {
   };
 
   onRemoveImage = (card) => {
-    const { stack, selectedBoard } = this.props;
     console.log('Remove IMG');
     const copyCard = { ...card };
     copyCard.imgUrl = '';
-    console.log(copyCard);
-    this.props.saveCard(copyCard, stack, selectedBoard);
+    this.onSaveCard(copyCard);
   };
 
   onSetDueDate = (dueDate) => {
-    const { stack, selectedBoard } = this.props;
     const { card } = this.state;
     card.dueDate = dueDate;
     this.setState({ card }, () => {
-      this.props.saveCard(card, stack, selectedBoard);
+      this.onSaveCard(card);
     });
   };
 
   onRemoveDueDate = () => {
-    const { stack, selectedBoard } = this.props;
     const { card } = this.state;
     card.dueDate = '';
     this.setState({ card }, () => {
-      this.props.saveCard(card, stack, selectedBoard);
+      this.onSaveCard(card);
     });
   };
 
   onSaveCard = (card) => {
     const { stack, selectedBoard } = this.props;
-    this.props.saveCard(card, stack, selectedBoard);
+    const board = boardService.saveCard(card, stack, selectedBoard);
+    this.props.updateBoard(board);
+    socketService.emit('update board', board);
   };
 
   render() {
@@ -274,13 +261,18 @@ export class _CardDetails extends Component {
                   {dueDate && (
                     <div>
                       <p className="details-due-date">
-                        <span><ScheduleIcon /></span>
+                        <span>
+                          <ScheduleIcon />
+                        </span>
                         {dueDate}
                       </p>
                     </div>
                   )}
                   {cardMembers.length !== 0 && (
-                    <MembersAvatar users={cardMembers} className="details-members" />
+                    <MembersAvatar
+                      users={cardMembers}
+                      className="details-members"
+                    />
                   )}
                   <CardDescription onSaveCard={this.onSaveCard} card={card} />
                   {card.imgUrl && (
@@ -328,8 +320,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  saveCard,
   loadUsers,
+  updateBoard,
 };
 
 export const CardDetails = connect(

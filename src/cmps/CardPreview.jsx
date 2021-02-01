@@ -3,7 +3,6 @@ import { CardDetails } from './CardDetails';
 import { CardLabels } from './cardDetailsCmps/cardDetailsBodyCmps/CardLabels.jsx';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { removeCard, saveCard } from '../store/actions/cardActions.js';
 import { connect } from 'react-redux';
 import { EditCard } from './EditCard';
 import { Draggable } from 'react-beautiful-dnd';
@@ -12,6 +11,9 @@ import SubjectIcon from '@material-ui/icons/Subject';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import { utilService } from './../services/misc/utilService';
+import { boardService } from './../services/boardService';
+import { updateBoard } from './../store/actions/boardActions';
+import { socketService } from './../services/misc/socketService';
 
 export class _CardPreview extends Component {
   state = {
@@ -41,18 +43,25 @@ export class _CardPreview extends Component {
 
   onRemoveCard = (cardId) => {
     const { selectedBoard, stack } = this.props;
-    this.props.removeCard(cardId, stack, selectedBoard);
+    const board = boardService.removeCard(cardId, stack, selectedBoard);
+    this.onUpdateBoard(board);
   };
 
-  onEditCard = (ev) => {
+  onEditCardShow = (ev) => {
     ev.stopPropagation();
     this.setState({ isEditCardModalShow: true });
   };
 
   onSaveEditedCard = (card) => {
     const { selectedBoard, stack } = this.props;
-    this.props.saveCard(card, stack, selectedBoard);
+    const board = boardService.saveCard(card, stack, selectedBoard);
+    this.onUpdateBoard(board);
     this.setState({ isEditCardModalShow: false });
+  };
+
+  onUpdateBoard = (board) => {
+    this.props.updateBoard(board);
+    socketService.emit('update board', board);
   };
 
   render() {
@@ -73,18 +82,14 @@ export class _CardPreview extends Component {
               {...provided.dragHandleProps}
               ref={provided.innerRef}
             >
-              {
-                card.imgUrl ? (
-                  // {coverColor !== '' && (
-                  <img src={card.imgUrl} alt="" />
-                ) : (
-                  <div
-                    className="card-preview-color"
-                    style={{ background: `${coverColor}` }}
-                  ></div>
-                )
-                // )}
-              }
+              {card.imgUrl ? (
+                <img src={card.imgUrl} alt="" />
+              ) : (
+                <div
+                  className="card-preview-color"
+                  style={{ background: `${coverColor}` }}
+                ></div>
+              )}
               {labels.length !== 0 && <CardLabels labels={labels} />}
 
               <div className="card-preview-line flex space-between">
@@ -112,7 +117,7 @@ export class _CardPreview extends Component {
                         )}
                       </div>
                       <div className="icons-container flex">
-                        <div onClick={this.onEditCard}>
+                        <div onClick={this.onEditCardShow}>
                           <span>
                             <EditIcon className="card-preview-edit-icon"></EditIcon>
                           </span>
@@ -133,9 +138,9 @@ export class _CardPreview extends Component {
                 )}
               </div>
               <div className="preview-members flex">
-              {card.members.length !== 0 && (
-                <MembersAvatar users={card.members}  />
-              )}
+                {card.members.length !== 0 && (
+                  <MembersAvatar users={card.members} />
+                )}
               </div>
             </div>
           )}
@@ -160,8 +165,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  removeCard,
-  saveCard,
+  updateBoard,
 };
 
 export const CardPreview = connect(

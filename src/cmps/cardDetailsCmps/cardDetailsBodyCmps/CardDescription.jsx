@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import SubjectIcon from '@material-ui/icons/Subject';
-// import Icon from '@material-ui/core/Icon';
 
 export class CardDescription extends Component {
   state = {

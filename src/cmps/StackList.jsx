@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import { StackPreview } from './StackPreview.jsx';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
-import { moveStack } from '../store/actions/stackActions';
-import {
-  updateDragCard,
-  updateDragCardToOtherList,
-} from '../store/actions/cardActions.js';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { boardService } from './../services/boardService';
+import { updateBoard } from './../store/actions/boardActions';
+import { socketService } from './../services/misc/socketService';
 
 export class _StackList extends Component {
   dragEnd = (result) => {
-    const { selectedBoard, moveStack } = this.props;
+    const { selectedBoard } = this.props;
     const { stacks } = this.props.selectedBoard;
     const { destination, source, type } = result;
     if (!destination) return;
@@ -23,13 +21,27 @@ export class _StackList extends Component {
 
     if (type === 'card') {
       if (result.destination.droppableId === result.source.droppableId) {
-        this.props.updateDragCard(result, stacks, selectedBoard);
+        const board = boardService.updateDragCard(
+          result,
+          stacks,
+          selectedBoard
+        );
+        this.props.updateBoard(board);
+        socketService.emit('update board', board);
       }
       if (result.destination.droppableId !== result.source.droppableId) {
-        this.props.updateDragCardToOtherList(result, stacks, selectedBoard);
+        const board = boardService.updateDragCardToOtherList(
+          result,
+          stacks,
+          selectedBoard
+        );
+        this.props.updateBoard(board);
+        socketService.emit('update board', board);
       }
     } else {
-      moveStack(result, stacks, selectedBoard);
+      const board = boardService.moveStack(result, stacks, selectedBoard);
+      this.props.updateBoard(board);
+      socketService.emit('update board', board);
     }
   };
 
@@ -77,9 +89,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  updateDragCard,
-  updateDragCardToOtherList,
-  moveStack,
+  updateBoard,
 };
 
 export const StackList = connect(

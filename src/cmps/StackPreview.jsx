@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { CardList } from './CardList';
-import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
-import { removeStack, saveStack } from '../store/actions/stackActions.js';
-import { addCard } from '../store/actions/cardActions';
 import { updateBoard, setSelectedBoard } from '../store/actions/boardActions';
 import { EditStack } from './EditStack.jsx';
 import AddIcon from '@material-ui/icons/Add';
@@ -11,6 +8,8 @@ import { AddCard } from './AddCard';
 import { Draggable } from 'react-beautiful-dnd';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { StackMenu } from './StackMenu';
+import { boardService } from './../services/boardService';
+import { socketService } from './../services/misc/socketService';
 
 export class _StackPreview extends Component {
   state = {
@@ -28,8 +27,14 @@ export class _StackPreview extends Component {
   };
 
   onRemoveStack = () => {
-    const { stack, selectedBoard, removeStack } = this.props;
-    removeStack(stack.id, selectedBoard._id, selectedBoard);
+    const { stack, selectedBoard, updateBoard } = this.props;
+    const board = boardService.removeStack(
+      stack.id,
+      selectedBoard._id,
+      selectedBoard
+    );
+    updateBoard(board);
+    socketService.emit('update board', board);
     this.onCloseMenuModal();
   };
 
@@ -39,8 +44,9 @@ export class _StackPreview extends Component {
 
   onSaveStack = (stack) => {
     const { selectedBoard } = this.props;
-    console.log('selectedBoard is:', this.props.selectedBoard);
-    this.props.saveStack(stack, selectedBoard);
+    const board = boardService.saveStack(stack, selectedBoard);
+    this.props.updateBoard(board);
+    socketService.emit('update board', board);
     this.setState({ isEditShow: false });
   };
 
@@ -52,12 +58,12 @@ export class _StackPreview extends Component {
     this.setState({ isAddShow: false });
   };
 
-  onAddNewCard = (cardToadd) => {
+  onAddNewCard = (cardToAdd) => {
     const { stack, selectedBoard } = this.props;
+    const board = boardService.addCard(cardToAdd, stack, selectedBoard);
+    this.props.updateBoard(board);
+    socketService.emit('update board', board);
     this.onCloseAddSection();
-    // const board = boardService.addCard(cardToadd, stack, selectedBoard);
-    // console.log(board);
-    this.props.addCard(cardToadd, stack, selectedBoard);
   };
 
   onDragDis = () => {
@@ -159,10 +165,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  removeStack,
   setSelectedBoard,
-  saveStack,
-  addCard,
   updateBoard,
 };
 

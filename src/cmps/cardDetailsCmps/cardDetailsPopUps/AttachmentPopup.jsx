@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { cloudinaryService } from '../../../services/cloudinaryService.js';
-import { saveCard } from './../../../store/actions/cardActions';
 import { connect } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CloseIcon from '@material-ui/icons/Close';
+import { updateBoard } from './../../../store/actions/boardActions';
+import { boardService } from './../../../services/boardService';
+import { socketService } from './../../../services/misc/socketService';
 
 export class _AttachmentPopup extends Component {
   state = {
@@ -27,7 +29,9 @@ export class _AttachmentPopup extends Component {
       const { stack, selectedBoard } = this.props;
       card.imgUrl = url.secure_url;
       this.setState({ card, imageUpload: '' }, () => {
-        this.props.saveCard(card, stack, selectedBoard);
+        const board = boardService.saveCard(card, stack, selectedBoard);
+        this.props.updateBoard(board);
+        socketService.emit('update board', board);
       });
     });
   };
@@ -78,7 +82,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  saveCard,
+  updateBoard,
 };
 
 export const AttachmentPopup = connect(

@@ -1,5 +1,4 @@
 import { boardService } from '../../services/boardService';
-import { socketService } from './../../services/misc/socketService';
 
 
 export function addBoard(board) {
@@ -18,7 +17,7 @@ export function addBoard(board) {
 export function removeBoard(boardId) {
     return async dispatch => {
         try {
-            boardService.removeBoard(boardId)
+            await boardService.removeBoard(boardId)
             dispatch({ type: 'DELETE_BOARD', boardId })
         }
         catch (err) {
@@ -57,7 +56,6 @@ export function setSelectedBoard(boardId) {
 export function updateBoard(board) {
     return async dispatch => {
         try {
-            console.log('UPDATE BOARD')
             dispatch({ type: 'UPDATE_BOARD', board })
         }
         catch (err) {

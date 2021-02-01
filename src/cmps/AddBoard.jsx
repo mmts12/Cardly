@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addBoard } from '../store/actions/boardActions';
 import { utilService } from './../services/misc/utilService';
 import ClearIcon from '@material-ui/icons/Clear';
+import { membersService } from '../services/membersService';
 
 export class _AddBoard extends Component {
   state = {
@@ -10,7 +11,7 @@ export class _AddBoard extends Component {
       activities: [],
       createdAt: Date.now(),
       createdBy: {},
-      members: [],
+      members: membersService,
       stacks: [
         { id: utilService.makeId(), cards: [], style: {}, title: 'New List' },
       ],

@@ -1,19 +1,15 @@
-
-// import { httpService } from './misc/httpService.js'
-import Axios from 'axios'
+// import Axios from 'axios'
 import { utilService } from './misc/utilService';
+import { httpService } from './httpService';
 
-
-
-var axios = Axios.create({
-    withCredentials: true
-})
+// var axios = Axios.create({
+//     withCredentials: true
+// })
 
 //For Heroku use
-const baseUrl = (process.env.NODE_ENV !== 'development')
-    ? '/api/board'
-    : '//localhost:3030/api/board';
-// var baseUrl = 'http://localhost:3030/api/board'
+// const baseUrl = (process.env.NODE_ENV !== 'development')
+//     ? '/api/board'
+//     : '//localhost:3030/api/board';
 
 export const boardService = {
     query,
@@ -33,57 +29,50 @@ export const boardService = {
 
 
 function query() {
-    return axios.get(baseUrl)
-        .then(res => {
-            return res.data
-
-        })
-        .catch(() => console.log('no data from server'))
+    return httpService.get('board')
 }
 
 function getBoardById(boardId) {
-    return axios.get(`${baseUrl}/${boardId}`)
-        .then(res => res.data)
+    return httpService.get(`board/${boardId}`)
+
 }
 
 function addBoard(board) {
-    return axios.post(`${baseUrl}`, board)
-        .then(res => res.data)
+    return httpService.post(`board`, board)
 }
 
 function removeBoard(boardId) {
-    return axios.delete(`${baseUrl}/${boardId}`)
-    // .then(res => res.data)
+    httpService.delete(`board/${boardId}`)
+
+}
+
+async function _updateBoard(board) {
+    return await httpService.put(`board/${board._id}`, board)
 }
 
 function saveNewStack(stack, selectedBoard) {
     const selectedBoardCopy = { ...selectedBoard }
     stack.id = utilService.makeId()
     selectedBoardCopy.stacks.push(stack)
-    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-        .then(res => res.data)
-    return Promise.resolve(selectedBoardCopy)
-
+    _updateBoard(selectedBoardCopy)
+    return selectedBoardCopy;
 }
-
 
 
 function removeStack(stackId, boardId, selectedBoard) {
     const selectedBoardCopy = { ...selectedBoard }
     const stacks = selectedBoard.stacks.filter((stack) => stack.id !== stackId)
     selectedBoardCopy.stacks = stacks
-    axios.put(`${baseUrl}/${boardId}`, selectedBoardCopy)
-        .then(res => res.data)
-    return Promise.resolve(selectedBoardCopy)
+    _updateBoard(selectedBoardCopy)
+    return selectedBoardCopy;
 }
 
 function saveStack(stack, selectedBoard) {
     const selectedBoardCopy = { ...selectedBoard }
     const newStacks = selectedBoardCopy.stacks.map((currStack) => currStack.id === stack.id ? stack : currStack)
     selectedBoardCopy.stacks = newStacks
-    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-        .then(res => res.data)
-    return Promise.resolve(selectedBoardCopy)
+    _updateBoard(selectedBoardCopy)
+    return selectedBoardCopy
 }
 
 function addCard(cardToAdd, stack, selectedBoard) {
@@ -98,17 +87,11 @@ function addCard(cardToAdd, stack, selectedBoard) {
     cardToAdd.dueDate = ''
     cardToAdd.createdAt = Date.now()
     cardToAdd.coverColor = ''
-    cardToAdd.byMember = {
-        _id: "u102",
-        fullname: "Mosh Malka",
-        imgUrl: "https://res.cloudinary.com/dscb3040k/image/upload/v1610463697/Screenshot_2021-01-12_170113_ialgw7.png"
-    }
     stackCopy.cards.push(cardToAdd)
     const newStacks = selectedBoardCopy.stacks.map((currStack) => currStack.id === stackCopy.id ? stackCopy : currStack)
     selectedBoardCopy.stacks = newStacks
-    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-        .then(res => res.data)
-    return Promise.resolve(selectedBoardCopy)
+    _updateBoard(selectedBoardCopy)
+    return selectedBoardCopy;
 }
 
 function removeCard(cardId, stack, selectedBoard) {
@@ -118,8 +101,8 @@ function removeCard(cardId, stack, selectedBoard) {
     stackCopy.cards = newCards
     const newStacks = selectedBoardCopy.stacks.map((stack) => (stack.id === stackCopy.id) ? stackCopy : stack)
     selectedBoardCopy.stacks = newStacks
-    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-    return Promise.resolve(selectedBoardCopy)
+    _updateBoard(selectedBoardCopy)
+    return selectedBoardCopy;
 }
 
 function saveCard(card, stack, selectedBoard) {
@@ -130,8 +113,8 @@ function saveCard(card, stack, selectedBoard) {
     stackCopy.cards = newCards
     const newStacks = selectedBoardCopy.stacks.map((stack) => (stack.id === stackCopy.id) ? stackCopy : stack)
     selectedBoardCopy.stacks = newStacks
-    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-    return Promise.resolve(selectedBoardCopy)
+    _updateBoard(selectedBoardCopy)
+    return selectedBoardCopy;
 }
 
 function updateDragCard(result, stacks, selectedBoard) {
@@ -144,8 +127,8 @@ function updateDragCard(result, stacks, selectedBoard) {
     selectedStack.cards = cardsCopy
     const stacksToUpdate = selectedBoardCopy.stacks.map((stack) => stack.id === selectedStack.id ? selectedStack : stack)
     selectedBoardCopy.stacks = stacksToUpdate
-    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-    return Promise.resolve(selectedBoardCopy)
+    _updateBoard(selectedBoardCopy)
+    return selectedBoardCopy;
 }
 
 function updateDragCardToOtherList(result, stacks, selectedBoard) {
@@ -160,8 +143,8 @@ function updateDragCardToOtherList(result, stacks, selectedBoard) {
     const cardsDestinationCopy = [...destinationStack.cards]
     destinationStack.cards = cardsDestinationCopy
     destinationStack.cards.splice(result.destination.index, 0, cardRemoved)
-    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-    return Promise.resolve(selectedBoardCopy)
+    _updateBoard(selectedBoardCopy)
+    return selectedBoardCopy;
 }
 
 function moveStack(result, stacks, selectedBoard) {
@@ -171,6 +154,6 @@ function moveStack(result, stacks, selectedBoard) {
     const stackRemoved = stacksCopy.splice(source.index, 1)[0];
     stacksCopy.splice(destination.index, 0, stackRemoved)
     selectedBoardCopy.stacks = stacksCopy
-    axios.put(`${baseUrl}/${selectedBoardCopy._id}`, selectedBoardCopy)
-    return Promise.resolve(selectedBoardCopy)
+    _updateBoard(selectedBoardCopy)
+    return selectedBoardCopy;
 }

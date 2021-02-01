@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { StackList } from './../cmps/StackList';
 import { setSelectedBoard, updateBoard } from '../store/actions/boardActions';
-import { addStack } from '../store/actions/stackActions';
 import { connect } from 'react-redux';
 import { AddStack } from '../cmps/AddStack';
 import { StatusBar } from '../cmps/StatusBar';
 import AddIcon from '@material-ui/icons/Add';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { socketService } from '../services/misc/socketService';
+import { boardService } from './../services/boardService';
 
 export class _Board extends Component {
   state = {
@@ -44,9 +44,10 @@ export class _Board extends Component {
 
   onAddNewStack = (stack) => {
     const { selectedBoard } = this.props;
-    this.props
-      .addStack(stack, selectedBoard)
-      .then(() => this.setState({ isAddStack: false }));
+    const board = boardService.saveNewStack(stack, selectedBoard);
+    this.props.updateBoard(board);
+    socketService.emit('update board', board);
+    this.setState({ isAddStack: false });
   };
 
   render() {
@@ -99,7 +100,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   setSelectedBoard,
-  addStack,
   updateBoard,
 };
 
