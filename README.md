@@ -1,6 +1,6 @@
 # Cardly
 
-A final project inspired by Trillo done at Coding Academy 
+A final project inspired by Trello done at Coding Academy bootcamp
 
 Technologies:
 
